@@ -1,0 +1,24 @@
+<div class="filter-wrapper">
+  <mat-form-field>
+    <mat-select
+      [placeholder]="'CITY.FILTER.SORT_BY' | translate"
+      (selectionChange)="sortByChange.emit($event.value)"
+    >
+      <mat-option
+        *ngFor="let sort of citySortOptions"
+        [value]="sort.option"
+      >{{ sort.name | translate }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-icon matSuffix>search</mat-icon>
+    <input type="text"
+           name="query"
+           matInput
+           [placeholder]="'CITY.FILTER.SEARCH' | translate"
+           [ngModel]="query"
+           (ngModelChange)="queryChange.emit($event)">
+  </mat-form-field>
+</div>

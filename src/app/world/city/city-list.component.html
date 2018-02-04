@@ -1,0 +1,30 @@
+<app-city-filter (sortByChange)="onSortByChange($event)"
+                 (queryChange)="onQueryChange($event)"></app-city-filter>
+
+<mat-divider></mat-divider>
+
+<div class="list">
+  <div *ngFor="let city of cities" class="list-item">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar>
+          <mat-icon [ngClass]="getStatus(city)">location_city</mat-icon>
+        </div>
+        <mat-card-title [innerHTML]="city.name | highlight:query"></mat-card-title>
+      </mat-card-header>
+      <!--<img mat-card-image src="" alt="Image for country">-->
+      <mat-card-content>
+        <app-parameters-pair [name]="'CITY.CARD.COUNTRY' | translate"
+                             [value]="getCountryName(city)"></app-parameters-pair>
+        <app-parameters-pair [name]="'CITY.CARD.POPULATION' | translate"
+                             [value]="city.population"></app-parameters-pair>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary">
+          {{ 'CITY.CARD.BUY_FOR' | translate}} ETH <b>{{ city.price }}</b>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+

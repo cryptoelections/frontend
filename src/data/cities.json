@@ -1,0 +1,22 @@
+ [{
+   "name": "Albuquerque",
+   "country": "US",
+   "population": "545852",
+   "lat": "35.08449",
+   "lon": "-106.65114",
+   "price": "0.2"
+ }, {
+   "name": "Ranchos Albuquerque",
+   "country": "US",
+   "population": "6024",
+   "lat": "35.16199",
+   "lon": "-106.6428",
+   "price": "0.4"
+ }, {
+   "name": "Moscow",
+   "country":"RU",
+   "population": "11902000",
+   "lat": "55.751244",
+   "lon": "37.618423",
+   "price": "1.6"
+ }]

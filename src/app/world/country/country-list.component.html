@@ -1,0 +1,19 @@
+<div class="list">
+  <div class="list-item" *ngFor="let country of countries">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar
+             [style]="getFlag(country)">
+        </div>
+        <mat-card-title>{{ country.name }}</mat-card-title>
+        <mat-card-subtitle>{{ country.code }}</mat-card-subtitle>
+        <!--</mat-card-header>-->
+        <!--<img mat-card-image src="" alt="Image for country">-->
+        <mat-card-content>
+          <p>
+          </p>
+        </mat-card-content>
+      </mat-card-header>
+    </mat-card>
+  </div>
+</div>

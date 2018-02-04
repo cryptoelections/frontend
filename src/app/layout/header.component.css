@@ -1,0 +1,27 @@
+:host .mat-toolbar {
+  position: relative !important;
+  display: flex;
+  border-bottom: 1px solid #dedede;
+}
+
+.title {
+  cursor: pointer;
+}
+
+.menu {
+  font-size: 15px;
+  cursor: pointer;
+  margin: 0px 20px;
+}
+
+.account-info {
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  margin: 0px 20px;
+  transition: right 300ms;
+}
+

@@ -1,0 +1,65 @@
+.key {
+  flex-grow: 1;
+  flex-shrink: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: default;
+  max-width: 170px;
+  margin-right: 5px;
+  opacity: 0.65;
+}
+
+.value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
+  text-align: right;
+  white-space: nowrap;
+  flex-shrink: 2;
+}
+
+.value input {
+  text-align: end;
+}
+
+.value cs-input-group mat-form-field {
+  padding-top: 0.2em;
+}
+
+.value cs-input-group /deep/ div.mat-input-infix {
+  width: auto !important;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  margin-right: 15px;
+}
+
+.left span {
+  width: 100%;
+}
+
+.buttons {
+  display: none;
+  margin-left: 10px;
+}
+
+.height-container {
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+}
+
+.container {
+  width: 100%;
+}
+
+.container:hover .buttons {
+  display: flex;
+}

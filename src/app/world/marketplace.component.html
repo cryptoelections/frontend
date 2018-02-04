@@ -1,0 +1,15 @@
+<mat-button-toggle-group
+  name="viewMode"
+  [(ngModel)]="viewMode"
+  (change)="viewMode = $event.value">
+  <mat-button-toggle *ngFor="let mode of modes" [value]="mode.mode">
+    {{ (mode.title | translate).toUpperCase() }}
+  </mat-button-toggle>
+</mat-button-toggle-group>
+
+<div class="app-content">
+  <app-country-list *ngIf="viewMode === MarketplaceViewMode.Countries"
+                    [countries]="countries"></app-country-list>
+  <app-city-list *ngIf="viewMode === MarketplaceViewMode.Cities"
+                 [countries]="countries"></app-city-list>
+</div>

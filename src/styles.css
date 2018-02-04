@@ -1,0 +1,78 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+.app-content {
+  padding: 10px;
+  display: block;
+}
+
+.list {
+  padding: 10px 0px;
+  display: block;
+  position: relative;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
+}
+
+.list-item {
+  display: inline-flex;
+}
+
+.list .mat-card {
+  margin: 5px 8px;
+  min-height: 100px;
+  width: 288px;
+}
+
+.list .mat-raised-button {
+  width: 100%;
+  height: 100%;
+}
+
+.list .mat-card .mat-card-header .mat-card-avatar {
+  width: auto;
+  height: auto;
+}
+
+.list .mat-card .mat-card-header .mat-icon,
+.list .mat-card .mat-card-header .mat-card-title {
+  font-size: 18px;
+}
+
+.highlight {
+  background: #ffeb3b;
+}
+
+.list .mat-card .mat-card-header .mat-icon.bigCity {
+  color: #3F51B5;
+}
+
+.list .mat-card .mat-card-header .mat-icon.mediumCity {
+  color: #9FA8DA;
+}
+
+.list .mat-card .mat-card-header .mat-icon.smallCity {
+  color: #E8EAF6;
+}
+
+.filter-wrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+.filter-wrapper > * {
+  margin-right: 20px;
+}
+
+.filter-wrapper > *:last-child {
+  margin-right: 0;
+}

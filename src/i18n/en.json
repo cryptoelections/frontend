@@ -1,0 +1,32 @@
+{
+  "TITLE": "CryptoELECTIONS",
+  "MARKETPLACE": {
+    "TITLE": "Marketplace",
+    "VIEWMODE": {
+      "CITIES": "Cities",
+      "COUNTRIES": "Countries"
+    }
+  },
+  "ACCOUNT": {
+    "NOT_LOGGED_IN": "Not logged in"
+  },
+  "CITY": {
+    "CARD": {
+      "COUNTRY": "Country",
+      "POPULATION": "Population",
+      "BUY_FOR": "Buy for",
+      "SMALLCITY": "Population - less % of country population",
+      "MEDIUMCITY": "Population - less % of country population",
+      "BIGCITY": "Population - more than % of country population"
+    },
+    "FILTER": {
+      "SORT_BY": "Sort by",
+      "SEARCH": "Search",
+      "SORT": {
+        "POPULATION": "Population",
+        "PRICE": "Price",
+        "COUNTRY": "Country"
+      }
+    }
+  }
+}
