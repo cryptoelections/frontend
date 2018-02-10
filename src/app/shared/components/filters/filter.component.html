@@ -7,15 +7,15 @@
          (ngModelChange)="onQueryChange($event)">
 
   <h2 class="col-sm-8 col-xs-12 text-center">{{ header | translate }}</h2>
-
   <select class="custom-select sort col-sm-2 col-xs-12"
           name="sortBy"
           [(ngModel)]="sortBy"
           (change)="onSortByChange()"
   >
+
     <option *ngFor="let sort of sortOptions"
             [value]="sort.option">
-      <i [ngClass]="sort.icon"></i> {{sort.name | translate}}
+      {{sort.name | translate}}
     </option>
   </select>
 </div>

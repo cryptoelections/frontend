@@ -27,36 +27,28 @@ export class CityFilterComponent extends FilterComponent {
   public header = 'CITY.TITLE';
   public sortOptions = [{
     option: CitySortOption.Name,
-    name: 'CITY.FILTER.SORT.NAME',
-    icon: ''
+    name: 'CITY.FILTER.SORT.NAME'
   }, {
     option: CitySortOption.PriceDown,
-    name: 'CITY.FILTER.SORT.PRICE_DOWN',
-    icon: 'icon-sort-alt-down'
-  }, {
+    name: 'CITY.FILTER.SORT.PRICE_DOWN'
+  },{
     option: CitySortOption.PriceUp,
-    name: 'CITY.FILTER.SORT.PRICE_UP',
-    icon: 'icon-sort-alt-up'
+    name: 'CITY.FILTER.SORT.PRICE_UP'
   }, {
     option: CitySortOption.PricePerVoteDown,
-    name: 'CITY.FILTER.SORT.PRICE_PER_VOTE_DOWN',
-    icon: 'icon-sort-alt-down'
-  }, {
+    name: 'CITY.FILTER.SORT.PRICE_PER_VOTE_DOWN'
+  },{
     option: CitySortOption.PricePerVoteUp,
-    name: 'CITY.FILTER.SORT.PRICE_PER_VOTE_UP',
-    icon: 'icon-sort-alt-up'
+    name: 'CITY.FILTER.SORT.PRICE_PER_VOTE_UP'
   }, {
     option: CitySortOption.ElectorateDown,
-    name: 'CITY.FILTER.SORT.ELECTORATE_DOWN',
-    icon: 'icon-sort-alt-down'
+    name: 'CITY.FILTER.SORT.ELECTORATE_DOWN'
   }, {
     option: CitySortOption.ElectorateUp,
-    name: 'CITY.FILTER.SORT.ELECTORATE_UP',
-    icon: 'icon-sort-alt-up'
+    name: 'CITY.FILTER.SORT.ELECTORATE_UP'
   }, {
     option: CitySortOption.Country,
-    name: 'CITY.FILTER.SORT.COUNTRY',
-    icon: ''
+    name: 'CITY.FILTER.SORT.COUNTRY'
 // },{
 //   option: CitySortOption.Price,
 //   name: 'CITY.FILTER.SORT.PRICE'
