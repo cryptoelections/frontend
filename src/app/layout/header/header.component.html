@@ -1,0 +1,21 @@
+<nav class="navbar navbar-toggleable-xs navbar-white">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="../../../assets/images/logo.png" class="d-inline-block align-top" [alt]="'TITLE' | translate"/>
+    </a>
+
+    <ul class="navbar-nav navbar-in mr-auto">
+      <li class="nav-item" *ngFor="let link of links" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="link.linkTo">{{ link.text | translate }}</a>
+      </li>
+    </ul>
+    <div class="nav-link account-info">
+        <span *ngIf="auth.account"
+              [tooltip]="auth.account"
+              placement="auto">{{ auth.account }}</span>
+      <span *ngIf="!auth.account"
+            [tooltip]="'ACCOUNT.NOT_LOGGED_IN' | translate"
+            placement="auto">{{ 'ACCOUNT.NOT_LOGGED_IN' | translate }}</span>
+    </div>
+  </div>
+</nav>

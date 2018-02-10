@@ -1,5 +1,11 @@
 {
-  "TITLE": "CryptoELECTIONS",
+  "TITLE": "crypto elections",
+  "MENU": {
+    "COUNTRIES": "Countries",
+    "CITIES": "Cities",
+    "MAP": "Map",
+    "MY_CITIES": "My cities"
+  },
   "MARKETPLACE": {
     "TITLE": "Marketplace",
     "VIEWMODE": {
@@ -11,9 +17,12 @@
     "NOT_LOGGED_IN": "Not logged in"
   },
   "CITY": {
+    "TITLE": "Cities",
     "CARD": {
+      "MAYOR": "Mayor",
+      "NOT_ELECTED_YET": "Not elected yet",
       "COUNTRY": "Country",
-      "POPULATION": "Population",
+      "ELECTORATE": "Electorate",
       "BUY_FOR": "Buy for",
       "SMALLCITY": "Population - less % of country population",
       "MEDIUMCITY": "Population - less % of country population",
@@ -23,10 +32,48 @@
       "SORT_BY": "Sort by",
       "SEARCH": "Search",
       "SORT": {
-        "POPULATION": "Population",
-        "PRICE": "Price",
+        "NAME": "Name",
+        "ELECTORATE_DOWN": "Electorate ↓",
+        "ELECTORATE_UP": "Electorate ↑",
+        "PRICE_PER_VOTE_DOWN": "Price per vote ↓",
+        "PRICE_PER_VOTE_UP": "Price per vote ↑",
+        "PRICE_DOWN": "Price ↓",
+        "PRICE_UP": "Price ↑",
         "COUNTRY": "Country"
       }
+    }
+  },
+  "COUNTRY": {
+    "TITLE": "Countries",
+    "CARD": {
+      "PRESIDENT": "President",
+      "NOT_ELECTED_YET": "Not elected yet",
+      "CITIES": "{{ numberOfCities }} cities",
+      "ELECTORATE": "Electorate",
+      "BUY_FOR": "Buy {{ numberOfCities }} cities",
+      "TO_WIN": "to win elections"
+    },
+    "FILTER": {
+      "SORT_BY": "Sort by",
+      "SEARCH": "Search",
+      "SORT": {
+        "NAME": "Name",
+        "ELECTORATE_DOWN": "Electorate ↓",
+        "ELECTORATE_UP": "Electorate ↑",
+        "PRICE_DOWN": "Price ↓",
+        "PRICE_UP": "Price ↑",
+        "NUMBER_OF_CITIES_DOWN": "Number of cities ↓",
+        "NUMBER_OF_CITIES_UP": "Number of cities ↑",
+        "AREA": "Area"
+      }
+    }
+  },
+  "COMMON": {
+    "MLN": "M",
+    "THOUSANDS": "K",
+    "PAGINATION": {
+      "FIRST_TEXT": "First",
+      "LAST_TEXT": "Last"
     }
   }
 }

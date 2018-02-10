@@ -1,19 +1,33 @@
-<div class="list">
-  <div class="list-item" *ngFor="let country of countries">
-    <mat-card>
-      <mat-card-header>
-        <div mat-card-avatar
-             [style]="getFlag(country)">
-        </div>
-        <mat-card-title>{{ country.name }}</mat-card-title>
-        <mat-card-subtitle>{{ country.code }}</mat-card-subtitle>
-        <!--</mat-card-header>-->
-        <!--<img mat-card-image src="" alt="Image for country">-->
-        <mat-card-content>
-          <p>
-          </p>
-        </mat-card-content>
-      </mat-card-header>
-    </mat-card>
+<app-country-filter [sortBy]="sortBy"
+                    [query]="query"
+                    (sortByChange)="sortByChange.emit($event)"
+                    (queryChange)="queryChange.emit($event)"
+                    (queueChange)="queueChange.emit($event)">
+</app-country-filter>
+
+<!--<mat-divider></mat-divider>-->
+
+<div class="list row">
+  <div class="col-lg-3 col-sm-6 col-xs-12" *ngFor="let country of list">
+    <app-country-card [country]="country"
+                      [cities]="cities"
+                      [sellParams]="price(country)"
+                      [electorate]="electorate(country)"
+                      [numberOfCities]="numberOfCities(country)"></app-country-card>
   </div>
 </div>
+
+
+<div class="row pagination">
+  <div class="col-xs-12 col-12" *ngIf="total > 8">
+    <pagination [directionLinks]="false"
+                [totalItems]="total"
+                [maxSize]="10"
+                [boundaryLinks]="true"
+                [rotate]="false"
+                [itemsPerPage]="8"
+                [(ngModel)]="currentPage"
+                (ngModelChange)="pageChange.emit($event)"></pagination>
+  </div>
+</div>
+

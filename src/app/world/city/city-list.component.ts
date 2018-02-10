@@ -1,82 +1,33 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { City } from '../../models/city.model';
-import { CityService } from '../../services/city.service';
-import { Country } from '../../models/country.model';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { City } from '../../shared/models/city.model';
 import { CitySortOption } from './city-filter.component';
 
 @Component({
   selector: 'app-city-list',
   templateUrl: 'city-list.component.html'
 })
-export class CityListComponent implements OnInit {
-  public list: Array<City>;
-  public query: string;
-  private _cities: Array<City>;
-  @Input() public countries: Array<Country>;
+export class CityListComponent {
+  @Input() public countries;
+  @Input() public list: Array<City>;
+  @Input() public sortBy: CitySortOption;
+  @Input() public query: string;
+  @Input() public currentPage: number;
+  @Input() public total: number;
+  @Output() public sortByChange = new EventEmitter<CitySortOption>();
+  @Output() public queueChange = new EventEmitter<boolean>();
+  @Output() public queryChange = new EventEmitter<string>();
+  @Output() public pageChange = new EventEmitter<number>();
 
-  public get cities() {
-    return this._cities;
-  }
-
-  constructor(private cityService: CityService) {
-  }
-
-  public ngOnInit() {
-    this.cityService.getList()
-      .subscribe((list: Array<City>) => {
-        this.list = list;
-        this._cities = list;
-      });
-  }
-
-  public getStatus(city: City) {
-    const population = +city.population;
-    if (population < 200000) {
-      return 'smallCity'
-    } else if (population >= 200000 && population < 1000000) {
-      return 'mediumCity'
-    }
-    else {
-      return 'bigCity'
-    }
-  }
-
-  public getCountryName(city: City): string {
-    return this.countries.find(_ => _.code === city.country).name;
-  }
-
-  public onSortByChange(sortByOption: CitySortOption) {
-    console.log(sortByOption);
-    let sort;
-    switch (sortByOption) {
-      case CitySortOption.Price: {
-        sort = (a: City, b: City) => a.price < b.price ? -1 : 1;
-        break;
-      }
-      case CitySortOption.Population: {
-        sort = (a: City, b: City) => a.population < b.population ? -1 : 1;
-        break;
-      }
-      case CitySortOption.Country: {
-        sort = (a: City, b: City) => a.country.localeCompare(b.country);
-        break;
-      }
-      default: {
-        sort = (a: City, b: City) => a.name.localeCompare(b.name);
-        break;
-      }
-    }
-
-    this._cities = this._cities.sort(sort);
-  }
-
-  public onQueryChange(query?: string) {
-    this.query = query;
-    const upperQuery = query && query.toUpperCase();
-    const queryFilter = (city: City) => !query
-      || city.name.toUpperCase().indexOf(upperQuery) > -1
-      || this.getCountryName(city).toUpperCase().indexOf(upperQuery) > -1;
-
-    this._cities = this.list.filter(city => queryFilter(city))
+  public getElectoratePercentage(city): string {
+    let count = 0;
+    this.list
+      .filter((c: City) => c.country === city.country)
+      .forEach((c: City) => count += +c.population);
+    const percentage = (
+      (
+        100 * +city.population
+      ) / count
+    ).toFixed(2);
+    return percentage;
   }
 }

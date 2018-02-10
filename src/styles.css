@@ -1,78 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~bootstrap/dist/css/bootstrap.css';
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
 
 html, body {
   padding: 0;
   margin: 0;
-}
-
-.app-content {
-  padding: 10px;
-  display: block;
-}
-
-.list {
-  padding: 10px 0px;
-  display: block;
-  position: relative;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  box-sizing: border-box;
-  -webkit-overflow-scrolling: touch;
-  overflow: hidden;
-}
-
-.list-item {
-  display: inline-flex;
-}
-
-.list .mat-card {
-  margin: 5px 8px;
-  min-height: 100px;
-  width: 288px;
-}
-
-.list .mat-raised-button {
-  width: 100%;
-  height: 100%;
-}
-
-.list .mat-card .mat-card-header .mat-card-avatar {
-  width: auto;
-  height: auto;
-}
-
-.list .mat-card .mat-card-header .mat-icon,
-.list .mat-card .mat-card-header .mat-card-title {
-  font-size: 18px;
+  height: 100%
 }
 
 .highlight {
   background: #ffeb3b;
 }
 
-.list .mat-card .mat-card-header .mat-icon.bigCity {
-  color: #3F51B5;
+.city-card .country {
+  display: flex;
 }
 
-.list .mat-card .mat-card-header .mat-icon.mediumCity {
-  color: #9FA8DA;
+.city-country-flag {
+  width: 24px;
+  height: 18px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.52);
 }
 
-.list .mat-card .mat-card-header .mat-icon.smallCity {
-  color: #E8EAF6;
+.card {
+  margin-bottom: 20px;
 }
 
-.filter-wrapper {
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 10px;
+.city-card, .country-img-card, .country-card {
+  padding: 25px;
+  font-size: 14px;
+  line-height: 28px;
 }
 
-.filter-wrapper > * {
-  margin-right: 20px;
+.country-img-card {
+  height: 180px;
+  align-items: center;
 }
 
-.filter-wrapper > *:last-child {
-  margin-right: 0;
+.city-card .card-title, .country-card .card-title {
+  font-weight: bolder;
+  font-size: 24px;
+  max-width: 100%;
+  line-height: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
+.card-button {
+  background-color: rgb(29, 112, 183);
+  width: 100%;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+}
+
+.country-button {
+  display: flex;
+  padding: 0px;
+}
+
+.country-button .btn-left span {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.country-button .btn-left {
+  font-size: 10px;
+  word-break: normal;
+  width: 70%;
+  height: 100%;
+  border-right: 1px solid rgb(255, 255, 255);
+  padding: 0.325rem;
+}
+
+.country-button .btn-right {
+  width: 30%;
+  font-size: 14px;
+  padding: 0.325rem;
+}
+
+.country-card {
+  background-color: rgb(246, 248, 247);
+}
+

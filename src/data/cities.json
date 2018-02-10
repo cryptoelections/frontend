@@ -4,19 +4,26 @@
    "population": "545852",
    "lat": "35.08449",
    "lon": "-106.65114",
-   "price": "0.2"
+   "price": "545"
  }, {
    "name": "Ranchos Albuquerque",
    "country": "US",
    "population": "6024",
    "lat": "35.16199",
    "lon": "-106.6428",
-   "price": "0.4"
+   "price": "60"
  }, {
    "name": "Moscow",
    "country":"RU",
    "population": "11902000",
    "lat": "55.751244",
    "lon": "37.618423",
-   "price": "1.6"
+   "price": "11"
+ }, {
+   "name": "Saint Petersburg",
+   "country":"RU",
+   "population": "5356755",
+   "lat": "59.751244",
+   "lon": "30.618423",
+   "price": "0.5"
  }]

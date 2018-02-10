@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CountryService } from '../services/country.service';
-import { Country } from '../models/country.model';
+import { CountryService } from '../shared/services/country.service';
+import { Country } from '../shared/models/country.model';
+import { City } from '../shared/models/city.model';
+import { CityService } from '../shared/services/city.service';
 
 export enum MarketplaceViewMode {
   Countries = 'COUNTRIES',
@@ -22,17 +24,19 @@ export class MarketplaceComponent implements OnInit {
   }];
 
   public countries: Array<Country>;
+  public cities: Array<City>;
 
   public get MarketplaceViewMode() {
     return MarketplaceViewMode;
   }
 
-  constructor(private countryService: CountryService) {
+  constructor(private countryService: CountryService,
+              private cityService: CityService) {
   }
 
   public ngOnInit() {
-    this.countryService.getList()
-      .subscribe((list: Array<Country>) => this.countries = list);
+    this.countryService.getList().subscribe((list: Array<Country>) => this.countries = list);
+    this.cityService.getList().subscribe((list: Array<City>) => this.cities = list);
   }
 }
 

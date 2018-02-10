@@ -1,0 +1,39 @@
+:host nav {
+  margin-bottom: 50px;
+}
+
+.navbar-white {
+  height: 100px;
+  background-color: rgb(255, 255, 255);
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  margin: 0px auto;
+}
+
+.navbar-nav .nav-item {
+  padding: 13px;
+}
+
+.navbar .navbar-brand {
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+}
+
+.navbar .navbar-nav a {
+  color: rgb(0, 0, 0);
+  font-size: 21px;
+}
+
+.navbar .navbar-nav .nav-item.active {
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.navbar .account-info {
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 18px;
+}

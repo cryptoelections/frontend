@@ -1,0 +1,21 @@
+<div class="row filter">
+  <input class="form-control col-sm-2 col-xs-12"
+         type="text"
+         name="search"
+         [placeholder]="'COUNTRY.FILTER.SEARCH' | translate"
+         [(ngModel)]="query"
+         (ngModelChange)="onQueryChange($event)">
+
+  <h2 class="col-sm-8 col-xs-12 text-center">{{ header | translate }}</h2>
+
+  <select class="custom-select sort col-sm-2 col-xs-12"
+          name="sortBy"
+          [(ngModel)]="sortBy"
+          (change)="onSortByChange()"
+  >
+    <option *ngFor="let sort of sortOptions"
+            [value]="sort.option">
+      {{sort.name | translate}}
+    </option>
+  </select>
+</div>

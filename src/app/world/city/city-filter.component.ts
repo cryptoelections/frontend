@@ -1,33 +1,56 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FilterComponent } from '../../shared/components/filters/filter.component';
+import { StorageKeys } from '../../shared/services/storage.service';
 
 export enum CitySortOption {
-  Price,
-  Population,
+  Name,
+  PriceDown,
+  PriceUp,
+  ElectorateDown,
+  ElectorateUp,
+  PricePerVoteDown,
+  PricePerVoteUp,
   Country,
 //  Popularity
 }
 
 @Component({
   selector: 'app-city-filter',
-  templateUrl: 'city-filter.component.html'
+  templateUrl: '../../shared/components/filters/filter.component.html',
+  styleUrls: ['../../shared/components/filters/filter.component.css']
 })
-export class CityFilterComponent {
-  public sortBy: CitySortOption;
-  public query: string;
-  @Output() sortByChange = new EventEmitter<CitySortOption>();
-  @Output() queryChange = new EventEmitter<string>();
+export class CityFilterComponent extends FilterComponent {
+  @Input() public query: string;
+  @Input() public sortBy: CitySortOption;
+  @Output() public sortByChange = new EventEmitter<CitySortOption>();
 
-  public citySortOptions = [{
-    option: CitySortOption.Price,
-    name: 'CITY.FILTER.SORT.PRICE'
+  public header = 'CITY.TITLE';
+  public sortOptions = [{
+    option: CitySortOption.Name,
+    name: 'CITY.FILTER.SORT.NAME'
   }, {
-    option: CitySortOption.Population,
-    name: 'CITY.FILTER.SORT.POPULATION'
+    option: CitySortOption.PriceDown,
+    name: 'CITY.FILTER.SORT.PRICE_DOWN'
+  },{
+    option: CitySortOption.PriceUp,
+    name: 'CITY.FILTER.SORT.PRICE_UP'
+  }, {
+    option: CitySortOption.PricePerVoteDown,
+    name: 'CITY.FILTER.SORT.PRICE_PER_VOTE_DOWN'
+  },{
+    option: CitySortOption.PricePerVoteUp,
+    name: 'CITY.FILTER.SORT.PRICE_PER_VOTE_UP'
+  }, {
+    option: CitySortOption.ElectorateDown,
+    name: 'CITY.FILTER.SORT.ELECTORATE_DOWN'
+  }, {
+    option: CitySortOption.ElectorateUp,
+    name: 'CITY.FILTER.SORT.ELECTORATE_UP'
   }, {
     option: CitySortOption.Country,
     name: 'CITY.FILTER.SORT.COUNTRY'
 // },{
 //   option: CitySortOption.Price,
 //   name: 'CITY.FILTER.SORT.PRICE'
-  }]
+  }];
 }

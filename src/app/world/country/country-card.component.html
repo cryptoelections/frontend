@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-block country-img-card">
+    <img class="card-img" [src]="imageLink" onerror="this.src = 'assets/images/no-flag.png'" alt="">
+  </div>
+  <div class="card-block country-card">
+    <div class="container">
+      <h3 class="card-title text-center">{{ country.name }}</h3>
+      <p class="card-text">
+        <span><b>{{ 'COUNTRY.CARD.CITIES' | translate:citiesLength }}</b></span>
+
+        <app-parameters-pair [name]="'COUNTRY.CARD.PRESIDENT' | translate"
+                             [value]="president"></app-parameters-pair>
+      </p>
+      <button class="btn card-button country-button">
+        <div class="btn-left">
+          <span>{{ 'COUNTRY.CARD.BUY_FOR' | translate:params }}</span><br/>
+          {{'COUNTRY.CARD.TO_WIN' | translate }}
+        </div>
+        <div class="btn-right"><b>{{ sellParams.price }}</b> ETH</div>
+      </button>
+    </div>
+  </div>
+</div>
+

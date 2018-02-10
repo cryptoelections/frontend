@@ -1,33 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from './layout/header.component';
-import {
-  MatButtonModule,
-  MatButtonToggleModule,
-  MatCardModule, MatDividerModule, MatFormFieldModule,
-  MatIconModule, MatInputModule, MatSelectModule,
-  MatToolbarModule,
-  MatTooltipModule
-} from '@angular/material';
+import { HttpClient } from '@angular/common/http';
+import { HeaderComponent } from './layout/header/header.component';
 import { AppRoutingModule } from './app.routing';
 import { HomeComponent } from './home/home.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { ConfigService } from './services/config.service';
+import { ConfigService } from './shared/services/config.service';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { BaseService } from './services/base.service';
-import { CityService } from './services/city.service';
-import { CountryService } from './services/country.service';
-import { CityListComponent } from './world/city/city-list.component';
-import { CountryListComponent } from './world/country/country-list.component';
-import { MarketplaceComponent } from './world/marketplace.component';
-import { FormsModule } from '@angular/forms';
-import { ParametersPairComponent } from './shared/parameter-pair/parameter-pair.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CityFilterComponent } from './world/city/city-filter.component';
-import { AuthService } from './services/auth.service';
-import { HighLightPipe } from './pipes/highlight.pipe';
+import { AuthService } from './shared/services/auth.service';
+import { MarketplaceModule } from './world/marketplace.module';
+import { SharedModule } from './shared/shared.module';
+import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
+import { metaReducers, reducers } from './shared/ngrx';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { PaginationModule, TooltipModule } from 'ngx-bootstrap';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './i18n/', '.json');
@@ -45,31 +34,20 @@ export function InitAppFactory(auth: AuthService,
 @NgModule({
   declarations: [
     AppComponent,
-    CityFilterComponent,
-    CityListComponent,
-    CountryListComponent,
     HeaderComponent,
-    HighLightPipe,
-    HomeComponent,
-    MarketplaceComponent,
-    ParametersPairComponent
+    HomeComponent
   ],
   imports: [
     AppRoutingModule,
-    BrowserAnimationsModule,
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatDividerModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatSelectModule,
-    MatToolbarModule,
-    MatTooltipModule,
+    CommonModule,
+    EffectsModule.forRoot([]),
+    MarketplaceModule,
+    PaginationModule.forRoot(),
+    SharedModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreRouterConnectingModule,
+    StoreDevtoolsModule.instrument(),
+    TooltipModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -80,16 +58,13 @@ export function InitAppFactory(auth: AuthService,
   ],
   providers: [
     AuthService,
-    BaseService,
-    CityService,
-    ConfigService,
-    CountryService,
     {
       provide: APP_INITIALIZER,
       useFactory: InitAppFactory,
       deps: [AuthService, HttpClient, ConfigService],
       multi: true
-    }],
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
