@@ -12,7 +12,7 @@ export class FilterComponent {
   @Output() public queueChange = new EventEmitter<boolean>();
 
   public header: string;
-  public sortOptions: Array<{ option: number | string, name: string }>;
+  public sortOptions: Array<{ option: number | string, name: string, icon: string }>;
 
   public onSortByChange() {
     this.sortByChange.emit(this.sortBy);

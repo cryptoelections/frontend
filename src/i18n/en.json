@@ -33,12 +33,12 @@
       "SEARCH": "Search",
       "SORT": {
         "NAME": "Name",
-        "ELECTORATE_DOWN": "Electorate ↓",
-        "ELECTORATE_UP": "Electorate ↑",
-        "PRICE_PER_VOTE_DOWN": "Price per vote ↓",
-        "PRICE_PER_VOTE_UP": "Price per vote ↑",
-        "PRICE_DOWN": "Price ↓",
-        "PRICE_UP": "Price ↑",
+        "ELECTORATE_DOWN": "Electorate",
+        "ELECTORATE_UP": "Electorate",
+        "PRICE_PER_VOTE_DOWN": "Price per vote",
+        "PRICE_PER_VOTE_UP": "Price per vote",
+        "PRICE_DOWN": "Price",
+        "PRICE_UP": "Price",
         "COUNTRY": "Country"
       }
     }
@@ -58,12 +58,12 @@
       "SEARCH": "Search",
       "SORT": {
         "NAME": "Name",
-        "ELECTORATE_DOWN": "Electorate ↓",
-        "ELECTORATE_UP": "Electorate ↑",
-        "PRICE_DOWN": "Price ↓",
-        "PRICE_UP": "Price ↑",
-        "NUMBER_OF_CITIES_DOWN": "Number of cities ↓",
-        "NUMBER_OF_CITIES_UP": "Number of cities ↑",
+        "ELECTORATE_DOWN": "Electorate",
+        "ELECTORATE_UP": "Electorate",
+        "PRICE_DOWN": "Price",
+        "PRICE_UP": "Price",
+        "NUMBER_OF_CITIES_DOWN": "Number of cities",
+        "NUMBER_OF_CITIES_UP": "Number of cities",
         "AREA": "Area"
       }
     }

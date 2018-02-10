@@ -15,7 +15,7 @@
   >
     <option *ngFor="let sort of sortOptions"
             [value]="sort.option">
-      {{sort.name | translate}}
+      <i [ngClass]="sort.icon"></i> {{sort.name | translate}}
     </option>
   </select>
 </div>
