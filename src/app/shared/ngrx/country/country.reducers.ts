@@ -62,19 +62,18 @@ export const getCountriesState = createFeatureSelector<CountryState>('countries'
 export const getCountryEntityState = createSelector(getCountriesState, state => state.list);
 export const { selectIds, selectEntities, selectAll, selectTotal } = adapter.getSelectors(getCountryEntityState);
 export const isLoading = createSelector(getCountryEntityState, state => state.loading);
-export const page = createSelector(getCountryEntityState, state => state.filters.page);
+export const page = createSelector(getCountryEntityState, state => +state.filters.page
+);
 export const filters = createSelector(getCountryEntityState, state => state.filters);
 export const query = createSelector(filters, state => state.query);
 export const sortBy = createSelector(filters, state => state.sortBy);
-export const filteredCountries = createSelector(selectAll, filters, fromCities.citiesByCountry, fromCities.selectEntities,
-  (countries, filter, citiesByCountry, cities) => {
+export const filteredCountries = createSelector(selectAll, filters, fromCities.citiesByCountriesEntities,
+  (countries, filter, cityEntities) => {
     const upperQuery = filter.query && filter.query.toUpperCase();
-    const cityEntities = Object.entries(citiesByCountry).reduce((m, [key, value]) => (
-      { ...m, [key]: value.map((cityId: string) => cities[cityId]) }
-    ), {});
 
     const sortByQuery = (country: Country) => !filter.query
       || country.name.toUpperCase().indexOf(upperQuery) > -1
+      || country.code.toUpperCase().indexOf(upperQuery) > -1
       || cityEntities && cityEntities[country.code] && cityEntities[country.code]
         .find(city => city.name.toUpperCase().indexOf(upperQuery) > -1);
 

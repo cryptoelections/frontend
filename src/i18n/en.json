@@ -4,7 +4,7 @@
     "COUNTRIES": "Countries",
     "CITIES": "Cities",
     "MAP": "Map",
-    "MY_CITIES": "My cities"
+    "MY_CAMPAIGN": "My campaign"
   },
   "MARKETPLACE": {
     "TITLE": "Marketplace",
@@ -24,6 +24,7 @@
       "COUNTRY": "Country",
       "ELECTORATE": "Electorate",
       "BUY_FOR": "Buy for",
+      "PERCENTAGE": "{{ percentage }} % of electorate",
       "SMALLCITY": "Population - less % of country population",
       "MEDIUMCITY": "Population - less % of country population",
       "BIGCITY": "Population - more than % of country population"
@@ -49,6 +50,10 @@
       "PRESIDENT": "President",
       "NOT_ELECTED_YET": "Not elected yet",
       "CITIES": "{{ numberOfCities }} cities",
+      "CITIES_PRICE_RANGE": {
+        "CITIES": "{{ lowestPrice }} - {{ highestPrice }} ETH",
+        "ONE_CITY": " {{ lowestPrice }} ETH"
+      },
       "ELECTORATE": "Electorate",
       "BUY_FOR": "Buy {{ numberOfCities }} cities",
       "TO_WIN": "to win elections"
@@ -74,6 +79,9 @@
     "PAGINATION": {
       "FIRST_TEXT": "First",
       "LAST_TEXT": "Last"
+    },
+    "FILTER": {
+      "SORT_BY": "Sort by"
     }
   }
 }

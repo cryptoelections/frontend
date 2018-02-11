@@ -10,7 +10,7 @@ import * as city from './city.actions';
 @Injectable()
 export class CityEffects {
   @Effect()
-  loadCountries$: Observable<Action> = this.actions$
+  loadCities$: Observable<Action> = this.actions$
     .ofType(city.LOAD_CITIES_REQUEST)
     .switchMap((action: city.LoadCitiesRequest) => this.cityService.getList()
       .map((list: Array<City>) => new city.LoadCitiesResponse(list)));

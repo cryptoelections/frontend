@@ -10,8 +10,12 @@ import { TranslateService } from '@ngx-translate/core';
 export class CityCardComponent {
   @Input() public city: City;
   @Input() public countries;
-  @Input() public percentage;
+  @Input() public percent;
   public query: string;
+
+  public get percentage() {
+    return { percentage: this.percent };
+  }
 
   public get status() {
     const population = +this.city.population;

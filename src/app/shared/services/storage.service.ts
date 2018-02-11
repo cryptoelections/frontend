@@ -1,18 +1,24 @@
 import { Injectable } from '@angular/core';
 
 export enum StorageKeys {
-  Account = 'account'
+  Account = 'account',
+  CountryFilter = 'countries',
+  CityFilter = 'cities'
 }
 
 @Injectable()
 export class StorageService {
-  get(key: string) {
+  public get(key: string) {
     return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : {};
   }
 
-  update(key: string, value: object) {
+  public update(key: string, value: object) {
     const prevValue = this.get(key);
     const newValue = JSON.stringify({ ...prevValue, ...value });
     localStorage.setItem(key, newValue);
+  }
+
+  public remove(key: string) {
+    localStorage.removeItem(key);
   }
 }

@@ -6,7 +6,8 @@
 
     <ul class="navbar-nav navbar-in mr-auto">
       <li class="nav-item" *ngFor="let link of links" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="link.linkTo">{{ link.text | translate }}</a>
+        <a class="nav-link" [routerLink]="link.linkTo" *ngIf="link.linkTo !== 'my' || auth.account">
+          {{ link.text | translate }}</a>
       </li>
     </ul>
     <div class="nav-link account-info">

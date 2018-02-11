@@ -27,13 +27,19 @@
   font-size: 21px;
 }
 
+.navbar .navbar-nav a:hover {
+  color: rgb(217, 7, 114)
+}
+
 .navbar .navbar-nav .nav-item.active {
   border-bottom: 1px solid rgb(0, 0, 0);
 }
 
 .navbar .account-info {
-  max-width: 140px;
+  white-space: nowrap;
+  max-width: 160px;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 18px;
 }
+

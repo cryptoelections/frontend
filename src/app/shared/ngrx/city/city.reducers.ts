@@ -3,6 +3,9 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { CitySortOption } from '../../../world/city/city-filter.component';
 import { City } from '../../models/city.model';
 import * as actions from './city.actions';
+import { CountrySortOption } from '../../../world/country/country-filter.component';
+import { sortCountries } from '../country/country.reducers';
+import { Country } from '../../models/country.model';
 
 export interface State extends EntityState<City> {
   loading: boolean,
@@ -88,4 +91,10 @@ export const query = createSelector(filters, state => state.query);
 export const sortBy = createSelector(filters, state => state.sortBy);
 export const citiesByCountry = createSelector(getCityEntityState, state => state.citiesByCountry);
 export const getSelectedCity = createSelector(getCityEntityState, state => selectEntities &&
-  selectEntities[state.selectedCity])
+  selectEntities[state.selectedCity]);
+export const citiesByCountriesEntities = createSelector(citiesByCountry, selectEntities,
+  (citiesByCountries, cities) => {
+   return Object.entries(citiesByCountries).reduce((m, [key, value]) => (
+      { ...m, [key]: value ? value.map((cityId: string) => cities[cityId]) : [] }
+    ), {})
+  });

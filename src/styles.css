@@ -5,10 +5,15 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-html, body {
+html {
   padding: 0;
   margin: 0;
-  height: 100%
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px; /* Margin bottom by footer height */
 }
 
 .highlight {
@@ -22,7 +27,6 @@ html, body {
 .city-country-flag {
   width: 24px;
   height: 18px;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.52);
 }
 
 .card {
@@ -37,7 +41,11 @@ html, body {
 
 .country-img-card {
   height: 180px;
-  align-items: center;
+  display: flex;
+}
+
+.country-img-card img {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.20);
 }
 
 .city-card .card-title, .country-card .card-title {
@@ -57,6 +65,10 @@ html, body {
   font-size: 14px;
 }
 
+.card-button:hover {
+  background-color: rgb(217, 7, 114);
+}
+
 .country-button {
   display: flex;
   padding: 0px;
@@ -72,17 +84,72 @@ html, body {
   word-break: normal;
   width: 70%;
   height: 100%;
-  border-right: 1px solid rgb(255, 255, 255);
-  padding: 0.325rem;
+  padding: 0.6rem;
 }
 
 .country-button .btn-right {
   width: 30%;
   font-size: 14px;
-  padding: 0.325rem;
+  padding: 0.6rem;
+  word-break: normal;
+  line-height: normal;
+  border-left: 1px solid rgb(255, 255, 255);
+  text-align: left;
 }
 
 .country-card {
   background-color: rgb(246, 248, 247);
 }
 
+/* pagination */
+
+ul.pagination {
+}
+
+li .page-link {
+  margin: 0px 5px;
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+  height: 38px;
+  min-width: 38px;
+  border: none;
+  text-align: center;
+  vertical-align: middle;
+}
+
+li.page-item:hover .page-link {
+  background-color: rgb(217, 7, 114);
+  color: rgb(255, 255, 255);
+}
+
+li.page-item.active .page-link {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(217, 7, 114);
+  color: rgb(217, 7, 114);
+}
+
+li.page-item:first-child .page-link,
+li.page-item:last-child .page-link {
+  border-top-left-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+  border-top-right-radius: 0rem;
+  border-bottom-right-radius: 0rem;
+}
+
+/* accordion for my countries */
+.my-country-header {
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+}
+
+.my-country-image img {
+  width: 5rem;
+  height: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.panel-heading, .panel {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+}

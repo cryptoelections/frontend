@@ -1,11 +1,16 @@
-import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from '../../shared/ngrx/index';
 import { CitySortOption } from './city-filter.component';
+import { FilterService } from '../../shared/services/filter.service';
+import { StorageKeys, StorageService } from '../../shared/services/storage.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as fromCities from '../../shared/ngrx/city/city.reducers';
 import * as fromCountries from '../../shared/ngrx/country/country.reducers';
 import * as cityActions from '../../shared/ngrx/city/city.actions';
 import * as countryActions from '../../shared/ngrx/country/country.actions';
+import * as debounce from 'lodash/debounce';
+import { WithUnsubscribe } from '../../shared/mixins/with-unsubscribe';
 
 @Component({
   selector: 'app-city-list-container',
@@ -21,19 +26,44 @@ import * as countryActions from '../../shared/ngrx/country/country.actions';
                    (queryChange)="onQueryChange($event)"
                    (pageChange)="onPageChange($event)"></app-city-list>`
 })
-export class CityListContainerComponent implements AfterViewInit {
+export class CityListContainerComponent extends WithUnsubscribe() implements OnInit, AfterViewInit {
   readonly countries$ = this.store.select(fromCountries.selectEntities);
   readonly cities$ = this.store.select(fromCountries.citiesForPage);
   readonly currentPage$ = this.store.select(fromCities.page);
   readonly citiesTotal$ = this.store.select(fromCountries.filteredCitiesLength);
+  readonly filters$ = this.store.select(fromCities.filters);
   readonly query$ = this.store.select(fromCities.query);
   readonly sortBy$ = this.store.select(fromCities.sortBy);
 
+  private filterService = new FilterService({
+    query: { type: 'string' },
+    sortBy: { type: 'string', defaultOption: CitySortOption.Name.toString() },
+    page: { type: 'string', defaultOption: '1' }
+  }, this.router, this.storage, StorageKeys.CityFilter, this.activatedRoute)
+
   constructor(private store: Store<State>,
-              private cd: ChangeDetectorRef) {
+              private cd: ChangeDetectorRef,
+              private router: Router,
+              private storage: StorageService,
+              private activatedRoute: ActivatedRoute) {
+    super();
+    this.onQueryChange = debounce(this.onQueryChange.bind(this), 500);
+  }
+
+  public ngOnInit() {
     this.store.dispatch(new cityActions.LoadCitiesRequest());
     this.store.dispatch(new countryActions.LoadCountriesRequest());
 
+    this.initFilters();
+    this.filters$
+      .takeUntil(this.unsubscribe$)
+      .subscribe(filters => {
+        this.filterService.update({
+          sortBy: filters.sortBy,
+          query: filters.query,
+          page: filters.page
+        });
+      });
   }
 
   public ngAfterViewInit() {
@@ -45,7 +75,7 @@ export class CityListContainerComponent implements AfterViewInit {
   }
 
   public onQueryChange(query: string) {
-    this.store.dispatch(new cityActions.FilterUpdate({ query }));
+    this.store.dispatch(new cityActions.FilterUpdate({ query, page: 1 }));
   }
 
   public onQueueChange(biggerFirst: boolean) {
@@ -54,5 +84,15 @@ export class CityListContainerComponent implements AfterViewInit {
 
   public onPageChange(page: number) {
     this.store.dispatch(new cityActions.FilterUpdate({ page }));
+  }
+
+  private initFilters() {
+    const params = this.filterService.getParams();
+
+    const query = params['query'];
+    const sortBy = params['sortBy'];
+    const page = params['page'];
+
+    this.store.dispatch(new cityActions.FilterUpdate({ query, sortBy, page }));
   }
 }

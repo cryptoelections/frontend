@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Country } from '../../shared/models/country.model';
 import { City } from '../../shared/models/city.model';
 import { CountrySortOption } from './country-filter.component';
+import { Dictionary } from '@ngrx/entity/src/models';
 
 @Component({
   selector: 'app-country-list',
@@ -9,6 +10,7 @@ import { CountrySortOption } from './country-filter.component';
 })
 export class CountryListComponent {
   @Input() public cities: Array<City>;
+  @Input() public citiesByCountries;
   @Input() public list: Array<Country>;
   @Input() public query: string;
   @Input() public total: number;
@@ -23,6 +25,7 @@ export class CountryListComponent {
   public numberOfCities(country: Country): number {
     return this.getCities(country).length;
   }
+
 
   public price(country: Country): { numberOfCities: number, price: number } {
     const half = this.electorate(country) / 2;

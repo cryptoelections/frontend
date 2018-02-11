@@ -1,21 +1,24 @@
 <div class="row filter">
-  <input class="form-control col-sm-2 col-xs-12"
-         type="text"
-         name="search"
-         [placeholder]="'COUNTRY.FILTER.SEARCH' | translate"
-         [(ngModel)]="query"
-         (ngModelChange)="onQueryChange($event)">
+  <div class="col-sm-4 col-xs-12 pl-0">
+    <input class="form-control col-sm-6"
+           type="text"
+           name="search"
+           [placeholder]="'COUNTRY.FILTER.SEARCH' | translate"
+           [(ngModel)]="query"
+           (ngModelChange)="onQueryChange($event)">
+  </div>
+  <h2 class="col-sm-4 col-xs-12 text-center">{{ header | translate }}</h2>
+  <div class="col-sm-4 col-xs-12 pr-0 align-items-baseline d-inline-flex justify-content-sm-end">
+    <label for="sortBy" class="label-sort pr-2">{{ 'COMMON.FILTER.SORT_BY' | translate }}</label>
+    <select class="custom-select sort col-sm-7"
+            name="sortBy"
+            id="sortBy"
+            [(ngModel)]="sortBy"
+            (change)="onSortByChange()">
+      <option *ngFor="let sort of sortOptions"
+              [value]="sort.option">
+        {{sort.name | translate}}
+      </option>
+    </select></div>
 
-  <h2 class="col-sm-8 col-xs-12 text-center">{{ header | translate }}</h2>
-  <select class="custom-select sort col-sm-2 col-xs-12"
-          name="sortBy"
-          [(ngModel)]="sortBy"
-          (change)="onSortByChange()"
-  >
-
-    <option *ngFor="let sort of sortOptions"
-            [value]="sort.option">
-      {{sort.name | translate}}
-    </option>
-  </select>
 </div>

@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { HighLightPipe } from './pipes/highlight.pipe';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { PaginationModule, TooltipModule } from 'ngx-bootstrap';
+import { AccordionModule, PaginationModule, ProgressbarModule, TooltipModule } from 'ngx-bootstrap';
 import { FilterComponent } from './components/filters/filter.component';
 import { ConvertPipe } from './pipes/convert.pipe';
 
@@ -26,16 +26,19 @@ import { ConvertPipe } from './pipes/convert.pipe';
     ParametersPairComponent
   ],
   imports: [
+    AccordionModule,
     BrowserAnimationsModule,
     BrowserModule,
     CommonModule,
     FormsModule,
     HttpClientModule,
     PaginationModule,
+    ProgressbarModule,
     TooltipModule,
     TranslateModule
   ],
   exports: [
+    AccordionModule,
     BrowserAnimationsModule,
     BrowserModule,
     CommonModule,
@@ -46,6 +49,7 @@ import { ConvertPipe } from './pipes/convert.pipe';
     HttpClientModule,
     PaginationModule,
     ParametersPairComponent,
+    ProgressbarModule,
     TranslateModule,
     TooltipModule
   ],

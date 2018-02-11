@@ -1,0 +1,9 @@
+<accordion>
+  <ng-container *ngFor="let country of myCountries">
+    <app-my-country [country]="countries[country]"
+                    [citiesOfCountry]="myCitiesByCountry[country]"
+                    [percentage]="percentageByCountry(country)"
+                    [sellParams]="price(country)"></app-my-country>
+
+  </ng-container>
+</accordion>

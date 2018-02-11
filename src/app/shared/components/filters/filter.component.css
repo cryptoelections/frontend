@@ -14,24 +14,7 @@
   color: rgb(178, 178, 178);
 }
 
-nav.sort .nav-link {
-  padding: 0px;
-  margin: 0px 0.5rem;
+.label-sort {
+  white-space: nowrap;
   color: rgb(178, 178, 178);
-}
-
-nav.sort .name {
-  border-bottom: 1px dashed rgb(178, 178, 178);
-  cursor: pointer;
-}
-
-nav.sort .nav-link .name.selected {
-  font-weight: 700;
-  border-bottom: 1px solid rgb(178, 178, 178);
-}
-
-.divider {
-  color: rgba(178, 178, 178, 0.52);
-  border: none;
-  margin-left: 0.5rem;
 }

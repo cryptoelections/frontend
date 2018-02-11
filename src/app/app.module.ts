@@ -16,7 +16,8 @@ import { metaReducers, reducers } from './shared/ngrx';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { PaginationModule, TooltipModule } from 'ngx-bootstrap';
+import { AccordionModule, PaginationModule, ProgressbarModule, TooltipModule } from 'ngx-bootstrap';
+import { FooterComponent } from './layout/footer/footer.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './i18n/', '.json');
@@ -27,22 +28,25 @@ export function InitAppFactory(auth: AuthService,
                                configService: ConfigService) {
   return () => http.get('config/config.json').toPromise()
     .then(data => configService.parse(data))
-    .then(() => auth.getAccount())
+    .then(() => setInterval(() => auth.getAccount(), 100));
 }
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    FooterComponent,
     HeaderComponent,
     HomeComponent
   ],
   imports: [
+    AccordionModule.forRoot(),
     AppRoutingModule,
     CommonModule,
     EffectsModule.forRoot([]),
     MarketplaceModule,
     PaginationModule.forRoot(),
+    ProgressbarModule.forRoot(),
     SharedModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule,

@@ -4,12 +4,12 @@
     <div class="card-title text-center" [tooltip]="city.name" placement="auto">{{ city.name }}</div>
     <div class="country align-items-center">
       <img class="city-country-flag"
-           [src]="'https://flagpedia.net/data/flags/normal/' + city.country.toLowerCase() + '.png'"
+           [src]="'assets/images/country-flags/small/' + city.country.toLowerCase() + '.png'"
            alt=""/>
       <p class="pl-1 m-0">{{ countryName }}</p>
     </div>
     <p class="card-text">
-      <span> <b>{{ city.population | convert }}</b> ({{ percentage }}% of electorate) </span>
+      <span> <b>{{ city.population | convert }}</b> ({{ 'CITY.CARD.PERCENTAGE' | translate:percentage }}) </span>
       <app-parameters-pair [name]="'CITY.CARD.MAYOR' | translate"
                            [value]="mayor"></app-parameters-pair>
     </p>

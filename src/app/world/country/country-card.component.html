@@ -6,7 +6,7 @@
     <div class="container">
       <h3 class="card-title text-center">{{ country.name }}</h3>
       <p class="card-text">
-        <span><b>{{ 'COUNTRY.CARD.CITIES' | translate:citiesLength }}</b></span>
+        <span><b>{{ 'COUNTRY.CARD.CITIES' | translate:citiesLength }}</b> {{ cityPriceRange }} </span>
 
         <app-parameters-pair [name]="'COUNTRY.CARD.PRESIDENT' | translate"
                              [value]="president"></app-parameters-pair>
@@ -16,7 +16,7 @@
           <span>{{ 'COUNTRY.CARD.BUY_FOR' | translate:params }}</span><br/>
           {{'COUNTRY.CARD.TO_WIN' | translate }}
         </div>
-        <div class="btn-right"><b>{{ sellParams.price }}</b> ETH</div>
+        <div class="btn-right"><b>{{ sellParams.price }}</b><br/> ETH</div>
       </button>
     </div>
   </div>
