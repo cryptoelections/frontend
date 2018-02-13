@@ -4,9 +4,9 @@ import { City } from '../../shared/models/city.model';
 @Component({
   selector: 'app-my-city',
   template: `
-    <div class="row">
-      <h4 class="col-xs-12 col-md-4">{{ city.name }}</h4>
-      <div class="col-xs-12 col-md-8">{{ city.population | convert }} ({{ 'CITY.CARD.PERCENTAGE' | translate:percentage}})</div>
+    <div class="row city">
+      <div class="name col-xs-12 col-md-4"><h4>{{ city.name }}</h4></div>
+      <div class="col-xs-12 col-md-8"><b>{{ city.population | convert }}</b> ({{ 'CITY.CARD.PERCENTAGE' | translate:percentage}})</div>
     </div>
   `
 })

@@ -13,7 +13,7 @@
       </p>
       <button class="btn card-button country-button">
         <div class="btn-left">
-          <span>{{ 'COUNTRY.CARD.BUY_FOR' | translate:params }}</span><br/>
+          <span>{{'COUNTRY.CARD.BUY_' + (params.numberOfCities === 1 ? 'CITY' : 'CITIES') + '_FOR' | translate:params }}</span><br/>
           {{'COUNTRY.CARD.TO_WIN' | translate }}
         </div>
         <div class="btn-right"><b>{{ sellParams.price }}</b><br/> ETH</div>

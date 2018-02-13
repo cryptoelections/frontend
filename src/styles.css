@@ -142,8 +142,13 @@ li.page-item:last-child .page-link {
   background-color: rgb(255, 255, 255);
 }
 
+.my-country-header .country-header-wrap
+.my-city-row-bottom {
+  border-bottom: 1px solid rgb(204, 204, 204);
+}
+
 .my-country-image img {
-  width: 5rem;
+  width: 48px;
   height: auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -151,5 +156,56 @@ li.page-item:last-child .page-link {
 .panel-heading, .panel {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.row.city .name,
+.country-name {
+  white-space: nowrap;
+}
+
+.country-name h2 {
+  font-size: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0px !important;
+}
+
+.progressbar {
+  display: inline-flex;
+}
+
+.progressbar span {
+  font-size: 20px;
+}
+
+.progressbar .progress {
+  width: 80%;
+  height: 30px;
+  margin-right: 10px;
+  background-color: rgb(204, 204, 204);
+}
+
+.progressbar .progress .progress-bar {
+  background-color: rgb(217, 7, 114);
+}
+
+.progressbar i {
+  text-align: left;
+  padding-left: 1rem;
+  font-style: normal;
+  font-size: 18px;
+}
+
+.my-country-header .btn.key-country,
+.my-country-header .btn.key-country .fas {
+  background-color: transparent;
+  color: rgb(204, 204, 204);
+  font-size: 20px;
+}
+
+.row.city h4 {
+  font-size: 24px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

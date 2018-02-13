@@ -55,7 +55,8 @@
         "ONE_CITY": " {{ lowestPrice }} ETH"
       },
       "ELECTORATE": "Electorate",
-      "BUY_FOR": "Buy {{ numberOfCities }} cities",
+      "BUY_CITY_FOR": "Buy {{ numberOfCities }} cities",
+      "BUY_CITIES_FOR": "Buy {{ numberOfCities }} cities",
       "TO_WIN": "to win elections"
     },
     "FILTER": {
@@ -83,5 +84,9 @@
     "FILTER": {
       "SORT_BY": "Sort by"
     }
+  },
+  "CAMPAIGN": {
+    "CITY": "city",
+    "CITIES": "cities"
   }
 }
