@@ -17,6 +17,7 @@ export class CountryListComponent {
   @Input() public sortBy: CountrySortOption;
   @Input() public biggerFirst: boolean;
   @Input() public currentPage: number;
+  @Input() public mostCostEffectiveCountries;
   @Output() public sortByChange = new EventEmitter<CountrySortOption>();
   @Output() public queryChange = new EventEmitter<string>();
   @Output() public queueChange = new EventEmitter<boolean>();
@@ -26,12 +27,10 @@ export class CountryListComponent {
     return this.getCities(country).length;
   }
 
-
-  public price(country: Country): { numberOfCities: number, price: number } {
+  public price(country: Country): number {
     const half = this.electorate(country) / 2;
     let price = 0;
     let electorate = 0; // todo: add already bought cities electorate
-    let numberOfCities = 0;
     this.getCities(country)
       .sort((a: City, b: City) => {
         const pricePerElectorate = (city: City) => city.price / +city.population;
@@ -40,16 +39,15 @@ export class CountryListComponent {
       .forEach((city: City) => {
         while (electorate < half) {
           price += +city.price;
-          numberOfCities++;
           electorate += +city.population;
         }
       });
-    return { numberOfCities, price };
+    return price;
   }
 
   public electorate(country: Country): number {
     let count = 0;
-    this.getCities(country).forEach((city: City) => count += +city.population)
+    this.getCities(country).forEach((city: City) => count += +city.population);
     return count;
   }
 

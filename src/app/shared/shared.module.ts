@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthServiceLoader } from './services/auth-service.loader';
+import { AuthGuard } from './services/auth.guard';
 import { AuthService } from './services/auth.service';
 import { ConfigService } from './services/config.service';
 import { StorageService } from './services/storage.service';
@@ -13,7 +15,10 @@ import { FormsModule } from '@angular/forms';
 import { HighLightPipe } from './pipes/highlight.pipe';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { AccordionModule, PaginationModule, ProgressbarModule, TooltipModule } from 'ngx-bootstrap';
+import {
+  AccordionModule, ModalModule, PaginationModule, PopoverModule, ProgressbarModule,
+  TooltipModule
+} from 'ngx-bootstrap';
 import { FilterComponent } from './components/filters/filter.component';
 import { ConvertPipe } from './pipes/convert.pipe';
 
@@ -32,7 +37,9 @@ import { ConvertPipe } from './pipes/convert.pipe';
     CommonModule,
     FormsModule,
     HttpClientModule,
+    ModalModule,
     PaginationModule,
+    PopoverModule,
     ProgressbarModule,
     TooltipModule,
     TranslateModule
@@ -47,14 +54,18 @@ import { ConvertPipe } from './pipes/convert.pipe';
     FormsModule,
     HighLightPipe,
     HttpClientModule,
+    ModalModule,
     PaginationModule,
     ParametersPairComponent,
+    PopoverModule,
     ProgressbarModule,
     TranslateModule,
     TooltipModule
   ],
   providers: [
+    AuthGuard,
     AuthService,
+    AuthServiceLoader,
     BaseService,
     CityService,
     ConfigService,

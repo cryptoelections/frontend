@@ -13,7 +13,7 @@ import * as countryActions from '../../shared/ngrx/country/country.actions';
   template: `
     <app-my-campaign [countries]="countries$ | async"
                      [cities]="citiesByCountries$ | async"
-                     [myCities]="myCities$ | async"></app-my-campaign>`
+                     [myCities]="[]"></app-my-campaign>`
 })
 export class MyCampaignContainerComponent {
   readonly countries$ = this.store.select(fromCountries.selectEntities);

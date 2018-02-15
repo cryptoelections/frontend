@@ -61,7 +61,7 @@ export class FilterService {
   }
 
   public update(params): void {
-    if (this.getRouteWithoutQueryParams(this.router.routerState) === '/login') {
+    if (this.getRouteWithoutQueryParams(this.router.routerState) === '/') {
       return;
     }
 

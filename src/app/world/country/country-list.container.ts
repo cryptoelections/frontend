@@ -5,28 +5,30 @@ import { State } from '../../shared/ngrx/index';
 import { WithUnsubscribe } from '../../shared/mixins/with-unsubscribe';
 import { FilterService } from '../../shared/services/filter.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CitySortOption } from '../city/city-filter.component';
 import { StorageKeys, StorageService } from '../../shared/services/storage.service';
 import * as debounce from 'lodash/debounce';
-import * as fromCities from '../../shared/ngrx/city/city.reducers'
-import * as fromCountries from '../../shared/ngrx/country/country.reducers'
+import * as fromCities from '../../shared/ngrx/city/city.reducers';
+import * as fromCountries from '../../shared/ngrx/country/country.reducers';
 import * as countryActions from '../../shared/ngrx/country/country.actions';
 import * as cityActions from '../../shared/ngrx/city/city.actions';
 
 @Component({
   selector: 'app-country-list-container',
   template: `
-    <app-country-list [list]="countries$ | async"
-                      [cities]="cities$ | async"
-                      [currentPage]="page$ | async"
-                      [total]="total$ | async"
-                      [query]="query$ | async"
-                      [sortBy]="sortBy$ | async"
-                      [citiesByCountries]="citiesByCountries$ | async"
-                      (sortByChange)="onSortByChange($event)"
-                      (queryChange)="onQueryChange($event)"
-                      (queueChange)="onQueueChange($event)"
-                      (pageChange)="onPageChange($event)"></app-country-list>`
+    <app-country-list
+      [list]="countries$ | async"
+      [cities]="cities$ | async"
+      [mostCostEffectiveCountries]="costEffectiveCities$ | async"
+      [currentPage]="page$ | async"
+      [total]="total$ | async"
+      [query]="query$ | async"
+      [sortBy]="sortBy$ | async"
+      [citiesByCountries]="citiesByCountries$ | async"
+      (sortByChange)="onSortByChange($event)"
+      (queryChange)="onQueryChange($event)"
+      (queueChange)="onQueueChange($event)"
+      (pageChange)="onPageChange($event)"
+    ></app-country-list>`
 })
 export class CountryListContainerComponent extends WithUnsubscribe() implements OnInit, AfterViewInit {
   readonly countries$ = this.store.select(fromCountries.countriesForPage);
@@ -37,18 +39,21 @@ export class CountryListContainerComponent extends WithUnsubscribe() implements 
   readonly sortBy$ = this.store.select(fromCountries.sortBy);
   readonly filters$ = this.store.select(fromCountries.filters);
   readonly citiesByCountries$ = this.store.select(fromCities.citiesByCountriesEntities);
+  readonly costEffectiveCities$ = this.store.select(fromCountries.selectMostCostEffectiveCitiesForCountry);
 
   private filterService = new FilterService({
     query: { type: 'string' },
     sortBy: { type: 'string', defaultOption: CountrySortOption.Name.toString() },
     page: { type: 'string', defaultOption: '1' }
-  }, this.router, this.storage, StorageKeys.CountryFilter, this.activatedRoute)
+  }, this.router, this.storage, StorageKeys.CountryFilter, this.activatedRoute);
 
-  constructor(private store: Store<State>,
-              private cd: ChangeDetectorRef,
-              private router: Router,
-              private storage: StorageService,
-              private activatedRoute: ActivatedRoute) {
+  constructor(
+    private store: Store<State>,
+    private cd: ChangeDetectorRef,
+    private router: Router,
+    private storage: StorageService,
+    private activatedRoute: ActivatedRoute
+  ) {
     super();
     this.onQueryChange = debounce(this.onQueryChange.bind(this), 500);
   }

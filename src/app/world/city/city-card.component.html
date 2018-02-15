@@ -1,21 +1,41 @@
 <div class="card">
   <!--<img class="card-img-top" src="" [alt]="city.name">-->
   <div class="card-block container city-card">
-    <div class="card-title text-center" [tooltip]="city.name" placement="auto">{{ city.name }}</div>
+    <div class="card-title text-center" [tooltip]="city.name" placement="auto">{{
+      city.name }}
+    </div>
     <div class="country align-items-center">
-      <img class="city-country-flag"
-           [src]="'assets/images/country-flags/small/' + city.country.toLowerCase() + '.png'"
-           alt=""/>
+      <img
+        class="city-country-flag"
+        [src]="'assets/images/country-flags/small/' + city.country.toLowerCase() + '.png'"
+        alt=""
+      />
       <p class="pl-1 m-0">{{ countryName }}</p>
     </div>
     <p class="card-text">
       <span> <b>{{ city.population | convert }}</b> ({{ 'CITY.CARD.PERCENTAGE' | translate:percentage }}) </span>
-      <app-parameters-pair [name]="'CITY.CARD.MAYOR' | translate"
-                           [value]="mayor"></app-parameters-pair>
+      <app-parameters-pair
+        [name]="'CITY.CARD.MAYOR' | translate"
+        [value]="mayor"
+      ></app-parameters-pair>
     </p>
-
-    <button class="btn card-button">
-      {{ ('CITY.CARD.BUY_FOR' | translate).toUpperCase() }} <b>{{ city.price }} ETH</b>
-    </button>
+  </div>
+  <div class="card-button-block text-center">
+    <ng-container *ngIf="!isYours">
+      <button class="btn card-button">
+        {{ 'CITY.CARD.INVEST' | translate }} <b>{{ city.price }} ETH</b>
+      </button>
+      <span>{{ 'CITY.CARD.TO_WIN' | translate }}</span>
+    </ng-container>
+    <ng-container *ngIf="isYours">
+      <div class="mayor-sign" [routerLink]="['/my']">
+        <img
+          class="mr-2"
+          [src]="'assets/images/sign.png'"
+          alt=""
+        />
+        <span class="mayor text-left">{{ 'CITY.CARD.YOU_ARE_MAYOR' | translate }}</span>
+      </div>
+    </ng-container>
   </div>
 </div>

@@ -15,11 +15,8 @@ import { cityReducers } from '../shared/ngrx/city/city.reducers';
 import { CityListContainerComponent } from './city/city-list.container';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
-import { CityDetailsComponent } from './city/details/city-details.component';
-import { CountryDetailsComponent } from './country/details/country-details.component';
 import { RouterModule } from '@angular/router';
-import { CityDetailsContainerComponent } from './city/details/city-details.container';
-import { CountryDetailsContainerComponent } from './country/details/country-details.container';
+import { MetamaskComponent } from './metamask/metamask.component';
 import { MyCampaignComponent } from './my-campaign/my-campaign.component';
 import { MyCampaignContainerComponent } from './my-campaign/my-campaign.container';
 import { myCampaignReducers } from '../shared/ngrx/my-campaign/my-campaign.reducers';
@@ -30,17 +27,14 @@ import { MyCityComponent } from './my-campaign/my-city.component';
 @NgModule({
   declarations: [
     CityCardComponent,
-    CityDetailsComponent,
-    CityDetailsContainerComponent,
     CityFilterComponent,
     CityListComponent,
     CityListContainerComponent,
     CountryCardComponent,
-    CountryDetailsComponent,
-    CountryDetailsContainerComponent,
     CountryFilterComponent,
     CountryListComponent,
     CountryListContainerComponent,
+    MetamaskComponent,
     MyCampaignComponent,
     MyCampaignContainerComponent,
     MyCityComponent,

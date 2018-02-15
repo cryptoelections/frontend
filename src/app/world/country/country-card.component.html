@@ -1,24 +1,59 @@
 <div class="card">
   <div class="card-block country-img-card">
-    <img class="card-img" [src]="imageLink" onerror="this.src = 'assets/images/no-flag.png'" alt="">
+    <img
+      class="card-img"
+      [src]="imageLink"
+      onerror="this.src = 'assets/images/no-flag.png'"
+      alt=""
+    >
+    <!--todo add vertical alignment-->
   </div>
   <div class="card-block country-card">
-    <div class="container">
-      <h3 class="card-title text-center">{{ country.name }}</h3>
-      <p class="card-text">
-        <span><b>{{ 'COUNTRY.CARD.CITIES' | translate:citiesLength }}</b> {{ cityPriceRange }} </span>
-
-        <app-parameters-pair [name]="'COUNTRY.CARD.PRESIDENT' | translate"
-                             [value]="president"></app-parameters-pair>
-      </p>
-      <button class="btn card-button country-button">
-        <div class="btn-left">
-          <span>{{'COUNTRY.CARD.BUY_' + (params.numberOfCities === 1 ? 'CITY' : 'CITIES') + '_FOR' | translate:params }}</span><br/>
-          {{'COUNTRY.CARD.TO_WIN' | translate }}
-        </div>
-        <div class="btn-right"><b>{{ sellParams.price }}</b><br/> ETH</div>
+    <h3 class="card-title text-center">{{ country.name }}</h3>
+    <p class="card-text">
+      <span><b>{{ numberOfCities }} {{ 'COUNTRY.CARD.CITIES' | translate }}</b> {{ cityPriceRange }}</span><br/>
+      <span><b>{{ myCities }}</b> {{ 'COUNTRY.CARD.' + (myCities === 1 ? 'CITY' : 'CITIES') | translate }} {{ 'COUNTRY.CARD.UNDER_YOUR_CONTROL' | translate }}</span><br/>
+      <span><b>{{ electorate | convert }}</b> {{ 'COUNTRY.CARD.OF_ELECTORATE' | translate }}</span><br/>
+      <span><b>{{ myElectorate | convert }}</b> {{ 'COUNTRY.CARD.SUPPORT_YOU' | translate }}</span><br/>
+      <app-parameters-pair
+        [name]="'COUNTRY.CARD.PRESIDENT' | translate"
+        [value]="president"
+      ></app-parameters-pair>
+    </p>
+  </div>
+  <div class="card-button-block text-center">
+    <ng-container *ngIf="!isYours">
+      <button class="btn card-button">
+        <span>{{'COUNTRY.CARD.INVEST' | translate }} <b>{{ price }} ETH </b></span>
       </button>
-    </div>
+      <span>{{'COUNTRY.CARD.TO_WIN' | translate }}</span>
+    </ng-container>
+    <ng-container *ngIf="isYours">
+      <div class="president-sign" (click)="openModal(cityList)"> <!-- on click open modal -->
+        <img
+          class="mr-2"
+          [src]="'assets/images/sign.png'"
+          alt=""
+        />
+        <span class="president text-left">{{ 'COUNTRY.CARD.YOU_ARE_PRESIDENT' | translate }}</span>
+      </div>
+    </ng-container>
   </div>
 </div>
 
+<ng-template #cityList>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <pre>{{ costEffectiveCities | json }}</pre>
+  </div>
+</ng-template>

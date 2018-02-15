@@ -11,7 +11,8 @@
   <div class="col-lg-3 col-sm-6 col-xs-12" *ngFor="let country of list">
     <app-country-card [country]="country"
                       [cities]="citiesByCountries"
-                      [sellParams]="price(country)"
+                      [costEffectiveCities]="mostCostEffectiveCountries"
+                      [price]="price(country)"
                       [electorate]="electorate(country)"
                       [numberOfCities]="numberOfCities(country)"></app-country-card>
   </div>

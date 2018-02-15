@@ -3,7 +3,7 @@
 }
 
 .navbar-white {
-  height: 100px;
+  min-height: 100px;
   background-color: rgb(255, 255, 255);
 }
 
@@ -28,7 +28,7 @@
 }
 
 .navbar .navbar-nav a:hover {
-  color: rgb(217, 7, 114)
+  color: rgb(217, 7, 114);
 }
 
 .navbar .navbar-nav .nav-item.active {
@@ -37,9 +37,61 @@
 
 .navbar .account-info {
   white-space: nowrap;
-  max-width: 160px;
+  max-width: 180px;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 18px;
 }
 
+.navbar .account-info .badge {
+  padding: 8px 15px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgb(255, 255, 255);
+  font-weight: 100;
+  cursor: pointer;
+}
+
+.badge.account {
+  background-color: rgb(217, 7, 114);
+}
+
+.badge.account.nickname {
+  text-transform: uppercase;
+}
+
+.badge.not-connected {
+  text-transform: uppercase;
+  background-color: rgb(204, 204, 204);
+}
+
+.popover-body {
+  padding: 0px;
+}
+
+.nickname-form {
+  padding: 15px;
+}
+
+.nickname-form h5 {
+  font-weight: 700;
+}
+
+.nickname-form .btn {
+  margin-top: 10px;
+  width: 70%
+}
+
+.nickname-form input {
+  color: rgb(178, 178, 178);
+  border: 1px solid rgb(178, 178, 178);
+}
+
+.nickname-form input::-webkit-input-placeholder {
+  color: rgb(178, 178, 178);
+}
+
+.popover {
+  border: 5px solid rgb(230, 230, 230) !important;
+}

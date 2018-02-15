@@ -66,7 +66,7 @@ export class MyCampaignComponent {
 
   public electorate(country): number {
     let count = 0;
-    this.myCitiesByCountry[country].forEach((city: City) => count += +city.population)
+    this.myCitiesByCountry[country].forEach((city: City) => count += +city.population);
     return count;
   }
 }

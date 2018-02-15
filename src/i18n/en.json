@@ -14,7 +14,11 @@
     }
   },
   "ACCOUNT": {
-    "NOT_LOGGED_IN": "Not logged in"
+    "NOT_CONNECTED": "Not connected",
+    "REQUIRE_METAMASK": "CryptoElections requires a MetaMask add-on installed in your browser.",
+    "INSTALL": "Install",
+    "SET_NICKNAME": "Set Nickname",
+    "NICKNAME_PLACEHOLDER": "Type Your Nickname"
   },
   "CITY": {
     "TITLE": "Cities",
@@ -23,7 +27,9 @@
       "NOT_ELECTED_YET": "Not elected yet",
       "COUNTRY": "Country",
       "ELECTORATE": "Electorate",
-      "BUY_FOR": "Buy for",
+      "INVEST": "Invest",
+      "TO_WIN": "to win mayoral election",
+      "YOU_ARE_MAYOR": "You are a mayor",
       "PERCENTAGE": "{{ percentage }} % of electorate",
       "SMALLCITY": "Population - less % of country population",
       "MEDIUMCITY": "Population - less % of country population",
@@ -49,15 +55,19 @@
     "CARD": {
       "PRESIDENT": "President",
       "NOT_ELECTED_YET": "Not elected yet",
-      "CITIES": "{{ numberOfCities }} cities",
+      "YOU_ARE_PRESIDENT": "You are a President",
       "CITIES_PRICE_RANGE": {
         "CITIES": "{{ lowestPrice }} - {{ highestPrice }} ETH",
         "ONE_CITY": " {{ lowestPrice }} ETH"
       },
+      "CITY": "city",
+      "CITIES": "cities",
+      "UNDER_YOUR_CONTROL": "under your control",
+      "OF_ELECTORATE": "of electorate",
+      "SUPPORT_YOU": "support you",
       "ELECTORATE": "Electorate",
-      "BUY_CITY_FOR": "Buy {{ numberOfCities }} cities",
-      "BUY_CITIES_FOR": "Buy {{ numberOfCities }} cities",
-      "TO_WIN": "to win elections"
+      "INVEST": "Invest",
+      "TO_WIN": "to win presidential election"
     },
     "FILTER": {
       "SORT_BY": "Sort by",
@@ -87,6 +97,8 @@
   },
   "CAMPAIGN": {
     "CITY": "city",
-    "CITIES": "cities"
+    "CITIES": "cities",
+    "START": "Start your campaign",
+    "INVEST": "Invest in your campaign in cities and countries of your choice to rule the whole worldmap!"
   }
 }

@@ -16,7 +16,10 @@ import { metaReducers, reducers } from './shared/ngrx';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { AccordionModule, PaginationModule, ProgressbarModule, TooltipModule } from 'ngx-bootstrap';
+import {
+  AccordionModule, ModalModule, PaginationModule, PopoverModule, ProgressbarModule,
+  TooltipModule
+} from 'ngx-bootstrap';
 import { FooterComponent } from './layout/footer/footer.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -45,7 +48,9 @@ export function InitAppFactory(auth: AuthService,
     CommonModule,
     EffectsModule.forRoot([]),
     MarketplaceModule,
+    ModalModule.forRoot(),
     PaginationModule.forRoot(),
+    PopoverModule.forRoot(),
     ProgressbarModule.forRoot(),
     SharedModule,
     StoreModule.forRoot(reducers, { metaReducers }),

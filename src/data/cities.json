@@ -1,4 +1,5 @@
  [{
+   "id": "1",
    "name": "Albuquerque",
    "country": "US",
    "population": "545852",
@@ -6,6 +7,7 @@
    "lon": "-106.65114",
    "price": "545"
  }, {
+   "id": "2",
    "name": "Ranchos Albuquerque",
    "country": "US",
    "population": "6024",
@@ -13,6 +15,7 @@
    "lon": "-106.6428",
    "price": "60"
  }, {
+   "id": "3",
    "name": "Moscow",
    "country":"RU",
    "population": "11902000",
@@ -20,6 +23,7 @@
    "lon": "37.618423",
    "price": "11"
  }, {
+   "id": "4",
    "name": "Saint Petersburg",
    "country":"RU",
    "population": "5356755",

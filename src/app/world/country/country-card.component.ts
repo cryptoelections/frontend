@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { Country } from '../../shared/models/country.model';
 import { City } from '../../shared/models/city.model';
 import { TranslateService } from '@ngx-translate/core';
@@ -10,16 +11,16 @@ import { TranslateService } from '@ngx-translate/core';
 export class CountryCardComponent {
   @Input() public country: Country;
   @Input() public cities;
-  @Input() public sellParams: { numberOfCities: number, price: number };
+  @Input() public costEffectiveCities;
+  @Input() public price: number;
   @Input() public electorate: number;
+  @Input() public myCities = 0;
+  @Input() public myElectorate = 0;
   @Input() public numberOfCities: number;
+  public modalRef: BsModalRef;
 
   public get imageLink(): string {
     return `assets/images/country-flags/large/${this.country.code.toLowerCase()}.png`; // todo: add user images
-  }
-
-  public get params() {
-    return { numberOfCities: this.sellParams && this.sellParams.numberOfCities }
   }
 
   public get president(): string {
@@ -28,7 +29,8 @@ export class CountryCardComponent {
 
   public get cityPriceRange(): string {
     let result;
-    const lowestPrice = this.sortedCities[0] && this.sortedCities[0].price && (+this.sortedCities[0].price).toFixed(2);
+    const lowestPrice = this.sortedCities[0] && this.sortedCities[0].price && (+this.sortedCities[0].price).toFixed(
+      2);
     const highestPrice = this.sortedCities.length > 1 && this.sortedCities[this.sortedCities.length - 1] &&
       this.sortedCities[this.sortedCities.length - 1].price &&
       (+this.sortedCities[this.sortedCities.length - 1].price).toFixed(2);
@@ -39,26 +41,38 @@ export class CountryCardComponent {
         highestPrice
       }).subscribe(string => result = string);
     } else if (lowestPrice && !highestPrice) {
-      this.translate.get('COUNTRY.CARD.CITIES_PRICE_RANGE.ONE_CITY',
-        { lowestPrice })
+      this.translate.get(
+        'COUNTRY.CARD.CITIES_PRICE_RANGE.ONE_CITY',
+        { lowestPrice }
+      )
         .subscribe(string => result = string);
     } else if (!lowestPrice && !highestPrice) {
       result = '';
     }
 
-    return result
-  }
-
-  public get citiesLength(): { numberOfCities: number } {
-    return { numberOfCities: this.numberOfCities }
+    return result;
   }
 
   public get sortedCities(): Array<City> {
     return this.cities[this.country.code]
-      ? this.cities[this.country.code].sort((a: City, b: City) => +a.price < +b.price ? -1 : 1)
+      ? this.cities[this.country.code].sort((a: City, b: City) => +a.price < +b.price
+        ? -1
+        : 1)
       : [];
   }
 
-  constructor(private translate: TranslateService) {
+  public get isYours(): boolean {
+    // todo
+    return true;
+  }
+
+  constructor(
+    private translate: TranslateService,
+    private modalService: BsModalService
+  ) {
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 }

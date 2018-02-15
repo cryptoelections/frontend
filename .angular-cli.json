@@ -9,7 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico",
+        "icon.ico",
         "data",
         "config",
         "i18n"

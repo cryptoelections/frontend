@@ -1,22 +1,66 @@
-<nav class="navbar navbar-toggleable-xs navbar-white">
+<nav class="navbar navbar-expand-md navbar-default navbar-light navbar-white">
   <div class="container">
+    <button
+      class="navbar-toggler navbar-toggler-right"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <a class="navbar-brand" href="#">
-      <img src="../../../assets/images/logo.png" class="d-inline-block align-top" [alt]="'TITLE' | translate"/>
+      <img
+        src="../../../assets/images/logo.png"
+        class="d-inline-block align-top"
+        [alt]="'TITLE' | translate"
+      />
     </a>
-
-    <ul class="navbar-nav navbar-in mr-auto">
-      <li class="nav-item" *ngFor="let link of links" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="link.linkTo" *ngIf="link.linkTo !== 'my' || auth.account">
-          {{ link.text | translate }}</a>
-      </li>
-    </ul>
-    <div class="nav-link account-info">
-        <span *ngIf="auth.account"
-              [tooltip]="auth.account"
-              placement="auto">{{ auth.account }}</span>
-      <span *ngIf="!auth.account"
-            [tooltip]="'ACCOUNT.NOT_LOGGED_IN' | translate"
-            placement="auto">{{ 'ACCOUNT.NOT_LOGGED_IN' | translate }}</span>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav navbar-in mr-auto">
+        <li class="nav-item" *ngFor="let link of links" [routerLinkActive]="['active']">
+          <a
+            class="nav-link"
+            [routerLink]="link.linkTo"
+            *ngIf="link.linkTo !== 'my' || auth.account"
+          >
+            {{ link.text | translate }}</a>
+        </li>
+      </ul>
+      <div class="account-info">
+        <span
+          class="badge account"
+          *ngIf="auth.account"
+          [ngClass]="{ 'nickname': auth.accountNickname }"
+          placement="bottom"
+          [popover]="nicknameForm"
+          [outsideClick]="true"
+        >{{ auth.accountNickname || auth.account }}</span>
+        <span
+          class="badge not-connected"
+          [routerLink]="['/metamask']"
+          *ngIf="!auth.account"
+        >{{ 'ACCOUNT.NOT_CONNECTED' | translate }}</span>
+      </div>
     </div>
   </div>
 </nav>
+
+<ng-template #nicknameForm>
+  <div class="container nickname-form">
+    <h5> {{ 'ACCOUNT.SET_NICKNAME' | translate }} </h5>
+    <input
+      class="form-control"
+      type="text"
+      name="nickname"
+      [placeholder]="'ACCOUNT.NICKNAME_PLACEHOLDER' | translate"
+      [(ngModel)]="nickname"
+    />
+    <button class="btn card-button" (click)="set()">
+      {{ 'ACCOUNT.SET_NICKNAME' | translate }}
+    </button>
+    <!--todo pop.hide() when saving nickname-->
+  </div>
+</ng-template>

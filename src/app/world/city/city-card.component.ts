@@ -33,7 +33,13 @@ export class CityCardComponent {
   }
 
   public get mayor(): string {
-    return this.translate.instant('CITY.CARD.NOT_ELECTED_YET')
+    // todo request city mayor's nickname
+    return this.translate.instant('CITY.CARD.NOT_ELECTED_YET') ;
+  }
+
+  public get isYours() {
+    // todo compare user's address with mayor's
+    return true;
   }
 
   public get routerLink(): string {

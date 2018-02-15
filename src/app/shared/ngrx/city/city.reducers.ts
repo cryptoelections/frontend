@@ -3,9 +3,6 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { CitySortOption } from '../../../world/city/city-filter.component';
 import { City } from '../../models/city.model';
 import * as actions from './city.actions';
-import { CountrySortOption } from '../../../world/country/country-filter.component';
-import { sortCountries } from '../country/country.reducers';
-import { Country } from '../../models/country.model';
 
 export interface State extends EntityState<City> {
   loading: boolean,
@@ -25,10 +22,10 @@ export interface CityState {
 
 export const cityReducers = {
   list: reducer
-}
+};
 
 export const adapter: EntityAdapter<City> = createEntityAdapter<City>({
-  selectId: (item: City) => getCityId(item),
+  selectId: (item: City) => item.id,
   sortComparer: (a: City, b: City) => a.name.localeCompare(b.name)
 });
 
@@ -44,8 +41,6 @@ export const initialState: State = adapter.getInitialState({
   }
 });
 
-const getCityId = (city: City) => `${city.country}-${city.name.trim()}`;
-
 export function reducer(state = initialState, action: actions.Actions): State {
   switch (action.type) {
     case actions.LOAD_CITIES_REQUEST: {
@@ -56,7 +51,7 @@ export function reducer(state = initialState, action: actions.Actions): State {
         {
           ...m,
           [i.country]: (
-            m[i.country] ? [...m[i.country], getCityId(i)] : [getCityId(i)]
+            m[i.country] ? [...m[i.country], i.id] : [i.id]
           )
         }
       ), {});
@@ -65,7 +60,7 @@ export function reducer(state = initialState, action: actions.Actions): State {
         ...state,
         loading: false,
         citiesByCountry: reduceByCountry
-      }
+      };
 
       return { ...adapter.addAll([...action.payload], newState) };
     }
@@ -83,18 +78,26 @@ export function reducer(state = initialState, action: actions.Actions): State {
 
 export const getCitiesState = createFeatureSelector<CityState>('cities');
 export const getCityEntityState = createSelector(getCitiesState, state => state.list);
-export const { selectIds, selectEntities, selectAll, selectTotal } = adapter.getSelectors(getCityEntityState);
+export const { selectIds, selectEntities, selectAll, selectTotal } = adapter.getSelectors(
+  getCityEntityState);
 export const isLoading = createSelector(getCityEntityState, state => state.loading);
 export const page = createSelector(getCityEntityState, state => state.filters.page);
 export const filters = createSelector(getCityEntityState, state => state.filters);
 export const query = createSelector(filters, state => state.query);
 export const sortBy = createSelector(filters, state => state.sortBy);
-export const citiesByCountry = createSelector(getCityEntityState, state => state.citiesByCountry);
-export const getSelectedCity = createSelector(getCityEntityState, state => selectEntities &&
-  selectEntities[state.selectedCity]);
+export const citiesByCountry = createSelector(
+  getCityEntityState,
+  state => state.citiesByCountry
+);
+export const getSelectedCity = createSelector(
+  getCityEntityState,
+  state => selectEntities &&
+    selectEntities[state.selectedCity]
+);
 export const citiesByCountriesEntities = createSelector(citiesByCountry, selectEntities,
   (citiesByCountries, cities) => {
-   return Object.entries(citiesByCountries).reduce((m, [key, value]) => (
+    return Object.entries(citiesByCountries).reduce((m, [key, value]) => (
       { ...m, [key]: value ? value.map((cityId: string) => cities[cityId]) : [] }
-    ), {})
-  });
+    ), {});
+  }
+);
