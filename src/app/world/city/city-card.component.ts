@@ -2,7 +2,6 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {City} from '../../shared/models/city.model';
 import {AuthService} from '../../shared/services/auth.service';
 import {TranslateService} from '@ngx-translate/core';
-import {add} from 'ngx-bootstrap/chronos';
 
 @Component({
   selector: 'app-city-card',
@@ -13,6 +12,7 @@ export class CityCardComponent {
   @Input() public countries;
   @Input() public percent;
   @Input() public dynamic;
+  @Input() public nicknames;
   @Output() public invest = new EventEmitter<City>();
   public query: string;
   public isYours: boolean;
@@ -47,18 +47,8 @@ export class CityCardComponent {
   public loadMayor() {
     const address = this.dynamic && this.dynamic.mayor;
     this.isYours = address === this.authService.coinbase;
-
-    if (address !== '0x0000000000000000000000000000000000000000') {
-      // this.authService.getNickname(address).then(nick => {
-      //   console.log(address, nick);
-      //
-      //   if (nick) {
-      //     return nick;
-      //   }
-      // });
-      return address;
-    } else {
-      return this.translate.instant('CITY.CARD.NOT_ELECTED_YET');
-    }
+    return this.dynamic && this.dynamic.mayor
+      && (this.nicknames && this.nicknames[this.dynamic.mayor] || this.dynamic.mayor)
+      || this.translate.instant('CITY.CARD.NOT_ELECTED_YET');
   }
 }

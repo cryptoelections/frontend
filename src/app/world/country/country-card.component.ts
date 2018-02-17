@@ -1,4 +1,7 @@
-import {AfterViewInit, ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges, TemplateRef} from '@angular/core';
+import {
+  AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges,
+  TemplateRef
+} from '@angular/core';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {Country} from '../../shared/models/country.model';
 import {City} from '../../shared/models/city.model';
@@ -20,8 +23,9 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   @Input() public dynamic;
   @Input() public cityDynamic;
   @Input() public numberOfCities: number;
+  @Input() public nicknames;
+  @Output() public invest = new EventEmitter<City>();
   public sortedCities: Array<City>;
-  public modalRef: BsModalRef;
 
   public get imageLink(): string {
     return `assets/images/country-flags/large/${this.country.code.toLowerCase()}.png`;
@@ -29,6 +33,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
 
   public get president(): string {
     return this.dynamic && this.dynamic.president
+      && (this.nicknames && this.nicknames[this.dynamic.president] || this.dynamic.president)
       || this.translate.instant('COUNTRY.CARD.NOT_ELECTED_YET');
   }
 
@@ -38,14 +43,13 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
 
   constructor(private auth: AuthService,
               private translate: TranslateService,
-              private modalService: BsModalService,
               private cd: ChangeDetectorRef) {
   }
 
   public ngOnChanges(changes: SimpleChanges) {
     if (changes.cities) {
       this.sortedCities = this.cities
-        ? this.cities[this.country.code].sort((a: City, b: City) => +a.price < +b.price ? -1 : 1)
+        ? this.cities.sort((a: City, b: City) => +a.price < +b.price ? -1 : 1)
         : [];
     }
   }
@@ -54,10 +58,6 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
     this.cd.detectChanges();
   }
 
-
-  public openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-  }
 
   public cityPriceRange(): { lowestPrice: string, highestPrice: string } {
     const lowestPrice = this.sortedCities[0] && this.cityDynamic[this.sortedCities[0].id]
@@ -68,4 +68,11 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
     return {lowestPrice, highestPrice};
   }
 
+  public cityElectorate(city: City) {
+    return (+city.population * 100 / +this.electorate).toFixed(2);
+  }
+
+  public isYoursCity(city: City) {
+    return !!this.myCities.find(myCity => city.id === myCity.id);
+  }
 }

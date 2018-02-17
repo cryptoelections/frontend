@@ -24,10 +24,17 @@
                 {{(citiesOfCountry.length === 1 ? 'CAMPAIGN.CITY' : 'CAMPAIGN.CITIES') | translate}}</span>
           </div>
           <div class="col-md-5 col-xs-12 text-right">
-            <button class="btn card-button my-campaign-button" *ngIf="true">
+            <button class="btn card-button my-campaign-button" *ngIf="!isYours">
               <span>{{ 'COUNTRY.CARD.INVEST_PRICE' | translate:sellParams }}</span>
             </button>
-            <!-- todo add president badge-->
+            <div class="president-sign m-0" [routerLink]="['/my']" *ngIf="isYours">
+              <img
+                class="mr-2"
+                [src]="'assets/images/sign.png'"
+                alt=""
+              />
+              <span class="president text-left">{{ 'COUNTRY.CARD.YOU_ARE_PRESIDENT' | translate }}</span>
+            </div>
           </div>
         </div>
         <div class="row progressbar">

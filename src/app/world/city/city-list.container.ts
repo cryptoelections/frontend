@@ -14,6 +14,8 @@ import * as cityActions from '../../shared/ngrx/city/city.actions';
 import * as countryActions from '../../shared/ngrx/country/country.actions';
 import * as debounce from 'lodash/debounce';
 import * as myCampaignActions from '../../shared/ngrx/my-campaign/my-campaign.actions';
+import * as nicknamesActions from '../../shared/ngrx/nicknames/nicknames.actions';
+import * as fromNicknames from '../../shared/ngrx/nicknames/nicknames.reducers';
 
 @Component({
   selector: 'app-city-list-container',
@@ -26,6 +28,7 @@ import * as myCampaignActions from '../../shared/ngrx/my-campaign/my-campaign.ac
                    [query]="query$ | async"
                    [sortBy]="sortBy$ | async"
                    [isLoading]="isLoading$ | async"
+                   [nicknames]="nicknames$ | async"
                    [dynamicCities]="dynamicInfoCities$ | async"
                    (sortByChange)="onSortByChange($event)"
                    (queueChange)="onQueueChange($event)"
@@ -44,6 +47,7 @@ export class CityListContainerComponent extends WithUnsubscribe() implements OnI
   readonly sortBy$ = this.store.select(fromCities.sortBy);
   readonly isLoading$ = this.store.select(fromCities.isLoading);
   readonly dynamicInfoCities$ = this.store.select(fromCities.getDynamicInfoEntities);
+  readonly nicknames$ = this.store.select(fromNicknames.selectEntities);
 
   private filterService = new FilterService({
     query: {type: 'string'},
@@ -65,6 +69,7 @@ export class CityListContainerComponent extends WithUnsubscribe() implements OnI
     this.store.dispatch(new cityActions.LoadDynamicCityInformationRequest());
     this.store.dispatch(new countryActions.LoadCountriesRequest());
     this.store.dispatch(new myCampaignActions.LoadMyCitiesRequest());
+    this.store.dispatch(new nicknamesActions.LoadNicknamesRequest());
 
     this.initFilters();
     this.filters$

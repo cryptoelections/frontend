@@ -4,8 +4,9 @@ import {CitySortOption} from '../../../world/city/city-filter.component';
 import {City} from '../../models/city.model';
 import * as actions from './city.actions';
 
-export interface DynamicState extends EntityState<City> {
+export interface DynamicState {
   loading: boolean;
+  entities: { [id: string]: Partial<City> }
 }
 
 export interface State extends EntityState<City> {
@@ -33,10 +34,6 @@ export const adapter: EntityAdapter<City> = createEntityAdapter<City>({
   selectId: (item: City) => item && item.id,
   sortComparer: (a: City, b: City) => a.name.localeCompare(b.name)
 });
-export const dynamicAdapter: EntityAdapter<City> = createEntityAdapter<City>({
-  selectId: (item: City) => item && item.id,
-  sortComparer: null
-});
 
 export const initialState: State = adapter.getInitialState({
   loading: false,
@@ -48,9 +45,10 @@ export const initialState: State = adapter.getInitialState({
     query: '',
     page: 1
   },
-  dynamic: dynamicAdapter.getInitialState({
+  dynamic: {
+    entities: {},
     loading: false
-  })
+  }
 });
 
 export function reducer(state = initialState, action: actions.Actions): State {
@@ -86,7 +84,7 @@ export function reducer(state = initialState, action: actions.Actions): State {
       return {...state, dynamic: {...state.dynamic, loading: true}};
     }
     case actions.LOAD_DYNAMIC_CITY_INFORMATION_RESPONSE: {
-      return {...state, dynamic: {...dynamicAdapter.addAll(action.payload, state.dynamic), loading: false}};
+      return {...state, dynamic: {entities: {...action.payload}, loading: false}};
     }
     default: {
       return {...state};
@@ -121,5 +119,5 @@ export const citiesByCountriesEntities = createSelector(citiesByCountry, selectE
   }
 );
 export const getDynamicCitiesState = createSelector(getCitiesState, state => state.list.dynamic);
-export const getDynamicInfoEntities = dynamicAdapter.getSelectors(getDynamicCitiesState).selectEntities;
+export const getDynamicInfoEntities = createSelector(getDynamicCitiesState, state => state.entities);
 export const isDynamicLoading = createSelector(getDynamicCitiesState, state => state.loading);

@@ -37,6 +37,7 @@ export class AuthService {
   public getAccount(): Observable<any> {
     this.web3.eth.getCoinbase().then(a => {
       this.coinbase = a;
+      localStorage.setItem('coinbase', JSON.stringify(a));
       this.CryptoCity.defaults({from: this.coinbase});
     });
 
@@ -45,7 +46,7 @@ export class AuthService {
       this.accounts = accs;
       this.account = this.accounts[0];
       localStorage.setItem(StorageKeys.Account, JSON.stringify(this.account));
-      // this.getNickname(this.account).then(nickname => this.accountNickname = nickname);
+      this.getNickname(this.account).then(nickname => this.accountNickname = nickname);
       return Observable.of(this.account);
     });
   }

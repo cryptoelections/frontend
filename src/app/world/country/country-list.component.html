@@ -9,18 +9,19 @@
   <ng-container *ngFor="let country of list">
     <app-country-card class="col-lg-3 col-sm-6 col-xs-12"
                       [country]="country"
-                      [cities]="citiesByCountries"
+                      [cities]="citiesByCountries[country.code]"
                       [cityDynamic]="dynamicCities"
                       [dynamic]="dynamicCountries[country.id]"
                       [myCities]="myCities && myCities[country.code] || []"
                       [costEffectiveCities]="mostCostEffectiveCountries"
+                      [nicknames]="nicknames"
                       [price]="price(country)"
                       [electorate]="electorate(country)"
                       [myElectorate]="myElectorate(country)"
-                      [numberOfCities]="numberOfCities(country)"></app-country-card>
+                      [numberOfCities]="numberOfCities(country)"
+                      (invest)="invest.emit($event)"></app-country-card>
   </ng-container>
 </div>
-
 
 
 <div class="row pagination" *ngIf="!isLoading">

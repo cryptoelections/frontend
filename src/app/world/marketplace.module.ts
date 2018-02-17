@@ -24,6 +24,8 @@ import { MyCampaignEffects } from '../shared/ngrx/my-campaign/my-campaign.effect
 import { MyCountryComponent } from './my-campaign/my-country.component';
 import { MyCityComponent } from './my-campaign/my-city.component';
 import {MyCampaignFilterComponent} from './my-campaign/my-campaign-filter.component';
+import {nicknamesReducer} from '../shared/ngrx/nicknames/nicknames.reducers';
+import {NicknamesEffects} from '../shared/ngrx/nicknames/nicknames.effects';
 
 
 @NgModule({
@@ -45,12 +47,13 @@ import {MyCampaignFilterComponent} from './my-campaign/my-campaign-filter.compon
   ],
   imports: [
     CommonModule,
-    EffectsModule.forFeature([CountryEffects, CityEffects, MyCampaignEffects]),
+    EffectsModule.forFeature([CountryEffects, CityEffects, MyCampaignEffects, NicknamesEffects]),
     RouterModule,
     SharedModule,
     StoreModule.forFeature('countries', countryReducers),
     StoreModule.forFeature('cities', cityReducers),
-    StoreModule.forFeature('myCampaign', myCampaignReducers)
+    StoreModule.forFeature('myCampaign', myCampaignReducers),
+    StoreModule.forFeature('nicknames', nicknamesReducer)
   ],
   providers: [],
 })

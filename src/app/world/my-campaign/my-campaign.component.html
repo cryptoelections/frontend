@@ -6,6 +6,8 @@
     <ng-container *ngFor="let country of myCountries">
       <app-my-country [country]="countries[country]"
                       [allCitiesByCountry]="cities"
+                      [dynamicCountries]="dynamic"
+                      [dynamicCities]="dynamicCities"
                       [citiesOfCountry]="myCitiesByCountry[country]"
                       [percentage]="percentageByCountry(country)"
                       [sellParams]="price(country)"></app-my-country>

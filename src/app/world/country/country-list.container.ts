@@ -6,6 +6,7 @@ import {WithUnsubscribe} from '../../shared/mixins/with-unsubscribe';
 import {FilterService} from '../../shared/services/filter.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {StorageKeys, StorageService} from '../../shared/services/storage.service';
+import {City} from '../../shared/models/city.model';
 import * as debounce from 'lodash/debounce';
 import * as fromCities from '../../shared/ngrx/city/city.reducers';
 import * as fromCountries from '../../shared/ngrx/country/country.reducers';
@@ -13,6 +14,8 @@ import * as countryActions from '../../shared/ngrx/country/country.actions';
 import * as cityActions from '../../shared/ngrx/city/city.actions';
 import * as myCampaignActions from '../../shared/ngrx/my-campaign/my-campaign.actions';
 import * as fromMyCampaign from '../../shared/ngrx/my-campaign/my-campaign.reducers';
+import * as nicknamesActions from '../../shared/ngrx/nicknames/nicknames.actions';
+import * as fromNicknames from '../../shared/ngrx/nicknames/nicknames.reducers';
 
 @Component({
   selector: 'app-country-list-container',
@@ -30,10 +33,12 @@ import * as fromMyCampaign from '../../shared/ngrx/my-campaign/my-campaign.reduc
       [citiesByCountries]="citiesByCountries$ | async"
       [myCities]="myCitiesByCountries$ | async"
       [dynamicCountries]="dynamicCountries$ | async"
+      [nicknames]="nicknames$ | async"
       (sortByChange)="onSortByChange($event)"
       (queryChange)="onQueryChange($event)"
       (queueChange)="onQueueChange($event)"
       (pageChange)="onPageChange($event)"
+      (invest)="invest($event)"
     ></app-country-list>`
 })
 export class CountryListContainerComponent extends WithUnsubscribe() implements OnInit, AfterViewInit {
@@ -50,6 +55,7 @@ export class CountryListContainerComponent extends WithUnsubscribe() implements 
   readonly dynamicInfoCities$ = this.store.select(fromCities.getDynamicInfoEntities);
   readonly myCitiesByCountries$ = this.store.select(fromMyCampaign.selectAllByCountries);
   readonly dynamicCountries$ = this.store.select(fromCountries.getDynamicInfoEntities);
+  readonly nicknames$ = this.store.select(fromNicknames.selectEntities);
 
   private filterService = new FilterService({
     query: {type: 'string'},
@@ -72,6 +78,7 @@ export class CountryListContainerComponent extends WithUnsubscribe() implements 
     this.store.dispatch(new countryActions.LoadCountriesRequest());
     this.store.dispatch(new cityActions.LoadCityInformationRequest());
     this.store.dispatch(new myCampaignActions.LoadMyCitiesRequest());
+    this.store.dispatch(new nicknamesActions.LoadNicknamesRequest());
 
     this.initFilters();
     this.filters$
@@ -104,6 +111,10 @@ export class CountryListContainerComponent extends WithUnsubscribe() implements 
 
   public onPageChange(page: number) {
     this.store.dispatch(new countryActions.FilterUpdate({page}));
+  }
+
+  public invest(city: City) {
+    this.store.dispatch(new cityActions.Invest(city));
   }
 
   private initFilters() {

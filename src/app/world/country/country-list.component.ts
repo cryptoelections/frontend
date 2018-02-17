@@ -21,10 +21,12 @@ export class CountryListComponent {
   @Input() public myCities;
   @Input() public dynamicCities;
   @Input() public dynamicCountries;
+  @Input() public nicknames;
   @Output() public sortByChange = new EventEmitter<CountrySortOption>();
   @Output() public queryChange = new EventEmitter<string>();
   @Output() public queueChange = new EventEmitter<boolean>();
   @Output() public pageChange = new EventEmitter<number>();
+  @Output() public invest = new EventEmitter<City>();
 
   public numberOfCities(country: Country): number {
     return this.citiesByCountries[country.code].length;

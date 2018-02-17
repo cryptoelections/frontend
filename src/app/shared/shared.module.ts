@@ -24,6 +24,7 @@ import {ConvertPipe} from './pipes/convert.pipe';
 import {LoaderComponent} from './components/loader/loader.component';
 import {LoadingDirective} from './directives/loading.directive';
 import {EthPipe} from './pipes/eth.pipe';
+import {NicknamesService} from './services/nicknames.service';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import {EthPipe} from './pipes/eth.pipe';
     CityService,
     ConfigService,
     CountryService,
+    NicknamesService,
     StorageService
   ],
   entryComponents: [LoaderComponent]

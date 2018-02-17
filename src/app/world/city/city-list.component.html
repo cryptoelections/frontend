@@ -9,6 +9,7 @@
     <app-city-card [city]="city"
                    [countries]="countries"
                    [dynamic]="dynamicCities[city.id]"
+                   [nicknames]="nicknames"
                    [percent]="getElectoratePercentage(city)"
                    (invest)="invest.emit($event)"></app-city-card>
   </div>

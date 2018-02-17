@@ -5,6 +5,7 @@ import {createFeatureSelector, createSelector} from '@ngrx/store';
 import {City} from '../../models/city.model';
 import {CitySortOption} from '../../../world/city/city-filter.component';
 
+import * as fromMyCampaign from '../my-campaign/my-campaign.reducers';
 import * as fromCities from '../city/city.reducers';
 import * as actions from './country.actions';
 
@@ -292,15 +293,19 @@ export const citiesForPage = createSelector(filteredCities, fromCities.filters,
 
 export const selectMostCostEffectiveCitiesForCountry = createSelector(
   fromCities.citiesByCountriesEntities,
-  (citiesByCountries) => {
+  fromCities.getDynamicInfoEntities,
+  // fromMyCampaign.selectAllByCountries,
+  (citiesByCountries, dynamicCities) => {
     const byCountries = citiesByCountries;
 
     Object.keys(byCountries).forEach(key => {
+      let el = 0;
       let countryElectorate = 0;
       let half = 0;
-      let el = 0;
       let cities = 0;
-      const sortedArray = byCountries[key].sort((a: City, b: City) => (+a.population / +a.price) < (+b.population / +b.price) ? -1 : 1);
+      const sortedArray = byCountries[key]
+        .sort((a: City, b: City) => (dynamicCities[a.id]
+          && dynamicCities[a.id].price / +a.population) < (dynamicCities[b.id] && dynamicCities[b.id].price / +b.population) ? -1 : 1);
       sortedArray.forEach((city: City) => {
         countryElectorate += +city.population;
         half = countryElectorate / 2;

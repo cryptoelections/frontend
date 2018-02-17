@@ -16,6 +16,7 @@ export class CityListComponent {
   @Input() public currentPage: number;
   @Input() public isLoading: boolean;
   @Input() public total: number;
+  @Input() public nicknames;
   @Input() public dynamicCities: Array<Partial<City>>;
   @Output() public sortByChange = new EventEmitter<CitySortOption>();
   @Output() public queueChange = new EventEmitter<boolean>();

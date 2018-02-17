@@ -13,6 +13,7 @@ export class MyCampaignComponent {
   @Input() public page: number;
   @Input() public total: number;
   @Input() public dynamic;
+  @Input() public dynamicCities;
   @Input() public isLoading: boolean;
   @Output() public queryChange = new EventEmitter<string>();
   @Output() public pageChange = new EventEmitter<number>();
@@ -56,18 +57,18 @@ export class MyCampaignComponent {
     const half = this.electorate(country) / 2;
     let price = 0;
     let electorate = this.electorate(country);
-    this.myCitiesByCountry[country]
+    this.cities[country]
       .sort((a: City, b: City) => {
-        const pricePerElectorate = (city: City) => this.dynamic[city.id] && +this.dynamic[city.id].price / +city.population;
+        const pricePerElectorate = (city: City) => this.dynamicCities[city.id] && +this.dynamicCities[city.id].price / +city.population;
         return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
       })
       .forEach((city: City) => {
         while (electorate < half) {
-          price += this.dynamic[city.id] && +this.dynamic[city.id].price;
+          price += this.dynamicCities[city.id] && +this.dynamicCities[city.id].price;
           electorate += +city.population;
         }
       });
-    return {price: price || 0};
+    return {price};
   }
 
   public electorate(country): number {

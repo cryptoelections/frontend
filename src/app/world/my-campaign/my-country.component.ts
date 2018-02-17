@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Country} from '../../shared/models/country.model';
 import {City} from '../../shared/models/city.model';
+import {AuthService} from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-my-country',
@@ -12,6 +13,8 @@ export class MyCountryComponent {
   @Input() public country: Country;
   @Input() public citiesOfCountry: Array<City>;
   @Input() public allCitiesByCountry;
+  @Input() public dynamicCountries;
+  @Input() public dynamicCities;
 
   @Input()
   public set percentage(value: number) {
@@ -26,5 +29,13 @@ export class MyCountryComponent {
 
   public get params() {
     return {numberOfCities: this.sellParams && this.sellParams.numberOfCities};
+  }
+
+  public get isYours() {
+    return this.dynamicCountries && this.dynamicCountries[this.country.id]
+      && this.dynamicCountries[this.country.id].president === this.authService.coinbase;
+  }
+
+  constructor(private authService: AuthService) {
   }
 }

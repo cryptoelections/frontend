@@ -18,6 +18,8 @@ import * as countryActions from '../../shared/ngrx/country/country.actions';
                      [page]="page$ | async"
                      [isLoading]="isLoading$ | async"
                      [total]="total$ | async"
+                     [dynamicCities]="dynamicCities$ | async"
+                     [dynamic]="dynamicCountries$ | async"
                      (queryChange)="onQueryChange($event)"
                      (pageChange)="onPageChange($event)"
     ></app-my-campaign>`
@@ -30,8 +32,12 @@ export class MyCampaignContainerComponent implements AfterViewInit {
   readonly query$ = this.store.select(fromMyCampaign.query);
   readonly page$ = this.store.select(fromMyCampaign.page);
   readonly total$ = this.store.select(fromMyCampaign.filteredListCountriesTotal);
+  readonly dynamicCountries$ = this.store.select(fromCountries.getDynamicInfoEntities);
+  readonly dynamicCities$ = this.store.select(fromCities.getDynamicInfoEntities);
 
   constructor(private store: Store<State>, private cd: ChangeDetectorRef) {
+    this.store.dispatch(new countryActions.LoadDynamicCountryInformationRequest());
+    this.store.dispatch(new cityActions.LoadDynamicCityInformationRequest());
     this.store.dispatch(new countryActions.LoadCountriesRequest());
     this.store.dispatch(new cityActions.LoadCityInformationRequest());
     this.store.dispatch(new myCampaignActions.LoadMyCitiesRequest());
