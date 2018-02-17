@@ -1,0 +1,8 @@
+<div class="row city" [ngClass]="{'my-city-row-top' : !first }">
+  <div class="name col-xs-12 col-md-4" [tooltip]="city.name">
+    <h4>{{ city.name }}</h4>
+  </div>
+  <div class="col-xs-12 col-md-8"><b>{{ city.population | convert }}</b>
+    ({{ 'CITY.CARD.PERCENTAGE' | translate:percentage}})
+  </div>
+</div>

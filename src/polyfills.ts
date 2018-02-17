@@ -63,6 +63,10 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  * APPLICATION IMPORTS
  */
 
+import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/observable/concat';
+import 'rxjs/add/operator/concat';
+import 'rxjs/add/operator/withLatestFrom';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';

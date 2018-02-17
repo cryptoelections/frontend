@@ -1,15 +1,16 @@
 export interface City {
-  id: string;
+  id: number;
   country: string;
+  country_id: number;
   name: string;
   population: number;
   lat: string;
   lng: string;
   price: number;
-  major: string;
-  image: string;
+  mayor: string;
   latitude: string;
   longitude: string;
   purchases: number;
   slogan: string;
+  picture: string;
 }

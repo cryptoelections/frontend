@@ -5,8 +5,10 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+*:active,
 *:focus {
-  outline: none;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 html {
@@ -17,15 +19,27 @@ html {
 }
 
 body {
-  margin-bottom: 150px;
+  margin-bottom: 100px;
 }
 
 .highlight {
   background: #ffeb3b;
 }
 
+.card.card-disabled {
+  opacity: 0.5;
+}
+
 .city-card .country {
   display: flex;
+}
+
+.city-card span,
+.city-card p {
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .city-country-flag {
@@ -68,7 +82,9 @@ body {
   width: 100%;
   color: rgb(255, 255, 255);
   font-size: 14px;
+  min-height: 60px;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .card-button:hover {
@@ -148,10 +164,15 @@ li.page-item:last-child .page-link {
 }
 
 /* accordion for my countries */
+
 .my-country-header {
   align-items: center;
   background-color: rgb(255, 255, 255);
   padding-bottom: 10px;
+}
+
+.my-country-header > .row > .col-11 {
+  padding-bottom: 15px;
   border-bottom: 1px solid rgb(204, 204, 204);
 }
 
@@ -173,12 +194,17 @@ li.page-item:last-child .page-link {
 }
 
 .row.city {
-  margin-left: 75px;
+  margin-left: 125px;
 }
 
 .row.city .name,
 .country-name {
   white-space: nowrap;
+}
+
+.country-name {
+  display: inline-flex;
+  align-items: center;
 }
 
 .country-name h2 {
@@ -188,8 +214,19 @@ li.page-item:last-child .page-link {
   margin-bottom: 0px !important;
 }
 
+.country-name span {
+  font-size: 21px;
+}
+
 .progressbar {
   display: inline-flex;
+  width: 100%;
+  padding-top: 15px;
+  align-items: center;
+}
+
+.progressbar .empty {
+  width: 48px;
 }
 
 .progressbar span {
@@ -197,21 +234,14 @@ li.page-item:last-child .page-link {
 }
 
 .progressbar .progress {
-  width: 80%;
-  height: 30px;
-  margin-right: 10px;
+  padding: 0px;
+  height: 10px;
+  border-radius: 0px;
   background-color: rgb(204, 204, 204);
 }
 
-.progressbar .progress .progress-bar {
+.progressbar .progress * {
   background-color: rgb(217, 7, 114);
-}
-
-.progressbar i {
-  text-align: left;
-  padding-left: 1rem;
-  font-style: normal;
-  font-size: 18px;
 }
 
 .my-country-header .btn.key-country,
@@ -223,9 +253,17 @@ li.page-item:last-child .page-link {
 
 .row.city h4 {
   font-size: 24px;
+  line-height: normal;
   font-weight: 700;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.my-campaign.jumbotron {
+  border-radius: 0px;
+  text-align: center;
+  background-color: transparent;
+  border: 4px solid rgb(230, 230, 230);
 }
 
 .president-sign,
@@ -233,12 +271,13 @@ li.page-item:last-child .page-link {
   background-color: rgb(255, 255, 255);
   display: inline-flex;
   max-width: 100%;
-  padding: 8px 30px;
+  padding: 8px 25px;
   border-radius: 10px;
   text-align: center;
   margin-bottom: 10px;
   align-items: center;
   cursor: pointer;
+  min-height: 75px;
 }
 
 .president-sign img,
@@ -252,11 +291,4 @@ li.page-item:last-child .page-link {
   font-size: 18px !important;
   font-weight: 700;
   color: rgb(217, 7, 114);
-}
-
-.my-campaign.jumbotron {
-  border-radius: 0px;
-  text-align: center;
-  background-color: transparent;
-  border: 4px solid rgb(230, 230, 230);
 }

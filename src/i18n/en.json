@@ -6,6 +6,12 @@
     "MAP": "Map",
     "MY_CAMPAIGN": "My campaign"
   },
+  "HOME": {
+    "START_YOUR_CAMPAIGN": "Start your campaign!",
+    "GET_POWER": "Get power.",
+    "RUN_COUNTRIES": "Run countries.",
+    "EARN_MONEY": "Earn Money."
+  },
   "MARKETPLACE": {
     "TITLE": "Marketplace",
     "VIEWMODE": {
@@ -22,6 +28,7 @@
   },
   "CITY": {
     "TITLE": "Cities",
+    "NOT_FOUND": "No cities",
     "CARD": {
       "MAYOR": "Mayor",
       "NOT_ELECTED_YET": "Not elected yet",
@@ -56,6 +63,7 @@
       "PRESIDENT": "President",
       "NOT_ELECTED_YET": "Not elected yet",
       "YOU_ARE_PRESIDENT": "You are a President",
+      "NOT_IMPLEMENTED": "There are no cryptoelections yet",
       "CITIES_PRICE_RANGE": {
         "CITIES": "{{ lowestPrice }} - {{ highestPrice }} ETH",
         "ONE_CITY": " {{ lowestPrice }} ETH"
@@ -67,6 +75,7 @@
       "SUPPORT_YOU": "support you",
       "ELECTORATE": "Electorate",
       "INVEST": "Invest",
+      "INVEST_PRICE": "Invest {{ price }} to win presidential election",
       "TO_WIN": "to win presidential election"
     },
     "FILTER": {
@@ -74,6 +83,7 @@
       "SEARCH": "Search",
       "SORT": {
         "NAME": "Name",
+        "AVAILABLE_FIRST": "Available first",
         "ELECTORATE_DOWN": "Electorate ↓",
         "ELECTORATE_UP": "Electorate ↑",
         "PRICE_DOWN": "Price ↓",
@@ -96,6 +106,7 @@
     }
   },
   "CAMPAIGN": {
+    "TITLE":"My campaign",
     "CITY": "city",
     "CITIES": "cities",
     "START": "Start your campaign",

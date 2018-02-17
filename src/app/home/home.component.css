@@ -1,0 +1,64 @@
+.home,
+.home /deep/ .navbar-white,
+.home-footer {
+  background-color: rgb(191, 221, 226) !important;
+}
+
+.card-button {
+  border-radius: 5px;
+}
+
+.home-header-button {
+  margin-top: 5rem;
+  max-width: 60%;
+}
+
+.home-footer-button {
+  max-width: 250px;
+  margin: 20px auto;
+}
+
+.home-footer div {
+  width: 100%;
+  text-align: center;
+}
+
+.how-to-play {
+  max-width: 60%;
+  margin: 40px auto;
+}
+
+.how-to-play h2 {
+  margin-bottom: 15px;
+}
+
+.positions {
+  margin: 40px auto;
+}
+
+.positions img {
+  max-width: 100%;
+  height: auto;
+}
+
+.positions .row {
+  margin: 50px 0px;
+}
+
+ul {
+  margin: 0;
+}
+
+ul.dashed {
+  list-style-type: none;
+}
+
+ul.dashed > li {
+  text-indent: -5px;
+}
+
+ul.dashed > li:before {
+  content: "\2014\a0";
+  text-indent: -5px;
+  padding-right: 5px;
+}

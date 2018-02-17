@@ -22,7 +22,7 @@ export class ConvertPipe implements PipeTransform {
         +count / th
       ).toFixed(2)}${this.translate.instant('COMMON.THOUSANDS')}`
     } else {
-      result = count.toString();
+      result = count && count.toString();
     }
 
     return result;

@@ -39,4 +39,4 @@ export function logout(reducer: ActionReducer<State>) {
   }
 }
 
-export const metaReducers: MetaReducer<State>[] = [logout];
+export const metaReducers: MetaReducer<State>[] = [logger, logout];

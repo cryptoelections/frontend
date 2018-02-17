@@ -1,9 +1,7 @@
 <div class="card">
   <!--<img class="card-img-top" src="" [alt]="city.name">-->
   <div class="card-block container city-card">
-    <div class="card-title text-center" [tooltip]="city.name" placement="auto">{{
-      city.name }}
-    </div>
+    <div class="card-title text-center"> {{ city.name }}</div>
     <div class="country align-items-center">
       <img
         class="city-country-flag"
@@ -16,14 +14,14 @@
       <span> <b>{{ city.population | convert }}</b> ({{ 'CITY.CARD.PERCENTAGE' | translate:percentage }}) </span>
       <app-parameters-pair
         [name]="'CITY.CARD.MAYOR' | translate"
-        [value]="mayor"
+        [value]="loadMayor()"
       ></app-parameters-pair>
     </p>
   </div>
   <div class="card-button-block text-center">
     <ng-container *ngIf="!isYours">
-      <button class="btn card-button">
-        {{ 'CITY.CARD.INVEST' | translate }} <b>{{ city.price }} ETH</b>
+      <button class="btn card-button" (click)="invest.emit(city)">
+        {{ 'CITY.CARD.INVEST' | translate }} <b>{{ price | eth }} ETH</b>
       </button>
       <span>{{ 'CITY.CARD.TO_WIN' | translate }}</span>
     </ng-container>

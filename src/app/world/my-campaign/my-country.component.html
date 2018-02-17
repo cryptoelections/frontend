@@ -1,0 +1,48 @@
+<accordion-group #group *ngIf="country">
+  <div accordion-heading class="my-country-header">
+    <div class="row align-items-center">
+      <div class="col-1">
+        <button class="btn key-country">
+          <i class="fas" [ngClass]="group.isOpen ? 'fa-sort-up' : 'fa-sort-down'"></i>
+        </button>
+      </div>
+      <div class="col-11">
+        <div class="row align-items-center">
+          <div class="my-country-image">
+            <img
+              [src]="'assets/images/country-flags/large/' + country?.code?.toLowerCase() + '.png'"
+              alt=""
+            />
+          </div>
+          <div
+            class="country-name col-md-6 col-xs-12 align-items-baseline"
+            [tooltip]="country?.name"
+            position="auto"
+          >
+            <h2>{{ country?.name }}</h2>
+            <span class="ml-2">{{ citiesOfCountry && citiesOfCountry.length }}
+                {{(citiesOfCountry.length === 1 ? 'CAMPAIGN.CITY' : 'CAMPAIGN.CITIES') | translate}}</span>
+          </div>
+          <div class="col-md-5 col-xs-12 text-right">
+            <button class="btn card-button my-campaign-button" *ngIf="true">
+              <span>{{ 'COUNTRY.CARD.INVEST_PRICE' | translate:sellParams }}</span>
+            </button>
+            <!-- todo add president badge-->
+          </div>
+        </div>
+        <div class="row progressbar">
+          <span class="empty"></span>
+          <span class="col-1">{{ percentage | number:'1.0-0' }}%</span>
+          <progressbar class="col-10" max="100" [value]="percentage"></progressbar>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngFor="let city of citiesOfCountry; let i = index">
+    <app-my-city
+      [city]="city"
+      [first]="i === 0"
+      [cities]="allCitiesByCountry[country.code]"
+    ></app-my-city>
+  </ng-container>
+</accordion-group>

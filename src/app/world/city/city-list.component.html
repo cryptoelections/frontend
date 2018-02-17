@@ -4,22 +4,28 @@
                  (queryChange)="queryChange.emit($event)"
                  (queueChange)="queueChange.emit($event)"></app-city-filter>
 
-<div class="list row">
+<div class="list row" *loading="isLoading">
   <div *ngFor="let city of list" class="col-lg-3 col-sm-6 col-xs-12">
-    <app-city-card [city]="city" [countries]="countries"
-                   [percent]="getElectoratePercentage(city)"></app-city-card>
+    <app-city-card [city]="city"
+                   [countries]="countries"
+                   [dynamic]="dynamicCities[city.id]"
+                   [percent]="getElectoratePercentage(city)"
+                   (invest)="invest.emit($event)"></app-city-card>
   </div>
 </div>
 
-<div class="col-xs-12 col-12" *ngIf="total > 8">
-  <pagination [directionLinks]="false"
-              [totalItems]="total"
-              [itemsPerPage]="8"
-              [maxSize]="10"
-              [firstText]="'COMMON.PAGINATION.FIRST_TEXT' | translate"
-              [lastText]="'COMMON.PAGINATION.LAST_TEXT' | translate"
-              [rotate]="false"
-              [(ngModel)]="currentPage"
-              (ngModelChange)="pageChange.emit($event)"></pagination>
-</div>
+<div *ngIf="!isLoading && (!list || !list.length)"><p>
+  {{ 'CITY.NOT_FOUND' | translate }}
+</p></div>
 
+<div class="row pagination" *ngIf="!isLoading">
+  <div class="col-xs-12 col-12" *ngIf="total > 8">
+    <pagination [directionLinks]="false"
+                [totalItems]="total"
+                [maxSize]="10"
+                [rotate]="false"
+                [itemsPerPage]="8"
+                [(ngModel)]="+currentPage"
+                (ngModelChange)="pageChange.emit($event)"></pagination>
+  </div>
+</div>

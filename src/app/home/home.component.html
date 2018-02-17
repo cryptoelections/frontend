@@ -1,1 +1,68 @@
-Home page
+<app-header class="home"></app-header>
+<div class="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-xs-12 p-5">
+        <h1>{{ 'HOME.GET_POWER' | translate }}</h1>
+        <h1>{{ 'HOME.RUN_COUNTRIES' | translate }}</h1>
+        <h1>{{ 'HOME.EARN_MONEY' | translate }}</h1>
+        <button class="card-button home-header-button">{{ 'HOME.START_YOUR_CAMPAIGN' | translate }}</button>
+      </div>
+      <div class="col-md-6 col-xs-12">
+        <img src="assets/images/box.png" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="how-to-play">
+    <h2>How to play:</h2>
+    <p>CryptoElections is a game about leading the countries by running an election campaign in cities. The more
+      electorate live the city — the more votes you get. Once you get the majority — you become a president. The aim is
+      to
+      become a president in as many countries as possible.</p>
+    <p> President will get 5% commission fee from every transaction in his country.</p>
+    <p>If you are the mayor of the city and someone wants to beat you will get up to 2 times more you paid.</p>
+  </div>
+</div>
+
+<div class="container positions">
+  <div class="row">
+    <div class="col-4">
+      <img src="assets/images/mayor.png" alt=""/>
+    </div>
+    <div class="col-8 align-self-center">
+      <div>
+        <h3><b>Mayor</b></h3>
+        <ul class="dashed">
+          <li>Can change the coat of arms of the city and it’s slogan</li>
+          <li>Get the financial compensation from up to 2x if someone displace him</li>
+          <li>Get all the votes from the city to his presidential campaign</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 align-self-center">
+      <div>
+        <h3><b>President</b></h3>
+        <ul class="dashed">
+          <li>Can change the background of his country on the World Map</li>
+          <li>Taxes. Get 5% commission fee from all transactions in his country.</li>
+          <li>Stays on his place until somebody won’t get 50%+1 vote</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-4">
+      <img src="assets/images/president.png" alt=""/>
+    </div>
+  </div>
+</div>
+
+<div class="home-footer">
+  <div>
+    <button class="card-button home-footer-button">{{ 'HOME.START_YOUR_CAMPAIGN' | translate }}</button>
+  </div>
+</div>
+
+<app-footer></app-footer>

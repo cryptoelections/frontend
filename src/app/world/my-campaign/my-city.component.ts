@@ -1,18 +1,9 @@
-import { Component, Input } from '@angular/core';
-import { City } from '../../shared/models/city.model';
+import {Component, Input} from '@angular/core';
+import {City} from '../../shared/models/city.model';
 
 @Component({
   selector: 'app-my-city',
-  template: `
-    <div class="row city" [ngClass]="{'my-city-row-top' : !first }">
-      <div class="name col-xs-12 col-md-4" [tooltip]="city.name">
-        <h4>{{ city.name }}</h4>
-      </div>
-      <div class="col-xs-12 col-md-8"><b>{{ city.population | convert }}</b>
-        ({{ 'CITY.CARD.PERCENTAGE' | translate:percentage}})
-      </div>
-    </div>
-  `
+  templateUrl: 'my-city.component.html'
 })
 export class MyCityComponent {
   @Input() public city: City;
@@ -21,13 +12,11 @@ export class MyCityComponent {
 
   public get percentage(): { percentage: string } {
     let count = 0;
-    this.cities.forEach((c: City) => count += +c.population);
-    const percentage = (
-      (
-        100 * +this.city.population
-      ) / count
-    ).toFixed(2);
-    return { percentage };
+    if (this.cities) {
+      this.cities.forEach((c: City) => count += +c.population);
+    }
+    const percentage = (100 * (+this.city.population / count)).toFixed(2);
+    return {percentage};
   }
 
 

@@ -1,0 +1,21 @@
+@keyframes Spinning {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#spinner {
+  font-weight: bold;
+  color: rgb(217, 7, 114);
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  font-size: 3rem;
+  -webkit-animation: Spinning 2000ms infinite linear;
+  -moz-animation: Spinning 2000ms infinite linear;
+  -o-animation: Spinning 2000ms infinite linear;
+  animation: Spinning 2000ms infinite linear;
+}

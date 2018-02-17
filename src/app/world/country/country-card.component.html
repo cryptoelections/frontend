@@ -1,20 +1,27 @@
-<div class="card">
-  <div class="card-block country-img-card">
+<div class="card" [ngClass]="{'card-disabled': country && !country.active }">
+  <div class="card-block country-img-card align-items-center">
     <img
       class="card-img"
       [src]="imageLink"
       onerror="this.src = 'assets/images/no-flag.png'"
       alt=""
     >
-    <!--todo add vertical alignment-->
   </div>
   <div class="card-block country-card">
     <h3 class="card-title text-center">{{ country.name }}</h3>
     <p class="card-text">
-      <span><b>{{ numberOfCities }} {{ 'COUNTRY.CARD.CITIES' | translate }}</b> {{ cityPriceRange }}</span><br/>
-      <span><b>{{ myCities }}</b> {{ 'COUNTRY.CARD.' + (myCities === 1 ? 'CITY' : 'CITIES') | translate }} {{ 'COUNTRY.CARD.UNDER_YOUR_CONTROL' | translate }}</span><br/>
+      <span><b>{{ numberOfCities }} {{(numberOfCities === 1 ? 'COUNTRY.CARD.CITY' : 'COUNTRY.CARD.CITIES')  | translate }}</b></span>
+
+      <span *ngIf="!!cityPriceRange().lowestPrice"> {{ cityPriceRange().lowestPrice | eth }}<span
+        *ngIf="!!cityPriceRange().highestPrice"> - {{ cityPriceRange().highestPrice | eth }}</span> ETH</span><br/>
+
+      <span><b>{{ myCities?.length }}</b> {{('COUNTRY.CARD.' + (myCities?.length === 1 ? 'CITY' : 'CITIES')) | translate }}
+        {{ 'COUNTRY.CARD.UNDER_YOUR_CONTROL' | translate }}</span><br/>
+
       <span><b>{{ electorate | convert }}</b> {{ 'COUNTRY.CARD.OF_ELECTORATE' | translate }}</span><br/>
+
       <span><b>{{ myElectorate | convert }}</b> {{ 'COUNTRY.CARD.SUPPORT_YOU' | translate }}</span><br/>
+
       <app-parameters-pair
         [name]="'COUNTRY.CARD.PRESIDENT' | translate"
         [value]="president"
@@ -22,13 +29,13 @@
     </p>
   </div>
   <div class="card-button-block text-center">
-    <ng-container *ngIf="!isYours">
+    <ng-container *ngIf="!isYours && country.active">
       <button class="btn card-button">
-        <span>{{'COUNTRY.CARD.INVEST' | translate }} <b>{{ price }} ETH </b></span>
+        <span>{{'COUNTRY.CARD.INVEST' | translate }} <b>{{ price | eth }} ETH </b></span>
       </button>
       <span>{{'COUNTRY.CARD.TO_WIN' | translate }}</span>
     </ng-container>
-    <ng-container *ngIf="isYours">
+    <ng-container *ngIf="isYours && country.active">
       <div class="president-sign" (click)="openModal(cityList)"> <!-- on click open modal -->
         <img
           class="mr-2"
@@ -36,6 +43,11 @@
           alt=""
         />
         <span class="president text-left">{{ 'COUNTRY.CARD.YOU_ARE_PRESIDENT' | translate }}</span>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!country.active">
+      <div class="president-sign">
+        {{ 'COUNTRY.CARD.NOT_IMPLEMENTED' | translate }}
       </div>
     </ng-container>
   </div>
@@ -54,6 +66,6 @@
     </button>
   </div>
   <div class="modal-body">
-    <pre>{{ costEffectiveCities | json }}</pre>
+    <pre>{{ costEffectiveCities[country.code] | json }}</pre>
   </div>
 </ng-template>

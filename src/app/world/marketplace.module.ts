@@ -23,6 +23,8 @@ import { myCampaignReducers } from '../shared/ngrx/my-campaign/my-campaign.reduc
 import { MyCampaignEffects } from '../shared/ngrx/my-campaign/my-campaign.effects';
 import { MyCountryComponent } from './my-campaign/my-country.component';
 import { MyCityComponent } from './my-campaign/my-city.component';
+import {MyCampaignFilterComponent} from './my-campaign/my-campaign-filter.component';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { MyCityComponent } from './my-campaign/my-city.component';
     CountryListComponent,
     CountryListContainerComponent,
     MetamaskComponent,
+    MyCampaignFilterComponent,
     MyCampaignComponent,
     MyCampaignContainerComponent,
     MyCityComponent,
@@ -47,7 +50,7 @@ import { MyCityComponent } from './my-campaign/my-city.component';
     SharedModule,
     StoreModule.forFeature('countries', countryReducers),
     StoreModule.forFeature('cities', cityReducers),
-    StoreModule.forFeature('myCampaign', myCampaignReducers),
+    StoreModule.forFeature('myCampaign', myCampaignReducers)
   ],
   providers: [],
 })

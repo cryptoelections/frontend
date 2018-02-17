@@ -11,7 +11,7 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" [routerLink]="['/home']">
       <img
         src="../../../assets/images/logo.png"
         class="d-inline-block align-top"
@@ -23,7 +23,7 @@
         <li class="nav-item" *ngFor="let link of links" [routerLinkActive]="['active']">
           <a
             class="nav-link"
-            [routerLink]="link.linkTo"
+            [routerLink]="[link.linkTo]"
             *ngIf="link.linkTo !== 'my' || auth.account"
           >
             {{ link.text | translate }}</a>
@@ -36,6 +36,7 @@
           [ngClass]="{ 'nickname': auth.accountNickname }"
           placement="bottom"
           [popover]="nicknameForm"
+          #pop="bs-popover"
           [outsideClick]="true"
         >{{ auth.accountNickname || auth.account }}</span>
         <span
@@ -44,23 +45,24 @@
           *ngIf="!auth.account"
         >{{ 'ACCOUNT.NOT_CONNECTED' | translate }}</span>
       </div>
+
+
+      <ng-template #nicknameForm>
+        <div class="container nickname-form" >
+          <h5> {{ 'ACCOUNT.SET_NICKNAME' | translate }} </h5>
+          <input
+            class="form-control"
+            type="text"
+            name="nickname"
+            [placeholder]="'ACCOUNT.NICKNAME_PLACEHOLDER' | translate"
+            [(ngModel)]="nickname"
+          />
+          <button class="btn card-button" (click)="set()">
+            {{ 'ACCOUNT.SET_NICKNAME' | translate }}
+          </button>
+        </div>
+      </ng-template>
+
     </div>
   </div>
 </nav>
-
-<ng-template #nicknameForm>
-  <div class="container nickname-form">
-    <h5> {{ 'ACCOUNT.SET_NICKNAME' | translate }} </h5>
-    <input
-      class="form-control"
-      type="text"
-      name="nickname"
-      [placeholder]="'ACCOUNT.NICKNAME_PLACEHOLDER' | translate"
-      [(ngModel)]="nickname"
-    />
-    <button class="btn card-button" (click)="set()">
-      {{ 'ACCOUNT.SET_NICKNAME' | translate }}
-    </button>
-    <!--todo pop.hide() when saving nickname-->
-  </div>
-</ng-template>

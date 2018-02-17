@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
@@ -11,23 +11,26 @@ export class HeaderComponent {
   public links = [
     {
       text: 'MENU.COUNTRIES',
-      linkTo: 'countries'
+      linkTo: '/countries'
     }, {
       text: 'MENU.CITIES',
-      linkTo: 'cities'
+      linkTo: '/cities'
       // },{
       //   text: 'MENU.MAP',
       //   linkTo: 'map'
     }, {
       text: 'MENU.MY_CAMPAIGN',
-      linkTo: 'my',
+      linkTo: '/my',
     }
   ];
+
+  @ViewChild('pop') public pop;
 
   constructor(public auth: AuthService) {
   }
 
   public set() {
     this.auth.setNickname(this.nickname);
+    this.pop.hide();
   }
 }

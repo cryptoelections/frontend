@@ -1,26 +1,26 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { HttpClient } from '@angular/common/http';
-import { HeaderComponent } from './layout/header/header.component';
-import { AppRoutingModule } from './app.routing';
-import { HomeComponent } from './home/home.component';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { ConfigService } from './shared/services/config.service';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { AuthService } from './shared/services/auth.service';
-import { MarketplaceModule } from './world/marketplace.module';
-import { SharedModule } from './shared/shared.module';
-import { CommonModule } from '@angular/common';
-import { StoreModule } from '@ngrx/store';
-import { metaReducers, reducers } from './shared/ngrx';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
+import {AppComponent} from './app.component';
+import {HttpClient} from '@angular/common/http';
+import {HeaderComponent} from './layout/header/header.component';
+import {AppRoutingModule} from './app.routing';
+import {HomeComponent} from './home/home.component';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {ConfigService} from './shared/services/config.service';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {AuthService} from './shared/services/auth.service';
+import {MarketplaceModule} from './world/marketplace.module';
+import {SharedModule} from './shared/shared.module';
+import {CommonModule} from '@angular/common';
+import {StoreModule} from '@ngrx/store';
+import {metaReducers, reducers} from './shared/ngrx';
+import {EffectsModule} from '@ngrx/effects';
+import {StoreRouterConnectingModule} from '@ngrx/router-store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {
-  AccordionModule, ModalModule, PaginationModule, PopoverModule, ProgressbarModule,
-  TooltipModule
+  AccordionModule, ModalModule, PaginationModule, PopoverModule, ProgressbarModule, TooltipModule
 } from 'ngx-bootstrap';
-import { FooterComponent } from './layout/footer/footer.component';
+import {FooterComponent} from './layout/footer/footer.component';
+import {LayoutComponent} from './layout/layout.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './i18n/', '.json');
@@ -40,7 +40,8 @@ export function InitAppFactory(auth: AuthService,
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    LayoutComponent
   ],
   imports: [
     AccordionModule.forRoot(),
@@ -53,7 +54,7 @@ export function InitAppFactory(auth: AuthService,
     PopoverModule.forRoot(),
     ProgressbarModule.forRoot(),
     SharedModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducers, {metaReducers}),
     StoreRouterConnectingModule,
     StoreDevtoolsModule.instrument(),
     TooltipModule.forRoot(),

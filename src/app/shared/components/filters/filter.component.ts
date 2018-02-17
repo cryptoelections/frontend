@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-filter',
   templateUrl: 'filter.component.html'
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent {
   @Input() public query: string;
   @Input() public sortBy: number;
   @Output() public sortByChange = new EventEmitter<number>();
@@ -14,12 +14,6 @@ export class FilterComponent implements OnInit {
 
   public header: string;
   public sortOptions: Array<{ option: number | string, name: string }>;
-
-  constructor(private activatedRoute: ActivatedRoute) {
-  }
-
-  public ngOnInit() {
-  }
 
   public onSortByChange() {
     this.sortByChange.emit(this.sortBy);

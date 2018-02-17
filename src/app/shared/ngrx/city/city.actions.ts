@@ -1,20 +1,39 @@
-import { Action } from '@ngrx/store'
-import { City } from '../../models/city.model';
+import {Action} from '@ngrx/store';
+import {City} from '../../models/city.model';
 
-export const LOAD_CITIES_REQUEST = '[CITY] LOAD_CITIES_REQUEST';
-export const LOAD_CITIES_RESPONSE = '[CITY] LOAD_CITIES_RESPONSE';
+export const LOAD_CITY_INFORMATION_REQUEST = '[CITY] LOAD_CITY_INFORMATION_REQUEST';
+export const LOAD_DYNAMIC_CITY_INFORMATION_REQUEST = '[CITY] LOAD_DYNAMIC_CITY_INFORMATION_REQUEST';
+export const LOAD_DYNAMIC_CITY_INFORMATION_RESPONSE = '[CITY] LOAD_DYNAMIC_CITY_INFORMATION_RESPONSE';
+export const LOAD_CITY_INFORMATION_RESPONSE = '[CITY] LOAD_CITY_INFORMATION_RESPONSE';
 export const FILTER_UPDATE = '[CITY] FILTER_UPDATE';
 export const LOAD_SELECTED_CITY = '[CITY] LOAD_SELECTED_CITY';
+export const INVEST = '[CITY] INVEST';
+export const INVEST_SUCCESS = '[CITY] INVEST_SUCCESS';
+export const INVEST_ERROR = '[CITY] INVEST_ERROR';
 
-export class LoadCitiesRequest implements Action {
-  type = LOAD_CITIES_REQUEST;
+export class LoadCityInformationRequest implements Action {
+  type = LOAD_CITY_INFORMATION_REQUEST;
 
   constructor(public payload?: any) {
   }
 }
 
-export class LoadCitiesResponse implements Action {
-  type = LOAD_CITIES_RESPONSE;
+export class LoadDynamicCityInformationRequest implements Action {
+  type = LOAD_DYNAMIC_CITY_INFORMATION_REQUEST;
+
+  constructor(public payload?: any) {
+  }
+}
+
+export class LoadDynamicCityInformationResponse implements Action {
+  type = LOAD_DYNAMIC_CITY_INFORMATION_RESPONSE;
+
+  constructor(public payload: Array<Partial<City>>) {
+  }
+}
+
+export class LoadCityInformationResponse implements Action {
+  type = LOAD_CITY_INFORMATION_RESPONSE;
 
   constructor(public payload: Array<City>) {
   }
@@ -34,7 +53,36 @@ export class LoadSelectedCity implements Action {
   }
 }
 
-export type Actions = LoadCitiesResponse
-  | LoadCitiesRequest
+export class Invest implements Action {
+  type = INVEST;
+
+  constructor(public payload: City) {
+  }
+}
+
+
+export class InvestSuccess implements Action {
+  type = INVEST_SUCCESS;
+
+  constructor(public payload: City) {
+  }
+}
+
+
+export class InvestError implements Action {
+  type = INVEST_ERROR;
+
+  constructor(public payload?: City) {
+  }
+}
+
+
+export type Actions = LoadCityInformationRequest
+  | LoadCityInformationResponse
+  | LoadDynamicCityInformationRequest
+  | LoadDynamicCityInformationResponse
   | FilterUpdate
-  | LoadSelectedCity;
+  | LoadSelectedCity
+  | Invest
+  | InvestSuccess
+  | InvestError;

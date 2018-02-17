@@ -1,7 +1,8 @@
 export interface Country {
-  id: string;
+  id: number;
   name: string;
   code: string;
   image: string;
   slogan: string;
+  active: number;
 }

@@ -1,33 +1,39 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { AuthServiceLoader } from './services/auth-service.loader';
-import { AuthGuard } from './services/auth.guard';
-import { AuthService } from './services/auth.service';
-import { ConfigService } from './services/config.service';
-import { StorageService } from './services/storage.service';
-import { CountryService } from './services/country.service';
-import { CityService } from './services/city.service';
-import { BaseService } from './services/base.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ParametersPairComponent } from './components/parameter-pair/parameter-pair.component';
-import { FormsModule } from '@angular/forms';
-import { HighLightPipe } from './pipes/highlight.pipe';
-import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
+import {AuthServiceLoader} from './services/auth-service.loader';
+import {AuthGuard} from './services/auth.guard';
+import {AuthService} from './services/auth.service';
+import {ConfigService} from './services/config.service';
+import {StorageService} from './services/storage.service';
+import {CountryService} from './services/country.service';
+import {CityService} from './services/city.service';
+import {BaseService} from './services/base.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ParametersPairComponent} from './components/parameter-pair/parameter-pair.component';
+import {FormsModule} from '@angular/forms';
+import {HighLightPipe} from './pipes/highlight.pipe';
+import {CommonModule} from '@angular/common';
+import {TranslateModule} from '@ngx-translate/core';
 import {
   AccordionModule, ModalModule, PaginationModule, PopoverModule, ProgressbarModule,
   TooltipModule
 } from 'ngx-bootstrap';
-import { FilterComponent } from './components/filters/filter.component';
-import { ConvertPipe } from './pipes/convert.pipe';
+import {FilterComponent} from './components/filters/filter.component';
+import {ConvertPipe} from './pipes/convert.pipe';
+import {LoaderComponent} from './components/loader/loader.component';
+import {LoadingDirective} from './directives/loading.directive';
+import {EthPipe} from './pipes/eth.pipe';
 
 
 @NgModule({
   declarations: [
     ConvertPipe,
+    EthPipe,
     FilterComponent,
     HighLightPipe,
+    LoaderComponent,
+    LoadingDirective,
     ParametersPairComponent
   ],
   imports: [
@@ -50,10 +56,13 @@ import { ConvertPipe } from './pipes/convert.pipe';
     BrowserModule,
     CommonModule,
     ConvertPipe,
+    EthPipe,
     FilterComponent,
     FormsModule,
     HighLightPipe,
     HttpClientModule,
+    LoaderComponent,
+    LoadingDirective,
     ModalModule,
     PaginationModule,
     ParametersPairComponent,
@@ -72,6 +81,7 @@ import { ConvertPipe } from './pipes/convert.pipe';
     CountryService,
     StorageService
   ],
+  entryComponents: [LoaderComponent]
 })
 export class SharedModule {
 }

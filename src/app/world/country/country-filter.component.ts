@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FilterComponent } from '../../shared/components/filters/filter.component';
+import {AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, Output} from '@angular/core';
+import {FilterComponent} from '../../shared/components/filters/filter.component';
 
 export enum CountrySortOption {
+  Availability,
   Name,
   PriceDown,
   PriceUp,
@@ -17,13 +18,16 @@ export enum CountrySortOption {
   templateUrl: '../../shared/components/filters/filter.component.html',
   styleUrls: ['../../shared/components/filters/filter.component.css']
 })
-export class CountryFilterComponent extends FilterComponent {
+export class CountryFilterComponent extends FilterComponent implements AfterViewInit {
   @Input() public sortBy: CountrySortOption;
   @Input() public query: string;
   @Output() public sortByChange = new EventEmitter<CountrySortOption>();
 
   public header = 'COUNTRY.TITLE';
   public sortOptions = [{
+    option: CountrySortOption.Availability,
+    name: 'COUNTRY.FILTER.SORT.AVAILABILITY'
+  }, {
     option: CountrySortOption.Name,
     name: 'COUNTRY.FILTER.SORT.NAME'
   }, {
@@ -48,4 +52,12 @@ export class CountryFilterComponent extends FilterComponent {
     //   option: CountrySortOption.Area,
     //   name: 'COUNTRY.FILTER.SORT.AREA'
   }];
+
+  constructor(private cd: ChangeDetectorRef) {
+    super();
+  }
+
+  public ngAfterViewInit() {
+    this.cd.detectChanges();
+  }
 }

@@ -1,3 +1,9 @@
 .key {
   font-weight: 700;
 }
+
+.height-container {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

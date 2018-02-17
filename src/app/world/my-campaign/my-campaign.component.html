@@ -1,7 +1,11 @@
-<accordion>
+<app-my-campaign-filter *ngIf="myCountries?.length"
+                        [query]="query"
+                        (queryChange)="queryChange.emit($event)"></app-my-campaign-filter>
+<accordion class="pt-4" *loading="isLoading">
   <ng-container *ngIf="myCountries?.length">
     <ng-container *ngFor="let country of myCountries">
       <app-my-country [country]="countries[country]"
+                      [allCitiesByCountry]="cities"
                       [citiesOfCountry]="myCitiesByCountry[country]"
                       [percentage]="percentageByCountry(country)"
                       [sellParams]="price(country)"></app-my-country>
@@ -19,3 +23,15 @@
 
   </ng-container>
 </accordion>
+
+<div class="row pagination" *ngIf="!isLoading">
+  <div class="col-xs-12 col-12" *ngIf="total > 4">
+    <pagination [directionLinks]="false"
+                [totalItems]="total"
+                [maxSize]="10"
+                [rotate]="false"
+                [itemsPerPage]="4"
+                [(ngModel)]="+page"
+                (ngModelChange)="pageChange.emit($event)"></pagination>
+  </div>
+</div>

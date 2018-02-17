@@ -5,21 +5,25 @@
                     (queueChange)="queueChange.emit($event)">
 </app-country-filter>
 
-<!--<mat-divider></mat-divider>-->
-
-<div class="list row">
-  <div class="col-lg-3 col-sm-6 col-xs-12" *ngFor="let country of list">
-    <app-country-card [country]="country"
+<div class="list row" *loading="isLoading">
+  <ng-container *ngFor="let country of list">
+    <app-country-card class="col-lg-3 col-sm-6 col-xs-12"
+                      [country]="country"
                       [cities]="citiesByCountries"
+                      [cityDynamic]="dynamicCities"
+                      [dynamic]="dynamicCountries[country.id]"
+                      [myCities]="myCities && myCities[country.code] || []"
                       [costEffectiveCities]="mostCostEffectiveCountries"
                       [price]="price(country)"
                       [electorate]="electorate(country)"
+                      [myElectorate]="myElectorate(country)"
                       [numberOfCities]="numberOfCities(country)"></app-country-card>
-  </div>
+  </ng-container>
 </div>
 
 
-<div class="row pagination">
+
+<div class="row pagination" *ngIf="!isLoading">
   <div class="col-xs-12 col-12" *ngIf="total > 8">
     <pagination [directionLinks]="false"
                 [totalItems]="total"
