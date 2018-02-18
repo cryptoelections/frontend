@@ -22,7 +22,7 @@ export class CityListComponent {
   @Output() public queueChange = new EventEmitter<boolean>();
   @Output() public queryChange = new EventEmitter<string>();
   @Output() public pageChange = new EventEmitter<number>();
-  @Output() public invest = new EventEmitter<City>();
+  @Output() public invest = new EventEmitter<{ city: City, price: number | string }>();
 
   public getElectoratePercentage(city): string {
     let count = 0;

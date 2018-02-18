@@ -11,7 +11,7 @@ export class CityService extends BaseService<City> {
       .map(response => JSON.parse(JSON.stringify(response)));
   }
 
-  public getDynamic(): Observable<Array<City>> {
+  public getDynamic(): Observable<{[id: string]: Partial<City>}> {
     const url = 'data/cities-dynamic.json';
     return this.http.get(url)
       .map(response => JSON.parse(JSON.stringify(response)));

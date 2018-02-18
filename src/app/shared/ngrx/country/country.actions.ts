@@ -32,7 +32,7 @@ export class LoadDynamicCountryInformationRequest implements Action {
 export class LoadDynamicCountryInformationResponse implements Action {
   type = LOAD_DYNAMIC_COUNTRY_INFORMATION_RESPONSE;
 
-  constructor(public payload: any) {
+  constructor(public payload: { [id: string]: Partial<Country> }) {
   }
 }
 

@@ -1,11 +1,21 @@
 <div class="jumbotron">
   <div class="container">
-    <h1> {{ 'ACCOUNT.NOT_CONNECTED' | translate }} </h1>
-    <p> {{ 'ACCOUNT.REQUIRE_METAMASK' | translate }}</p>
-    <h4> {{ 'ACCOUNT.INSTALL' | translate }}
-      <a href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn">
-        MetaMask
-      </a>
-    </h4>
+    <ng-container *ngIf="!metamaskIsLocked && !goodNetwork">
+      <h1> {{ 'ACCOUNT.NOT_CONNECTED' | translate }} </h1>
+      <p> {{ 'ACCOUNT.REQUIRE_METAMASK' | translate }}</p>
+      <h4> {{ 'ACCOUNT.INSTALL' | translate }}
+        <a href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn">
+          MetaMask
+        </a>
+      </h4>
+    </ng-container>
+    <ng-container *ngIf="metamaskIsLocked && goodNetwork">
+      <h2> {{ 'ACCOUNT.METAMASK_LOCKED' | translate }} </h2>
+      <p> {{ 'ACCOUNT.METAMASK_LOCKED_TEXT' | translate }}</p>
+    </ng-container>
+    <ng-container *ngIf="!goodNetwork">
+      <h2> {{ 'ACCOUNT.WRONG_NETWORK' | translate }} </h2>
+      <p> {{ 'ACCOUNT.WRONG_NETWORK_TEXT' | translate }}</p>
+    </ng-container>
   </div>
 </div>

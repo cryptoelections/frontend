@@ -113,8 +113,11 @@ export class CountryListContainerComponent extends WithUnsubscribe() implements 
     this.store.dispatch(new countryActions.FilterUpdate({page}));
   }
 
-  public invest(city: City) {
-    this.store.dispatch(new cityActions.Invest(city));
+  public invest(data: { city: City, price: number | string }) {
+    this.store.dispatch(new cityActions.Invest({
+      id: data.city.id.toString(),
+      price: data.price
+    }));
   }
 
   private initFilters() {

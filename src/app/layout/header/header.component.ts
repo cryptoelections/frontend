@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import { AuthService } from '../../shared/services/auth.service';
+import { Web3Service } from '../../shared/services/web3.service';
 
 @Component({
   selector: 'app-header',
@@ -26,11 +26,11 @@ export class HeaderComponent {
 
   @ViewChild('pop') public pop;
 
-  constructor(public auth: AuthService) {
+  constructor(public web3Service: Web3Service) {
   }
 
   public set() {
-    this.auth.setNickname(this.nickname);
+    this.web3Service.setNickname(this.nickname);
     this.pop.hide();
   }
 }

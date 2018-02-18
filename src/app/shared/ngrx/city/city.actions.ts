@@ -28,7 +28,7 @@ export class LoadDynamicCityInformationRequest implements Action {
 export class LoadDynamicCityInformationResponse implements Action {
   type = LOAD_DYNAMIC_CITY_INFORMATION_RESPONSE;
 
-  constructor(public payload: Array<Partial<City>>) {
+  constructor(public payload: {[id: string]: Partial<City>}) {
   }
 }
 
@@ -56,7 +56,7 @@ export class LoadSelectedCity implements Action {
 export class Invest implements Action {
   type = INVEST;
 
-  constructor(public payload: City) {
+  constructor(public payload: {id: string, price?: number | string}) {
   }
 }
 
@@ -64,7 +64,7 @@ export class Invest implements Action {
 export class InvestSuccess implements Action {
   type = INVEST_SUCCESS;
 
-  constructor(public payload: City) {
+  constructor(public payload: string) {
   }
 }
 
@@ -72,7 +72,7 @@ export class InvestSuccess implements Action {
 export class InvestError implements Action {
   type = INVEST_ERROR;
 
-  constructor(public payload?: City) {
+  constructor(public payload?: string) {
   }
 }
 

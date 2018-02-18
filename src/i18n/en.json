@@ -24,7 +24,11 @@
     "REQUIRE_METAMASK": "CryptoElections requires a MetaMask add-on installed in your browser.",
     "INSTALL": "Install",
     "SET_NICKNAME": "Set Nickname",
-    "NICKNAME_PLACEHOLDER": "Type Your Nickname"
+    "NICKNAME_PLACEHOLDER": "Type Your Nickname",
+    "METAMASK_LOCKED": "Your MetaMask is locked",
+    "METAMASK_LOCKED_TEXT": "Simply open MetaMask and follow the instructions to unlock it.",
+    "WRONG_NETWORK": "Oops, you’re on the wrong network",
+    "WRONG_NETWORK_TEXT": "Simply open MetaMask and switch over to the Main Ethereum Network."
   },
   "CITY": {
     "TITLE": "Cities",
@@ -109,7 +113,7 @@
     }
   },
   "CAMPAIGN": {
-    "TITLE":"My campaign",
+    "TITLE": "My campaign",
     "CITY": "city",
     "CITIES": "cities",
     "START": "Start your campaign",

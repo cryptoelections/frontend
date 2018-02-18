@@ -6,7 +6,8 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {Country} from '../../shared/models/country.model';
 import {City} from '../../shared/models/city.model';
 import {TranslateService} from '@ngx-translate/core';
-import {AuthService} from '../../shared/services/auth.service';
+import {Web3Service} from '../../shared/services/web3.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-country-card',
@@ -24,7 +25,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   @Input() public cityDynamic;
   @Input() public numberOfCities: number;
   @Input() public nicknames;
-  @Output() public invest = new EventEmitter<City>();
+  @Output() public invest = new EventEmitter<{ city: City, price: number | string }>();
   public sortedCities: Array<City>;
 
   public get imageLink(): string {
@@ -41,9 +42,10 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
     return this.dynamic && this.dynamic.president === this.auth.coinbase;
   }
 
-  constructor(private auth: AuthService,
+  constructor(private auth: Web3Service,
               private translate: TranslateService,
-              private cd: ChangeDetectorRef) {
+              private cd: ChangeDetectorRef,
+              private router: Router) {
   }
 
   public ngOnChanges(changes: SimpleChanges) {
@@ -74,5 +76,16 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
 
   public isYoursCity(city: City) {
     return !!this.myCities.find(myCity => city.id === myCity.id);
+  }
+
+  public tryToInvest(city: City) {
+    if (this.auth.coinbase) {
+      this.invest.emit({
+        city,
+        price: this.cityDynamic && this.cityDynamic[city.id] && this.cityDynamic[city.id].price
+      });
+    } else {
+      this.router.navigate(['/metamask']);
+    }
   }
 }

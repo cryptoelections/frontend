@@ -1,5 +1,6 @@
-import { ActionReducerMap, ActionReducer, MetaReducer } from '@ngrx/store';
-import { Params } from '@angular/router';
+import {ActionReducerMap, ActionReducer, MetaReducer} from '@ngrx/store';
+import {Params} from '@angular/router';
+import {environment} from '../../../environments/environment';
 
 import * as fromRouter from '@ngrx/router-store';
 
@@ -36,7 +37,7 @@ export function logout(reducer: ActionReducer<State>) {
     }
 
     return reducer(state, action);
-  }
+  };
 }
 
-export const metaReducers: MetaReducer<State>[] = [logger, logout];
+export const metaReducers: MetaReducer<State>[] = environment.production ? [logout] : [logger, logout];

@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {StorageKeys} from './storage.service';
-import {HttpClient} from '@angular/common/http';
-import {instantiateDefaultStyleNormalizer} from '@angular/platform-browser/animations/src/providers';
+import {environment} from '../../../environments/environment';
 
 const Web3 = require('web3');
 const Eth = require('ethjs');
@@ -11,42 +10,60 @@ const contract = require('truffle-contract');
 const json = require('../../../data/CryptoCity.json');
 declare var window: any;
 
-export const GAS = 50000;
+export enum Network {
+  Main = 1,
+  Ropsten = 3,
+}
+
 
 @Injectable()
-export class AuthService {
+export class Web3Service {
   public web3;
   public accounts;
   public account;
   public accountNickname;
   public coinbase;
+  public network;
 
   public CryptoCity;
 
-  constructor(private http: HttpClient) {
-    this.web3 = new Web3(window.web3.currentProvider);
+  constructor() {
+    const provider = window.web3 && window.web3.currentProvider || new Web3.providers.HttpProvider('http://localhost:8545');
+    this.web3 = new Web3(provider);
+    window.web3.version.getNetwork((err, netId) => {
+      this.network = parseInt(netId);
 
-    this.CryptoCity = contract(json);
-    this.CryptoCity.setProvider(window.web3.currentProvider);
+      if (this.network === environment.network) {
+        this.CryptoCity = contract(json);
+        this.CryptoCity.setProvider(provider);
+      }
+    });
+  }
+
+  public get isLocked() {
+    return window.web3 && !this.coinbase;
   }
 
   public get isLoggedIn() {
-    return !!this.account;
+    return this.network === environment.network && !!this.coinbase;
   }
 
   public getAccount(): Observable<any> {
-    this.web3.eth.getCoinbase().then(a => {
-      this.coinbase = a;
-      localStorage.setItem('coinbase', JSON.stringify(a));
-      this.CryptoCity.defaults({from: this.coinbase});
-    });
-
+    this.web3.eth.getCoinbase()
+      .then(a => {
+        this.coinbase = a;
+        this.getNickname(a).then(nick => this.accountNickname = nick);
+        this.CryptoCity.defaults({from: this.coinbase});
+      })
+      .catch((err) => Observable.of(err));
 
     return this.web3.eth.getAccounts((err, accs) => {
       this.accounts = accs;
-      this.account = this.accounts[0];
-      localStorage.setItem(StorageKeys.Account, JSON.stringify(this.account));
-      this.getNickname(this.account).then(nickname => this.accountNickname = nickname);
+      this.account = this.accounts && this.accounts[0];
+      localStorage.setItem(StorageKeys.Account, JSON.stringify({address: this.coinbase, nickname: this.accountNickname}));
+      if (this.CryptoCity) {
+        this.getNickname(this.account).then(nickname => this.accountNickname = nickname);
+      }
       return Observable.of(this.account);
     });
   }
@@ -69,14 +86,15 @@ export class AuthService {
       });
   }
 
-  public invest(cityId) {
+  public invest(cityId, price) {
     let CryptoCityInstance;
-    return this.CryptoCity.deployed()
+    return this.CryptoCity && this.CryptoCity.deployed()
       .then((instance) => {
         CryptoCityInstance = instance;
-        return this.getPrice(cityId).then(price => {
+        return this.getPrice(cityId).then(p => {
+          console.log(p, price);
           return CryptoCityInstance.buyCity(cityId, {
-            value: price,
+            value: p || price,
             to: instance.address
           });
         });
@@ -85,7 +103,7 @@ export class AuthService {
 
   public getUserCities(i: number) {
     let CryptoCityInstance;
-    return this.CryptoCity.deployed()
+    return this.CryptoCity && this.CryptoCity.deployed()
       .then((instance) => {
         CryptoCityInstance = instance;
         return CryptoCityInstance.userCities.call(this.coinbase, i);
@@ -94,11 +112,11 @@ export class AuthService {
 
   public getPrice(cityId) {
     let CryptoCityInstance;
-    return this.CryptoCity.deployed()
+    return this.CryptoCity && this.CryptoCity.deployed()
       .then((instance) => {
         CryptoCityInstance = instance;
 
-        return CryptoCityInstance.getCityPrice(cityId);
+        return CryptoCityInstance.getPrices(cityId);
       });
   }
 }

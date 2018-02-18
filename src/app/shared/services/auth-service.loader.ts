@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { AuthService } from '../services/auth.service';
+import { Web3Service } from './web3.service';
 
 
 @Injectable()
 export class AuthServiceLoader implements CanActivate {
   private _isLoading: Observable<boolean>;
 
-  constructor(private authService: AuthService,
+  constructor(private web3Service: Web3Service,
               private router: Router) {
   }
 
   public canActivate(): any {
-    if (!this.authService.isLoggedIn) {
+    if (!this.web3Service.isLoggedIn) {
       this.router.navigate(['/metamask']);
       return Observable.of(false);
     }
 
-    if (this.authService.account) {
+    if (this.web3Service.account) {
       return Observable.from([true]);
     } else {
       return this._load();
@@ -27,9 +27,9 @@ export class AuthServiceLoader implements CanActivate {
 
   private _load() {
     if (!this._isLoading) {
-      this._isLoading = this.authService.getAccount()
+      this._isLoading = this.web3Service.getAccount()
         .map((user) => {
-          this.authService.account = user;
+          this.web3Service.coinbase = user;
           this._isLoading = null;
           return true;
         }).share();

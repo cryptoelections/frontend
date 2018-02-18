@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Country} from '../../shared/models/country.model';
 import {City} from '../../shared/models/city.model';
-import {AuthService} from '../../shared/services/auth.service';
+import {Web3Service} from '../../shared/services/web3.service';
 
 @Component({
   selector: 'app-my-country',
@@ -33,9 +33,9 @@ export class MyCountryComponent {
 
   public get isYours() {
     return this.dynamicCountries && this.dynamicCountries[this.country.id]
-      && this.dynamicCountries[this.country.id].president === this.authService.coinbase;
+      && this.dynamicCountries[this.country.id].president === this.web3Service.coinbase;
   }
 
-  constructor(private authService: AuthService) {
+  constructor(private web3Service: Web3Service) {
   }
 }

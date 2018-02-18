@@ -103,8 +103,11 @@ export class CityListContainerComponent extends WithUnsubscribe() implements OnI
     this.store.dispatch(new cityActions.FilterUpdate({page}));
   }
 
-  public invest(city: City) {
-    this.store.dispatch(new cityActions.Invest(city));
+  public invest(data: { city: City, price: number | string }) {
+    this.store.dispatch(new cityActions.Invest({
+      id: data.city.id.toString(),
+      price: data.price
+    }));
   }
 
   private initFilters() {

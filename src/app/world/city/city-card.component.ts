@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {City} from '../../shared/models/city.model';
-import {AuthService} from '../../shared/services/auth.service';
+import {Web3Service} from '../../shared/services/web3.service';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
@@ -13,7 +13,7 @@ export class CityCardComponent {
   @Input() public percent;
   @Input() public dynamic;
   @Input() public nicknames;
-  @Output() public invest = new EventEmitter<City>();
+  @Output() public invest = new EventEmitter<{ city: City, price: number | string }>();
   public query: string;
   public isYours: boolean;
 
@@ -40,13 +40,13 @@ export class CityCardComponent {
     return this.countries && this.countries[this.city.country] && this.countries[this.city.country].name;
   }
 
-  constructor(private authService: AuthService,
+  constructor(private web3Service: Web3Service,
               private translate: TranslateService) {
   }
 
   public loadMayor() {
     const address = this.dynamic && this.dynamic.mayor;
-    this.isYours = address === this.authService.coinbase;
+    this.isYours = address === this.web3Service.coinbase;
     return this.dynamic && this.dynamic.mayor
       && (this.nicknames && this.nicknames[this.dynamic.mayor] || this.dynamic.mayor)
       || this.translate.instant('CITY.CARD.NOT_ELECTED_YET');

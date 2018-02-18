@@ -26,7 +26,7 @@ export class CountryListComponent {
   @Output() public queryChange = new EventEmitter<string>();
   @Output() public queueChange = new EventEmitter<boolean>();
   @Output() public pageChange = new EventEmitter<number>();
-  @Output() public invest = new EventEmitter<City>();
+  @Output() public invest = new EventEmitter<{ city: City, price: number | string }>();
 
   public numberOfCities(country: Country): number {
     return this.citiesByCountries[country.code].length;

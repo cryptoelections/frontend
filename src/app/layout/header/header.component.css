@@ -80,12 +80,14 @@
 
 .nickname-form .btn {
   margin-top: 10px;
-  width: 70%
+  width: 70%;
+  min-height:40px;
 }
 
 .nickname-form input {
   color: rgb(178, 178, 178);
   border: 1px solid rgb(178, 178, 178);
+  margin: 20px 0px;
 }
 
 .nickname-form input::-webkit-input-placeholder {

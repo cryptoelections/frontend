@@ -20,7 +20,7 @@
   </div>
   <div class="card-button-block text-center">
     <ng-container *ngIf="!isYours">
-      <button class="btn card-button" (click)="invest.emit(city)">
+      <button class="btn card-button" (click)="invest.emit({city: city, price: price})">
         {{ 'CITY.CARD.INVEST' | translate }} <b>{{ price | eth }} ETH</b>
       </button>
       <span>{{ 'CITY.CARD.TO_WIN' | translate }}</span>

@@ -1,9 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AuthServiceLoader} from './services/auth-service.loader';
 import {AuthGuard} from './services/auth.guard';
-import {AuthService} from './services/auth.service';
 import {ConfigService} from './services/config.service';
 import {StorageService} from './services/storage.service';
 import {CountryService} from './services/country.service';
@@ -25,6 +24,7 @@ import {LoaderComponent} from './components/loader/loader.component';
 import {LoadingDirective} from './directives/loading.directive';
 import {EthPipe} from './pipes/eth.pipe';
 import {NicknamesService} from './services/nicknames.service';
+import {Web3Service} from './services/web3.service';
 
 
 @NgModule({
@@ -74,14 +74,14 @@ import {NicknamesService} from './services/nicknames.service';
   ],
   providers: [
     AuthGuard,
-    AuthService,
     AuthServiceLoader,
     BaseService,
     CityService,
     ConfigService,
     CountryService,
     NicknamesService,
-    StorageService
+    StorageService,
+    Web3Service
   ],
   entryComponents: [LoaderComponent]
 })
