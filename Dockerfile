@@ -12,4 +12,4 @@ RUN npm run build
 # package static content
 FROM nginx:stable-alpine
 
-COPY --from=builder /tmp/frontend/dist/ /../var/www/html/
+COPY --from=builder /tmp/frontend/dist/ /var/www/html/
