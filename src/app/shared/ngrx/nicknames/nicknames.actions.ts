@@ -13,7 +13,7 @@ export class LoadNicknamesRequest implements Action {
 export class LoadNicknamesResponse implements Action {
   type = LOAD_NICKNAMES_RESPONSE;
 
-  constructor(public payload: Array<string>) {
+  constructor(public payload: { [address: string]: string }) {
   }
 }
 

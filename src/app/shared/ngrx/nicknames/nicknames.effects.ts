@@ -11,7 +11,7 @@ export class NicknamesEffects {
   @Effect()
   loadNicknames$: Observable<Action> = this.actions$
     .ofType(nicknameActions.LOAD_NICKNAMES_REQUEST)
-    .switchMap((action: nicknameActions.LoadNicknamesResponse) => this.nicknames.getDynamic()
+    .switchMap((action: nicknameActions.LoadNicknamesRequest) => this.nicknames.getDynamic()
       .map((res) => new nicknameActions.LoadNicknamesResponse(res)));
 
   constructor(private actions$: Actions,
