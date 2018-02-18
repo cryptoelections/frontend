@@ -4,17 +4,9 @@ import {StorageKeys} from './storage.service';
 import {environment} from '../../../environments/environment';
 
 const Web3 = require('web3');
-const Eth = require('ethjs');
-
 const contract = require('truffle-contract');
 const json = require('../../../data/CryptoCity.json');
 declare var window: any;
-
-export enum Network {
-  Main = 1,
-  Ropsten = 3,
-}
-
 
 @Injectable()
 export class Web3Service {
@@ -30,14 +22,20 @@ export class Web3Service {
   constructor() {
     const provider = window.web3 && window.web3.currentProvider || new Web3.providers.HttpProvider('http://localhost:8545');
     this.web3 = new Web3(provider);
-    window.web3.version.getNetwork((err, netId) => {
-      this.network = parseInt(netId);
+    if (window.web3) {
+      window.web3.version.getNetwork((err, netId) => {
+        this.network = parseInt(netId);
 
-      if (this.network === environment.network) {
-        this.CryptoCity = contract(json);
-        this.CryptoCity.setProvider(provider);
-      }
-    });
+        if (this.network === environment.network) {
+          this.CryptoCity = contract(json);
+          this.CryptoCity.setProvider(provider);
+        }
+      });
+    }
+  }
+
+  public get noMetamask() {
+    return !window.web3;
   }
 
   public get isLocked() {
@@ -91,14 +89,15 @@ export class Web3Service {
     return this.CryptoCity && this.CryptoCity.deployed()
       .then((instance) => {
         CryptoCityInstance = instance;
-        return this.getPrice(cityId).then(p => {
-          console.log(p, price);
-          return CryptoCityInstance.buyCity(cityId, {
-            value: p || price,
-            to: instance.address
-          });
+
+        // todo check price of the city before buying
+        // return this.getPrice(cityId).then(p => {
+        return CryptoCityInstance.buyCity(cityId, {
+          value: price,
+          to: instance.address
         });
       });
+    // });
   }
 
   public getUserCities(i: number) {

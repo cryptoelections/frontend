@@ -1,9 +1,6 @@
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 import {createFeatureSelector, createSelector} from '@ngrx/store';
-import {City} from '../../models/city.model';
 import * as actions from './my-campaign.actions';
-import * as fromCities from '../city/city.reducers';
-import * as fromCountries from '../country/country.reducers';
 
 export interface State extends EntityState<string> {
   loading: boolean;
@@ -65,43 +62,3 @@ export const isLoading = createSelector(getMyCampaignEntityState, state => state
 export const filters = createSelector(getMyCampaignEntityState, state => state.filters);
 export const query = createSelector(filters, state => state.query);
 export const page = createSelector(filters, state => +state.page);
-export const selectFilteredList = createSelector(fromCities.citiesByCountriesEntities,
-  fromCities.selectEntities, fromCountries.selectEntities, selectAll, filters,
-  (citiesByCountries, cityEntities, countryEntities, myCities, filter) => {
-    const lowerQuery = filter.query && filter.query.toLowerCase();
-    const filterByQuery = (city: City) => !filter.query
-      || city.name.toLowerCase().indexOf(lowerQuery) > -1
-      || countryEntities[city.country].name.toLowerCase().indexOf(lowerQuery) > -1;
-
-    return myCities.map((id: string) => cityEntities[id]).filter((city: City) => filterByQuery(city));
-  });
-
-export const selectAllByCountries = createSelector(selectAll, fromCities.selectEntities, (myCities, cityEntities) => {
-  return myCities.map((id: string) => cityEntities[id]).reduce((m, i) => ({
-    ...m, [i.country]: (
-      m[i.country] ? [...m[i.country], i] : [i]
-    )
-  }), {});
-});
-
-export const filteredListCountries = createSelector(selectFilteredList, (myCities) => {
-  let numberCitiesForPage = 0;
-  const myCountries = [];
-
-  myCities.forEach(city => {
-    if (myCountries.indexOf(city && city.country) === -1) {
-      myCountries.push(city && city.country);
-    }
-    numberCitiesForPage++;
-  });
-  return myCountries;
-});
-
-export const filteredListCountriesTotal = createSelector(filteredListCountries, list => list && list.length);
-export const filteredListForPage = createSelector(selectFilteredList, filteredListCountries, page, (myCities, countries, p) => {
-  const sortedList = myCities.sort((city: City, city2: City) => city.country < city2.country ? -1 : 1);
-
-  const first = sortedList.findIndex((city: City) => city && city.country === countries[p * 4 - 4]);
-  const last = sortedList.findIndex((city: City) => city && city.country === countries[p * countries.length]);
-  return sortedList.splice(first, (last < 0 ? countries.length : last));
-});

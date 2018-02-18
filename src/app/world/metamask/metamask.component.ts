@@ -17,10 +17,14 @@ export class MetamaskComponent {
     }, 1000);
   }
 
-  public get goodNetwork() {
+  public get noMetamask() {
+    return this.web3Service.noMetamask;
+  }
+
+  public get wrongNetwork() {
     return !!this.web3Service.network
       && !!this.web3Service.coinbase
-      && this.web3Service.network === environment.network;
+      && this.web3Service.network !== environment.network;
   }
 
   public get metamaskIsLocked() {

@@ -13,7 +13,6 @@ import * as fromCountries from '../../shared/ngrx/country/country.reducers';
 import * as countryActions from '../../shared/ngrx/country/country.actions';
 import * as cityActions from '../../shared/ngrx/city/city.actions';
 import * as myCampaignActions from '../../shared/ngrx/my-campaign/my-campaign.actions';
-import * as fromMyCampaign from '../../shared/ngrx/my-campaign/my-campaign.reducers';
 import * as nicknamesActions from '../../shared/ngrx/nicknames/nicknames.actions';
 import * as fromNicknames from '../../shared/ngrx/nicknames/nicknames.reducers';
 
@@ -53,7 +52,7 @@ export class CountryListContainerComponent extends WithUnsubscribe() implements 
   readonly citiesByCountries$ = this.store.select(fromCities.citiesByCountriesEntities);
   readonly costEffectiveCities$ = this.store.select(fromCountries.selectMostCostEffectiveCitiesForCountry);
   readonly dynamicInfoCities$ = this.store.select(fromCities.getDynamicInfoEntities);
-  readonly myCitiesByCountries$ = this.store.select(fromMyCampaign.selectAllByCountries);
+  readonly myCitiesByCountries$ = this.store.select(fromCountries.selectAllByCountries);
   readonly dynamicCountries$ = this.store.select(fromCountries.getDynamicInfoEntities);
   readonly nicknames$ = this.store.select(fromNicknames.selectEntities);
 

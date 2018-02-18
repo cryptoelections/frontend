@@ -322,3 +322,23 @@ img.modal-img {
   margin-bottom: 0;
 }
 
+.accordion-questions {
+  width: 60%;
+  margin: 150px auto;
+}
+
+.accordion-questions .panel-heading {
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  background-color: rgb(204, 204, 204);
+}
+
+.accordion-questions .justify-content-between {
+  width: 100%;
+  display: inline-flex;
+}
+
+.accordion-questions img {
+  width: 100%;
+  height: auto
+}

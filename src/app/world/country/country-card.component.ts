@@ -1,8 +1,4 @@
-import {
-  AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges,
-  TemplateRef
-} from '@angular/core';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import {AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {Country} from '../../shared/models/country.model';
 import {City} from '../../shared/models/city.model';
 import {TranslateService} from '@ngx-translate/core';
@@ -39,10 +35,10 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   }
 
   public get isYours(): boolean {
-    return this.dynamic && this.dynamic.president === this.auth.coinbase;
+    return this.dynamic && this.dynamic.president === this.web3Service.coinbase;
   }
 
-  constructor(private auth: Web3Service,
+  constructor(private web3Service: Web3Service,
               private translate: TranslateService,
               private cd: ChangeDetectorRef,
               private router: Router) {
@@ -79,7 +75,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   }
 
   public tryToInvest(city: City) {
-    if (this.auth.coinbase) {
+    if (this.web3Service.isLoggedIn) {
       this.invest.emit({
         city,
         price: this.cityDynamic && this.cityDynamic[city.id] && this.cityDynamic[city.id].price
