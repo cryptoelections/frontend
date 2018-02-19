@@ -13,4 +13,4 @@ RUN npm run build
 FROM nginx:stable-alpine
 
 #COPY --from=builder /tmp/frontend/dist/ /usr/local/nginx/html/
-COPY --from=builder /tmp/frontend/dist/ /site/wwwroot/
+COPY --from=builder /tmp/frontend/dist/ /var/www/html/
