@@ -2,6 +2,7 @@ FROM node:9.5 as builder
 
 LABEL builder=1
 
+
 COPY package.json package-lock.json /tmp/frontend/
 WORKDIR /tmp/frontend
 RUN npm install
@@ -11,7 +12,7 @@ RUN npm run build
 
 # package static content
 FROM nginx:stable-alpine
-COPY nginx.conf /nginx/nginx.conf
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 
 COPY --from=builder /tmp/frontend/dist/ /usr/local/nginx/html/
 #COPY --from=builder /tmp/frontend/dist/ /var/www/html/

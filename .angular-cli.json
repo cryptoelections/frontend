@@ -12,7 +12,8 @@
         "icon.ico",
         "data",
         "config",
-        "i18n"
+        "i18n",
+        "nginx"
       ],
       "index": "index.html",
       "main": "main.ts",
