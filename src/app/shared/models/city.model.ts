@@ -12,5 +12,5 @@ export interface City {
   longitude: string;
   purchases: number;
   slogan: string;
-  picture: string;
+  coat: string;
 }

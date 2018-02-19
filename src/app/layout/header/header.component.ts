@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import { Web3Service } from '../../shared/services/web3.service';
+import {Web3Service} from '../../shared/services/web3.service';
 
 @Component({
   selector: 'app-header',
@@ -30,7 +30,7 @@ export class HeaderComponent {
   }
 
   public set() {
-    this.web3Service.setNickname(this.nickname);
+    this.web3Service.setNickname(this.nickname).then((error, result) => console.log(error, result));
     this.pop.hide();
   }
 }

@@ -43,12 +43,13 @@ export class CountryListComponent {
             || !this.myCities[country.code].find(c => c.id === city.id);
         })
         .sort((a: City, b: City) => {
-          const pricePerElectorate = (city: City) => (this.dynamicCities[city.id] && +this.dynamicCities[city.id].price) / +city.population;
+          const pricePerElectorate = (city: City) =>
+            (this.dynamicCities[city.id] && +this.dynamicCities[city.id].price || 0) / +city.population;
           return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
         })
         .forEach((city: City) => {
           while (electorate < half) {
-            price += this.dynamicCities[city.id] && +this.dynamicCities[city.id].price;
+            price += this.dynamicCities[city.id] && +this.dynamicCities[city.id].price || 0;
             electorate += +city.population;
           }
         });

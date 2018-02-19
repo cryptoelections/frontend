@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {City} from '../../shared/models/city.model';
 import {Web3Service} from '../../shared/services/web3.service';
 import {TranslateService} from '@ngx-translate/core';
+import {BASE_URL} from '../../shared/services/base.service';
 
 @Component({
   selector: 'app-city-card',
@@ -22,18 +23,11 @@ export class CityCardComponent {
   }
 
   public get price() {
-    return this.dynamic && this.dynamic.price;
+    return this.dynamic && this.dynamic.price || 0;
   }
 
-  public get status() {
-    const population = +this.city.population;
-    if (population < 200000) {
-      return 'smallCity';
-    } else if (population >= 200000 && population < 1000000) {
-      return 'mediumCity';
-    } else {
-      return 'bigCity';
-    }
+  public get cityImageSource(): string {
+    return `${BASE_URL}/images/${this.city.coat}`;
   }
 
   public get countryName(): string {

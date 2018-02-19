@@ -78,7 +78,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
     if (this.web3Service.isLoggedIn) {
       this.invest.emit({
         city,
-        price: this.cityDynamic && this.cityDynamic[city.id] && this.cityDynamic[city.id].price
+        price: this.cityDynamic && this.cityDynamic[city.id] && this.cityDynamic[city.id].price || 0
       });
     } else {
       this.router.navigate(['/metamask']);

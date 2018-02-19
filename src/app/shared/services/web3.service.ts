@@ -2,10 +2,11 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {StorageKeys} from './storage.service';
 import {environment} from '../../../environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {BASE_URL} from './base.service';
 
 const Web3 = require('web3');
 const contract = require('truffle-contract');
-const json = require('../../../data/CryptoCity.json');
 declare var window: any;
 
 @Injectable()
@@ -19,7 +20,7 @@ export class Web3Service {
 
   public CryptoCity;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     const provider = window.web3 && window.web3.currentProvider || new Web3.providers.HttpProvider('http://localhost:8545');
     this.web3 = new Web3(provider);
     if (window.web3) {
@@ -27,8 +28,11 @@ export class Web3Service {
         this.network = parseInt(netId);
 
         if (this.network === environment.network) {
-          this.CryptoCity = contract(json);
-          this.CryptoCity.setProvider(provider);
+          this.http.get(`${BASE_URL}/json/CryptoCity.json`)
+            .subscribe(json => {
+              this.CryptoCity = contract(json);
+              this.CryptoCity.setProvider(provider);
+            });
         }
       });
     }
@@ -50,7 +54,6 @@ export class Web3Service {
     this.web3.eth.getCoinbase()
       .then(a => {
         this.coinbase = a;
-        this.getNickname(a).then(nick => this.accountNickname = nick);
         this.CryptoCity.defaults({from: this.coinbase});
       })
       .catch((err) => Observable.of(err));
@@ -60,7 +63,9 @@ export class Web3Service {
       this.account = this.accounts && this.accounts[0];
       localStorage.setItem(StorageKeys.Account, JSON.stringify({address: this.coinbase, nickname: this.accountNickname}));
       if (this.CryptoCity) {
-        this.getNickname(this.account).then(nickname => this.accountNickname = nickname);
+        this.getNickname(this.account)
+          .then(nickname => this.accountNickname = nickname)
+          .catch(error => error);
       }
       return Observable.of(this.account);
     });
@@ -68,7 +73,7 @@ export class Web3Service {
 
   public setNickname(nickname: string) {
     let CryptoCityInstance;
-    this.CryptoCity.deployed()
+    return this.CryptoCity.deployed()
       .then((instance) => {
         CryptoCityInstance = instance;
         return CryptoCityInstance.setNickname(nickname);

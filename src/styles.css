@@ -30,6 +30,12 @@ body {
   opacity: 0.5;
 }
 
+.city-card-top {
+  height: 180px;
+  width: auto !important;
+}
+
+
 .city-card .country {
   display: flex;
 }
