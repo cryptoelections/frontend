@@ -33,6 +33,7 @@ body {
 .city-card-top {
   height: 180px;
   width: auto !important;
+  max-width: 100%;
 }
 
 
