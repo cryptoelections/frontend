@@ -280,6 +280,11 @@ li.page-item:last-child .page-link {
   border: 4px solid rgb(230, 230, 230);
 }
 
+.my-campaign-button {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .president-sign,
 .mayor-sign {
   background-color: rgb(255, 255, 255);

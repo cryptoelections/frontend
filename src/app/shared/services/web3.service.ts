@@ -52,7 +52,7 @@ export class Web3Service {
   }
 
   public get wrongNetwork() {
-    return this.CryptoCity && this.contractData && (!this.contractData[this.network] || !this.contractData[this.network].address);
+    return this.CryptoCity && this.contractData && (!this.contractData.networks[this.network] || !this.contractData.networks[this.network].address);
   }
 
   public getAccount(): Observable<any> {
