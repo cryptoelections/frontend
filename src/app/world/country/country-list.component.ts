@@ -1,16 +1,15 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Country} from '../../shared/models/country.model';
 import {City} from '../../shared/models/city.model';
 import {CountrySortOption} from './country-filter.component';
-import {DEFAULT_PRICE} from '../../shared/services/base.service';
 
 @Component({
   selector: 'app-country-list',
   templateUrl: 'country-list.component.html'
 })
-export class CountryListComponent {
+export class CountryListComponent implements AfterViewInit {
   @Input() public cities: Array<City>;
-  @Input() public citiesByCountries;
+  @Input() public citiesByCountries: { [id: string]: Partial<Country> };
   @Input() public list: Array<Country>;
   @Input() public isLoading: boolean;
   @Input() public query: string;
@@ -18,10 +17,9 @@ export class CountryListComponent {
   @Input() public sortBy: CountrySortOption;
   @Input() public biggerFirst: boolean;
   @Input() public currentPage: number;
-  @Input() public mostCostEffectiveCountries;
-  @Input() public myCities;
-  @Input() public dynamicCities;
-  @Input() public dynamicCountries;
+  @Input() public myCitiesByCountries: { [id: string]: Array<City> };
+  @Input() public dynamicCities: { [id: string]: Partial<City> };
+  @Input() public dynamicCountries: { [id: string]: Partial<Country> };
   @Input() public nicknames;
   @Output() public sortByChange = new EventEmitter<CountrySortOption>();
   @Output() public queryChange = new EventEmitter<string>();
@@ -29,46 +27,10 @@ export class CountryListComponent {
   @Output() public pageChange = new EventEmitter<number>();
   @Output() public invest = new EventEmitter<{ city: City, price: number | string }>();
 
-  public numberOfCities(country: Country): number {
-    return this.citiesByCountries[country.code].length;
+  constructor(private cd: ChangeDetectorRef) {
   }
 
-  public price(country: Country): number {
-    const half = this.electorate(country) / 2;
-    let price = 0;
-    let electorate = this.myElectorate(country);
-    if (country.active !== 0) {
-      this.citiesByCountries[country.code]
-        .filter((city: City) => {
-          return this.myCities && !this.myCities[country.code]
-            || !this.myCities[country.code].find(c => c.id === city.id);
-        })
-        .sort((a: City, b: City) => {
-          const pricePerElectorate = (city: City) =>
-            (this.dynamicCities[city.id] && +this.dynamicCities[city.id].price || DEFAULT_PRICE) / +city.population;
-          return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
-        })
-        .forEach((city: City) => {
-          while (electorate < half) {
-            price += this.dynamicCities[city.id] && +this.dynamicCities[city.id].price || DEFAULT_PRICE;
-            electorate += +city.population;
-          }
-        });
-    }
-    return price;
-  }
-
-  public electorate(country: Country): number {
-    let count = 0;
-    this.citiesByCountries[country.code].forEach((city: City) => count += +city.population);
-    return count;
-  }
-
-  public myElectorate(country: Country): number {
-    let count = 0;
-    if (this.myCities && this.myCities[country.code] && this.myCities[country.code].length) {
-      this.myCities[country.code].forEach((city: City) => count += +city.population);
-    }
-    return count;
+  public ngAfterViewInit() {
+    this.cd.detectChanges();
   }
 }

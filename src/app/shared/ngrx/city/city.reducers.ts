@@ -3,6 +3,7 @@ import {createFeatureSelector, createSelector} from '@ngrx/store';
 import {CitySortOption} from '../../../world/city/city-filter.component';
 import {City} from '../../models/city.model';
 import * as actions from './city.actions';
+import * as common from '../common/common.actions';
 
 export interface DynamicState {
   loading: boolean;
@@ -51,7 +52,7 @@ export const initialState: State = adapter.getInitialState({
   }
 });
 
-export function reducer(state = initialState, action: actions.Actions): State {
+export function reducer(state = initialState, action: actions.Actions | common.Actions): State {
   switch (action.type) {
     case actions.LOAD_CITY_INFORMATION_REQUEST: {
       return {...state, loading: true};
@@ -86,6 +87,15 @@ export function reducer(state = initialState, action: actions.Actions): State {
     case actions.LOAD_DYNAMIC_CITY_INFORMATION_RESPONSE: {
       return {...state, dynamic: {entities: {...action.payload}, loading: false}};
     }
+    case actions.INVEST: {
+      const buyingCity = {...state.entities[action.payload.id], buying: true};
+      return {...adapter.updateOne({id: action.payload.id, changes: buyingCity}, state)};
+    }
+    case common.SHOW_ERROR:
+    case actions.INVEST_SUCCESS: {
+      const buyingCity = {...action.payload, buying: false};
+      return {...adapter.updateOne({id: action.payload.id, changes: buyingCity}, state)};
+    }
     default: {
       return {...state};
     }
@@ -111,16 +121,7 @@ export const getSelectedCity = createSelector(
   state => selectEntities &&
     selectEntities[state.selectedCity]
 );
-export const citiesByCountriesEntities = createSelector(citiesByCountry, selectEntities,
-  (citiesByCountries, cities) => {
-    console.log(Object.entries(citiesByCountries).reduce((m, [key, value]) => (
-      {...m, [key]: value ? value.map((cityId: string) => cities[cityId]) : []}
-    ), {}));
-    return Object.entries(citiesByCountries).reduce((m, [key, value]) => (
-      {...m, [key]: value ? value.map((cityId: string) => cities[cityId]) : []}
-    ), {});
-  }
-);
+
 export const getDynamicCitiesState = createSelector(getCitiesState, state => state.list.dynamic);
 export const getDynamicInfoEntities = createSelector(getDynamicCitiesState, state => state.entities);
 export const isDynamicLoading = createSelector(getDynamicCitiesState, state => state.loading);

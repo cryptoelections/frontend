@@ -26,7 +26,7 @@ import * as countryActions from '../../shared/ngrx/country/country.actions';
 })
 export class MyCampaignContainerComponent implements AfterViewInit {
   readonly countries$ = this.store.select(fromCountries.selectEntities);
-  readonly citiesByCountries$ = this.store.select(fromCities.citiesByCountriesEntities);
+  readonly citiesByCountries$ = this.store.select(fromCountries.citiesByCountriesEntities);
   readonly myCities$ = this.store.select(fromCountries.filteredListForPage);
   readonly isLoading$ = this.store.select(fromMyCampaign.isLoading);
   readonly query$ = this.store.select(fromMyCampaign.query);

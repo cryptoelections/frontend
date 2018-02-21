@@ -9,7 +9,6 @@ export const FILTER_UPDATE = '[CITY] FILTER_UPDATE';
 export const LOAD_SELECTED_CITY = '[CITY] LOAD_SELECTED_CITY';
 export const INVEST = '[CITY] INVEST';
 export const INVEST_SUCCESS = '[CITY] INVEST_SUCCESS';
-export const INVEST_ERROR = '[CITY] INVEST_ERROR';
 
 export class LoadCityInformationRequest implements Action {
   type = LOAD_CITY_INFORMATION_REQUEST;
@@ -28,7 +27,7 @@ export class LoadDynamicCityInformationRequest implements Action {
 export class LoadDynamicCityInformationResponse implements Action {
   type = LOAD_DYNAMIC_CITY_INFORMATION_RESPONSE;
 
-  constructor(public payload: {[id: string]: Partial<City>}) {
+  constructor(public payload: { [id: string]: Partial<City> }) {
   }
 }
 
@@ -56,7 +55,7 @@ export class LoadSelectedCity implements Action {
 export class Invest implements Action {
   type = INVEST;
 
-  constructor(public payload: {id: string, price?: number | string}) {
+  constructor(public payload: { id: string, price?: number | string }) {
   }
 }
 
@@ -64,15 +63,7 @@ export class Invest implements Action {
 export class InvestSuccess implements Action {
   type = INVEST_SUCCESS;
 
-  constructor(public payload: string) {
-  }
-}
-
-
-export class InvestError implements Action {
-  type = INVEST_ERROR;
-
-  constructor(public payload?: string) {
+  constructor(public payload: City) {
   }
 }
 
@@ -84,5 +75,4 @@ export type Actions = LoadCityInformationRequest
   | FilterUpdate
   | LoadSelectedCity
   | Invest
-  | InvestSuccess
-  | InvestError;
+  | InvestSuccess;

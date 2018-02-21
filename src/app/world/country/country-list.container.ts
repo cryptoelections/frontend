@@ -22,7 +22,6 @@ import * as fromNicknames from '../../shared/ngrx/nicknames/nicknames.reducers';
     <app-country-list
       [list]="countries$ | async"
       [cities]="cities$ | async"
-      [mostCostEffectiveCountries]="costEffectiveCities$ | async"
       [currentPage]="page$ | async"
       [total]="total$ | async"
       [query]="query$ | async"
@@ -30,7 +29,7 @@ import * as fromNicknames from '../../shared/ngrx/nicknames/nicknames.reducers';
       [sortBy]="sortBy$ | async"
       [dynamicCities]="dynamicInfoCities$ | async"
       [citiesByCountries]="citiesByCountries$ | async"
-      [myCities]="myCitiesByCountries$ | async"
+      [myCitiesByCountries]="myCitiesByCountries$ | async"
       [dynamicCountries]="dynamicCountries$ | async"
       [nicknames]="nicknames$ | async"
       (sortByChange)="onSortByChange($event)"
@@ -49,8 +48,7 @@ export class CountryListContainerComponent extends WithUnsubscribe() implements 
   readonly query$ = this.store.select(fromCountries.query);
   readonly sortBy$ = this.store.select(fromCountries.sortBy);
   readonly filters$ = this.store.select(fromCountries.filters);
-  readonly citiesByCountries$ = this.store.select(fromCities.citiesByCountriesEntities);
-  readonly costEffectiveCities$ = this.store.select(fromCountries.selectMostCostEffectiveCitiesForCountry);
+  readonly citiesByCountries$ = this.store.select(fromCountries.citiesByCountriesEntities)
   readonly dynamicInfoCities$ = this.store.select(fromCities.getDynamicInfoEntities);
   readonly myCitiesByCountries$ = this.store.select(fromCountries.selectAllByCountries);
   readonly dynamicCountries$ = this.store.select(fromCountries.getDynamicInfoEntities);
@@ -72,11 +70,11 @@ export class CountryListContainerComponent extends WithUnsubscribe() implements 
   }
 
   public ngOnInit() {
+    this.store.dispatch(new myCampaignActions.LoadMyCitiesRequest());
     this.store.dispatch(new cityActions.LoadDynamicCityInformationRequest());
     this.store.dispatch(new countryActions.LoadDynamicCountryInformationRequest());
     this.store.dispatch(new countryActions.LoadCountriesRequest());
     this.store.dispatch(new cityActions.LoadCityInformationRequest());
-    this.store.dispatch(new myCampaignActions.LoadMyCitiesRequest());
     this.store.dispatch(new nicknamesActions.LoadNicknamesRequest());
 
     this.initFilters();

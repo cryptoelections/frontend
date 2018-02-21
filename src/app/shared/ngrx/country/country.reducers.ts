@@ -94,10 +94,18 @@ export const query = createSelector(filters, state => state.query);
 export const sortBy = createSelector(filters, state => state.sortBy);
 
 
+export const citiesByCountriesEntities = createSelector(fromCities.citiesByCountry, fromCities.selectEntities,
+  (citiesByCountries, cities) => {
+    return Object.entries(citiesByCountries).reduce((m, [key, value]) => (
+      {...m, [key]: value ? value.map((cityId: string) => cities[cityId]) : []}
+    ), {});
+  }
+);
+
 // My campaign
 export const selectCountryEntities = createSelector(selectEntities, state => state);
 
-export const selectFilteredList = createSelector(fromCities.citiesByCountriesEntities,
+export const selectFilteredList = createSelector(citiesByCountriesEntities,
   fromCities.selectEntities, selectCountryEntities, fromMyCampaign.selectAll, fromMyCampaign.filters,
   (citiesByCountries, cityEntities, countryEntities, myCities, filter) => {
     const lowerQuery = filter.query && filter.query.toLowerCase();
@@ -145,7 +153,7 @@ export const filteredListForPage = createSelector(selectFilteredList, filteredLi
 export const filteredCountries = createSelector(
   selectAll,
   filters,
-  fromCities.citiesByCountriesEntities,
+  citiesByCountriesEntities,
   selectAllByCountries,
   (countries, filter, cityEntities, myCityEntities) => {
     const upperQuery = filter.query && filter.query.toUpperCase();
@@ -352,7 +360,7 @@ export const citiesForPage = createSelector(filteredCities, fromCities.filters,
 );
 
 export const selectMostCostEffectiveCitiesForCountry = createSelector(
-  fromCities.citiesByCountriesEntities,
+  citiesByCountriesEntities,
   fromCities.getDynamicInfoEntities,
   selectAllByCountries,
   (citiesByCountries, dynamicCities, myCities) => {

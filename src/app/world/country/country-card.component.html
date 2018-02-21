@@ -53,7 +53,8 @@
   </div>
 </div>
 
-<div bsModal #cityList="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="cityList" aria-hidden="true">
+<div bsModal #cityList="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="cityList"
+     aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header align-items-center">
@@ -80,7 +81,7 @@
           </a>
         </p>
         <div class="container country-modal-cities">
-          <div class="row align-items-center bordered" *ngFor="let city of cities; let l = last"
+          <div class="row align-items-center bordered" *ngFor="let city of costEffectiveCities; let l = last"
                [ngClass]="{'last': l}">
             <div class="col-3">{{ city.name }}</div>
             <div class="col-5"><b>{{ city.population | convert }}</b> {{ cityElectorate(city) }}{{
@@ -98,8 +99,8 @@
                 </div>
               </ng-container>
               <ng-container *ngIf="!isYoursCity(city)">
-                <button class="btn card-button" (click)="tryToInvest(city)">
-                  {{ (cityDynamic[city?.id] && cityDynamic[city?.id].price || defaultPrice) | eth }} ETH
+                <button class="btn card-button" [ngClass]="{ 'pending': city.buying }" (click)="tryToInvest(city)">
+                  <span>{{ ( cityDynamic && cityDynamic[city?.id] && cityDynamic[city?.id].price || defaultPrice) | eth }} ETH</span>
                 </button>
               </ng-container>
             </div>

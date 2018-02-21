@@ -16,9 +16,10 @@ import {metaReducers, reducers} from './shared/ngrx';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import {AccordionModule, ModalModule, PaginationModule, PopoverModule, ProgressbarModule, TooltipModule} from 'ngx-bootstrap';
+import {AccordionModule, AlertModule, ModalModule, PaginationModule, PopoverModule, ProgressbarModule, TooltipModule} from 'ngx-bootstrap';
 import {FooterComponent} from './layout/footer/footer.component';
 import {LayoutComponent} from './layout/layout.component';
+import {LayoutContainerComponent} from './layout/layout.container';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './i18n/', '.json');
@@ -39,10 +40,12 @@ export function InitAppFactory(web3: Web3Service,
     FooterComponent,
     HeaderComponent,
     HomeComponent,
-    LayoutComponent
+    LayoutComponent,
+    LayoutContainerComponent
   ],
   imports: [
     AccordionModule.forRoot(),
+    AlertModule.forRoot(),
     AppRoutingModule,
     CommonModule,
     EffectsModule.forRoot([]),

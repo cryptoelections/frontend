@@ -22,10 +22,12 @@
   </div>
   <div class="card-button-block text-center">
     <ng-container *ngIf="!isYours">
-      <button class="btn card-button" (click)="invest.emit({city: city, price: price})">
-        {{ 'CITY.CARD.INVEST' | translate }} <b>{{ price | eth }} ETH</b>
-      </button>
-      <span>{{ 'CITY.CARD.TO_WIN' | translate }}</span>
+      <div [ngClass]="{ 'pending': city.buying }">
+        <button class="btn card-button" [ngClass]="{ 'pending': city.buying }"
+                (click)="invest.emit({city: city, price: price})">
+          <span>{{ 'CITY.CARD.INVEST' | translate }} <b>{{ price | eth }} ETH</b></span>
+        </button>
+        <span>{{ 'CITY.CARD.TO_WIN' | translate }}</span></div>
     </ng-container>
     <ng-container *ngIf="isYours">
       <div class="mayor-sign" [routerLink]="['/my']">

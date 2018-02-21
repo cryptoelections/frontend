@@ -46,6 +46,10 @@
       "MEDIUMCITY": "Population - less % of country population",
       "BIGCITY": "Population - more than % of country population"
     },
+    "MODAL": {
+      "CONGRATULATIONS": "<b>Congratulations!</b><br/> You are new mayor of {{ name }}",
+      "RULE_CITY": "Rule this city!"
+    },
     "FILTER": {
       "SORT_BY": "Sort by",
       "SEARCH": "Search",
@@ -101,6 +105,8 @@
       }
     }
   },
+  "M": "M",
+  "K": "K",
   "COMMON": {
     "MLN": "M",
     "THOUSANDS": "K",
@@ -110,7 +116,8 @@
     },
     "FILTER": {
       "SORT_BY": "Sort by"
-    }
+    },
+    "UNSUCCESSFUL_TRANSACTION": "Unsuccessful transaction - buying <b>{{ name }}</b>"
   },
   "CAMPAIGN": {
     "TITLE": "My campaign",

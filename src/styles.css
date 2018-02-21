@@ -356,3 +356,98 @@ img.modal-img {
   width: 100%;
   height: auto
 }
+
+.alert {
+  margin-top: -75px;
+  max-width: 30%;
+  float: right;
+  opacity: 0.80;
+}
+
+/*loading button */
+
+.btn.pending {
+  outline: 0;
+}
+
+.pending span {
+  color: transparent;
+}
+
+.btn.pending:before {
+  content: "• • •";
+  position: absolute;
+  z-index: 10;
+  color: inherit;
+  text-align: center;
+  left: 0;
+  right: 0;
+  font-size: 1em;
+  line-height: 1.5em;
+  opacity: .5;
+}
+
+.btn.pending:after {
+  content: "•";
+  position: absolute;
+  z-index: 10;
+  color: inherit;
+  text-align: center;
+  left: 0;
+  right: 0;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin-left: -1.4em;
+  -webkit-animation: move .8s ease infinite;
+  -moz-animation: move .8s ease infinite;
+  -ms-animation: move .8s ease infinite;
+  -o-animation: move .8s ease infinite;
+  animation: move .8s ease infinite;
+}
+
+@keyframes move {
+  0% {
+    margin-left: -1.4em;
+  }
+  32% {
+    margin-left: -1.4em;
+  }
+  33% {
+    margin-left: 0;
+  }
+  66% {
+    margin-left: 0;
+  }
+  67% {
+    margin-left: 1.4em;
+  }
+  100% {
+    margin-left: 1.4em;
+  }
+}
+
+.city-modal .container {
+  display: inline-flex;
+  padding: 20px 40px;
+}
+
+.modal-container {
+  width: 70%;
+}
+
+.modal-container .btn {
+  width: 70%;
+}
+
+.city-modal-content {
+  margin: 0px auto;
+}
+
+.modal-image-container {
+  width: 30%;
+}
+
+.city-modal img {
+  width: 85%;
+  height: auto;
+}

@@ -9,16 +9,11 @@
   <ng-container *ngFor="let country of list">
     <app-country-card class="col-lg-3 col-sm-6 col-xs-12"
                       [country]="country"
-                      [cities]="citiesByCountries[country.code]"
+                      [cities]="citiesByCountries && citiesByCountries[country.code]"
                       [cityDynamic]="dynamicCities"
-                      [dynamic]="dynamicCountries[country.id]"
-                      [myCities]="myCities && myCities[country.code] || []"
-                      [costEffectiveCities]="mostCostEffectiveCountries"
+                      [dynamic]="dynamicCountries && dynamicCountries[country.id]"
+                      [myCities]="myCitiesByCountries && myCitiesByCountries[country.code] || []"
                       [nicknames]="nicknames"
-                      [price]="price(country)"
-                      [electorate]="electorate(country)"
-                      [myElectorate]="myElectorate(country)"
-                      [numberOfCities]="numberOfCities(country)"
                       (invest)="invest.emit($event)"></app-country-card>
   </ng-container>
 </div>

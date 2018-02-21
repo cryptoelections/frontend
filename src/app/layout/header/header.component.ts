@@ -30,7 +30,7 @@ export class HeaderComponent {
   }
 
   public set() {
-    this.web3Service.setNickname(this.nickname).then((error, result) => console.log(error, result));
+    this.web3Service.setNickname(this.nickname);
     this.pop.hide();
   }
 }

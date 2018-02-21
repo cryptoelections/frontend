@@ -1,5 +1,5 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import {Pipe, PipeTransform} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
 
 @Pipe({
   // tslint:disable-next-line
@@ -16,11 +16,11 @@ export class ConvertPipe implements PipeTransform {
     if (+count >= mln) {
       result = `${(
         +count / mln
-      ).toFixed(2)}${this.translate.instant('COMMON.MLN')}`
+      ).toFixed(2)}${this.translate.instant('M')}`;
     } else if (+count > th && +count < mln) {
       result = `${(
         +count / th
-      ).toFixed(2)}${this.translate.instant('COMMON.THOUSANDS')}`
+      ).toFixed(2)}${this.translate.instant('K')}`;
     } else {
       result = count && count.toString();
     }

@@ -15,7 +15,7 @@ import {HighLightPipe} from './pipes/highlight.pipe';
 import {CommonModule} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
 import {
-  AccordionModule, ModalModule, PaginationModule, PopoverModule, ProgressbarModule,
+  AccordionModule, AlertModule, ModalModule, PaginationModule, PopoverModule, ProgressbarModule,
   TooltipModule
 } from 'ngx-bootstrap';
 import {FilterComponent} from './components/filters/filter.component';
@@ -39,6 +39,7 @@ import {Web3Service} from './services/web3.service';
   ],
   imports: [
     AccordionModule,
+    AlertModule,
     BrowserAnimationsModule,
     BrowserModule,
     CommonModule,
@@ -53,6 +54,7 @@ import {Web3Service} from './services/web3.service';
   ],
   exports: [
     AccordionModule,
+    AlertModule,
     BrowserAnimationsModule,
     BrowserModule,
     CommonModule,

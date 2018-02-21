@@ -9,6 +9,8 @@ const Web3 = require('web3');
 const contract = require('truffle-contract');
 declare var window: any;
 
+const GAS = 300000;
+
 @Injectable()
 export class Web3Service {
   public web3;
@@ -54,7 +56,7 @@ export class Web3Service {
     this.web3.eth.getCoinbase()
       .then(a => {
         this.coinbase = a;
-        this.CryptoCity.defaults({from: this.coinbase});
+        this.CryptoCity.defaults({from: this.coinbase, gas: GAS});
       })
       .catch((err) => Observable.of(err));
 
@@ -76,7 +78,7 @@ export class Web3Service {
     return this.CryptoCity.deployed()
       .then((instance) => {
         CryptoCityInstance = instance;
-        return CryptoCityInstance.setNickname(nickname);
+        CryptoCityInstance.setNickname(nickname);
       });
   }
 

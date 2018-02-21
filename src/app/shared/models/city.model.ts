@@ -13,4 +13,5 @@ export interface City {
   purchases: number;
   slogan: string;
   coat: string;
+  buying?: boolean;
 }

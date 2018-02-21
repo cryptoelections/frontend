@@ -13,14 +13,14 @@ import {DEFAULT_PRICE} from '../../shared/services/base.service';
 export class CountryCardComponent implements OnChanges, AfterViewInit {
   @Input() public country: Country;
   @Input() public cities: Array<City>;
-  @Input() public costEffectiveCities;
-  @Input() public price: number;
-  @Input() public electorate: number;
-  @Input() public myElectorate: number;
   @Input() public myCities = [];
   @Input() public dynamic;
   @Input() public cityDynamic;
-  @Input() public numberOfCities: number;
+
+  public get numberOfCities(): number {
+    return this.cities && this.cities.length;
+  }
+
   @Input() public nicknames;
   @Output() public invest = new EventEmitter<{ city: City, price: number | string }>();
   public sortedCities: Array<City>;
@@ -43,6 +43,59 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
     return DEFAULT_PRICE;
   }
 
+
+  public get price(): number {
+    const half = this.electorate / 2;
+    let price = 0;
+    let electorate = this.myElectorate;
+    if (this.country.active !== 0 && this.cities) {
+      this.cities
+        .filter((city: City) => {
+          return this.myCities && !this.myCities
+            || !this.myCities.find(c => c.id === city.id);
+        })
+        .sort((a: City, b: City) => {
+          const pricePerElectorate = (city: City) =>
+            (this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || DEFAULT_PRICE) / +city.population;
+          return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
+        })
+        .forEach((city: City) => {
+          while (electorate < half) {
+            price += this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || DEFAULT_PRICE;
+            electorate += +city.population;
+          }
+        });
+    }
+    return price;
+  }
+
+  public get costEffectiveCities(): Array<City> {
+    return this.cities
+      .filter(city => !this.myCities.find(c => city.id === c.id))
+      .sort((a: City, b: City) => {
+        const pricePerElectorate = (city: City) =>
+          (this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || DEFAULT_PRICE) / +city.population;
+        return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
+      })
+      .splice(0, 10);
+  }
+
+  public get electorate(): number {
+    let count = 0;
+    if (this.cities) {
+      this.cities.forEach((city: City) => count += +city.population);
+    }
+    return count;
+  }
+
+  public get myElectorate(): number {
+    let count = 0;
+    if (this.myCities && this.myCities.length) {
+      this.myCities.forEach((city: City) => count += +city.population);
+    }
+    return count;
+  }
+
   constructor(private web3Service: Web3Service,
               private translate: TranslateService,
               private cd: ChangeDetectorRef,
@@ -63,9 +116,9 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
 
 
   public cityPriceRange(): { lowestPrice: string, highestPrice: string } {
-    const lowestPrice = this.sortedCities[0] && this.cityDynamic[this.sortedCities[0].id]
+    const lowestPrice = this.sortedCities[0] && this.cityDynamic && this.cityDynamic[this.sortedCities[0].id]
       && this.cityDynamic[this.sortedCities[0].id] && this.cityDynamic[this.sortedCities[0].id].price;
-    const highestPrice = this.sortedCities.length > 1 && this.cityDynamic[this.sortedCities[this.sortedCities.length - 1].id]
+    const highestPrice = this.sortedCities.length > 1 && this.cityDynamic && this.cityDynamic[this.sortedCities[this.sortedCities.length - 1].id]
       && this.cityDynamic[this.sortedCities[this.sortedCities.length - 1].id]
       && this.cityDynamic[this.sortedCities[this.sortedCities.length - 1].id].price;
     return {lowestPrice, highestPrice};

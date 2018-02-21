@@ -7,14 +7,14 @@ import {CountryListContainerComponent} from './world/country/country-list.contai
 import {CityListContainerComponent} from './world/city/city-list.container';
 import {MetamaskComponent} from './world/metamask/metamask.component';
 import {MyCampaignContainerComponent} from './world/my-campaign/my-campaign.container';
-import {LayoutComponent} from './layout/layout.component';
+import {LayoutContainerComponent} from './layout/layout.container';
 
 const routes: Routes = [{
   path: 'home',
   component: HomeComponent
 }, {
   path: '',
-  component: LayoutComponent,
+  component: LayoutContainerComponent,
   children: [{
     path: '',
     pathMatch: 'full',
