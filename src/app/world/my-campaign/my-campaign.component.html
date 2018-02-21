@@ -5,13 +5,10 @@
   <ng-container *ngIf="myCountries?.length">
     <ng-container *ngFor="let country of myCountries">
       <app-my-country [country]="countries[country]"
-                      [allCitiesByCountry]="cities"
+                      [allCitiesByCountry]="cities[country]"
                       [dynamicCountries]="dynamic"
                       [dynamicCities]="dynamicCities"
-                      [citiesOfCountry]="myCitiesByCountry[country]"
-                      [percentage]="percentageByCountry(country)"
-                      [sellParams]="price(country)"></app-my-country>
-
+                      [citiesOfCountry]="myCitiesByCountry[country]"></app-my-country>
     </ng-container>
   </ng-container>
 
@@ -37,3 +34,4 @@
                 (ngModelChange)="pageChange.emit($event)"></pagination>
   </div>
 </div>
+

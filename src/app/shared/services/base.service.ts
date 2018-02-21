@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 
 export const BASE_URL = 'https://cryptoelections.ams3.digitaloceanspaces.com';
+export const DEFAULT_PRICE = 20000000000000000;
 
 @Injectable()
 export class BaseService<T> {

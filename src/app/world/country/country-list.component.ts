@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Country} from '../../shared/models/country.model';
 import {City} from '../../shared/models/city.model';
 import {CountrySortOption} from './country-filter.component';
+import {DEFAULT_PRICE} from '../../shared/services/base.service';
 
 @Component({
   selector: 'app-country-list',
@@ -44,12 +45,12 @@ export class CountryListComponent {
         })
         .sort((a: City, b: City) => {
           const pricePerElectorate = (city: City) =>
-            (this.dynamicCities[city.id] && +this.dynamicCities[city.id].price || 0) / +city.population;
+            (this.dynamicCities[city.id] && +this.dynamicCities[city.id].price || DEFAULT_PRICE) / +city.population;
           return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
         })
         .forEach((city: City) => {
           while (electorate < half) {
-            price += this.dynamicCities[city.id] && +this.dynamicCities[city.id].price || 0;
+            price += this.dynamicCities[city.id] && +this.dynamicCities[city.id].price || DEFAULT_PRICE;
             electorate += +city.population;
           }
         });

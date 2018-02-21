@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {City} from '../../shared/models/city.model';
 import {Web3Service} from '../../shared/services/web3.service';
 import {TranslateService} from '@ngx-translate/core';
-import {BASE_URL} from '../../shared/services/base.service';
+import {BASE_URL, DEFAULT_PRICE} from '../../shared/services/base.service';
 
 @Component({
   selector: 'app-city-card',
@@ -23,7 +23,7 @@ export class CityCardComponent {
   }
 
   public get price() {
-    return this.dynamic && this.dynamic.price || 0;
+    return this.dynamic && this.dynamic.price || DEFAULT_PRICE;
   }
 
   public get cityImageSource(): string {

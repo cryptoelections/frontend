@@ -9,16 +9,16 @@ export class FooterComponent {
   public links = [
     {
       text: 'MENU.COUNTRIES',
-      linkTo: 'countries'
+      linkTo: '/countries'
     }, {
       text: 'MENU.CITIES',
-      linkTo: 'cities'
+      linkTo: '/cities'
       // },{
       //   text: 'MENU.MAP',
       //   linkTo: 'map'
     }, {
       text: 'MENU.MY_CAMPAIGN',
-      linkTo: 'my',
+      linkTo: '/my',
     }
   ];
 }

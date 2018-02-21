@@ -8,14 +8,14 @@
       </div>
       <div class="col-11">
         <div class="row align-items-center">
-          <div class="my-country-image">
+          <div class="my-country-image col-md-1">
             <img
-              [src]="'assets/images/country-flags/large/' + country?.code?.toLowerCase() + '.png'"
+              [src]="imageLink"
               alt=""
             />
           </div>
           <div
-            class="country-name col-md-6 col-xs-12 align-items-baseline"
+            class="country-name col-md-6 col-xs-10 align-items-baseline"
             [tooltip]="country?.name"
             position="auto"
           >
@@ -23,9 +23,9 @@
             <span class="ml-2">{{ citiesOfCountry && citiesOfCountry.length }}
                 {{(citiesOfCountry.length === 1 ? 'CAMPAIGN.CITY' : 'CAMPAIGN.CITIES') | translate}}</span>
           </div>
-          <div class="col-md-5 col-xs-12 text-right">
-            <button class="btn card-button my-campaign-button" *ngIf="!isYours">
-              <span>{{ 'COUNTRY.CARD.INVEST_PRICE' | translate:sellParams }}</span>
+          <div class="col-md-5 col-xs-12 pr-0">
+            <button class="btn card-button my-campaign-button" *ngIf="!isYours" (click)="cityList.show()">
+              <span>{{ 'COUNTRY.CARD.INVEST' | translate }} <b>{{ price() | eth }} ETH</b> {{ 'COUNTRY.CARD.TO_WIN' | translate }}</span>
             </button>
             <div class="president-sign m-0" [routerLink]="['/my']" *ngIf="isYours">
               <img
@@ -38,9 +38,12 @@
           </div>
         </div>
         <div class="row progressbar">
-          <span class="empty"></span>
-          <span class="col-1">{{ percentage | number:'1.0-0' }}%</span>
-          <progressbar class="col-10" max="100" [value]="percentage"></progressbar>
+          <div class="pr-2">
+            <span>{{ +percentageByCountry() | number:'1.0-0' }}%</span>
+          </div>
+          <div class="pr-bar">
+            <progressbar max="100" [value]="percentageByCountry()"></progressbar>
+          </div>
         </div>
       </div>
     </div>
@@ -49,7 +52,67 @@
     <app-my-city
       [city]="city"
       [first]="i === 0"
-      [cities]="allCitiesByCountry[country.code]"
+      [cities]="allCitiesByCountry"
     ></app-my-city>
   </ng-container>
 </accordion-group>
+
+
+<div bsModal #cityList="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="cityList"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header align-items-center">
+        <img class="modal-img mr-2"
+             [src]="imageLink"
+             onerror="this.src = 'assets/images/no-flag.png'"
+             alt=""/>
+        <h4 class="modal-title pull-left"><b>{{ country.name }}</b></h4>
+        <button
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="cityList.hide()"
+        >
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ 'COUNTRY.CARD.INVEST_MODAL_TEXT' | translate:{country: country.name} }}
+          <a (click)="cityList.hide()"
+             [routerLink]="['/cities']"
+             [queryParams]="{query: country.name}">{{
+            'COUNTRY.CARD.INVEST_MODAL_TEXT_LINK' | translate }}
+          </a>
+        </p>
+        <div class="container country-modal-cities">
+          <div class="row align-items-center bordered"
+               *ngFor="let city of getCostEffectiveCities(); let l = last"
+               [ngClass]="{'last': l}">
+            <div class="col-3">{{ city.name }}</div>
+            <div class="col-5"><b>{{ city.population | convert }}</b> {{ cityElectorate(city) }}{{
+              'COUNTRY.CARD.INVEST_MODAL_PERCENTAGE' | translate }}
+            </div>
+            <div class="col-4">
+              <ng-container *ngIf="isYoursCity(city)">
+                <div class="mayor-sign" [routerLink]="['/my']">
+                  <img
+                    class="mr-2"
+                    [src]="'assets/images/sign.png'"
+                    alt=""
+                  />
+                  <span class="mayor text-left">{{ 'CITY.CARD.YOU_ARE_MAYOR' | translate }}</span>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="!isYoursCity(city)">
+                <button class="btn card-button" (click)="tryToInvest(city)">
+                  {{ (dynamicCities[city?.id] && dynamicCities[city?.id].price || defaultPrice) | eth }} ETH
+                </button>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

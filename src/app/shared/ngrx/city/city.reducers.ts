@@ -113,6 +113,9 @@ export const getSelectedCity = createSelector(
 );
 export const citiesByCountriesEntities = createSelector(citiesByCountry, selectEntities,
   (citiesByCountries, cities) => {
+    console.log(Object.entries(citiesByCountries).reduce((m, [key, value]) => (
+      {...m, [key]: value ? value.map((cityId: string) => cities[cityId]) : []}
+    ), {}));
     return Object.entries(citiesByCountries).reduce((m, [key, value]) => (
       {...m, [key]: value ? value.map((cityId: string) => cities[cityId]) : []}
     ), {});

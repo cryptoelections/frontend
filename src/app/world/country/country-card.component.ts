@@ -4,6 +4,7 @@ import {City} from '../../shared/models/city.model';
 import {TranslateService} from '@ngx-translate/core';
 import {Web3Service} from '../../shared/services/web3.service';
 import {Router} from '@angular/router';
+import {DEFAULT_PRICE} from '../../shared/services/base.service';
 
 @Component({
   selector: 'app-country-card',
@@ -36,6 +37,10 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
 
   public get isYours(): boolean {
     return this.dynamic && this.dynamic.president === this.web3Service.coinbase;
+  }
+
+  public get defaultPrice() {
+    return DEFAULT_PRICE;
   }
 
   constructor(private web3Service: Web3Service,
@@ -78,7 +83,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
     if (this.web3Service.isLoggedIn) {
       this.invest.emit({
         city,
-        price: this.cityDynamic && this.cityDynamic[city.id] && this.cityDynamic[city.id].price || 0
+        price: this.cityDynamic && this.cityDynamic[city.id] && this.cityDynamic[city.id].price || DEFAULT_PRICE
       });
     } else {
       this.router.navigate(['/metamask']);
