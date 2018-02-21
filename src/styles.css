@@ -451,3 +451,95 @@ img.modal-img {
   width: 85%;
   height: auto;
 }
+
+.color-1 {
+  color: #39b54a;
+}
+
+.color-2 {
+  color: #ed1c24;
+}
+
+.color-3 {
+  color: #f15a25;
+}
+
+.color-4 {
+  color: #0071bc;
+}
+
+.color-5 {
+  color: #00a99d;
+}
+
+.color-6 {
+  color: #93278f;
+}
+
+.color-7 {
+  color: #ed1e78;
+}
+
+.color-8 {
+  color: #29abe2;
+}
+
+.color-0 {
+  color: #a67c52;
+}
+
+.color-1 img {
+  background-color: #39b54a;
+}
+
+.color-2 img {
+  background-color: #ed1c24;
+}
+
+.color-3 img {
+  background-color: #f15a25;
+}
+
+.color-4 img {
+  background-color: #0071bc;
+}
+
+.color-5 img {
+  background-color: #00a99d;
+}
+
+.color-6 img {
+  background-color: #93278f;
+}
+
+.color-7 img {
+  background-color: #ed1e78;
+}
+
+.color-8 img {
+  background-color: #29abe2;
+}
+
+.color-0 img {
+  background-color: #a67c52;
+}
+
+.first-letters {
+  position: absolute;
+  top: 100px;
+  font-size: 32px;
+  font-weight: 700;
+  transform: translate(-50%, -50%);
+}
+
+.first-letters.letters-1 {
+  left: 49.5%;
+}
+
+.first-letters.letters-2 {
+  left: 49.5%;
+}
+
+.first-letters.letters-3 {
+  left: 49.5%;
+}

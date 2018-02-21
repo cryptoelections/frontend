@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  network: 3
+  pathToJsons: 'https://cryptoelections.ams3.digitaloceanspaces.com/json/'
 };

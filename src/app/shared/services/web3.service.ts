@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {StorageKeys} from './storage.service';
-import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {BASE_URL} from './base.service';
+import {JSON_URL} from './base.service';
 
 const Web3 = require('web3');
 const contract = require('truffle-contract');
@@ -21,21 +20,21 @@ export class Web3Service {
   public network;
 
   public CryptoCity;
+  public contractData;
 
   constructor(private http: HttpClient) {
-    const provider = window.web3 && window.web3.currentProvider || new Web3.providers.HttpProvider('http://localhost:8545');
-    this.web3 = new Web3(provider);
+    const provider = window.web3 && window.web3.currentProvider;
+    this.web3 = provider && new Web3(provider);
     if (window.web3) {
       window.web3.version.getNetwork((err, netId) => {
         this.network = parseInt(netId);
 
-        if (this.network === environment.network) {
-          this.http.get(`${BASE_URL}/json/CryptoCity.json`)
-            .subscribe(json => {
-              this.CryptoCity = contract(json);
-              this.CryptoCity.setProvider(provider);
-            });
-        }
+        this.http.get(`${JSON_URL}CryptoCity.json`)
+          .subscribe(json => {
+            this.contractData = json;
+            this.CryptoCity = contract(json);
+            this.CryptoCity.setProvider(provider);
+          });
       });
     }
   }
@@ -49,28 +48,36 @@ export class Web3Service {
   }
 
   public get isLoggedIn() {
-    return this.network === environment.network && !!this.coinbase;
+    return !this.wrongNetwork && !!this.coinbase;
+  }
+
+  public get wrongNetwork() {
+    return this.CryptoCity && this.contractData && (!this.contractData[this.network] || !this.contractData[this.network].address);
   }
 
   public getAccount(): Observable<any> {
-    this.web3.eth.getCoinbase()
-      .then(a => {
-        this.coinbase = a;
-        this.CryptoCity.defaults({from: this.coinbase, gas: GAS});
-      })
-      .catch((err) => Observable.of(err));
+    if (this.web3) {
+      this.web3.eth.getCoinbase()
+        .then(a => {
+          this.coinbase = a;
+          this.CryptoCity.defaults({from: this.coinbase, gas: GAS});
+        })
+        .catch((err) => Observable.of(err));
 
-    return this.web3.eth.getAccounts((err, accs) => {
-      this.accounts = accs;
-      this.account = this.accounts && this.accounts[0];
-      localStorage.setItem(StorageKeys.Account, JSON.stringify({address: this.coinbase, nickname: this.accountNickname}));
-      if (this.CryptoCity) {
-        this.getNickname(this.account)
-          .then(nickname => this.accountNickname = nickname)
-          .catch(error => error);
-      }
-      return Observable.of(this.account);
-    });
+      return this.web3.eth.getAccounts((err, accs) => {
+        this.accounts = accs;
+        this.account = this.accounts && this.accounts[0];
+        localStorage.setItem(StorageKeys.Account, JSON.stringify({address: this.coinbase, nickname: this.accountNickname}));
+        if (this.CryptoCity) {
+          this.getNickname(this.account)
+            .then(nickname => this.accountNickname = nickname)
+            .catch(error => error);
+        }
+        return Observable.of(this.account);
+      });
+    } else {
+      return Observable.of(null);
+    }
   }
 
   public setNickname(nickname: string) {

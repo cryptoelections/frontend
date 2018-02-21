@@ -1,9 +1,12 @@
 <div class="card">
-  <div class="card-image text-center pt-3">
+  <div class="card-image text-center pt-3" [ngClass]="!city.coat ? randomColor : ''">
     <img class="city-card-top" [src]="cityImageSource" [alt]="city.name">
+    <span class="first-letters" [ngClass]="'letters-' + numberOfLetters" *ngIf="!city.coat"
+          [innerHTML]="firstLetters"></span>
   </div>
   <div class="card-block container city-card">
-    <div class="card-title text-center"> {{ city.name }}</div>
+    <div class="card-title text-center">
+      <span [tooltip]="city.name">{{ city.name }}</span></div>
     <div class="country align-items-center">
       <img
         class="city-country-flag"
@@ -15,6 +18,7 @@
     <p class="card-text">
       <span> <b>{{ city.population | convert }}</b> ({{ 'CITY.CARD.PERCENTAGE' | translate:percentage }}) </span>
       <app-parameters-pair
+        [tooltip]="loadMayor()"
         [name]="'CITY.CARD.MAYOR' | translate"
         [value]="loadMayor()"
       ></app-parameters-pair>
@@ -24,7 +28,7 @@
     <ng-container *ngIf="!isYours">
       <div [ngClass]="{ 'pending': city.buying }">
         <button class="btn card-button" [ngClass]="{ 'pending': city.buying }"
-                (click)="invest.emit({city: city, price: price})">
+                (click)="tryToInvest()">
           <span>{{ 'CITY.CARD.INVEST' | translate }} <b>{{ price | eth }} ETH</b></span>
         </button>
         <span>{{ 'CITY.CARD.TO_WIN' | translate }}</span></div>

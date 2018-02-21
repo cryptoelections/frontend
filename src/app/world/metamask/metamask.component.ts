@@ -22,9 +22,7 @@ export class MetamaskComponent {
   }
 
   public get wrongNetwork() {
-    return !!this.web3Service.network
-      && !!this.web3Service.coinbase
-      && this.web3Service.network !== environment.network;
+    return this.web3Service.wrongNetwork;
   }
 
   public get metamaskIsLocked() {

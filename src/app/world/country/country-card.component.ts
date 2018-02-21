@@ -36,7 +36,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   }
 
   public get isYours(): boolean {
-    return this.dynamic && this.dynamic.president === this.web3Service.coinbase;
+    return this.dynamic && !!this.web3Service.coinbase && this.dynamic.president === this.web3Service.coinbase;
   }
 
   public get defaultPrice() {
