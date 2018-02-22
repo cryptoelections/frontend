@@ -19,7 +19,7 @@ export class Web3Service {
   public coinbase;
   public network;
 
-  public CryptoCity;
+  public CryptoElections;
   public contractData;
 
   constructor(private http: HttpClient) {
@@ -29,11 +29,11 @@ export class Web3Service {
       window.web3.version.getNetwork((err, netId) => {
         this.network = parseInt(netId);
 
-        this.http.get(`${JSON_URL}CryptoCity.json`)
+        this.http.get(`${JSON_URL}CryptoElections.json`)
           .subscribe(json => {
             this.contractData = json;
-            this.CryptoCity = contract(json);
-            this.CryptoCity.setProvider(provider);
+            this.CryptoElections = contract(json);
+            this.CryptoElections.setProvider(provider);
           });
       });
     }
@@ -52,7 +52,9 @@ export class Web3Service {
   }
 
   public get wrongNetwork() {
-    return this.CryptoCity && this.contractData && (!this.contractData.networks[this.network] || !this.contractData.networks[this.network].address);
+    return this.CryptoElections
+      && this.contractData
+      && (!this.contractData.networks[this.network] || !this.contractData.networks[this.network].address);
   }
 
   public getAccount(): Observable<any> {
@@ -60,7 +62,7 @@ export class Web3Service {
       this.web3.eth.getCoinbase()
         .then(a => {
           this.coinbase = a;
-          this.CryptoCity.defaults({from: this.coinbase, gas: GAS});
+          this.CryptoElections.defaults({from: this.coinbase, gas: GAS});
         })
         .catch((err) => Observable.of(err));
 
@@ -68,7 +70,7 @@ export class Web3Service {
         this.accounts = accs;
         this.account = this.accounts && this.accounts[0];
         localStorage.setItem(StorageKeys.Account, JSON.stringify({address: this.coinbase, nickname: this.accountNickname}));
-        if (this.CryptoCity) {
+        if (this.CryptoElections) {
           this.getNickname(this.account)
             .then(nickname => this.accountNickname = nickname)
             .catch(error => error);
@@ -81,32 +83,32 @@ export class Web3Service {
   }
 
   public setNickname(nickname: string) {
-    let CryptoCityInstance;
-    return this.CryptoCity.deployed()
+    let CryptoElectionsInstance;
+    return this.CryptoElections.deployed()
       .then((instance) => {
-        CryptoCityInstance = instance;
-        CryptoCityInstance.setNickname(nickname);
+        CryptoElectionsInstance = instance;
+        CryptoElectionsInstance.setNickname(nickname);
       });
   }
 
   public getNickname(address: string) {
-    let CryptoCityInstance;
-    return this.CryptoCity.deployed()
+    let CryptoElectionsInstance;
+    return this.CryptoElections.deployed()
       .then((instance) => {
-        CryptoCityInstance = instance;
-        return CryptoCityInstance.userNicknames(address);
+        CryptoElectionsInstance = instance;
+        return CryptoElectionsInstance.userNicknames(address);
       });
   }
 
   public invest(cityId, price) {
-    let CryptoCityInstance;
-    return this.CryptoCity && this.CryptoCity.deployed()
+    let CryptoElectionsInstance;
+    return this.CryptoElections && this.CryptoElections.deployed()
       .then((instance) => {
-        CryptoCityInstance = instance;
+        CryptoElectionsInstance = instance;
 
         // todo check price of the city before buying
         // return this.getPrice(cityId).then(p => {
-        return CryptoCityInstance.buyCity(cityId, {
+        return CryptoElectionsInstance.buyCity(cityId, {
           value: price,
           to: instance.address
         });
@@ -115,21 +117,21 @@ export class Web3Service {
   }
 
   public getUserCities(i: number) {
-    let CryptoCityInstance;
-    return this.CryptoCity && this.CryptoCity.deployed()
+    let CryptoElectionsInstance;
+    return this.CryptoElections && this.CryptoElections.deployed()
       .then((instance) => {
-        CryptoCityInstance = instance;
-        return CryptoCityInstance.userCities.call(this.coinbase, i);
+        CryptoElectionsInstance = instance;
+        return CryptoElectionsInstance.userCities.call(this.coinbase, i);
       });
   }
 
   public getPrice(cityId) {
-    let CryptoCityInstance;
-    return this.CryptoCity && this.CryptoCity.deployed()
+    let CryptoElectionsInstance;
+    return this.CryptoElections && this.CryptoElections.deployed()
       .then((instance) => {
-        CryptoCityInstance = instance;
+        CryptoElectionsInstance = instance;
 
-        return CryptoCityInstance.getPrices(cityId);
+        return CryptoElectionsInstance.getPrices(cityId);
       });
   }
 }
