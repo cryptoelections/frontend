@@ -7,7 +7,7 @@ import * as common from '../common/common.actions';
 
 export interface DynamicState {
   loading: boolean;
-  entities: { [id: string]: Partial<City> }
+  entities: { [id: string]: Partial<City> };
 }
 
 export interface State extends EntityState<City> {
@@ -73,7 +73,7 @@ export function reducer(state = initialState, action: actions.Actions | common.A
         citiesByCountry: reduceByCountry
       };
 
-      return {...adapter.addAll([...action.payload], newState)};
+      return {...adapter.addAll(action.payload, newState)};
     }
     case actions.FILTER_UPDATE: {
       return {...state, filters: {...state.filters, ...action.payload}};
