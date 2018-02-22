@@ -81,7 +81,7 @@
         <p>{{ 'COUNTRY.CARD.INVEST_MODAL_TEXT' | translate:{country: country.name} }}
           <a (click)="cityList.hide()"
              [routerLink]="['/cities']"
-             [queryParams]="{query: country.name}">{{
+             [queryParams]="{query: country?.name}">{{
             'COUNTRY.CARD.INVEST_MODAL_TEXT_LINK' | translate }}
           </a>
         </p>
