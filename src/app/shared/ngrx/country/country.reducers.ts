@@ -62,7 +62,10 @@ export function reducer(state = initialState, action: actions.Actions): State {
       return {...state, loading: true};
     }
     case actions.LOAD_COUNTRIES_RESPONSE: {
-      return {...adapter.addAll(action.payload, state), loading: false};
+      return {
+        ...adapter.addAll(action.payload && action.payload.length ? action.payload : [],
+          state), loading: false
+      };
     }
     case actions.FILTER_UPDATE: {
       return {...state, filters: {...state.filters, ...action.payload}};
