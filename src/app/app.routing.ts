@@ -18,7 +18,7 @@ const routes: Routes = [{
   children: [{
     path: '',
     pathMatch: 'full',
-    redirectTo: 'countries'
+    redirectTo: '/home'
   }, {
     path: 'countries',
     component: CountryListContainerComponent
