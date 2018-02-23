@@ -1,6 +1,5 @@
 import {AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, Output} from '@angular/core';
 import {City} from '../../shared/models/city.model';
-import {DEFAULT_PRICE} from '../../shared/services/base.service';
 
 @Component({
   selector: 'app-my-campaign',
@@ -18,6 +17,7 @@ export class MyCampaignComponent implements AfterViewInit {
   @Input() public isLoading: boolean;
   @Output() public queryChange = new EventEmitter<string>();
   @Output() public pageChange = new EventEmitter<number>();
+  @Output() public invest = new EventEmitter();
 
   public get myCountries() {
     return this.myCities && this.myCities.map((c: City) => c && c.country)

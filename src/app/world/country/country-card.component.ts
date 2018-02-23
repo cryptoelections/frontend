@@ -6,6 +6,8 @@ import {Web3Service} from '../../shared/services/web3.service';
 import {Router} from '@angular/router';
 import {DEFAULT_PRICE} from '../../shared/services/base.service';
 
+const zeroAddress = '0x0000000000000000000000000000000000000000';
+
 @Component({
   selector: 'app-country-card',
   templateUrl: 'country-card.component.html',
@@ -30,9 +32,11 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   }
 
   public get president(): string {
-    return this.dynamic && this.dynamic.president
-      && (this.nicknames && this.nicknames[this.dynamic.president] || this.dynamic.president)
-      || this.translate.instant('COUNTRY.CARD.NOT_ELECTED_YET');
+    if (this.dynamic && this.dynamic.president && this.dynamic.president !== zeroAddress) {
+      return this.nicknames && this.nicknames[this.dynamic.president] || this.dynamic.president;
+    } else {
+      return this.translate.instant('COUNTRY.CARD.NOT_ELECTED_YET');
+    }
   }
 
   public get isYours(): boolean {
@@ -114,11 +118,10 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
     this.cd.detectChanges();
   }
 
-
   public cityPriceRange(): { lowestPrice: string, highestPrice: string } {
     const lowestPrice = this.sortedCities[0] && this.cityDynamic && this.cityDynamic[this.sortedCities[0].id]
       && this.cityDynamic[this.sortedCities[0].id] && this.cityDynamic[this.sortedCities[0].id].price;
-    const highestPrice = this.sortedCities.length > 1 && this.cityDynamic && this.cityDynamic[this.sortedCities[this.sortedCities.length - 1].id]
+    const highestPrice = this.sortedCities.length > 1 && this.cityDynamic
       && this.cityDynamic[this.sortedCities[this.sortedCities.length - 1].id]
       && this.cityDynamic[this.sortedCities[this.sortedCities.length - 1].id].price;
     return {lowestPrice, highestPrice};

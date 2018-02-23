@@ -25,9 +25,6 @@ export class CountryFilterComponent extends FilterComponent implements AfterView
 
   public header = 'COUNTRY.TITLE';
   public sortOptions = [{
-    option: CountrySortOption.Availability,
-    name: 'COUNTRY.FILTER.SORT.AVAILABILITY'
-  }, {
     option: CountrySortOption.Name,
     name: 'COUNTRY.FILTER.SORT.NAME'
   }, {

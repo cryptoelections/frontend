@@ -67,7 +67,7 @@
              [src]="imageLink"
              onerror="this.src = 'assets/images/no-flag.png'"
              alt=""/>
-        <h4 class="modal-title pull-left"><b>{{ country.name }}</b></h4>
+        <h4 class="modal-title pull-left"><b>{{ country?.name }}</b></h4>
         <button
           type="button"
           class="close pull-right"
@@ -78,7 +78,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>{{ 'COUNTRY.CARD.INVEST_MODAL_TEXT' | translate:{country: country.name} }}
+        <p>{{ 'COUNTRY.CARD.INVEST_MODAL_TEXT' | translate:{country: country?.name} }}
           <a (click)="cityList.hide()"
              [routerLink]="['/cities']"
              [queryParams]="{query: country?.name}">{{
@@ -89,8 +89,8 @@
           <div class="row align-items-center bordered"
                *ngFor="let city of getCostEffectiveCities(); let l = last"
                [ngClass]="{'last': l}">
-            <div class="col-3">{{ city.name }}</div>
-            <div class="col-5"><b>{{ city.population | convert }}</b> {{ cityElectorate(city) }}{{
+            <div class="col-3">{{ city?.name }}</div>
+            <div class="col-5"><b>{{ city?.population | convert }}</b> {{ cityElectorate(city) }}{{
               'COUNTRY.CARD.INVEST_MODAL_PERCENTAGE' | translate }}
             </div>
             <div class="col-4">
@@ -105,7 +105,7 @@
                 </div>
               </ng-container>
               <ng-container *ngIf="!isYoursCity(city)">
-                <button class="btn card-button" [ngClass]="{ 'pending': city.buying }" (click)="tryToInvest(city)">
+                <button class="btn card-button" [ngClass]="{ 'pending': city?.buying }" (click)="tryToInvest(city)">
                   <span>{{ (dynamicCities[city?.id] && dynamicCities[city?.id].price || defaultPrice) | eth }} ETH</span>
                 </button>
               </ng-container>

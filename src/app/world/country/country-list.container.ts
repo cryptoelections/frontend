@@ -48,7 +48,7 @@ export class CountryListContainerComponent extends WithUnsubscribe() implements 
   readonly query$ = this.store.select(fromCountries.query);
   readonly sortBy$ = this.store.select(fromCountries.sortBy);
   readonly filters$ = this.store.select(fromCountries.filters);
-  readonly citiesByCountries$ = this.store.select(fromCountries.citiesByCountriesEntities)
+  readonly citiesByCountries$ = this.store.select(fromCountries.citiesByCountriesEntities);
   readonly dynamicInfoCities$ = this.store.select(fromCities.getDynamicInfoEntities);
   readonly myCitiesByCountries$ = this.store.select(fromCountries.selectAllByCountries);
   readonly dynamicCountries$ = this.store.select(fromCountries.getDynamicInfoEntities);
@@ -56,7 +56,7 @@ export class CountryListContainerComponent extends WithUnsubscribe() implements 
 
   private filterService = new FilterService({
     query: {type: 'string'},
-    sortBy: {type: 'string', defaultOption: CountrySortOption.Availability.toString()},
+    sortBy: {type: 'string', defaultOption: CountrySortOption.Name.toString()},
     page: {type: 'string', defaultOption: '1'}
   }, this.router, this.storage, StorageKeys.CountryFilter, this.activatedRoute);
 

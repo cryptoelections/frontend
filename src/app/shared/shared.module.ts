@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {APP_INITIALIZER, NgModule} from '@angular/core';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {NgModule} from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
 import {AuthServiceLoader} from './services/auth-service.loader';
 import {AuthGuard} from './services/auth.guard';
 import {ConfigService} from './services/config.service';
@@ -25,11 +25,17 @@ import {LoadingDirective} from './directives/loading.directive';
 import {EthPipe} from './pipes/eth.pipe';
 import {NicknamesService} from './services/nicknames.service';
 import {Web3Service} from './services/web3.service';
+import {CityModalComponent} from './components/city-modal.component';
+import {CountryModalComponent} from './components/country-modal.component';
+import {CountryModalContainerComponent} from './components/country-modal.container';
 
 
 @NgModule({
   declarations: [
+    CityModalComponent,
     ConvertPipe,
+    CountryModalComponent,
+    CountryModalContainerComponent,
     EthPipe,
     FilterComponent,
     HighLightPipe,
@@ -85,7 +91,7 @@ import {Web3Service} from './services/web3.service';
     StorageService,
     Web3Service
   ],
-  entryComponents: [LoaderComponent]
+  entryComponents: [LoaderComponent, CityModalComponent, CountryModalContainerComponent]
 })
 export class SharedModule {
 }

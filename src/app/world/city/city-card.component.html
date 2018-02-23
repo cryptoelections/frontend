@@ -27,7 +27,9 @@
   <div class="card-button-block text-center">
     <ng-container *ngIf="!isYours">
       <div [ngClass]="{ 'pending': city.buying }">
-        <button class="btn card-button" [ngClass]="{ 'pending': city.buying }"
+        <button class="btn card-button"
+                [disabled]="city.buying"
+                [ngClass]="{ 'pending': city.buying }"
                 (click)="tryToInvest()">
           <span>{{ 'CITY.CARD.INVEST' | translate }} <b>{{ price | eth }} ETH</b></span>
         </button>

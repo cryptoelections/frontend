@@ -1,6 +1,8 @@
 import {AfterViewInit, ChangeDetectorRef, Component} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {State} from '../../shared/ngrx';
+import {City} from '../../shared/models/city.model';
+
 import * as fromMyCampaign from '../../shared/ngrx/my-campaign/my-campaign.reducers';
 import * as fromCountries from '../../shared/ngrx/country/country.reducers';
 import * as fromCities from '../../shared/ngrx/city/city.reducers';
@@ -20,6 +22,7 @@ import * as countryActions from '../../shared/ngrx/country/country.actions';
                      [total]="total$ | async"
                      [dynamicCities]="dynamicCities$ | async"
                      [dynamic]="dynamicCountries$ | async"
+                     (invest)="onInvest($event)"
                      (queryChange)="onQueryChange($event)"
                      (pageChange)="onPageChange($event)"
     ></app-my-campaign>`
@@ -53,5 +56,12 @@ export class MyCampaignContainerComponent implements AfterViewInit {
 
   public onPageChange(page: number) {
     this.store.dispatch(new myCampaignActions.FilterUpdate({page}));
+  }
+
+  public onInvest(data: { city: City, price: number | string }) {
+    this.store.dispatch(new cityActions.Invest({
+      id: data.city.id.toString(),
+      price: data.price
+    }));
   }
 }

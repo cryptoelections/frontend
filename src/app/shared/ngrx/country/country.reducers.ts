@@ -4,6 +4,7 @@ import {CountrySortOption} from '../../../world/country/country-filter.component
 import {createFeatureSelector, createSelector} from '@ngrx/store';
 import {City} from '../../models/city.model';
 import {CitySortOption} from '../../../world/city/city-filter.component';
+import {DEFAULT_PRICE} from '../../services/base.service';
 
 import * as fromMyCampaign from '../my-campaign/my-campaign.reducers';
 import * as fromCities from '../city/city.reducers';
@@ -34,7 +35,7 @@ export const countryReducers = {
 
 export const adapter: EntityAdapter<Country> = createEntityAdapter<Country>({
   selectId: (item: Country) => item.code,
-  sortComparer: (a: Country, b: Country) => a.active === b.active ? 0 : (a.active && !b.active ? -1 : (!a.active && b.active) ? 1 : -1)
+  sortComparer: (a: Country, b: Country) => a.name.localeCompare(b.name)
 });
 
 export const dynamicAdapter = createEntityAdapter<Partial<Country>>({
@@ -45,7 +46,7 @@ export const dynamicAdapter = createEntityAdapter<Partial<Country>>({
 export const initialState: State = adapter.getInitialState({
   loading: false,
   filters: {
-    sortBy: CountrySortOption.Availability,
+    sortBy: CountrySortOption.Name,
     biggerFirst: false,
     query: '',
     page: 1
@@ -133,23 +134,25 @@ export const filteredListCountries = createSelector(selectFilteredList, (myCitie
   let numberCitiesForPage = 0;
   const myCountries = [];
 
-  myCities.forEach(city => {
-    if (myCountries.indexOf(city && city.country) === -1) {
-      myCountries.push(city && city.country);
-    }
-    numberCitiesForPage++;
-  });
-  return myCountries;
+  if (myCities) {
+    myCities.forEach(city => {
+      if (myCountries && myCountries.indexOf(city && city.country) === -1) {
+        myCountries.push(city && city.country);
+      }
+      numberCitiesForPage++;
+    });
+  }
+  return myCountries.sort((a, b) => a.localeCompare(b));
 });
 
 export const filteredListCountriesTotal = createSelector(filteredListCountries, list => list && list.length);
-export const filteredListForPage = createSelector(selectFilteredList, filteredListCountries, page, (myCities, countries, p) => {
-  const sortedList = myCities.sort((city: City, city2: City) => city.country < city2.country ? -1 : 1);
-
-  const first = sortedList.findIndex((city: City) => city && city.country === countries[p * 4 - 4]);
-  const last = sortedList.findIndex((city: City) => city && city.country === countries[p * countries.length]);
-  return sortedList.splice(first, (last < 0 ? countries.length : last));
-});
+export const filteredListForPage = createSelector(selectFilteredList, filteredListCountries, fromMyCampaign.page,
+  (myCities, countries, p) => {
+    const sortedList = myCities.sort((city: City, city2: City) => city.country < city2.country ? -1 : 1);
+    const first = sortedList.findIndex((city: City) => city && city.country === countries[p * 4 - 4]);
+    const last = sortedList.findIndex((city: City) => city && city.country === countries[p * 4]);
+    return sortedList.splice(first, (last < 0 ? countries.length : last));
+  });
 
 /* ----- my campaign end ------- */
 
@@ -158,7 +161,8 @@ export const filteredCountries = createSelector(
   filters,
   citiesByCountriesEntities,
   selectAllByCountries,
-  (countries, filter, cityEntities, myCityEntities) => {
+  fromCities.getDynamicCitiesState,
+  (countries, filter, cityEntities, myCityEntities, dynamicCities) => {
     const upperQuery = filter.query && filter.query.toUpperCase();
 
     const sortByQuery = (country: Country) => !filter.query
@@ -174,7 +178,8 @@ export const filteredCountries = createSelector(
       filteredList,
       cityEntities,
       myCityEntities,
-      +filter.sortBy as CountrySortOption
+      +filter.sortBy as CountrySortOption,
+      dynamicCities.entities
     );
 
     return sortedList;
@@ -191,11 +196,13 @@ export const countriesForPage = createSelector(filteredCountries, filters,
 
 export const electorate = (cities: Array<City>): number => {
   let count = 0;
-  cities.forEach((city: City) => count += +city.population);
+  if (cities) {
+    cities.forEach((city: City) => count += +city.population);
+  }
   return count;
 };
 
-export const price = (cities: Array<City>, myCities: Array<City>): { numberOfCities: number, price: number } => {
+export const price = (cities: Array<City>, myCities: Array<City>, dynamicCityInfo) => {
   const half = electorate(cities) / 2;
   let p = 0;
   let el = 0;
@@ -205,18 +212,23 @@ export const price = (cities: Array<City>, myCities: Array<City>): { numberOfCit
   }
 
   let n = 0;
-  cities.sort((a: City, b: City) => {
-    const pricePerElectorate = (city: City) => city.price / +city.population;
-    return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
-  })
-    .forEach((city: City) => {
-      while (el < half) {
-        p += +city.price;
-        n++;
-        el += +city.population;
-      }
-    });
-  return {numberOfCities: n, price: p};
+  if (cities) {
+    cities
+      .filter((city) => !myCities || !myCities.find(c => c.id === city.id))
+      .sort((a: City, b: City) => {
+        const pricePerElectorate = (city: City) =>
+          (dynamicCityInfo[city.id] && +dynamicCityInfo[city.id].price || DEFAULT_PRICE) / +city.population;
+        return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
+      })
+      .forEach((city: City) => {
+        while (el < half) {
+          p += dynamicCityInfo[city.id] && +dynamicCityInfo[city.id].price || +DEFAULT_PRICE;
+          n++;
+          el += +city.population;
+        }
+      });
+  }
+  return p;
 };
 
 export const numberOfCities = (cities: Array<City>): number => cities ? cities.length : 0;
@@ -224,7 +236,8 @@ export const numberOfCities = (cities: Array<City>): number => cities ? cities.l
 export const sortCountries = (countries: Array<Country>,
                               citiesByCountries,
                               myCitiesByCountries,
-                              sortByOption: CountrySortOption) => {
+                              sortByOption: CountrySortOption,
+                              dynamicCities) => {
   let sort;
 
   switch (sortByOption) {
@@ -235,7 +248,8 @@ export const sortCountries = (countries: Array<Country>,
     case CountrySortOption.PriceDown: {
       sort = (a: Country, b: Country) =>
         price(citiesByCountries[a.code],
-          myCitiesByCountries[a.code]).price < price(citiesByCountries[b.code], myCitiesByCountries[b.code]).price
+          myCitiesByCountries[a.code],
+          dynamicCities) < price(citiesByCountries[b.code], myCitiesByCountries[b.code], dynamicCities)
           ? -1
           : 1;
       break;
@@ -243,7 +257,8 @@ export const sortCountries = (countries: Array<Country>,
     case CountrySortOption.PriceUp: {
       sort = (a: Country, b: Country) =>
         price(citiesByCountries[a.code],
-          myCitiesByCountries[a.code]).price > price(citiesByCountries[b.code], myCitiesByCountries[b.code]).price
+          myCitiesByCountries[a.code],
+          dynamicCities) > price(citiesByCountries[b.code], myCitiesByCountries[b.code], dynamicCities)
           ? -1
           : 1;
       break;
@@ -361,40 +376,6 @@ export const filteredCitiesLength = createSelector(
 export const citiesForPage = createSelector(filteredCities, fromCities.filters,
   (cities, filter) => cities.slice(filter.page * 8 - 8, filter.page * 8)
 );
-
-export const selectMostCostEffectiveCitiesForCountry = createSelector(
-  citiesByCountriesEntities,
-  fromCities.getDynamicInfoEntities,
-  selectAllByCountries,
-  (citiesByCountries, dynamicCities, myCities) => {
-    const byCountries = citiesByCountries;
-
-    Object.keys(byCountries).forEach(key => {
-      let el = 0;
-      if (myCities && myCities[key] && myCities[key].length) {
-        myCities[key].forEach(city => el += +city.population);
-      }
-
-      let countryElectorate = 0;
-      let half = 0;
-      let cities = 0;
-      const sortedArray = byCountries[key]
-        .sort((a: City, b: City) => (dynamicCities[a.id]
-          && dynamicCities[a.id].price / +a.population) < (dynamicCities[b.id] && dynamicCities[b.id].price / +b.population) ? -1 : 1);
-      sortedArray.forEach((city: City) => {
-        countryElectorate += +city.population;
-        half = countryElectorate / 2;
-        while (el < half) {
-          el += +city.population;
-          cities++;
-        }
-      });
-      byCountries[key] = sortedArray.splice(0, cities);
-    });
-
-    return byCountries;
-  });
-
 export const getDynamicCountriesState = createSelector(getCountriesState, state => state.list.dynamic);
 export const getDynamicInfoEntities = createSelector(getDynamicCountriesState, state => state.entities);
 export const isDynamicLoading = createSelector(getDynamicCountriesState, state => state.loading);

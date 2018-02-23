@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron" *ngIf="noMetamask || metamaskIsLocked || wrongNetwork">
   <div class="container">
     <ng-container *ngIf="noMetamask">
       <h1>{{ 'ACCOUNT.NOT_CONNECTED' | translate }}</h1>

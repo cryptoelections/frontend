@@ -4,7 +4,6 @@ import {City} from '../../shared/models/city.model';
 import {Web3Service} from '../../shared/services/web3.service';
 import {DEFAULT_PRICE} from '../../shared/services/base.service';
 import {Router} from '@angular/router';
-import {split} from 'ts-node';
 
 @Component({
   selector: 'app-my-country',
@@ -13,13 +12,13 @@ import {split} from 'ts-node';
 export class MyCountryComponent implements AfterViewInit {
   @Input() public country: Country;
   @Input() public citiesOfCountry: Array<City>;
-  @Input() public allCitiesByCountry;
+  @Input() public allCitiesByCountry: Array<City>;
   @Input() public dynamicCountries;
   @Input() public dynamicCities;
   @Output() public invest = new EventEmitter();
 
   public get imageLink() {
-    return `assets/images/country-flags/large/${this.country.code.toLowerCase()}.png`;
+    return `assets/images/country-flags/large/${this.country && this.country.code.toLowerCase()}.png`;
   }
 
   public get isYours() {
@@ -92,9 +91,9 @@ export class MyCountryComponent implements AfterViewInit {
 
   public getCostEffectiveCities(): Array<City> {
     return this.allCitiesByCountry
-      .filter(city => !this.citiesOfCountry[this.country.code]
-        || !this.citiesOfCountry[this.country.code].length
-        || !this.citiesOfCountry[this.country.code].find(c => city.id === c.id))
+      .filter(city => !this.citiesOfCountry[this.country && this.country.code]
+        || !this.citiesOfCountry[this.country && this.country.code].length
+        || !this.citiesOfCountry[this.country && this.country.code].find(c => city.id === c.id))
       .splice(0, 10);
   }
 
@@ -103,6 +102,7 @@ export class MyCountryComponent implements AfterViewInit {
     let electorate = this.percentageByCountry();
     const half = this.electorate() / 2;
     this.allCitiesByCountry
+      .filter((city) => !this.citiesOfCountry.find(c => c.id === city.id))
       .sort((a: City, b: City) => {
         const pricePerElectorate = (city: City) => {
           return (+(this.dynamicCities[city.id] && this.dynamicCities[city.id].price) || +DEFAULT_PRICE) / +city.population;

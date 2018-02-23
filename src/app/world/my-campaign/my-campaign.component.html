@@ -8,7 +8,8 @@
                       [allCitiesByCountry]="cities[country]"
                       [dynamicCountries]="dynamic"
                       [dynamicCities]="dynamicCities"
-                      [citiesOfCountry]="myCitiesByCountry[country]"></app-my-country>
+                      [citiesOfCountry]="myCitiesByCountry[country]"
+                      (invest)="invest.emit($event)"></app-my-country>
     </ng-container>
   </ng-container>
 

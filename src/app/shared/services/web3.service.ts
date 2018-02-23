@@ -21,21 +21,27 @@ export class Web3Service {
 
   public CryptoElections;
   public contractData;
+  public gasPrice;
 
   constructor(private http: HttpClient) {
-    const provider = window.web3 && window.web3.currentProvider;
+    const provider = window.web3.currentProvider;
     this.web3 = provider && new Web3(provider);
-    if (window.web3) {
-      window.web3.version.getNetwork((err, netId) => {
-        this.network = parseInt(netId);
+    if (provider) {
+      this.web3.eth.net.getId()
+        .then((netId) => {
+          this.network = parseInt(netId);
+          this.http.get(`${JSON_URL}CryptoElections.json`)
+            .subscribe(json => {
+              this.contractData = json;
+              this.CryptoElections = contract(json);
+              this.CryptoElections.setProvider(provider);
 
-        this.http.get(`${JSON_URL}CryptoElections.json`)
-          .subscribe(json => {
-            this.contractData = json;
-            this.CryptoElections = contract(json);
-            this.CryptoElections.setProvider(provider);
-          });
-      });
+              this.http.get('https://ethgasstation.info/json/ethgasAPI.json')
+                .subscribe((prices: any) => {
+                  this.gasPrice = prices.average * 100000000;
+                });
+            });
+        });
     }
   }
 
@@ -62,9 +68,10 @@ export class Web3Service {
       this.web3.eth.getCoinbase()
         .then(a => {
           this.coinbase = a;
-          this.CryptoElections.defaults({from: this.coinbase, gas: GAS});
-        })
-        .catch((err) => Observable.of(err));
+          if (this.CryptoElections) {
+            this.CryptoElections.defaults({from: this.coinbase, gas: GAS, gasPrice: this.gasPrice});
+          }
+        });
 
       return this.web3.eth.getAccounts((err, accs) => {
         this.accounts = accs;
@@ -105,24 +112,26 @@ export class Web3Service {
     return this.CryptoElections && this.CryptoElections.deployed()
       .then((instance) => {
         CryptoElectionsInstance = instance;
-
-        // todo check price of the city before buying
-        // return this.getPrice(cityId).then(p => {
-        return CryptoElectionsInstance.buyCity(cityId, {
-          value: price,
-          to: instance.address
-        });
+        return this.getCityInfo(cityId)
+          .then((city) => {
+            const p = this.getPrices(city[3]) * 1000000000000000000 || price;
+            return CryptoElectionsInstance.buyCity(cityId, {
+              value: p,
+              to: instance.address
+            });
+          });
       });
-    // });
   }
 
   public getUserCities(i: number) {
     let CryptoElectionsInstance;
-    return this.CryptoElections && this.CryptoElections.deployed()
-      .then((instance) => {
-        CryptoElectionsInstance = instance;
-        return CryptoElectionsInstance.userCities.call(this.coinbase, i);
-      });
+    return this.CryptoElections
+      ? this.CryptoElections.deployed()
+        .then((instance) => {
+          CryptoElectionsInstance = instance;
+          return CryptoElectionsInstance.userCities.call(this.coinbase, i);
+        })
+      : new Promise(resolve => ({}));
   }
 
   public getPrice(cityId) {
@@ -133,5 +142,47 @@ export class Web3Service {
 
         return CryptoElectionsInstance.getPrices(cityId);
       });
+  }
+
+  public getCityInfo(cityId) {
+    let CryptoElectionsInstance;
+    return this.CryptoElections && this.CryptoElections.deployed()
+      .then((instance) => {
+        CryptoElectionsInstance = instance;
+
+        return CryptoElectionsInstance.cities(cityId);
+      });
+  }
+
+  public presidentialEvent() {
+    let CryptoElectionsInstance;
+    return this.CryptoElections && this.CryptoElections.deployed()
+      .then(instance => {
+        CryptoElectionsInstance = instance;
+        return CryptoElectionsInstance.assignCountryEvent(this.coinbase);
+      });
+  }
+
+  public allPresidentialEvents() {
+    let CryptoElectionsInstance;
+
+    return this.CryptoElections && this.CryptoElections.deployed()
+      .then(instance => {
+        CryptoElectionsInstance = instance;
+        return CryptoElectionsInstance.assignCountryEvent();
+      });
+  }
+
+  private getPrices(purchases) {
+    let price = 0.02;
+
+    for (let i = 1; i <= purchases; i++) {
+      if (i <= 7) {
+        price = price * 2;
+      } else {
+        price = price * 1.2;
+      }
+    }
+    return price;
   }
 }

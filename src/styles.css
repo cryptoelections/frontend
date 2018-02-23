@@ -141,7 +141,7 @@ body {
 /* pagination */
 
 ul.pagination {
-  margin-bottom: 55px;
+  margin-bottom: 85px;
 }
 
 li .page-link {
@@ -206,6 +206,9 @@ li.page-item:last-child .page-link {
 
 .row.city {
   margin-left: 16%;
+  align-items: center;
+  padding: 10px 0px;
+  padding: 10px 0px;
 }
 
 .row.city .name,
@@ -270,6 +273,7 @@ li.page-item:last-child .page-link {
   line-height: normal;
   font-weight: 700;
   overflow: hidden;
+  margin-bottom: 0px !important;
   text-overflow: ellipsis;
 }
 
@@ -305,7 +309,12 @@ li.page-item:last-child .page-link {
   width: auto;
 }
 
-.president,
+.president {
+  font-size: 17px !important;
+  font-weight: 700;
+  color: rgb(217, 7, 114);
+}
+
 .mayor {
   font-size: 18px !important;
   font-weight: 700;
@@ -362,7 +371,7 @@ img.modal-img {
   height: auto
 }
 
-.alert {
+.alert.alert-danger {
   margin-top: -75px;
   max-width: 30%;
   float: right;

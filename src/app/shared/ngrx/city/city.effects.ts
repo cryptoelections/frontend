@@ -7,7 +7,7 @@ import {City} from '../../models/city.model';
 import {Web3Service} from '../../services/web3.service';
 import {State} from '../index';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
-import {CityModalComponent} from '../../../world/city/city-modal.component';
+import {CityModalComponent} from '../../components/city-modal.component';
 import * as city from './city.actions';
 import * as fromCities from './city.reducers';
 import * as common from '../common/common.actions';
@@ -37,9 +37,9 @@ export class CityEffects {
     .ofType(city.INVEST)
     .withLatestFrom(this.store.select(fromCities.selectEntities))
     .switchMap(([action, cities]: [city.Invest, { [id: string]: City }]) =>
-      Observable.fromPromise(this.web3Service.invest(action.payload.id, action.payload.price))
-        .map((res) => new city.InvestSuccess(cities[action.payload.id]))
-        .catch((err) => Observable.of(new common.ShowErrorMessage(cities[action.payload.id]))));
+      this.web3Service.invest(action.payload.id, action.payload.price)
+        .then((res) => new city.InvestSuccess(cities[action.payload.id]))
+        .catch((err) => new common.ShowErrorMessage(cities[action.payload.id])));
 
   @Effect({dispatch: false})
   onInvestSuccess$ = this.actions$

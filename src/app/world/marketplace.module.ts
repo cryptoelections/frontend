@@ -28,8 +28,6 @@ import {nicknamesReducer} from '../shared/ngrx/nicknames/nicknames.reducers';
 import {NicknamesEffects} from '../shared/ngrx/nicknames/nicknames.effects';
 import {commonReducers} from '../shared/ngrx/common/common.reducers';
 import {CommonEffects} from '../shared/ngrx/common/common.effects';
-import {CityModalComponent} from './city/city-modal.component';
-import {CountryModalComponent} from './country/country-modal.component';
 
 
 @NgModule({
@@ -38,12 +36,10 @@ import {CountryModalComponent} from './country/country-modal.component';
     CityFilterComponent,
     CityListComponent,
     CityListContainerComponent,
-    CityModalComponent,
     CountryCardComponent,
     CountryFilterComponent,
     CountryListComponent,
     CountryListContainerComponent,
-    CountryModalComponent,
     MetamaskComponent,
     MyCampaignFilterComponent,
     MyCampaignComponent,
@@ -62,7 +58,6 @@ import {CountryModalComponent} from './country/country-modal.component';
     StoreModule.forFeature('nicknames', nicknamesReducer),
     StoreModule.forFeature('common', commonReducers)
   ],
-  entryComponents: [CityModalComponent, CountryModalComponent],
   providers: [],
 })
 export class MarketplaceModule {

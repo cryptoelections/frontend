@@ -89,6 +89,10 @@
       "INVEST_MODAL_TEXT_LINK": "this list",
       "INVEST_MODAL_PERCENTAGE": "% of electorate"
     },
+    "MODAL": {
+      "CONGRATULATIONS": "<b>Congratulations!</b><br/> You have the majority of votes in {{ name }}!",
+      "RULE_COUNTRY": "Rule this country!"
+    },
     "FILTER": {
       "SORT_BY": "Sort by",
       "SEARCH": "Search",
@@ -125,5 +129,8 @@
     "CITIES": "cities",
     "START": "Start your campaign",
     "INVEST": "Invest in your campaign in cities and countries of your choice to rule the whole worldmap!"
+  },
+  "NOTIFICATIONS": {
+    "PRESIDENT": "{{ user }} was elected President of {{ country }}"
   }
 }

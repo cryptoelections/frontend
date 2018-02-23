@@ -13,14 +13,15 @@ export class MyCampaignEffects {
     .ofType(myCampaignActions.LOAD_MY_CITIES_REQUEST)
     .filter((action: myCampaignActions.LoadMyCitiesRequest) => this.web3Service.isLoggedIn)
     .flatMap((action: myCampaignActions.LoadMyCitiesRequest) => {
-      const i = action.payload || 0;
+      let i = action.payload || 0;
       let actions = [new myCampaignActions.AddNoMoreCities()];
       return Observable.fromPromise(this.web3Service.getUserCities(i))
         .flatMap((city) => {
           if (city['c'][0] !== 0) {
+            i++;
             actions = [
               new myCampaignActions.AddMyCity(city['c'][0].toString()),
-              new myCampaignActions.LoadMyCitiesRequest(i + 1)
+              new myCampaignActions.LoadMyCitiesRequest(i)
             ];
           }
 

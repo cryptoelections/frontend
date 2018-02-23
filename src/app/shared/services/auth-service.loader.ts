@@ -32,7 +32,7 @@ export class AuthServiceLoader implements CanActivate {
           this.web3Service.coinbase = user;
           this._isLoading = null;
           return true;
-        }).share();
+        });
     }
 
     return this._isLoading;
