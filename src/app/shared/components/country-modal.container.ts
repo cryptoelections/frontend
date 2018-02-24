@@ -11,19 +11,18 @@ import * as cityActions from '../ngrx/city/city.actions';
   selector: 'app-country-modal-container',
   template: `
     <app-country-modal [bsModalRef]="bsModalRef"
-                       [params]="params"
-                       [countryCode]="countryCode"
-                       (ruleCountry)="ruleCountry()"
+                       [countries]="countries$ | async"
+                       [countryId]="countryId"
                        [cities]="cities$ | async"
                        [myCities]="myCities$ | async"
+                       (ruleCountry)="ruleCountry()"
     ></app-country-modal>
   `
 })
 export class CountryModalContainerComponent {
-  public params = {};
-  public countryCode: string;
-  public electorate: number;
+  public countryId: number;
 
+  readonly countries$ = this.store.select(fromCountries.selectEntities);
   readonly cities$ = this.store.select(fromCountries.citiesByCountriesEntities);
   readonly myCities$ = this.store.select(fromCountries.selectAllByCountries);
 

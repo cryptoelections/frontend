@@ -123,15 +123,26 @@ export class Web3Service {
       });
   }
 
-  public getUserCities(i: number) {
+  // public getUserCities(i: number) {
+  //   let CryptoElectionsInstance;
+  //   return this.CryptoElections
+  //     ? this.CryptoElections.deployed()
+  //       .then((instance) => {
+  //         CryptoElectionsInstance = instance;
+  //         return CryptoElectionsInstance.userCities.call(this.coinbase, i);
+  //       })
+  //     : new Promise(resolve => ({}));
+  // }
+
+
+  public getUserCities() {
     let CryptoElectionsInstance;
-    return this.CryptoElections
-      ? this.CryptoElections.deployed()
-        .then((instance) => {
-          CryptoElectionsInstance = instance;
-          return CryptoElectionsInstance.userCities.call(this.coinbase, i);
-        })
-      : new Promise(resolve => ({}));
+
+    return this.CryptoElections && this.CryptoElections.deployed()
+      .then(instance => {
+        CryptoElectionsInstance = instance;
+        return CryptoElectionsInstance.getUserCities(this.coinbase);
+      });
   }
 
   public getPrice(cityId) {

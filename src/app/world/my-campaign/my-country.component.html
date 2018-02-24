@@ -21,7 +21,7 @@
           >
             <h2>{{ country?.name }}</h2>
             <span class="ml-2">{{ citiesOfCountry && citiesOfCountry.length }}
-                {{(citiesOfCountry.length === 1 ? 'CAMPAIGN.CITY' : 'CAMPAIGN.CITIES') | translate}}</span>
+          {{(citiesOfCountry.length === 1 ? 'CAMPAIGN.CITY' : 'CAMPAIGN.CITIES') | translate}}</span>
           </div>
           <div class="col-md-5 col-xs-12 pr-0">
             <button class="btn card-button my-campaign-button" *ngIf="!isYours" (click)="cityList.show()">
@@ -81,8 +81,8 @@
         <p>{{ 'COUNTRY.CARD.INVEST_MODAL_TEXT' | translate:{country: country?.name} }}
           <a (click)="cityList.hide()"
              [routerLink]="['/cities']"
-             [queryParams]="{query: country?.name}">{{
-            'COUNTRY.CARD.INVEST_MODAL_TEXT_LINK' | translate }}
+             [queryParams]="{query: country?.name}">
+            {{ 'COUNTRY.CARD.INVEST_MODAL_TEXT_LINK' | translate }}
           </a>
         </p>
         <div class="container country-modal-cities">
@@ -90,8 +90,8 @@
                *ngFor="let city of getCostEffectiveCities(); let l = last"
                [ngClass]="{'last': l}">
             <div class="col-3">{{ city?.name }}</div>
-            <div class="col-5"><b>{{ city?.population | convert }}</b> {{ cityElectorate(city) }}{{
-              'COUNTRY.CARD.INVEST_MODAL_PERCENTAGE' | translate }}
+            <div class="col-5"><b>{{ city?.population | convert }}</b> {{ cityElectorate(city) }}
+              {{ 'COUNTRY.CARD.INVEST_MODAL_PERCENTAGE' | translate }}
             </div>
             <div class="col-4">
               <ng-container *ngIf="isYoursCity(city)">
@@ -105,8 +105,9 @@
                 </div>
               </ng-container>
               <ng-container *ngIf="!isYoursCity(city)">
-                <button class="btn card-button" [ngClass]="{ 'pending': city?.buying }" (click)="tryToInvest(city)">
-                  <span>{{ (dynamicCities[city?.id] && dynamicCities[city?.id].price || defaultPrice) | eth }} ETH</span>
+                <button class="btn card-button" (click)="tryToInvest(city)">
+                  <span *ngIf="!city.buying">{{ (dynamicCities[city?.id] && dynamicCities[city?.id].price || defaultPrice) | eth }} ETH</span>
+                  <span *ngIf="city.buying">{{ 'CITY.CARD.REQUEST_SENT' | translate }}</span>
                 </button>
               </ng-container>
             </div>

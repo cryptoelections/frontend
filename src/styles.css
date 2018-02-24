@@ -309,14 +309,8 @@ li.page-item:last-child .page-link {
   width: auto;
 }
 
-.president {
+.president, .mayor {
   font-size: 0.85rem !important;
-  font-weight: 700;
-  color: rgb(217, 7, 114);
-}
-
-.mayor {
-  font-size: 18px !important;
   font-weight: 700;
   color: rgb(217, 7, 114);
 }
@@ -556,4 +550,24 @@ img.modal-img {
 
 .first-letters.letters-3 {
   left: 49.5%;
+}
+
+.modal-backdrop.fade.in.show:nth-child(1) {
+  z-index: 1050;
+}
+
+.modal-backdrop.fade.in.show:nth-child(2) {
+  z-index: 1060;
+}
+
+/*.modal-backdrop.fade.in.show {*/
+/*z-index: 1040 !important;*/
+/*}*/
+
+img.flag-modal {
+  width: 10%;
+  position: absolute;
+  height: auto;
+  top: 65%;
+  right: 16%;
 }

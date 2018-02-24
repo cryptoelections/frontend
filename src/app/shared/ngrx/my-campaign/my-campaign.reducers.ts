@@ -20,7 +20,7 @@ export const myCampaignReducers = {
 
 export const adapter: EntityAdapter<string> = createEntityAdapter<string>({
   selectId: (item: string) => item,
-  sortComparer: (a: string, b: string) => a.localeCompare(b)
+  sortComparer: false
 });
 
 export const initialState: State = adapter.getInitialState({

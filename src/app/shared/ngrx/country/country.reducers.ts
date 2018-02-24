@@ -34,7 +34,7 @@ export const countryReducers = {
 };
 
 export const adapter: EntityAdapter<Country> = createEntityAdapter<Country>({
-  selectId: (item: Country) => item.code,
+  selectId: (item: Country) => item.id,
   sortComparer: (a: Country, b: Country) => a.name.localeCompare(b.name)
 });
 
@@ -115,7 +115,7 @@ export const selectFilteredList = createSelector(citiesByCountriesEntities,
     const lowerQuery = filter.query && filter.query.toLowerCase();
     const filterByQuery = (city: City) => !filter.query
       || city.name.toLowerCase().indexOf(lowerQuery) > -1
-      || countryEntities[city.country].name.toLowerCase().indexOf(lowerQuery) > -1;
+      || countryEntities[city.country_id].name.toLowerCase().indexOf(lowerQuery) > -1;
 
     return myCities.map((id: string) => cityEntities[id]).filter((city: City) => filterByQuery(city));
   });
@@ -124,8 +124,8 @@ export const selectAllByCountries = createSelector(fromMyCampaign.selectAll, fro
   return myCities
     .map((id: string) => cityEntities[id])
     .reduce((m, i) => ({
-      ...m, [i.country]: (
-        m[i.country] ? [...m[i.country], i] : [i]
+      ...m, [i.country_id]: (
+        m[i.country_id] ? [...m[i.country_id], i] : [i]
       )
     }), {});
 });
@@ -136,8 +136,8 @@ export const filteredListCountries = createSelector(selectFilteredList, (myCitie
 
   if (myCities) {
     myCities.forEach(city => {
-      if (myCountries && myCountries.indexOf(city && city.country) === -1) {
-        myCountries.push(city && city.country);
+      if (myCountries && myCountries.indexOf(city && city.country_id) === -1) {
+        myCountries.push(city && city.country_id);
       }
       numberCitiesForPage++;
     });
@@ -148,10 +148,10 @@ export const filteredListCountries = createSelector(selectFilteredList, (myCitie
 export const filteredListCountriesTotal = createSelector(filteredListCountries, list => list && list.length);
 export const filteredListForPage = createSelector(selectFilteredList, filteredListCountries, fromMyCampaign.page,
   (myCities, countries, p) => {
-    const sortedList = myCities.sort((city: City, city2: City) => city.country < city2.country ? -1 : 1);
-    const first = sortedList.findIndex((city: City) => city && city.country === countries[p * 4 - 4]);
-    const last = sortedList.findIndex((city: City) => city && city.country === countries[p * 4]);
-    return sortedList.splice(first, (last < 0 ? countries.length : last));
+    const sortedList = myCities.sort((city: City, city2: City) => city.country_id < city2.country_id ? -1 : 1);
+    const first = sortedList.findIndex((city: City) => city && city.country_id === countries[p * 4 - 4]);
+    const last = sortedList.findIndex((city: City) => city && city.country_id === countries[p * 4 + 1]);
+    return last < 0 ? sortedList : sortedList.splice(first, last);
   });
 
 /* ----- my campaign end ------- */
@@ -168,12 +168,12 @@ export const filteredCountries = createSelector(
     const sortByQuery = (country: Country) => !filter.query
       || country.name && country.name.toUpperCase().indexOf(upperQuery) > -1
       || country.code && country.code.toUpperCase().indexOf(upperQuery) > -1
-      || cityEntities && cityEntities[country.code] && cityEntities[country.code]
+      || cityEntities && cityEntities[country.id] && cityEntities[country.id]
         .find(city => city.name.toUpperCase().indexOf(upperQuery) > -1);
 
     const filteredList = countries.filter((country: Country) => sortByQuery(country)
-      && cityEntities[country.code]
-      && cityEntities[country.code].length);
+      && cityEntities[country.id]
+      && cityEntities[country.id].length);
     const sortedList = sortCountries(
       filteredList,
       cityEntities,
@@ -247,46 +247,46 @@ export const sortCountries = (countries: Array<Country>,
     }
     case CountrySortOption.PriceDown: {
       sort = (a: Country, b: Country) =>
-        price(citiesByCountries[a.code],
-          myCitiesByCountries[a.code],
-          dynamicCities) < price(citiesByCountries[b.code], myCitiesByCountries[b.code], dynamicCities)
+        price(citiesByCountries[a.id],
+          myCitiesByCountries[a.id],
+          dynamicCities) < price(citiesByCountries[b.id], myCitiesByCountries[b.id], dynamicCities)
           ? -1
           : 1;
       break;
     }
     case CountrySortOption.PriceUp: {
       sort = (a: Country, b: Country) =>
-        price(citiesByCountries[a.code],
-          myCitiesByCountries[a.code],
-          dynamicCities) > price(citiesByCountries[b.code], myCitiesByCountries[b.code], dynamicCities)
+        price(citiesByCountries[a.id],
+          myCitiesByCountries[a.id],
+          dynamicCities) > price(citiesByCountries[b.id], myCitiesByCountries[b.id], dynamicCities)
           ? -1
           : 1;
       break;
     }
     case CountrySortOption.ElectorateDown: {
       sort = (a: Country, b: Country) =>
-        electorate(citiesByCountries[a.code]) < electorate(citiesByCountries[b.code])
+        electorate(citiesByCountries[a.id]) < electorate(citiesByCountries[b.id])
           ? -1
           : 1;
       break;
     }
     case CountrySortOption.ElectorateUp: {
       sort = (a: Country, b: Country) =>
-        electorate(citiesByCountries[a.code]) > electorate(citiesByCountries[b.code])
+        electorate(citiesByCountries[a.id]) > electorate(citiesByCountries[b.id])
           ? -1
           : 1;
       break;
     }
     case CountrySortOption.NumberOfCitiesDown: {
       sort = (a: Country, b: Country) =>
-        numberOfCities(citiesByCountries[a.code]) < numberOfCities(citiesByCountries[b.code])
+        numberOfCities(citiesByCountries[a.id]) < numberOfCities(citiesByCountries[b.id])
           ? -1
           : 1;
       break;
     }
     case CountrySortOption.NumberOfCitiesUp: {
       sort = (a: Country, b: Country) =>
-        numberOfCities(citiesByCountries[a.code]) > numberOfCities(citiesByCountries[b.code])
+        numberOfCities(citiesByCountries[a.id]) > numberOfCities(citiesByCountries[b.id])
           ? -1
           : 1;
       break;
@@ -306,10 +306,11 @@ export const filteredCities = createSelector(
   selectEntities,
   (cities, filter, countries) => {
     const upperQuery = filter.query && filter.query.toUpperCase();
-    const active = (city: City) => countries && countries[city.country] && countries[city.country] && countries[city.country].active;
+    const active = (city: City) => countries && countries[city.country_id]
+      && countries[city.country_id] && countries[city.country_id].active;
 
     const queryFilter = (city: City) => {
-      const country = countries && countries[city.country] && countries[city.country];
+      const country = countries && countries[city.country_id] && countries[city.country_id];
       return !filter.query
         || city.name && city.name.toUpperCase().indexOf(upperQuery) > -1
         || country && country.name && country.name.toUpperCase().indexOf(upperQuery) > -1;

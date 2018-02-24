@@ -77,13 +77,11 @@ export class MyCountryComponent implements AfterViewInit {
   public percentage(city: City): string {
     let count = 0;
     let percentage = '0';
-    if (this.allCitiesByCountry) {
+    if (this.allCitiesByCountry && this.allCitiesByCountry.length) {
       this.allCitiesByCountry.forEach((c: City) => count += +c.population);
-      percentage = (
-        (
-          100 * +(city && city.population)
-        ) / count
-      ).toFixed(2);
+      if (count !== 0) {
+        percentage = (100 * +(city && city.population) / count).toFixed(2);
+      }
     }
 
     return percentage;
@@ -91,9 +89,12 @@ export class MyCountryComponent implements AfterViewInit {
 
   public getCostEffectiveCities(): Array<City> {
     return this.allCitiesByCountry
-      .filter(city => !this.citiesOfCountry[this.country && this.country.code]
-        || !this.citiesOfCountry[this.country && this.country.code].length
-        || !this.citiesOfCountry[this.country && this.country.code].find(c => city.id === c.id))
+      .sort((a: City, b: City) => {
+        const pricePerElectorate = (city: City) => {
+          return (+(this.dynamicCities[city.id] && this.dynamicCities[city.id].price) || +DEFAULT_PRICE) / (+city.population || 1);
+        };
+        return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
+      })
       .splice(0, 10);
   }
 
