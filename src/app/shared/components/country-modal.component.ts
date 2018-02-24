@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {BsModalRef} from 'ngx-bootstrap';
+import {Country} from '../models/country.model';
 
 @Component({
   selector: 'app-country-modal',
@@ -19,7 +20,8 @@ import {BsModalRef} from 'ngx-bootstrap';
           </div>
         </div>
         <div class="modal-image-container">
-          <img src="/assets/images/president-full.png" alt="">
+          <img src="/assets/images/president-full.png" alt=""/>
+          <img class="flag-modal" [src]="imageLink" alt=""/>
         </div>
       </div>
     </div>
@@ -27,17 +29,26 @@ import {BsModalRef} from 'ngx-bootstrap';
 })
 
 export class CountryModalComponent implements OnChanges {
-  @Input() public params = {};
-  @Input() public countryCode: string;
+  @Input() public countries: { [code: string]: Country };
+  @Input() public countryId: number;
   @Input() public bsModalRef: BsModalRef;
   @Input() public cities: { [code: string]: Array<any> };
   @Input() public myCities: { [code: string]: Array<any> };
   @Output() public ruleCountry = new EventEmitter();
   public electorate: string;
+  public countryCode: string;
+  public params: object;
+  public imageLink: string;
 
   public ngOnChanges(changes: SimpleChanges) {
     if (changes.cities || changes.myCities) {
       this.electorate = this.countElectorate();
+    }
+
+    if (changes.countries) {
+      this.countryCode = this.countries && this.countries[this.countryId] && this.countries[this.countryId].code;
+      this.params = {name: this.countries && this.countries[this.countryId] && this.countries[this.countryId].name};
+      this.imageLink = `assets/images/country-flags/large/${this.countryCode && this.countryCode.toLowerCase()}.png`;
     }
   }
 

@@ -13,7 +13,8 @@ import * as countryActions from '../../shared/ngrx/country/country.actions';
 @Component({
   selector: 'app-my-campaign-container',
   template: `
-    <app-my-campaign [countries]="countries$ | async"
+    <app-my-campaign *loading="isLoading$ |async"
+                     [countries]="countries$ | async"
                      [cities]="citiesByCountries$ | async"
                      [myCities]="myCities$ | async"
                      [query]="query$ | async"
@@ -31,7 +32,13 @@ export class MyCampaignContainerComponent implements AfterViewInit {
   readonly countries$ = this.store.select(fromCountries.selectEntities);
   readonly citiesByCountries$ = this.store.select(fromCountries.citiesByCountriesEntities);
   readonly myCities$ = this.store.select(fromCountries.filteredListForPage);
-  readonly isLoading$ = this.store.select(fromMyCampaign.isLoading);
+  readonly isLoading$ = this.store.select(fromMyCampaign.isLoading)
+    .withLatestFrom(
+      this.store.select(fromCities.isDynamicLoading),
+      this.store.select(fromCities.isLoading),
+      this.store.select(fromCountries.isLoading),
+      this.store.select(fromCountries.isDynamicLoading))
+    .map((loadings: boolean[]) => loadings.find(l => l === true));
   readonly query$ = this.store.select(fromMyCampaign.query);
   readonly page$ = this.store.select(fromMyCampaign.page);
   readonly total$ = this.store.select(fromCountries.filteredListCountriesTotal);

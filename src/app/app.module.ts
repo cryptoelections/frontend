@@ -20,6 +20,7 @@ import {AccordionModule, AlertModule, ModalModule, PaginationModule, PopoverModu
 import {FooterComponent} from './layout/footer/footer.component';
 import {LayoutComponent} from './layout/layout.component';
 import {LayoutContainerComponent} from './layout/layout.container';
+import {FooterContainerComponent} from './layout/footer/footer.container';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './i18n/', '.json');
@@ -38,6 +39,7 @@ export function InitAppFactory(web3: Web3Service,
   declarations: [
     AppComponent,
     FooterComponent,
+    FooterContainerComponent,
     HeaderComponent,
     HomeComponent,
     LayoutComponent,

@@ -33,7 +33,7 @@ export class CityCardComponent implements OnChanges {
   }
 
   public get countryName(): string {
-    return this.countries && this.countries[this.city.country] && this.countries[this.city.country].name;
+    return this.countries && this.countries[this.city.country_id] && this.countries[this.city.country_id].name;
   }
 
   public get firstLetters(): string {

@@ -4,6 +4,7 @@ import {CitySortOption} from '../../../world/city/city-filter.component';
 import {City} from '../../models/city.model';
 import * as actions from './city.actions';
 import * as common from '../common/common.actions';
+import {StorageKeys} from '../../services/storage.service';
 
 export interface DynamicState {
   loading: boolean;
@@ -61,8 +62,8 @@ export function reducer(state = initialState, action: actions.Actions | common.A
       const reduceByCountry = action.payload.reduce((m, i) => (
         {
           ...m,
-          [i.country]: (
-            m[i.country] ? [...m[i.country], i.id] : [i.id]
+          [i.country_id]: (
+            m[i.country_id] ? [...m[i.country_id], i.id] : [i.id]
           )
         }
       ), {});
@@ -91,9 +92,23 @@ export function reducer(state = initialState, action: actions.Actions | common.A
       const buyingCity = {...state.entities[action.payload.id], buying: true};
       return {...adapter.updateOne({id: action.payload.id, changes: buyingCity}, state)};
     }
-    case common.SHOW_ERROR:
-    case actions.INVEST_SUCCESS: {
+    case common.SHOW_ERROR: {
       const buyingCity = {...action.payload, buying: false};
+      return {...adapter.updateOne({id: action.payload.id, changes: buyingCity}, state)};
+    }
+    case actions.INVEST_SUCCESS: {
+      const buyingCity = {
+        ...action.payload,
+        buying: false,
+        dynamic: {
+          ...state.dynamic,
+          [action.payload.id]:
+            {
+              ...state.dynamic[action.payload.id],
+              mayor: JSON.parse(localStorage.getItem(StorageKeys.Account)).address
+            }
+        }
+      };
       return {...adapter.updateOne({id: action.payload.id, changes: buyingCity}, state)};
     }
     default: {

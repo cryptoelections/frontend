@@ -13,7 +13,7 @@ import {Component, Input} from '@angular/core';
     <div class="container content-wrap">
       <router-outlet></router-outlet>
     </div>
-    <app-footer></app-footer>
+    <app-footer-container></app-footer-container>
   `
 })
 export class LayoutComponent {

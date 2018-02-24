@@ -20,7 +20,7 @@ export class MyCampaignComponent implements AfterViewInit {
   @Output() public invest = new EventEmitter();
 
   public get myCountries() {
-    return this.myCities && this.myCities.map((c: City) => c && c.country)
+    return this.myCities && this.myCities.map((c: City) => c && c.country_id)
       .filter((elem, index, self) => index === self.indexOf(elem));
   }
 
@@ -28,8 +28,8 @@ export class MyCampaignComponent implements AfterViewInit {
     return this.myCities && this.myCities.reduce((m, i) => (
       {
         ...m,
-        [i && i.country]: (
-          m[i && i.country] ? [...m[i && i.country], i] : [i]
+        [i && i.country_id]: (
+          m[i && i.country_id] ? [...m[i && i.country_id], i] : [i]
         )
       }
     ), {});
@@ -40,14 +40,5 @@ export class MyCampaignComponent implements AfterViewInit {
 
   public ngAfterViewInit() {
     this.cd.detectChanges();
-  }
-
-
-  public electorate(country): number {
-    let count = 0;
-    if (this.myCitiesByCountry && this.myCitiesByCountry[country] && this.myCitiesByCountry[country].length) {
-      this.myCitiesByCountry[country].forEach((city: City) => count += city && +city.population);
-    }
-    return count;
   }
 }
