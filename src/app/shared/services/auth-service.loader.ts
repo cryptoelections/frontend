@@ -15,12 +15,12 @@ export class AuthServiceLoader implements CanActivate {
   }
 
   public canActivate(): any {
-    if (!this.webService.isLoggedIn) {
+    if (this.webService.wrongNetwork || !this.authService.coinbase) {
       this.router.navigate(['/metamask']);
       return Observable.of(false);
     }
 
-    if (this.authService.account) {
+    if (this.authService.coinbase) {
       return Observable.from([true]);
     } else {
       return this._load();

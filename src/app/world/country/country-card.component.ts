@@ -5,6 +5,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {Web3Service} from '../../shared/services/web3.service';
 import {Router} from '@angular/router';
 import {DEFAULT_PRICE} from '../../shared/services/base.service';
+import {AuthService} from '../../shared/services/auth.service';
 
 const zeroAddress = '0x0000000000000000000000000000000000000000';
 
@@ -101,6 +102,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   }
 
   constructor(private web3Service: Web3Service,
+              private authService: AuthService,
               private translate: TranslateService,
               private cd: ChangeDetectorRef,
               private router: Router) {
@@ -136,7 +138,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   }
 
   public tryToInvest(city: City) {
-    if (this.authSer.isLoggedIn) {
+    if (this.authService.coinbase && !this.web3Service.wrongNetwork) {
       this.invest.emit({
         city,
         price: this.cityDynamic && this.cityDynamic[city.id] && this.cityDynamic[city.id].price || DEFAULT_PRICE
