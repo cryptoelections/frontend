@@ -6,7 +6,8 @@
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=cyrillic" rel="stylesheet">  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=cyrillic" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="icon.ico">
   <script
@@ -21,34 +22,37 @@
 </head>
 <body>
 <app-root></app-root>
-<!--<script type="text/javascript">-->
-  <!--(function (d, w, c) {-->
-    <!--(w[c] = w[c] || []).push(function () {-->
-      <!--try {-->
-        <!--w.yaCounter47748901 = new Ya.Metrika({-->
-          <!--id: 47748901,-->
-          <!--clickmap: true,-->
-          <!--trackLinks: true,-->
-          <!--accurateTrackBounce: true,-->
-          <!--webvisor: true,-->
-          <!--trackHash: true-->
-        <!--});-->
-      <!--} catch (e) {-->
-      <!--}-->
-    <!--});-->
-    <!--var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () {-->
-      <!--n.parentNode.insertBefore(s, n);-->
-    <!--};-->
-    <!--s.type = "text/javascript";-->
-    <!--s.async = true;-->
-    <!--s.src = "https://mc.yandex.ru/metrika/watch.js";-->
-    <!--if (w.opera == "[object Opera]") {-->
-      <!--d.addEventListener("DOMContentLoaded", f, false);-->
-    <!--} else {-->
-      <!--f();-->
-    <!--}-->
-  <!--})(document, window, "yandex_metrika_callbacks");-->
-<!--</script>-->
+<script type="text/javascript">
+  (function (d, w, c) {
+    (w[c] = w[c] || []).push(function () {
+      var yaParams = JSON.parse(localStorage.getItem('account'));
+      try {
+        w.yaCounter47748901 = new Ya.Metrika({
+          id: 47748901,
+          clickmap: true,
+          trackLinks: true,
+          accurateTrackBounce: true,
+          webvisor: true,
+          trackHash: true,
+          params: yaParams || {}
+        });
+      } catch (e) {
+      }
+    });
+    var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () {
+      n.parentNode.insertBefore(s, n);
+    };
+
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "https://mc.yandex.ru/metrika/watch.js";
+    if (w.opera == "[object Opera]") {
+      d.addEventListener("DOMContentLoaded", f, false);
+    } else {
+      f();
+    }
+  })(document, window, "yandex_metrika_callbacks");
+</script>
 <noscript>
   <div><img src="https://mc.yandex.ru/watch/47748901" style="position:absolute; left:-9999px;" alt=""/></div>
 </noscript>

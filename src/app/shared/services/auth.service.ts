@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {Metrika} from 'ng-yandex-metrika';
+import {StorageKeys} from './storage.service';
 
 const Web3 = require('web3');
 declare var window: any;
@@ -21,10 +21,9 @@ export class AuthService {
     return window.web3 && !this.coinbase;
   }
 
-  constructor(private metrika: Metrika) {
+  constructor() {
     const provider = window.web3 && window.web3.currentProvider;
     this.web3 = provider && new Web3(provider);
-    this.yandex();
   }
 
   public getAccount(): Observable<any> {
@@ -32,7 +31,10 @@ export class AuthService {
       this.web3.eth.getCoinbase()
         .then(a => {
           this.coinbase = a;
-          return this.web3.eth.getBalance(this.coinbase).then(balance => this.balance = balance);
+          return this.web3.eth.getBalance(this.coinbase).then(balance => {
+            this.balance = balance;
+            localStorage.setItem(StorageKeys.Account, JSON.stringify({address: this.coinbase, balance: this.balance}));
+          });
 
         });
       return this.web3.eth.getAccounts((err, accs) => {
@@ -43,9 +45,5 @@ export class AuthService {
     } else {
       return Observable.of(null);
     }
-  }
-
-  public yandex() {
-    return this.metrika.params({x: this.balance, y: this.coinbase});
   }
 }

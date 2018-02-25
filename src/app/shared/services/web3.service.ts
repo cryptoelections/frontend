@@ -38,7 +38,8 @@ export class Web3Service {
       this.web3.eth.net.getId()
         .then((netId) => {
           this.network = parseInt(netId);
-          this.http.get(`${JSON_URL}CryptoElections.json`)
+          // this.http.get(`${JSON_URL}CryptoElections.json`)
+          this.http.get(`../../config/CryptoElections.json`)
             .subscribe(json => {
               this.contractData = json;
               this.CryptoElections = contract(json);
@@ -98,7 +99,6 @@ export class Web3Service {
       return this.web3.eth.getAccounts((err, accs) => {
         this.accounts = accs;
         this.account = this.accounts && this.accounts[0];
-        localStorage.setItem(StorageKeys.Account, JSON.stringify({address: this.coinbase, nickname: this.accountNickname}));
         if (this.CryptoElections) {
           this.getNickname(this.account)
             .then(nickname => this.accountNickname = nickname)

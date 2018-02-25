@@ -1,3 +1,7 @@
+h1 {
+  font-size: 4rem;
+}
+
 .home,
 .home /deep/ .navbar-white,
 .home-footer {
@@ -10,12 +14,12 @@
 
 .home-header-button {
   margin-top: 5rem;
-  max-width: 60%;
+  max-width: 90%;
 }
 
 .home-footer-button {
-  max-width: 250px;
-  margin: 20px auto;
+  max-width: 300px;
+  margin: 45px auto;
 }
 
 .home-footer div {
@@ -25,11 +29,12 @@
 
 .how-to-play {
   max-width: 60%;
-  margin: 40px auto;
+  margin: 45px auto;
 }
 
 .how-to-play h2 {
-  margin-bottom: 15px;
+  font-size: 3rem;
+  margin-bottom: 45px;
 }
 
 .positions {
@@ -42,7 +47,7 @@
 }
 
 .positions .row {
-  margin: 50px 0px;
+  margin: 45px 0px;
 }
 
 ul {
@@ -50,6 +55,7 @@ ul {
 }
 
 ul.dashed {
+  padding: 0px;
   list-style-type: none;
 }
 
@@ -61,4 +67,10 @@ ul.dashed > li:before {
   content: "\2014\a0";
   text-indent: -5px;
   padding-right: 5px;
+}
+
+.home .img-container {
+  display: flex;
+  height: 100%;
+  align-self: flex-end;
 }
