@@ -32,7 +32,7 @@ export class Web3Service {
   public wallet;
 
   constructor(private http: HttpClient, private store: Store<State>, private modalService: BsModalService) {
-    const provider = window.web3.currentProvider;
+    const provider = window.web3 && window.web3.currentProvider;
     this.web3 = provider && new Web3(provider);
     if (provider) {
       this.web3.eth.net.getId()

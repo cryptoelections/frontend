@@ -22,6 +22,7 @@ import {LayoutComponent} from './layout/layout.component';
 import {LayoutContainerComponent} from './layout/layout.container';
 import {FooterContainerComponent} from './layout/footer/footer.container';
 import {AuthService} from './shared/services/auth.service';
+import {MetrikaModule} from 'ng-yandex-metrika';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './i18n/', '.json');
@@ -53,6 +54,14 @@ export function InitAppFactory(auth: AuthService,
     CommonModule,
     EffectsModule.forRoot([]),
     MarketplaceModule,
+    MetrikaModule.forRoot({
+      id: 47748901,
+      webvisor: true,
+      clickmap: true,
+      trackLinks: true,
+      accurateTrackBounce: true,
+      trackHash: true
+    }),
     ModalModule.forRoot(),
     PaginationModule.forRoot(),
     PopoverModule.forRoot(),
