@@ -36,3 +36,7 @@ alert /deep/ .alert-president {
   margin-top: 45px;
   background-color: rgb(191, 221, 226) !important;
 }
+
+.footer .row {
+  background-color: rgb(236, 240, 241);
+}

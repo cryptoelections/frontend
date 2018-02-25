@@ -69,6 +69,8 @@ body {
 
 .country-img-card {
   height: 160px;
+  display: flex;
+  align-items: center;
 }
 
 .country-img-card img {
@@ -581,6 +583,7 @@ img.flag-modal {
 
 .wallet-wrap .btn {
   width: 150px;
+  height: 45px;
 }
 
 .row.pending h1,

@@ -135,7 +135,7 @@
     "PRESIDENT": "{{ user }} was elected President of {{ country }}"
   },
   "WALLET": {
-    "TEXT": "If someone becomes the mayor instead of you, you get compensation. Here you can see how much you have:",
+    "TEXT": "If someone becomes a mayor instead of you, you get compensation. Here you can see how much you have:",
     "WITHDRAW": "Withdraw"
   }
 }
