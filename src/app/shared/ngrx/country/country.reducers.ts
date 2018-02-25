@@ -150,7 +150,7 @@ export const filteredListForPage = createSelector(selectFilteredList, filteredLi
   (myCities, countries, p) => {
     const sortedList = myCities.sort((city: City, city2: City) => city.country_id < city2.country_id ? -1 : 1);
     const first = sortedList.findIndex((city: City) => city && city.country_id === countries[p * 4 - 4]);
-    const last = sortedList.findIndex((city: City) => city && city.country_id === countries[p * 4 + 1]);
+    const last = sortedList.findIndex((city: City) => city && city.country_id === countries[p * 4]);
     return last < 0 ? sortedList : sortedList.splice(first, last);
   });
 

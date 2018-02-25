@@ -36,7 +36,7 @@ export class CityEffects {
   invest$ = this.actions$
     .ofType(city.INVEST)
     .withLatestFrom(this.store.select(fromCities.selectEntities))
-    .switchMap(([action, cities]: [city.Invest, { [id: string]: City }]) =>
+    .flatMap(([action, cities]: [city.Invest, { [id: string]: City }]) =>
       this.web3Service.invest(action.payload.id, action.payload.price)
         .then((res) => new city.InvestSuccess(cities[action.payload.id]))
         .catch((err) => new common.ShowErrorMessage(cities[action.payload.id])));

@@ -549,16 +549,8 @@ img.modal-img {
   left: 49.5%;
 }
 
-.first-letters.letters-3 {
-  left: 49.5%;
-}
-
-.modal-backdrop:nth-child(1) {
+.modal-backdrop:nth-of-type(even) {
   z-index: 1050;
-}
-
-.modal-backdrop:nth-child(2) {
-  z-index: 1060;
 }
 
 img.flag-modal {

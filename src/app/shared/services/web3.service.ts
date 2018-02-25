@@ -75,9 +75,8 @@ export class Web3Service {
             this.CryptoElections.deployed()
               .then(instance => instance.assignCountryEvent()
                 .watch((error, result) => {
-                  console.log(result);
                   if (result) {
-                    if (result.args.address === this.coinbase) {
+                    if (result.args.user === this.coinbase) {
                       const initialState = {
                         countryId: parseInt(result.args.countryId)
                       };
@@ -97,9 +96,9 @@ export class Web3Service {
         this.accounts = accs;
         this.account = this.accounts && this.accounts[0];
         if (this.CryptoElections) {
-          this.getNickname(this.account)
+          setInterval(() => this.getNickname(this.account)
             .then(nickname => this.accountNickname = nickname)
-            .catch(error => error);
+            .catch(error => error), 5000);
         }
         return Observable.of(this.account);
       });
