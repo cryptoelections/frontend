@@ -12,11 +12,11 @@ export class MetamaskComponent {
   constructor(private web3Service: Web3Service,
               private router: Router,
               private authService: AuthService) {
-    setInterval(() => {
+    setTimeout(() => {
       if (this.authService.coinbase && !this.wrongNetwork) {
         this.router.navigate(['/my']);
       }
-    }, 100);
+    }, 1000);
   }
 
   public get noMetamask() {
