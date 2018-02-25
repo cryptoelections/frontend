@@ -38,8 +38,7 @@ export class Web3Service {
       this.web3.eth.net.getId()
         .then((netId) => {
           this.network = parseInt(netId);
-          // this.http.get(`${JSON_URL}CryptoElections.json`)
-          this.http.get(`../../config/CryptoElections.json`)
+          this.http.get(`${JSON_URL}CryptoElections.json`)
             .subscribe(json => {
               this.contractData = json;
               this.CryptoElections = contract(json);
