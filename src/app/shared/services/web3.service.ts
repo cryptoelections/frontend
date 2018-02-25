@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {StorageKeys} from './storage.service';
 import {HttpClient} from '@angular/common/http';
 import {JSON_URL} from './base.service';
 import {CountryModalContainerComponent} from '../components/country-modal.container';
@@ -75,11 +74,13 @@ export class Web3Service {
             this.CryptoElections.deployed()
               .then(instance => instance.assignCountryEvent()
                 .watch((error, result) => {
-                  if (result) {
+                  const previous = sessionStorage.getItem('congrats') && JSON.parse(sessionStorage.getItem('congrats')) || [];
+                  if (result && previous.indexOf(result) < 0) {
                     if (result.args.user === this.coinbase) {
                       const initialState = {
                         countryId: parseInt(result.args.countryId)
                       };
+                      sessionStorage.setItem('congrats', JSON.stringify([...previous, result]));
                       this.modalService.show(CountryModalContainerComponent, {class: 'modal-lg', initialState});
                     } else {
                       this.store.dispatch(new common.AddNewMessage({
@@ -140,18 +141,6 @@ export class Web3Service {
           });
       });
   }
-
-  // public getUserCities(i: number) {
-  //   let CryptoElectionsInstance;
-  //   return this.CryptoElections
-  //     ? this.CryptoElections.deployed()
-  //       .then((instance) => {
-  //         CryptoElectionsInstance = instance;
-  //         return CryptoElectionsInstance.userCities.call(this.coinbase, i);
-  //       })
-  //     : new Promise(resolve => ({}));
-  // }
-
 
   public getUserCities() {
     let CryptoElectionsInstance;
