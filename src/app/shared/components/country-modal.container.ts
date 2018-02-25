@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {State} from '../ngrx';
 import * as fromCountries from '../ngrx/country/country.reducers';
+import * as fromCities from '../ngrx/city/city.reducers';
 import * as myCampaignActions from '../ngrx/my-campaign/my-campaign.actions';
 import * as cityActions from '../ngrx/city/city.actions';
 
@@ -25,6 +26,9 @@ export class CountryModalContainerComponent {
   readonly countries$ = this.store.select(fromCountries.selectEntities);
   readonly cities$ = this.store.select(fromCountries.citiesByCountriesEntities);
   readonly myCities$ = this.store.select(fromCountries.selectAllByCountries);
+  readonly loading$ = this.store.select(fromCountries.isLoading)
+    .withLatestFrom(this.store.select(fromCities.isLoading))
+    .map(loadings => loadings.find(l => l));
 
   constructor(public bsModalRef: BsModalRef,
               private router: Router,

@@ -50,27 +50,6 @@ export class Web3Service {
                 .subscribe((prices: any) => {
                   this.gasPrice = prices.average * 100000000;
                 });
-
-              this.CryptoElections.deployed()
-                .then(instance => instance.assignCountryEvent(this.coinbase)
-                  .watch((error, result) => {
-                    const initialState = {
-                      countryId: parseInt(result.args.countryId)
-                    };
-                    this.modalService.show(CountryModalContainerComponent, {class: 'modal-lg', initialState});
-                  }));
-
-              this.CryptoElections.deployed()
-                .then(instance => instance.assignCountryEvent()
-                  .watch((error, result) => {
-
-                    if (result) {
-                      this.store.dispatch(new common.AddNewMessage({
-                        address: result.args.address,
-                        country: parseInt(result.args.countryId)
-                      }));
-                    }
-                  }));
             });
         });
     }
@@ -93,6 +72,25 @@ export class Web3Service {
           this.coinbase = a;
           if (this.CryptoElections) {
             this.CryptoElections.defaults({from: this.coinbase, gas: GAS, gasPrice: this.gasPrice});
+
+            this.CryptoElections.deployed()
+              .then(instance => instance.assignCountryEvent()
+                .watch((error, result) => {
+                  console.log(result);
+                  if (result) {
+                    if (result.args.address === this.coinbase) {
+                      const initialState = {
+                        countryId: parseInt(result.args.countryId)
+                      };
+                      this.modalService.show(CountryModalContainerComponent, {class: 'modal-lg', initialState});
+                    } else {
+                      this.store.dispatch(new common.AddNewMessage({
+                        address: result.args.address,
+                        country: parseInt(result.args.countryId)
+                      }));
+                    }
+                  }
+                }));
           }
         });
 

@@ -11,7 +11,7 @@ export class CommonEffects {
   @Effect()
   loadWalletData$ = this.actions$
     .ofType(commonActions.LOAD_WALLET_DATA_REQUEST)
-    .debounceTime(1000)
+    .debounceTime(3000)
     .switchMap((action: commonActions.LoadWalletDataRequest) => {
       return this.web3Service.loadWalletData().then(x => new commonActions.LoadWalletDataResponse(parseInt(x)));
     });

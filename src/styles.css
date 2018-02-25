@@ -575,6 +575,7 @@ img.flag-modal {
   padding: 2rem;
   border: 5px solid rgb(230, 230, 230);
   border-radius: 0px;
+  min-height: 150px;
 }
 
 .wallet-wrap .wallet {
@@ -583,15 +584,18 @@ img.flag-modal {
 
 .wallet-wrap .btn {
   width: 150px;
-  height: 45px;
+  min-height: 45px;
 }
 
 .row.pending h1,
 .row.pending .btn {
-  color: transparent;
-  background-color: transparent;
+  display: none;
 }
 
 .title h1 {
   font-size: 3.5rem
+}
+
+.my-campaign-button {
+  min-height: 45px;
 }

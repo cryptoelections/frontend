@@ -5,7 +5,7 @@ import {Country} from '../models/country.model';
 @Component({
   selector: 'app-country-modal',
   template: `
-    <div class="modal-body city-modal">
+    <div class="modal-body city-modal" *loading="isLoading">
       <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
         <i aria-hidden="true" class="fas fa-times"></i>
       </button>
@@ -29,6 +29,7 @@ import {Country} from '../models/country.model';
 })
 
 export class CountryModalComponent implements OnChanges {
+  @Input() public isLoading: boolean;
   @Input() public countries: { [code: string]: Country };
   @Input() public countryId: number | string;
   @Input() public bsModalRef: BsModalRef;
