@@ -9,15 +9,7 @@ export class MyCityComponent implements AfterViewInit {
   @Input() public city: City;
   @Input() public cities: Array<City>;
   @Input() public first: boolean;
-
-  public get percentage(): { percentage: string } {
-    let count = 0;
-    if (this.cities) {
-      this.cities.forEach((c: City) => count += +c.population);
-    }
-    const percentage = (100 * (+this.city.population / count)).toFixed(2);
-    return {percentage};
-  }
+  @Input() public percentage: number;
 
   constructor(private cd: ChangeDetectorRef) {
   }

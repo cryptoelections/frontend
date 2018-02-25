@@ -32,13 +32,13 @@
       <div class="account-info">
         <span
           class="badge account"
-          *ngIf="web3Service.coinbase"
+          *ngIf="authService.coinbase"
           [ngClass]="{ 'nickname': web3Service.accountNickname }"
           placement="bottom"
           [popover]="nicknameForm"
           #pop="bs-popover"
           [outsideClick]="true"
-        >{{ web3Service.accountNickname || web3Service.coinbase }}</span>
+        >{{ web3Service.accountNickname || authService.coinbase }}</span>
         <span
           class="badge not-connected"
           [routerLink]="['/metamask']"

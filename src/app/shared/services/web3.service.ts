@@ -3,6 +3,12 @@ import {Observable} from 'rxjs/Observable';
 import {StorageKeys} from './storage.service';
 import {HttpClient} from '@angular/common/http';
 import {JSON_URL} from './base.service';
+import {CountryModalContainerComponent} from '../components/country-modal.container';
+import {Store} from '@ngrx/store';
+import {State} from '../ngrx';
+import {BsModalService} from 'ngx-bootstrap';
+
+import * as common from '../ngrx/common/common.actions';
 
 const Web3 = require('web3');
 const contract = require('truffle-contract');
@@ -23,34 +29,51 @@ export class Web3Service {
   public contractData;
   public gasPrice;
 
-  constructor(private http: HttpClient) {
+  public wallet;
+
+  constructor(private http: HttpClient, private store: Store<State>, private modalService: BsModalService) {
     const provider = window.web3.currentProvider;
     this.web3 = provider && new Web3(provider);
     if (provider) {
       this.web3.eth.net.getId()
         .then((netId) => {
           this.network = parseInt(netId);
-          this.http.get(`${JSON_URL}CryptoElections.json`)
+          // this.http.get(`${JSON_URL}CryptoElections.json`)
+          this.http.get(`../../config/CryptoElections.json`)
             .subscribe(json => {
               this.contractData = json;
               this.CryptoElections = contract(json);
               this.CryptoElections.setProvider(provider);
 
+              this.getAccount();
               this.http.get('https://ethgasstation.info/json/ethgasAPI.json')
                 .subscribe((prices: any) => {
                   this.gasPrice = prices.average * 100000000;
                 });
+
+              this.CryptoElections.deployed()
+                .then(instance => instance.assignCountryEvent(this.coinbase)
+                  .watch((error, result) => {
+                    const initialState = {
+                      countryId: parseInt(result.args.countryId)
+                    };
+                    this.modalService.show(CountryModalContainerComponent, {class: 'modal-lg', initialState});
+                  }));
+
+              this.CryptoElections.deployed()
+                .then(instance => instance.assignCountryEvent()
+                  .watch((error, result) => {
+
+                    if (result) {
+                      this.store.dispatch(new common.AddNewMessage({
+                        address: result.args.address,
+                        country: parseInt(result.args.countryId)
+                      }));
+                    }
+                  }));
             });
         });
     }
-  }
-
-  public get noMetamask() {
-    return !window.web3;
-  }
-
-  public get isLocked() {
-    return window.web3 && !this.coinbase;
   }
 
   public get isLoggedIn() {
@@ -138,11 +161,11 @@ export class Web3Service {
   public getUserCities() {
     let CryptoElectionsInstance;
 
-    return this.CryptoElections && this.CryptoElections.deployed()
+    return this.CryptoElections ? this.CryptoElections.deployed()
       .then(instance => {
         CryptoElectionsInstance = instance;
         return CryptoElectionsInstance.getUserCities(this.coinbase);
-      });
+      }) : new Promise(resolve => []);
   }
 
   public getPrice(cityId) {
@@ -165,22 +188,21 @@ export class Web3Service {
       });
   }
 
-  public presidentialEvent() {
+  public loadWalletData() {
     let CryptoElectionsInstance;
     return this.CryptoElections && this.CryptoElections.deployed()
-      .then(instance => {
+      .then((instance) => {
         CryptoElectionsInstance = instance;
-        return CryptoElectionsInstance.assignCountryEvent(this.coinbase);
+        return CryptoElectionsInstance.userPendingWithdrawals(this.coinbase);
       });
   }
 
-  public allPresidentialEvents() {
+  public withdraw() {
     let CryptoElectionsInstance;
-
     return this.CryptoElections && this.CryptoElections.deployed()
-      .then(instance => {
+      .then((instance) => {
         CryptoElectionsInstance = instance;
-        return CryptoElectionsInstance.assignCountryEvent();
+        return CryptoElectionsInstance.withdraw();
       });
   }
 

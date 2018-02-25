@@ -21,7 +21,7 @@ import {Country} from '../models/country.model';
         </div>
         <div class="modal-image-container">
           <img src="/assets/images/president-full.png" alt=""/>
-          <img class="flag-modal" [src]="imageLink" alt=""/>
+          <img class="flag-modal" [src]="flag" alt=""/>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@ import {Country} from '../models/country.model';
 
 export class CountryModalComponent implements OnChanges {
   @Input() public countries: { [code: string]: Country };
-  @Input() public countryId: number;
+  @Input() public countryId: number | string;
   @Input() public bsModalRef: BsModalRef;
   @Input() public cities: { [code: string]: Array<any> };
   @Input() public myCities: { [code: string]: Array<any> };
@@ -38,7 +38,7 @@ export class CountryModalComponent implements OnChanges {
   public electorate: string;
   public countryCode: string;
   public params: object;
-  public imageLink: string;
+  public flag: string;
 
   public ngOnChanges(changes: SimpleChanges) {
     if (changes.cities || changes.myCities) {
@@ -46,22 +46,27 @@ export class CountryModalComponent implements OnChanges {
     }
 
     if (changes.countries) {
+      this.countryId = (+this.countryId).toLocaleString('en-US', {minimumIntegerDigits: 3, useGrouping: false});
       this.countryCode = this.countries && this.countries[this.countryId] && this.countries[this.countryId].code;
-      this.params = {name: this.countries && this.countries[this.countryId] && this.countries[this.countryId].name};
-      this.imageLink = `assets/images/country-flags/large/${this.countryCode && this.countryCode.toLowerCase()}.png`;
+      this.params = {
+        name: this.countries && this.countries[this.countryId] && this.countries[this.countryId].name
+        || 'COUNTRY.MODAL.THIS.COUNTRY'
+      };
+      this.flag = `assets/images/country-flags/large/${this.countryCode && this.countryCode.toLowerCase()}.png`;
     }
   }
 
   private countElectorate(): string {
     let allElectorate = 0;
-    if (this.cities && this.cities[this.countryCode] && this.cities[this.countryCode].length) {
-      this.cities[this.countryCode].forEach((city) => allElectorate += +city.population);
+    if (this.cities && this.cities[this.countryId] && this.cities[this.countryId].length) {
+      this.cities[this.countryId].forEach((city) => allElectorate += +city.population);
     }
 
     let myElectorate = 0;
-    if (this.myCities && this.myCities[this.countryCode] && this.myCities[this.countryCode].length) {
-      this.myCities[this.countryCode].forEach((city) => myElectorate += +city.population);
+    if (this.myCities && this.myCities[this.countryId] && this.myCities[this.countryId].length) {
+      this.myCities[this.countryId].forEach((city) => myElectorate += +city.population);
     }
+
     return (myElectorate * 100 / allElectorate).toFixed(0);
   }
 }

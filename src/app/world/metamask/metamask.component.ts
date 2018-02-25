@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Web3Service} from '../../shared/services/web3.service';
 import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
+import {AuthService} from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-metamask',
@@ -9,16 +10,16 @@ import {environment} from '../../../environments/environment';
   styleUrls: ['./metamask.component.css']
 })
 export class MetamaskComponent {
-  constructor(private web3Service: Web3Service, private router: Router) {
+  constructor(private web3Service: Web3Service, private router: Router, private authService: AuthService) {
     setTimeout(() => {
-      if (this.web3Service.isLoggedIn) {
+      if (this.authService.coinbase && !this.wrongNetwork) {
         this.router.navigate(['/my']);
       }
     }, 1000);
   }
 
   public get noMetamask() {
-    return this.web3Service.noMetamask;
+    return this.authService.noMetamask;
   }
 
   public get wrongNetwork() {
@@ -26,6 +27,6 @@ export class MetamaskComponent {
   }
 
   public get metamaskIsLocked() {
-    return this.web3Service.isLocked;
+    return this.authService.isLocked;
   }
 }

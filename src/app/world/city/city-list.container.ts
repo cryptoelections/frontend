@@ -9,6 +9,7 @@ import {WithUnsubscribe} from '../../shared/mixins/with-unsubscribe';
 import {City} from '../../shared/models/city.model';
 
 import * as fromCities from '../../shared/ngrx/city/city.reducers';
+import * as fromMyCampaign from '../../shared/ngrx/my-campaign/my-campaign.reducers';
 import * as fromCountries from '../../shared/ngrx/country/country.reducers';
 import * as cityActions from '../../shared/ngrx/city/city.actions';
 import * as countryActions from '../../shared/ngrx/country/country.actions';
@@ -29,6 +30,7 @@ import * as fromNicknames from '../../shared/ngrx/nicknames/nicknames.reducers';
                    [sortBy]="sortBy$ | async"
                    [isLoading]="isLoading$ | async"
                    [nicknames]="nicknames$ | async"
+                   [myCities]="myCities$ | async"
                    [dynamicCities]="dynamicInfoCities$ | async"
                    (sortByChange)="onSortByChange($event)"
                    (queueChange)="onQueueChange($event)"
@@ -39,6 +41,7 @@ import * as fromNicknames from '../../shared/ngrx/nicknames/nicknames.reducers';
 export class CityListContainerComponent extends WithUnsubscribe() implements OnInit, AfterViewInit {
   readonly countries$ = this.store.select(fromCountries.selectEntities);
   readonly allCities$ = this.store.select(fromCities.selectAll);
+  readonly myCities$ = this.store.select(fromMyCampaign.selectAll);
   readonly cities$ = this.store.select(fromCountries.citiesForPage);
   readonly currentPage$ = this.store.select(fromCities.page);
   readonly citiesTotal$ = this.store.select(fromCountries.filteredCitiesLength);
@@ -68,8 +71,8 @@ export class CityListContainerComponent extends WithUnsubscribe() implements OnI
     this.store.dispatch(new cityActions.LoadCityInformationRequest());
     this.store.dispatch(new cityActions.LoadDynamicCityInformationRequest());
     this.store.dispatch(new countryActions.LoadCountriesRequest());
-    this.store.dispatch(new myCampaignActions.LoadMyCitiesRequest());
     this.store.dispatch(new nicknamesActions.LoadNicknamesRequest());
+    this.store.dispatch(new myCampaignActions.LoadMyCitiesRequest());
 
     this.initFilters();
     this.filters$

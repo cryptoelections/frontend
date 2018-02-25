@@ -23,7 +23,7 @@
             <span class="ml-2">{{ citiesOfCountry && citiesOfCountry.length }}
           {{(citiesOfCountry.length === 1 ? 'CAMPAIGN.CITY' : 'CAMPAIGN.CITIES') | translate}}</span>
           </div>
-          <div class="col-md-5 col-xs-12 pr-0">
+          <div class="col-md-5 col-xs-12 pr-0 text-right">
             <button class="btn card-button my-campaign-button" *ngIf="!isYours" (click)="cityList.show()">
               <span>{{ 'COUNTRY.CARD.INVEST' | translate }} <b>{{ price() | eth }} ETH</b> {{ 'COUNTRY.CARD.TO_WIN' | translate }}</span>
             </button>
@@ -53,67 +53,70 @@
       [city]="city"
       [first]="i === 0"
       [cities]="allCitiesByCountry"
+      [percentage]="percentage(city)"
     ></app-my-city>
   </ng-container>
-</accordion-group>
 
 
-<div bsModal #cityList="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="cityList"
-     aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header align-items-center">
-        <img class="modal-img mr-2"
-             [src]="imageLink"
-             onerror="this.src = 'assets/images/no-flag.png'"
-             alt=""/>
-        <h4 class="modal-title pull-left"><b>{{ country?.name }}</b></h4>
-        <button
-          type="button"
-          class="close pull-right"
-          aria-label="Close"
-          (click)="cityList.hide()"
-        >
-          <span aria-hidden="true"></span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>{{ 'COUNTRY.CARD.INVEST_MODAL_TEXT' | translate:{country: country?.name} }}
-          <a (click)="cityList.hide()"
-             [routerLink]="['/cities']"
-             [queryParams]="{query: country?.name}">
-            {{ 'COUNTRY.CARD.INVEST_MODAL_TEXT_LINK' | translate }}
-          </a>
-        </p>
-        <div class="container country-modal-cities">
-          <div class="row align-items-center bordered"
-               *ngFor="let city of getCostEffectiveCities(); let l = last"
-               [ngClass]="{'last': l}">
-            <div class="col-3">{{ city?.name }}</div>
-            <div class="col-5"><b>{{ city?.population | convert }}</b> {{ cityElectorate(city) }}
-              {{ 'COUNTRY.CARD.INVEST_MODAL_PERCENTAGE' | translate }}
-            </div>
-            <div class="col-4">
-              <ng-container *ngIf="isYoursCity(city)">
-                <div class="mayor-sign" [routerLink]="['/my']">
-                  <img
-                    class="mr-2"
-                    [src]="'assets/images/sign.png'"
-                    alt=""
-                  />
-                  <span class="mayor text-left">{{ 'CITY.CARD.YOU_ARE_MAYOR' | translate }}</span>
-                </div>
-              </ng-container>
-              <ng-container *ngIf="!isYoursCity(city)">
-                <button class="btn card-button" (click)="tryToInvest(city)">
-                  <span *ngIf="!city.buying">{{ (dynamicCities[city?.id] && dynamicCities[city?.id].price || defaultPrice) | eth }} ETH</span>
-                  <span *ngIf="city.buying">{{ 'CITY.CARD.REQUEST_SENT' | translate }}</span>
-                </button>
-              </ng-container>
+  <div bsModal #cityList="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+       aria-labelledby="cityList"
+       aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header align-items-center">
+          <img class="modal-img mr-2"
+               [src]="imageLink"
+               onerror="this.src = 'assets/images/no-flag.png'"
+               alt=""/>
+          <h4 class="modal-title pull-left"><b>{{ country?.name }}</b></h4>
+          <button
+            type="button"
+            class="close pull-right"
+            aria-label="Close"
+            (click)="cityList.hide()"
+          >
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>{{ 'COUNTRY.CARD.INVEST_MODAL_TEXT' | translate:{country: country?.name} }}
+            <a (click)="cityList.hide()"
+               [routerLink]="['/cities']"
+               [queryParams]="{query: country?.name}">
+              {{ 'COUNTRY.CARD.INVEST_MODAL_TEXT_LINK' | translate }}
+            </a>
+          </p>
+          <div class="container country-modal-cities">
+            <div class="row align-items-center bordered"
+                 *ngFor="let city of costEffectiveCities; let l = last"
+                 [ngClass]="{'last': l}">
+              <div class="col-3">{{ city?.name }}</div>
+              <div class="col-5"><b>{{ city?.population | convert }}</b> {{ cityElectorate(city) }}
+                {{ 'COUNTRY.CARD.INVEST_MODAL_PERCENTAGE' | translate }}
+              </div>
+              <div class="col-4">
+                <ng-container *ngIf="isYoursCity(city)">
+                  <div class="mayor-sign" [routerLink]="['/my']">
+                    <img
+                      class="mr-2"
+                      [src]="'assets/images/sign.png'"
+                      alt=""
+                    />
+                    <span class="mayor text-left">{{ 'CITY.CARD.YOU_ARE_MAYOR' | translate }}</span>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="!isYoursCity(city)">
+                  <button class="btn card-button" (click)="tryToInvest(city)">
+                    <span *ngIf="!city.buying">{{ (dynamicCities[city?.id] && dynamicCities[city?.id].price || defaultPrice) | eth }} ETH</span>
+                    <span *ngIf="city.buying">{{ 'CITY.CARD.REQUEST_SENT' | translate }}</span>
+                  </button>
+                </ng-container>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</accordion-group>
+

@@ -11,6 +11,7 @@ export class CityListComponent {
   @Input() public countries: { [code: string]: Array<Country> };
   @Input() public allCities: Array<City>;
   @Input() public list: Array<City>;
+  @Input() public myCities;
   @Input() public sortBy: CitySortOption;
   @Input() public query: string;
   @Input() public currentPage: number;

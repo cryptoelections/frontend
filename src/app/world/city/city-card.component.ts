@@ -1,9 +1,10 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {City} from '../../shared/models/city.model';
-import {Web3Service} from '../../shared/services/web3.service';
 import {TranslateService} from '@ngx-translate/core';
 import {BASE_URL, DEFAULT_PRICE} from '../../shared/services/base.service';
 import {Router} from '@angular/router';
+import {AuthService} from '../../shared/services/auth.service';
+import {Web3Service} from '../../shared/services/web3.service';
 
 @Component({
   selector: 'app-city-card',
@@ -15,6 +16,7 @@ export class CityCardComponent implements OnChanges {
   @Input() public percent;
   @Input() public dynamic;
   @Input() public nicknames;
+  @Input() public myCities;
   @Output() public invest = new EventEmitter<{ city: City, price: number | string }>();
   public randomColor: string;
   public query: string;
@@ -46,7 +48,8 @@ export class CityCardComponent implements OnChanges {
     return words.splice(0, 3).length;
   }
 
-  constructor(private web3Service: Web3Service,
+  constructor(private authService: AuthService,
+              private web3Service: Web3Service,
               private translate: TranslateService,
               private router: Router) {
   }
@@ -55,18 +58,20 @@ export class CityCardComponent implements OnChanges {
     if (changes.city && !this.city.coat) {
       this.randomColor = `color-${Math.floor(Math.random() * 8)}`;
     }
+    if (changes.myCities) {
+      this.isYours = this.myCities.indexOf(+this.city.id) > -1 && !!this.authService.coinbase;
+    }
   }
 
   public loadMayor() {
     const address = this.dynamic && this.dynamic.mayor;
-    this.isYours = address === this.web3Service.coinbase && !!this.web3Service.coinbase;
-    return this.dynamic && this.dynamic.mayor
+    return this.isYours ? (this.web3Service.accountNickname || this.authService.coinbase) : this.dynamic && this.dynamic.mayor
       && (this.nicknames && this.nicknames[this.dynamic.mayor] || this.dynamic.mayor)
       || this.translate.instant('CITY.CARD.NOT_ELECTED_YET');
   }
 
   public tryToInvest() {
-    if (this.web3Service.coinbase) {
+    if (this.authService.coinbase) {
       this.invest.emit({city: this.city, price: this.price});
     } else {
       this.router.navigate(['/metamask']);

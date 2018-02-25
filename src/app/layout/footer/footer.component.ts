@@ -1,8 +1,7 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Web3Service} from '../../shared/services/web3.service';
 import {TranslateService} from '@ngx-translate/core';
 import {BsModalService} from 'ngx-bootstrap';
-import {CountryModalComponent} from '../../shared/components/country-modal.component';
 import {ActivatedRoute} from '@angular/router';
 import {CountryModalContainerComponent} from '../../shared/components/country-modal.container';
 
@@ -11,11 +10,10 @@ import {CountryModalContainerComponent} from '../../shared/components/country-mo
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-export class FooterComponent implements AfterViewInit {
+export class FooterComponent {
   @Input() public countries;
   @Input() public nicknames;
-
-  public messages = [];
+  @Input() public messages;
 
   public links = [
     {
@@ -41,38 +39,13 @@ export class FooterComponent implements AfterViewInit {
               private modalService: BsModalService,
               private translate: TranslateService,
               private activatedRoute: ActivatedRoute) {
-  }
-
-  public ngAfterViewInit() {
-    setTimeout(() => {
-      this.web3Service.CryptoElections.deployed()
-        .then(instance => instance.assignCountryEvent()
-          .watch((error, result) => {
-            if (result) {
-              console.log('common', result);
-              this.messages.push({
-                type: 'president',
-                msg: {
-                  text: 'NOTIFICATIONS.PRESIDENT', params: {
-                    user: this.nicknames && this.nicknames[result.args.address],
-                    country: this.countries && this.countries[parseInt(result.args.countryId)]
-                  }
-                },
-                timeout: 5000
-              });
-            }
-          }));
-
-      this.web3Service.CryptoElections.deployed()
-        .then(instance => instance.assignCountryEvent(this.web3Service.coinbase)
-          .watch((error, result) => {
-            if (result) {
-              const initialState = {
-                countryId: parseInt(result.args.countryId)
-              };
-              this.modalService.show(CountryModalContainerComponent, {class: 'modal-lg', initialState});
-            }
-          }));
-    }, 10000);
+    // setTimeout(() => {
+    //   this.web3Service.presidentEvent.watch((error, result) => {
+    //     const initialState = {
+    //       countryId: parseInt(result.args.countryId)
+    //     };
+    //     this.modalService.show(CountryModalContainerComponent, {initialState});
+    //   });
+    // }, 15000);
   }
 }

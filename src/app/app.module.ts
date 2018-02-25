@@ -21,17 +21,18 @@ import {FooterComponent} from './layout/footer/footer.component';
 import {LayoutComponent} from './layout/layout.component';
 import {LayoutContainerComponent} from './layout/layout.container';
 import {FooterContainerComponent} from './layout/footer/footer.container';
+import {AuthService} from './shared/services/auth.service';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './i18n/', '.json');
 }
 
-export function InitAppFactory(web3: Web3Service,
+export function InitAppFactory(auth: AuthService,
                                http: HttpClient,
                                configService: ConfigService) {
   return () => http.get('config/config.json').toPromise()
     .then(data => configService.parse(data))
-    .then(() => setInterval(() => web3.getAccount(), 100));
+    .then(() => setInterval(() => auth.getAccount(), 100));
 }
 
 
@@ -73,7 +74,7 @@ export function InitAppFactory(web3: Web3Service,
     {
       provide: APP_INITIALIZER,
       useFactory: InitAppFactory,
-      deps: [Web3Service, HttpClient, ConfigService],
+      deps: [AuthService, HttpClient, ConfigService],
       multi: true
     },
   ],

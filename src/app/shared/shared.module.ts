@@ -14,10 +14,7 @@ import {FormsModule} from '@angular/forms';
 import {HighLightPipe} from './pipes/highlight.pipe';
 import {CommonModule} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
-import {
-  AccordionModule, AlertModule, ModalModule, PaginationModule, PopoverModule, ProgressbarModule,
-  TooltipModule
-} from 'ngx-bootstrap';
+import {AccordionModule, AlertModule, ModalModule, PaginationModule, PopoverModule, ProgressbarModule, TooltipModule} from 'ngx-bootstrap';
 import {FilterComponent} from './components/filters/filter.component';
 import {ConvertPipe} from './pipes/convert.pipe';
 import {LoaderComponent} from './components/loader/loader.component';
@@ -28,6 +25,7 @@ import {Web3Service} from './services/web3.service';
 import {CityModalComponent} from './components/city-modal.component';
 import {CountryModalComponent} from './components/country-modal.component';
 import {CountryModalContainerComponent} from './components/country-modal.container';
+import {AuthService} from './services/auth.service';
 
 
 @NgModule({
@@ -82,6 +80,7 @@ import {CountryModalContainerComponent} from './components/country-modal.contain
   ],
   providers: [
     AuthGuard,
+    AuthService,
     AuthServiceLoader,
     BaseService,
     CityService,

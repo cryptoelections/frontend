@@ -1,6 +1,6 @@
-<app-my-campaign-filter *ngIf="myCountries?.length"
-                        [query]="query"
-                        (queryChange)="queryChange.emit($event)"></app-my-campaign-filter>
+<!--<app-my-campaign-filter *ngIf="myCountries?.length"-->
+                        <!--[query]="query"-->
+                        <!--(queryChange)="queryChange.emit($event)"></app-my-campaign-filter>-->
 <accordion class="pt-4" *loading="isLoading || !myCitiesByCountry">
   <ng-container *ngIf="myCountries?.length">
     <ng-container *ngFor="let country of myCountries">

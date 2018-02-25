@@ -372,16 +372,14 @@ img.modal-img {
   opacity: 0.80;
 }
 
-/*loading button */
+/* pending */
 
+.row.pending,
 .btn.pending {
   outline: 0;
 }
 
-.pending span {
-  color: transparent;
-}
-
+.row.pending:before,
 .btn.pending:before {
   content: "• • •";
   position: absolute;
@@ -395,6 +393,7 @@ img.modal-img {
   opacity: .5;
 }
 
+.row.pending:after,
 .btn.pending:after {
   content: "•";
   position: absolute;
@@ -552,17 +551,13 @@ img.modal-img {
   left: 49.5%;
 }
 
-.modal-backdrop.fade.in.show:nth-child(1) {
+.modal-backdrop:nth-child(1) {
   z-index: 1050;
 }
 
-.modal-backdrop.fade.in.show:nth-child(2) {
+.modal-backdrop:nth-child(2) {
   z-index: 1060;
 }
-
-/*.modal-backdrop.fade.in.show {*/
-/*z-index: 1040 !important;*/
-/*}*/
 
 img.flag-modal {
   width: 10%;
@@ -570,4 +565,30 @@ img.flag-modal {
   height: auto;
   top: 65%;
   right: 16%;
+}
+
+/* wallet */
+.wallet-wrap {
+  background-color: transparent;
+  padding: 2rem;
+  border: 5px solid rgb(230, 230, 230);
+  border-radius: 0px;
+}
+
+.wallet-wrap .wallet {
+  color: rgb(217, 7, 114);
+}
+
+.wallet-wrap .btn {
+  width: 150px;
+}
+
+.row.pending h1,
+.row.pending .btn {
+  color: transparent;
+  background-color: transparent;
+}
+
+.title h1 {
+  font-size: 3.5rem
 }

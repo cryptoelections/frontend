@@ -28,6 +28,7 @@ import {nicknamesReducer} from '../shared/ngrx/nicknames/nicknames.reducers';
 import {NicknamesEffects} from '../shared/ngrx/nicknames/nicknames.effects';
 import {commonReducers} from '../shared/ngrx/common/common.reducers';
 import {CommonEffects} from '../shared/ngrx/common/common.effects';
+import {MyWalletComponent} from './my-campaign/my-wallet.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {CommonEffects} from '../shared/ngrx/common/common.effects';
     MyCampaignComponent,
     MyCampaignContainerComponent,
     MyCityComponent,
-    MyCountryComponent
+    MyCountryComponent,
+    MyWalletComponent
   ],
   imports: [
     CommonModule,

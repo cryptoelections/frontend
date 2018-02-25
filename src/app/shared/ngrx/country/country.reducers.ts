@@ -124,8 +124,8 @@ export const selectAllByCountries = createSelector(fromMyCampaign.selectAll, fro
   return myCities
     .map((id: string) => cityEntities[id])
     .reduce((m, i) => ({
-      ...m, [i.country_id]: (
-        m[i.country_id] ? [...m[i.country_id], i] : [i]
+      ...m, [i && i.country_id]: (
+        m[i && i.country_id] ? [...m[i && i.country_id], i] : [i]
       )
     }), {});
 });

@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, Output} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {Country} from '../../shared/models/country.model';
 import {City} from '../../shared/models/city.model';
 import {Web3Service} from '../../shared/services/web3.service';
@@ -9,12 +9,13 @@ import {Router} from '@angular/router';
   selector: 'app-my-country',
   templateUrl: 'my-country.component.html',
 })
-export class MyCountryComponent implements AfterViewInit {
+export class MyCountryComponent implements OnChanges, AfterViewInit {
   @Input() public country: Country;
   @Input() public citiesOfCountry: Array<City>;
   @Input() public allCitiesByCountry: Array<City>;
   @Input() public dynamicCountries;
   @Input() public dynamicCities;
+  @Input() public costEffectiveCities;
   @Output() public invest = new EventEmitter();
 
   public get imageLink() {
@@ -23,7 +24,7 @@ export class MyCountryComponent implements AfterViewInit {
 
   public get isYours() {
     return this.dynamicCountries && this.dynamicCountries[this.country.id]
-      && this.dynamicCountries[this.country.id].president === this.web3Service.coinbase;
+      && this.dynamicCountries[this.country.id].president === this.web3Service.coinbase || this.percentageByCountry() >= 50;
   }
 
   public get defaultPrice() {
@@ -33,6 +34,12 @@ export class MyCountryComponent implements AfterViewInit {
   constructor(private web3Service: Web3Service,
               private router: Router,
               private cd: ChangeDetectorRef) {
+  }
+
+  public ngOnChanges(changes: SimpleChanges) {
+    if (changes.allCitiesByCountry) {
+      this.getCostEffectiveCities();
+    }
   }
 
   public ngAfterViewInit() {
@@ -69,12 +76,12 @@ export class MyCountryComponent implements AfterViewInit {
   public percentageByCountry() {
     let sum = 0;
     this.citiesOfCountry.forEach((city: City) => {
-      sum += +this.percentage(city);
+      sum += +this.percentage(city).percentage;
     });
     return sum;
   }
 
-  public percentage(city: City): string {
+  public percentage(city: City): { percentage: string } {
     let count = 0;
     let percentage = '0';
     if (this.allCitiesByCountry && this.allCitiesByCountry.length) {
@@ -84,18 +91,17 @@ export class MyCountryComponent implements AfterViewInit {
       }
     }
 
-    return percentage;
+    return {percentage};
   }
 
-  public getCostEffectiveCities(): Array<City> {
-    return this.allCitiesByCountry
+  public getCostEffectiveCities() {
+    this.costEffectiveCities = this.allCitiesByCountry ? this.allCitiesByCountry
       .sort((a: City, b: City) => {
         const pricePerElectorate = (city: City) => {
           return (+(this.dynamicCities[city.id] && this.dynamicCities[city.id].price) || +DEFAULT_PRICE) / (+city.population || 1);
         };
         return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
-      })
-      .splice(0, 10);
+      }) : [];
   }
 
   public price(): number {

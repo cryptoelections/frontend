@@ -14,6 +14,7 @@ import * as fromCountries from '../../shared/ngrx/country/country.reducers';
 export class FooterContainerComponent {
   readonly nicknames$ = this.store.select(fromNicknames.selectEntities);
   readonly countries$ = this.store.select(fromCountries.selectEntities);
+  // readonly countries$ = this.store.select(fromCountries.selectEntities);
 
   constructor(private store: Store<State>) {
   }

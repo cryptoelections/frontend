@@ -136,7 +136,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   }
 
   public tryToInvest(city: City) {
-    if (this.web3Service.isLoggedIn) {
+    if (this.authSer.isLoggedIn) {
       this.invest.emit({
         city,
         price: this.cityDynamic && this.cityDynamic[city.id] && this.cityDynamic[city.id].price || DEFAULT_PRICE

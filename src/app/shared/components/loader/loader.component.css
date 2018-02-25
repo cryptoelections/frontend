@@ -7,12 +7,14 @@
   }
 }
 
+.loader {
+  width: 100%;
+  text-align: center;
+}
+
 #spinner {
   font-weight: bold;
   color: rgb(217, 7, 114);
-  position: absolute;
-  left: 50%;
-  top: 30%;
   font-size: 3rem;
   -webkit-animation: Spinning 2000ms infinite linear;
   -moz-animation: Spinning 2000ms infinite linear;
