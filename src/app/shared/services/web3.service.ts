@@ -44,11 +44,12 @@ export class Web3Service {
               this.CryptoElections = contract(json);
               this.CryptoElections.setProvider(provider);
 
-              this.getAccount();
               this.http.get('https://ethgasstation.info/json/ethgasAPI.json')
                 .subscribe((prices: any) => {
                   this.gasPrice = prices.average * 100000000;
+                  this.getAccount();
                 });
+              this.getAccount();
             });
         });
     }
