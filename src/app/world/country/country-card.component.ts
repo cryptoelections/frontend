@@ -33,6 +33,10 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   }
 
   public get president(): string {
+    if (this.myElectorate > 50) {
+      return this.web3Service.accountNickname;
+    }
+
     if (this.dynamic && this.dynamic.president && this.dynamic.president !== zeroAddress) {
       return this.nicknames && this.nicknames[this.dynamic.president] || this.dynamic.president;
     } else {
