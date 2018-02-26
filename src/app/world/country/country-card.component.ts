@@ -53,17 +53,34 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   public get price(): number {
     const half = this.electorate / 2;
     let price = 0;
+    let index = 0;
     let electorate = this.myElectorate;
+
+    const pricePerElectorate = (city: City) =>
+      (this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || DEFAULT_PRICE) / +city.population;
+
     if (this.country.active !== 0 && this.cities) {
-      this.cities
+      const sortedList = this.cities
         .filter((city: City) => {
           return this.myCities && !this.myCities
             || !this.myCities.find(c => c.id === city.id);
         })
         .sort((a: City, b: City) => {
-          const pricePerElectorate = (city: City) =>
-            (this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || DEFAULT_PRICE) / +city.population;
           return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
+        });
+
+      sortedList.forEach((city: City) => {
+        while (electorate < half) {
+          index++;
+          electorate += +city.population;
+        }
+      });
+
+      electorate = this.myElectorate;
+      sortedList
+        .splice(0, index)
+        .sort((a: City, b: City) => {
+          return pricePerElectorate(a) > pricePerElectorate(b) ? -1 : 1;
         })
         .forEach((city: City) => {
           while (electorate < half) {
@@ -76,14 +93,17 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   }
 
   public get costEffectiveCities(): Array<City> {
-    return this.cities
-      .filter(city => !this.myCities.find(c => city.id === c.id))
-      .sort((a: City, b: City) => {
-        const pricePerElectorate = (city: City) =>
-          (this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || DEFAULT_PRICE) / +city.population;
-        return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
+    const pricePerElectorate = (city: City) =>
+      (this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || DEFAULT_PRICE) / +city.population;
+
+    return this.cities ? this.cities
+      .filter((city: City) => {
+        return this.myCities && !this.myCities
+          || !this.myCities.find(c => c.id === city.id);
       })
-      .splice(0, 10);
+      .sort((a: City, b: City) => {
+        return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
+      }).splice(0, 10) : [];
   }
 
   public get electorate(): number {

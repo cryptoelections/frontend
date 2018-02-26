@@ -24,7 +24,7 @@ export class MetamaskComponent {
   }
 
   public get wrongNetwork() {
-    return this.web3Service.wrongNetwork;
+    return this.authService.coinbase && this.web3Service.wrongNetwork;
   }
 
   public get metamaskIsLocked() {

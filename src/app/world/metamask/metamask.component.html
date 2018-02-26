@@ -9,11 +9,11 @@
         </a>
       </h4>
     </ng-container>
-    <ng-container *ngIf="metamaskIsLocked && !wrongNetwork">
+    <ng-container *ngIf="metamaskIsLocked">
       <h2> {{ 'ACCOUNT.METAMASK_LOCKED' | translate }} </h2>
       <p> {{ 'ACCOUNT.METAMASK_LOCKED_TEXT' | translate }}</p>
     </ng-container>
-    <ng-container *ngIf="!metamaskIsLocked && wrongNetwork">
+    <ng-container *ngIf="wrongNetwork">
       <h2> {{ 'ACCOUNT.WRONG_NETWORK' | translate }} </h2>
       <p> {{ 'ACCOUNT.WRONG_NETWORK_TEXT' | translate }}</p>
     </ng-container>

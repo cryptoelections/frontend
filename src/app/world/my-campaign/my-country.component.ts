@@ -73,6 +73,14 @@ export class MyCountryComponent implements OnChanges, AfterViewInit {
     return count;
   }
 
+  public myElectorate(): number {
+    let count = 0;
+    if (this.citiesOfCountry && this.citiesOfCountry.length) {
+      this.citiesOfCountry.forEach((city: City) => count += +city.population);
+    }
+    return count;
+  }
+
   public percentageByCountry() {
     let sum = 0;
     this.citiesOfCountry.forEach((city: City) => {
@@ -95,33 +103,57 @@ export class MyCountryComponent implements OnChanges, AfterViewInit {
   }
 
   public getCostEffectiveCities() {
+    const pricePerElectorate = (city: City) =>
+      (this.dynamicCities && this.dynamicCities[city.id] && +this.dynamicCities[city.id].price || DEFAULT_PRICE) / +city.population;
+
     this.costEffectiveCities = this.allCitiesByCountry ? this.allCitiesByCountry
+      .filter((city: City) => {
+        return this.citiesOfCountry && !this.citiesOfCountry
+          || !this.citiesOfCountry.find(c => c.id === city.id);
+      })
       .sort((a: City, b: City) => {
-        const pricePerElectorate = (city: City) => {
-          return (+(this.dynamicCities[city.id] && this.dynamicCities[city.id].price) || +DEFAULT_PRICE) / (+city.population || 1);
-        };
         return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
-      }) : [];
+      }).splice(0, 10) : [];
   }
 
   public price(): number {
-    let price = 0;
-    let electorate = this.percentageByCountry();
     const half = this.electorate() / 2;
-    this.allCitiesByCountry
-      .filter((city) => !this.citiesOfCountry.find(c => c.id === city.id))
-      .sort((a: City, b: City) => {
-        const pricePerElectorate = (city: City) => {
-          return (+(this.dynamicCities[city.id] && this.dynamicCities[city.id].price) || +DEFAULT_PRICE) / +city.population;
-        };
-        return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
-      })
-      .forEach((city: City) => {
+    let price = 0;
+    let index = 0;
+    let electorate = this.myElectorate();
+
+    const pricePerElectorate = (city: City) =>
+      (this.dynamicCities && this.dynamicCities[city.id] && +this.dynamicCities[city.id].price || DEFAULT_PRICE) / +city.population;
+
+    if (this.allCitiesByCountry) {
+      const sortedList = this.allCitiesByCountry
+        .filter((city: City) => {
+          return this.citiesOfCountry && !this.citiesOfCountry
+            || !this.citiesOfCountry.find(c => c.id === city.id);
+        })
+        .sort((a: City, b: City) => {
+          return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
+        });
+
+      sortedList.forEach((city: City) => {
         while (electorate < half) {
-          price += (this.dynamicCities[city.id] && +this.dynamicCities[city.id].price) || +DEFAULT_PRICE;
+          index++;
           electorate += +city.population;
         }
       });
+      electorate = this.myElectorate();
+      sortedList
+        .splice(0, index)
+        .sort((a: City, b: City) => {
+          return pricePerElectorate(a) > pricePerElectorate(b) ? -1 : 1;
+        })
+        .forEach((city: City) => {
+          while (electorate < half) {
+            price += this.dynamicCities && this.dynamicCities[city.id] && +this.dynamicCities[city.id].price || DEFAULT_PRICE;
+            electorate += +city.population;
+          }
+        });
+    }
     return price;
   }
 }
