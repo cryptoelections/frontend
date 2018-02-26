@@ -33,6 +33,7 @@ export class Web3Service {
   constructor(private http: HttpClient, private store: Store<State>, private modalService: BsModalService) {
     const provider = window.web3 && window.web3.currentProvider;
     this.web3 = provider && new Web3(provider);
+    this.network = undefined;
     if (provider) {
       this.web3.eth.net.getId()
         .then((netId) => {
@@ -58,8 +59,8 @@ export class Web3Service {
   }
 
   public get wrongNetwork() {
-    return this.CryptoElections
-      && this.contractData
+    return !this.CryptoElections && !this.network
+      || this.CryptoElections && this.contractData
       && (!this.contractData.networks[this.network] || !this.contractData.networks[this.network].address);
   }
 
@@ -75,7 +76,8 @@ export class Web3Service {
               .then(instance => instance.assignCountryEvent()
                 .watch((error, result) => {
                   const previous = sessionStorage.getItem('congrats') && JSON.parse(sessionStorage.getItem('congrats')) || [];
-                  if (result && previous.indexOf(result) < 0) {
+                  const alreadyShown = !!previous.find((c) => c.transactionIndex === result.transactionIndex && c.args === result.args);
+                  if (result && !alreadyShown) {
                     if (result.args.user === this.coinbase) {
                       const initialState = {
                         countryId: parseInt(result.args.countryId)
@@ -89,7 +91,9 @@ export class Web3Service {
                       }));
                     }
                   }
-                }));
+                }))
+              .catch(() => {
+              });
           }
         });
 
@@ -174,11 +178,13 @@ export class Web3Service {
 
   public loadWalletData() {
     let CryptoElectionsInstance;
-    return this.CryptoElections && this.CryptoElections.deployed()
+    return this.CryptoElections ? this.CryptoElections.deployed()
       .then((instance) => {
         CryptoElectionsInstance = instance;
         return CryptoElectionsInstance.userPendingWithdrawals(this.coinbase);
-      });
+      }) : new Promise(resolve => {
+      return 0;
+    });
   }
 
   public withdraw() {

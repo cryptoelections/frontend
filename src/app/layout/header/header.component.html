@@ -42,13 +42,18 @@
         <span
           class="badge not-connected"
           [routerLink]="['/metamask']"
-          *ngIf="!web3Service.account"
-        >{{ 'ACCOUNT.NOT_CONNECTED' | translate }}</span>
+          *ngIf="authService.isLocked"
+        >{{ 'ACCOUNT.IS_LOCKED' | translate }}</span>
+        <span
+          class="badge not-connected"
+          [routerLink]="['/metamask']"
+          *ngIf="authService.noMetamask"
+        >{{ 'ACCOUNT.INSTALL_METAMASK' | translate }}</span>
       </div>
 
 
       <ng-template #nicknameForm>
-        <div class="container nickname-form" >
+        <div class="container nickname-form">
           <h5> {{ 'ACCOUNT.SET_NICKNAME' | translate }} </h5>
           <input
             class="form-control"

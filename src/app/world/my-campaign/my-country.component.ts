@@ -24,7 +24,7 @@ export class MyCountryComponent implements OnChanges, AfterViewInit {
 
   public get isYours() {
     return this.dynamicCountries && this.dynamicCountries[this.country.id]
-      && this.dynamicCountries[this.country.id].president === this.web3Service.coinbase || this.percentageByCountry() >= 50;
+      && this.dynamicCountries[this.country.id].president === this.web3Service.coinbase || this.percentageByCountry() > 50;
   }
 
   public get defaultPrice() {

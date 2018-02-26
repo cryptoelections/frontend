@@ -25,6 +25,8 @@
     "INSTALL": "Install",
     "SET_NICKNAME": "Set Nickname",
     "NICKNAME_PLACEHOLDER": "Type Your Nickname",
+    "IS_LOCKED": "Locked",
+    "INSTALL_METAMASK": "Install metamask",
     "METAMASK_LOCKED": "Your MetaMask is locked",
     "METAMASK_LOCKED_TEXT": "Simply open MetaMask and follow the instructions to unlock it.",
     "WRONG_NETWORK": "Oops, you’re on the wrong network",

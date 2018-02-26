@@ -16,6 +16,7 @@ import * as cityActions from '../ngrx/city/city.actions';
                        [countryId]="countryId"
                        [cities]="cities$ | async"
                        [myCities]="myCities$ | async"
+                       [isLoading]="loading$ | async"
                        (ruleCountry)="ruleCountry()"
     ></app-country-modal>
   `

@@ -31,11 +31,13 @@ export class AuthService {
       this.web3.eth.getCoinbase()
         .then(a => {
           this.coinbase = a;
-          return this.web3.eth.getBalance(this.coinbase).then(balance => {
-            this.balance = balance;
-            localStorage.setItem(StorageKeys.Account, JSON.stringify({address: this.coinbase, balance: this.balance}));
-          });
+          if (this.coinbase) {
+            return this.web3.eth.getBalance(this.coinbase).then(balance => {
+              this.balance = balance;
+              localStorage.setItem(StorageKeys.Account, JSON.stringify({address: this.coinbase, balance: this.balance}));
+            });
 
+          }
         });
       return this.web3.eth.getAccounts((err, accs) => {
         this.accounts = accs;
