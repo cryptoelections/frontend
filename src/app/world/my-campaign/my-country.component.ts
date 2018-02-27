@@ -135,23 +135,23 @@ export class MyCountryComponent implements OnChanges, AfterViewInit {
           return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
         });
 
-      sortedList.forEach((city: City) => {
-        while (electorate < half) {
-          index++;
-          electorate += +city.population;
-        }
+      sortedList.every((city: City) => {
+        index++;
+        electorate += +city.population;
+        return (electorate > half) ? false : true;
       });
+
       electorate = this.myElectorate();
+
       sortedList
         .splice(0, index)
         .sort((a: City, b: City) => {
           return pricePerElectorate(a) > pricePerElectorate(b) ? -1 : 1;
         })
-        .forEach((city: City) => {
-          while (electorate < half) {
-            price += this.dynamicCities && this.dynamicCities[city.id] && +this.dynamicCities[city.id].price || DEFAULT_PRICE;
-            electorate += +city.population;
-          }
+        .every((city: City) => {
+          price += this.dynamicCities && this.dynamicCities[city.id] && +this.dynamicCities[city.id].price || DEFAULT_PRICE;
+          electorate += +city.population;
+          return (electorate > half) ? false : true;
         });
     }
     return price;

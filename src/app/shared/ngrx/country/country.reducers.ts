@@ -228,11 +228,10 @@ export const price = (cities: Array<City>, myCities: Array<City>, dynamicCityInf
       return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
     });
 
-  sortedList.forEach((city: City) => {
-    while (myElectorate < half) {
-      index++;
-      myElectorate += +city.population;
-    }
+  sortedList.every((city: City) => {
+    index++;
+    myElectorate += +city.population;
+    return (myElectorate > half) ? false : true;
   });
 
   sortedList
@@ -240,11 +239,10 @@ export const price = (cities: Array<City>, myCities: Array<City>, dynamicCityInf
     .sort((a: City, b: City) => {
       return pricePerElectorate(a) > pricePerElectorate(b) ? -1 : 1;
     })
-    .forEach((city: City) => {
-      while (anotherMyElectorate < half) {
-        p += this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || DEFAULT_PRICE;
-        anotherMyElectorate += +city.population;
-      }
+    .every((city: City) => {
+      p += this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || DEFAULT_PRICE;
+      anotherMyElectorate += +city.population;
+      return (anotherMyElectorate > half) ? false : true;
     });
   return p;
 };
