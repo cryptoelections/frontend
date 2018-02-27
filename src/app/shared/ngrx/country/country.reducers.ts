@@ -303,8 +303,9 @@ export const sortCountries = (countries: Array<Country>,
 export const filteredCities = createSelector(
   fromCities.selectAll,
   fromCities.filters,
+  fromCities.getDynamicInfoEntities,
   selectEntities,
-  (cities, filter, countries) => {
+  (cities, filter, dynamicCities, countries) => {
     const upperQuery = filter.query && filter.query.toUpperCase();
     const active = (city: City) => countries && countries[city.country_id]
       && countries[city.country_id] && countries[city.country_id].active;
@@ -316,21 +317,25 @@ export const filteredCities = createSelector(
         || country && country.name && country.name.toUpperCase().indexOf(upperQuery) > -1;
     };
     const filteredList = cities.filter((city: City) => queryFilter(city) && active(city));
-    const sortedList = sortCities(filteredList, +filter.sortBy);
+    const sortedList = sortCities(filteredList, +filter.sortBy, dynamicCities);
 
     return sortedList;
   }
 );
 
-export const sortCities = (cities: Array<City>, sortByOption: CitySortOption) => {
+export const sortCities = (cities: Array<City>, sortByOption: CitySortOption, dynamicCities) => {
   let sort;
   switch (sortByOption) {
     case CitySortOption.PriceDown: {
-      sort = (a: City, b: City) => a.price < b.price ? -1 : 1;
+      sort = (a: City, b: City) =>
+        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price)
+        < (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price) ? -1 : 1;
       break;
     }
     case CitySortOption.PriceUp: {
-      sort = (a: City, b: City) => a.price > b.price ? -1 : 1;
+      sort = (a: City, b: City) =>
+        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price)
+        > (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price) ? -1 : 1;
       break;
     }
     case CitySortOption.ElectorateDown: {
@@ -343,17 +348,17 @@ export const sortCities = (cities: Array<City>, sortByOption: CitySortOption) =>
     }
     case CitySortOption.PricePerVoteDown: {
       sort = (a: City, b: City) => (
-        a.price / +a.population
+        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price) / +a.population
       ) < (
-        b.price / +b.population
+        (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price) / +b.population
       ) ? -1 : 1;
       break;
     }
     case CitySortOption.PricePerVoteUp: {
       sort = (a: City, b: City) => (
-        a.price / +a.population
+        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price) / +a.population
       ) > (
-        b.price / +b.population
+        (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price) / +b.population
       ) ? -1 : 1;
       break;
     }
