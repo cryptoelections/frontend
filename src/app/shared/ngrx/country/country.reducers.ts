@@ -206,23 +206,22 @@ export const price = (cities: Array<City>, myCities: Array<City>, dynamicCityInf
   const half = electorate(cities) / 2;
   let p = 0;
   let index = 0;
-  let myElectorate = 0;
-  let anotherMyElectorate = 0;
+  let el = 0;
+  let el_copy = 0;
 
-  if (myCities && myCities.length) {
+  if (myCities) {
     myCities.forEach(city => {
-      myElectorate += +city.population;
-      anotherMyElectorate += +city.population;
+      el += +city.population;
     });
   }
-
+  el_copy = el;
   const pricePerElectorate = (city: City) =>
     (dynamicCityInfo && dynamicCityInfo[city.id] && +dynamicCityInfo[city.id].price || DEFAULT_PRICE) / +city.population;
 
   const sortedList = cities
     .filter((city: City) => {
       return !myCities
-        || myCities && !myCities.find(c => c.id === city.id);
+        || myCities && (!myCities.length || !myCities.find(c => c.id === city.id));
     })
     .sort((a: City, b: City) => {
       return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
@@ -230,8 +229,8 @@ export const price = (cities: Array<City>, myCities: Array<City>, dynamicCityInf
 
   sortedList.every((city: City) => {
     index++;
-    myElectorate += +city.population;
-    return (myElectorate > half) ? false : true;
+    el += +city.population;
+    return (el > half) ? false : true;
   });
 
   sortedList
@@ -240,9 +239,9 @@ export const price = (cities: Array<City>, myCities: Array<City>, dynamicCityInf
       return pricePerElectorate(a) > pricePerElectorate(b) ? -1 : 1;
     })
     .every((city: City) => {
-      p += this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || DEFAULT_PRICE;
-      anotherMyElectorate += +city.population;
-      return (anotherMyElectorate > half) ? false : true;
+      p += dynamicCityInfo && dynamicCityInfo[city.id] && +dynamicCityInfo[city.id].price || DEFAULT_PRICE;
+      el += +city.population;
+      return (el_copy > half) ? false : true;
     });
   return p;
 };
@@ -262,12 +261,22 @@ export const sortCountries = (countries: Array<Country>,
       break;
     }
     case CountrySortOption.PriceDown: {
-      sort = (a: Country, b: Country) =>
-        price(citiesByCountries[a.id],
+      sort = (a: Country, b: Country) => {
+        console.log(a.name, b.name, price(citiesByCountries[a.id],
+          myCitiesByCountries[a.id],
+          dynamicCities), price(citiesByCountries[b.id], myCitiesByCountries[b.id], dynamicCities),
+          price(citiesByCountries[a.id],
+            myCitiesByCountries[a.id],
+            dynamicCities) < price(citiesByCountries[b.id], myCitiesByCountries[b.id], dynamicCities)
+            ? -1
+            : 1);
+
+        return price(citiesByCountries[a.id],
           myCitiesByCountries[a.id],
           dynamicCities) < price(citiesByCountries[b.id], myCitiesByCountries[b.id], dynamicCities)
           ? -1
           : 1;
+      };
       break;
     }
     case CountrySortOption.PriceUp: {
