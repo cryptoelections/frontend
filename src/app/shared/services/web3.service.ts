@@ -28,8 +28,6 @@ export class Web3Service {
   public contractData;
   public gasPrice;
 
-  public wallet;
-
   constructor(private http: HttpClient, private store: Store<State>, private modalService: BsModalService) {
     const provider = window.web3 && window.web3.currentProvider;
     this.web3 = provider && new Web3(provider);
@@ -83,6 +81,7 @@ export class Web3Service {
                       const initialState = {
                         countryId: parseInt(result.args.countryId)
                       };
+                      window['yaCounter47748901'].reachGoal('countryassignevent');
                       sessionStorage.setItem('congrats', JSON.stringify([...previous, result]));
                       this.modalService.show(CountryModalContainerComponent, {class: 'modal-lg', initialState});
                     } else {
@@ -139,6 +138,12 @@ export class Web3Service {
         return this.getCityInfo(cityId)
           .then((city) => {
             const p = this.getPrices(city[3]) * 1000000000000000000 || price;
+            if (window['fbq']) {
+              window['fbq']('track', 'Purchase', {
+                value: p,
+                currency: 'EUR'
+              });
+            }
             return CryptoElectionsInstance.buyCity(cityId, {
               value: p,
               to: instance.address
@@ -155,16 +160,6 @@ export class Web3Service {
         CryptoElectionsInstance = instance;
         return CryptoElectionsInstance.getUserCities(this.coinbase);
       }) : new Promise(resolve => []);
-  }
-
-  public getPrice(cityId) {
-    let CryptoElectionsInstance;
-    return this.CryptoElections && this.CryptoElections.deployed()
-      .then((instance) => {
-        CryptoElectionsInstance = instance;
-
-        return CryptoElectionsInstance.getPrices(cityId);
-      });
   }
 
   public getCityInfo(cityId) {
