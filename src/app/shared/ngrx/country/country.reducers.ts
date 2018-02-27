@@ -205,29 +205,47 @@ export const electorate = (cities: Array<City>): number => {
 export const price = (cities: Array<City>, myCities: Array<City>, dynamicCityInfo) => {
   const half = electorate(cities) / 2;
   let p = 0;
-  let el = 0;
+  let index = 0;
+  let myElectorate = 0;
+  let anotherMyElectorate = 0;
 
   if (myCities && myCities.length) {
-    myCities.forEach(city => el += +city.population);
+    myCities.forEach(city => {
+      myElectorate += +city.population;
+      anotherMyElectorate += +city.population;
+    });
   }
 
-  let n = 0;
-  if (cities) {
-    cities
-      .filter((city) => !myCities || !myCities.find(c => c.id === city.id))
-      .sort((a: City, b: City) => {
-        const pricePerElectorate = (city: City) =>
-          (dynamicCityInfo[city.id] && +dynamicCityInfo[city.id].price || DEFAULT_PRICE) / +city.population;
-        return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
-      })
-      .forEach((city: City) => {
-        while (el < half) {
-          p += dynamicCityInfo[city.id] && +dynamicCityInfo[city.id].price || +DEFAULT_PRICE;
-          n++;
-          el += +city.population;
-        }
-      });
-  }
+  const pricePerElectorate = (city: City) =>
+    (dynamicCityInfo && dynamicCityInfo[city.id] && +dynamicCityInfo[city.id].price || DEFAULT_PRICE) / +city.population;
+
+  const sortedList = cities
+    .filter((city: City) => {
+      return !myCities
+        || myCities && !myCities.find(c => c.id === city.id);
+    })
+    .sort((a: City, b: City) => {
+      return pricePerElectorate(a) < pricePerElectorate(b) ? -1 : 1;
+    });
+
+  sortedList.forEach((city: City) => {
+    while (myElectorate < half) {
+      index++;
+      myElectorate += +city.population;
+    }
+  });
+
+  sortedList
+    .splice(0, index)
+    .sort((a: City, b: City) => {
+      return pricePerElectorate(a) > pricePerElectorate(b) ? -1 : 1;
+    })
+    .forEach((city: City) => {
+      while (anotherMyElectorate < half) {
+        p += this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || DEFAULT_PRICE;
+        anotherMyElectorate += +city.population;
+      }
+    });
   return p;
 };
 
