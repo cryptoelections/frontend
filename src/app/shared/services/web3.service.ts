@@ -45,9 +45,9 @@ export class Web3Service {
               this.http.get('https://ethgasstation.info/json/ethgasAPI.json')
                 .subscribe((prices: any) => {
                   this.gasPrice = prices.average * 100000000;
-                  this.getAccount();
                 });
-              this.getAccount();
+
+              setTimeout(() => this.getAccount(), 2000);
             });
         });
     }

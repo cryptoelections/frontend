@@ -262,15 +262,6 @@ export const sortCountries = (countries: Array<Country>,
     }
     case CountrySortOption.PriceDown: {
       sort = (a: Country, b: Country) => {
-        console.log(a.name, b.name, price(citiesByCountries[a.id],
-          myCitiesByCountries[a.id],
-          dynamicCities), price(citiesByCountries[b.id], myCitiesByCountries[b.id], dynamicCities),
-          price(citiesByCountries[a.id],
-            myCitiesByCountries[a.id],
-            dynamicCities) < price(citiesByCountries[b.id], myCitiesByCountries[b.id], dynamicCities)
-            ? -1
-            : 1);
-
         return price(citiesByCountries[a.id],
           myCitiesByCountries[a.id],
           dynamicCities) < price(citiesByCountries[b.id], myCitiesByCountries[b.id], dynamicCities)
