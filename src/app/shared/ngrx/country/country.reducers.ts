@@ -344,14 +344,14 @@ export const sortCities = (cities: Array<City>, sortByOption: CitySortOption, dy
   switch (sortByOption) {
     case CitySortOption.PriceDown: {
       sort = (a: City, b: City) =>
-        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price)
-        < (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price) ? -1 : 1;
+        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || DEFAULT_PRICE)
+        < (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || DEFAULT_PRICE) ? -1 : 1;
       break;
     }
     case CitySortOption.PriceUp: {
       sort = (a: City, b: City) =>
-        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price)
-        > (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price) ? -1 : 1;
+        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || DEFAULT_PRICE)
+        > (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || DEFAULT_PRICE) ? -1 : 1;
       break;
     }
     case CitySortOption.ElectorateDown: {
@@ -364,17 +364,17 @@ export const sortCities = (cities: Array<City>, sortByOption: CitySortOption, dy
     }
     case CitySortOption.PricePerVoteDown: {
       sort = (a: City, b: City) => (
-        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price) / +a.population
+        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || DEFAULT_PRICE) / +a.population
       ) < (
-        (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price) / +b.population
+        (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || DEFAULT_PRICE) / +b.population
       ) ? -1 : 1;
       break;
     }
     case CitySortOption.PricePerVoteUp: {
       sort = (a: City, b: City) => (
-        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price) / +a.population
+        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || DEFAULT_PRICE) / +a.population
       ) > (
-        (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price) / +b.population
+        (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || DEFAULT_PRICE) / +b.population
       ) ? -1 : 1;
       break;
     }

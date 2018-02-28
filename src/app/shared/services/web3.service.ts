@@ -138,12 +138,12 @@ export class Web3Service {
         return this.getCityInfo(cityId)
           .then((city) => {
             const p = this.getPrices(city[3]) * 1000000000000000000 || price;
-            if (window['fbq']) {
-              window['fbq']('track', 'Purchase', {
-                value: p,
-                currency: 'EUR'
-              });
-            }
+            // if (window['fbq']) {
+            //   window['fbq']('track', 'Purchase', {
+            //     value: p,
+            //     currency: 'EUR'
+            //   });
+            // }
             return CryptoElectionsInstance.buyCity(cityId, {
               value: p,
               to: instance.address
