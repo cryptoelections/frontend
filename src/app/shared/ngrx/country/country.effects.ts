@@ -18,10 +18,9 @@ export class CountryEffects {
   @Effect()
   loadDynamicCountryInformation$ = this.actions$
     .ofType(country.LOAD_DYNAMIC_COUNTRY_INFORMATION_REQUEST)
-    .switchMap((action: country.LoadDynamicCountryInformationRequest) => Observable.timer(60000)
-      .switchMap(() => this.countryService.getDynamic()
+    .switchMap((action: country.LoadDynamicCountryInformationRequest) => this.countryService.getDynamic()
         .map((dictionary: { [id: string]: Partial<Country> }) => new country.LoadDynamicCountryInformationResponse(dictionary))
-        .catch((error) => Observable.of(new country.LoadDynamicCountryInformationResponse({})))));
+        .catch((error) => Observable.of(new country.LoadDynamicCountryInformationResponse({}))));
 
   constructor(private actions$: Actions, private countryService: CountryService) {
   }
