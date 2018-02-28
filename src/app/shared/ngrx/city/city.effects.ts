@@ -27,10 +27,9 @@ export class CityEffects {
   @Effect()
   loadDynamicCityInformation$ = this.actions$
     .ofType(city.LOAD_DYNAMIC_CITY_INFORMATION_REQUEST)
-    .switchMap((action: city.LoadDynamicCityInformationRequest) => Observable.interval(60000)
-      .switchMap(() => this.cityService.getDynamic()
+    .switchMap((action: city.LoadDynamicCityInformationRequest) => this.cityService.getDynamic()
         .map((list: { [id: string]: Partial<City> }) => new city.LoadDynamicCityInformationResponse(list))
-        .catch((error) => Observable.of(new city.LoadDynamicCityInformationResponse({})))));
+        .catch((error) => Observable.of(new city.LoadDynamicCityInformationResponse({}))));
 
 
   @Effect()
