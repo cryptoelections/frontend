@@ -16,9 +16,9 @@ export class HeaderComponent {
     }, {
       text: 'MENU.CITIES',
       linkTo: '/cities'
-      // },{
-      //   text: 'MENU.MAP',
-      //   linkTo: 'map'
+    }, {
+      text: 'MENU.MAP',
+      linkTo: '/map'
     }, {
       text: 'MENU.MY_CAMPAIGN',
       linkTo: '/my',

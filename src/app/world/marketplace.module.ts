@@ -29,6 +29,8 @@ import {NicknamesEffects} from '../shared/ngrx/nicknames/nicknames.effects';
 import {commonReducers} from '../shared/ngrx/common/common.reducers';
 import {CommonEffects} from '../shared/ngrx/common/common.effects';
 import {MyWalletComponent} from './my-campaign/my-wallet.component';
+import {MapComponent} from './map/map.component';
+import {MapContainerComponent} from './map/map.container';
 
 
 @NgModule({
@@ -41,6 +43,8 @@ import {MyWalletComponent} from './my-campaign/my-wallet.component';
     CountryFilterComponent,
     CountryListComponent,
     CountryListContainerComponent,
+    MapComponent,
+    MapContainerComponent,
     MetamaskComponent,
     MyCampaignFilterComponent,
     MyCampaignComponent,
