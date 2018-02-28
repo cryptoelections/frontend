@@ -549,6 +549,11 @@ img.modal-img {
   left: 49.5%;
 }
 
+.first-letters.letters-3 {
+  left: 49.5%;
+  font-size: 24px;
+}
+
 .modal-backdrop:nth-of-type(even) {
   z-index: 1050;
 }

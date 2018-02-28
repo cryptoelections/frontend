@@ -68,7 +68,7 @@ import 'rxjs/add/observable/concat';
 import 'rxjs/add/operator/concat';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/observable/from';
-import 'rxjs/add/operator/filter';
+import 'rxjs/add/observable/timer';
 import 'rxjs/add/operator/withLatestFrom';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/mergeMap';
