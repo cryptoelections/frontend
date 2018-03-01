@@ -33,10 +33,6 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   }
 
   public get president(): string {
-    if (this.myElectorate > 50) {
-      return this.web3Service.accountNickname;
-    }
-
     if (this.dynamic && this.dynamic.president && this.dynamic.president !== zeroAddress) {
       return this.nicknames && this.nicknames[this.dynamic.president] || this.dynamic.president;
     } else {
@@ -46,7 +42,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
 
   public get isYours(): boolean {
     return this.dynamic && !!this.web3Service.coinbase
-      && this.dynamic.president === this.web3Service.coinbase || this.myElectorate > 50;
+      && this.dynamic.president === this.web3Service.coinbase;
   }
 
   public get defaultPrice() {
