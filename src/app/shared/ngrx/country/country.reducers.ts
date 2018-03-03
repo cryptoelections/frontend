@@ -7,6 +7,7 @@ import {CitySortOption} from '../../../world/city/city-filter.component';
 import {DEFAULT_PRICE} from '../../services/base.service';
 
 import * as fromMyCampaign from '../my-campaign/my-campaign.reducers';
+import * as fromNicknames from '../nicknames/nicknames.reducers';
 import * as fromCities from '../city/city.reducers';
 import * as actions from './country.actions';
 
@@ -23,6 +24,8 @@ export interface State extends EntityState<Country> {
     loading: boolean;
     entities: { [id: string]: Partial<Country> }
   };
+  selectedCountry: string;
+  selectedCountryCitiesSortBy: CitySortOption;
 }
 
 export interface CountryState {
@@ -54,7 +57,9 @@ export const initialState: State = adapter.getInitialState({
   dynamic: {
     loading: false,
     entities: {}
-  }
+  },
+  selectedCountry: '',
+  selectedCountryCitiesSortBy: CitySortOption.Name
 });
 
 export function reducer(state = initialState, action: actions.Actions): State {
@@ -71,11 +76,17 @@ export function reducer(state = initialState, action: actions.Actions): State {
     case actions.FILTER_UPDATE: {
       return {...state, filters: {...state.filters, ...action.payload}};
     }
+    case actions.SELECT_COUNTRY: {
+      return {...state, selectedCountry: action.payload};
+    }
     case actions.LOAD_DYNAMIC_COUNTRY_INFORMATION_REQUEST: {
       return {...state, dynamic: {...state.dynamic, loading: true}};
     }
     case actions.LOAD_DYNAMIC_COUNTRY_INFORMATION_RESPONSE: {
       return {...state, dynamic: {entities: {...action.payload}, loading: false}};
+    }
+    case actions.FILTER_SELECTED_COUNTRY_CITIES: {
+      return {...state, selectedCountryCitiesSortBy: action.payload};
     }
     default: {
       return {...state};
@@ -387,7 +398,7 @@ export const sortCities = (cities: Array<City>, sortByOption: CitySortOption, dy
       break;
     }
   }
-
+  console.log(cities, cities && cities.sort(sort));
   return cities && cities.sort(sort);
 };
 
@@ -401,3 +412,32 @@ export const citiesForPage = createSelector(filteredCities, fromCities.filters,
 export const getDynamicCountriesState = createSelector(getCountriesState, state => state.list.dynamic);
 export const getDynamicInfoEntities = createSelector(getDynamicCountriesState, state => state.entities);
 export const isDynamicLoading = createSelector(getDynamicCountriesState, state => state.loading);
+
+
+export const countriesForMap = createSelector(selectAll, getDynamicInfoEntities, fromNicknames.selectEntities,
+  (countries, dynamicCountries, nicknames) => {
+    const president = (i: Country) => dynamicCountries[i.id] && (<any>dynamicCountries[i.id]).president;
+    return countries.reduce((m, i) => ({
+      ...m,
+      [i.code3]: {
+        ...i,
+        ...dynamicCountries[i.id],
+        president: president(i) && nicknames[president(i)] || president(i) || 'Not elected yet',
+        fillKey: 'ENABLED'
+      }
+    }), {});
+  });
+export const selectedCountryId = createSelector(getCountriesState, countriesForMap,
+  (state, countries) => state.list.selectedCountry && countries[state.list.selectedCountry] && countries[state.list.selectedCountry].id);
+
+export const selectedCountryCitiesSortOption = createSelector(getCountriesState, state => state.list.selectedCountryCitiesSortBy);
+export const selectedCountryCities = createSelector(selectedCountryId,
+  citiesByCountriesEntities, selectedCountryCitiesSortOption, fromCities.getDynamicInfoEntities,
+  (id, citiesByCountry, sortByOption, dynamicCities) => {
+    return sortCities(citiesByCountry[id], +sortByOption as CitySortOption, dynamicCities);
+  });
+export const selectedCountry = createSelector(selectedCountryId, selectCountryEntities, (id, countries) => {
+  return countries[id];
+});
+
+

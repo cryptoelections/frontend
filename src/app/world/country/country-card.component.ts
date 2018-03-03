@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
 import {DEFAULT_PRICE} from '../../shared/services/base.service';
 import {AuthService} from '../../shared/services/auth.service';
 
-const zeroAddress = '0x0000000000000000000000000000000000000000';
+export const zeroAddress = '0x0000000000000000000000000000000000000000';
 
 @Component({
   selector: 'app-country-card',

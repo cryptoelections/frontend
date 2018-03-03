@@ -596,3 +596,21 @@ img.flag-modal {
 .my-campaign-button {
   min-height: 45px;
 }
+
+.hidden {
+  color: transparent;
+}
+
+.map-country-filter {
+  align-items: flex-end !important;
+}
+
+.selected-country-header .row {
+  align-items: center;
+  margin: 45px auto;
+}
+
+.stand-margin {
+  margin-top: 45px;
+  margin-bottom: 45px;;
+}

@@ -31,6 +31,8 @@ import {CommonEffects} from '../shared/ngrx/common/common.effects';
 import {MyWalletComponent} from './my-campaign/my-wallet.component';
 import {MapComponent} from './map/map.component';
 import {MapContainerComponent} from './map/map.container';
+import {SelectedCountryComponent} from './map/selected-country.component';
+import {SelectedCountryFilterComponent} from './map/selected-country-filter.component';
 
 
 @NgModule({
@@ -51,7 +53,9 @@ import {MapContainerComponent} from './map/map.container';
     MyCampaignContainerComponent,
     MyCityComponent,
     MyCountryComponent,
-    MyWalletComponent
+    MyWalletComponent,
+    SelectedCountryComponent,
+    SelectedCountryFilterComponent
   ],
   imports: [
     CommonModule,

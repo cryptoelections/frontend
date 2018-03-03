@@ -1,0 +1,23 @@
+<div class="" *loading="isLoading">
+  <app-selected-country-filter
+    [myCities]="myCities"
+    [allCities]="allCities"
+    [list]="list"
+    [dynamic]="dynamic"
+    [dynamicCities]="dynamicCities"
+    [selectedCountry]="selectedCountry"
+    [electorate]="electorate"
+    (sortByChange)="sortByChange.emit($event)"
+  ></app-selected-country-filter>
+  <div class="list row">
+    <div *ngFor="let city of list" class="col-lg-3 col-sm-6 col-xs-12">
+      <app-city-card [city]="city"
+                     [countries]="countries"
+                     [dynamic]="dynamicCities[city.id]"
+                     [nicknames]="nicknames"
+                     [myCities]="myCities"
+                     [percent]="getElectoratePercentage(city)"
+                     (invest)="invest.emit($event)"></app-city-card>
+    </div>
+  </div>
+</div>
