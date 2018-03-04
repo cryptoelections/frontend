@@ -32,7 +32,8 @@ h1 {
   margin: 45px auto;
 }
 
-.how-to-play h2 {
+.how-to-play h2,
+.road-map h2 {
   font-size: 3rem;
   margin-bottom: 45px;
 }
@@ -74,6 +75,11 @@ ul.dashed > li:before {
   height: 100%;
   align-self: flex-end;
   overflow: hidden;
+}
+
+.road-map {
+  background-color: rgb(245, 247, 247);
+  padding: 45px;
 }
 
 .road-map .period {
