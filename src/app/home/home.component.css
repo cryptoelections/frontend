@@ -73,4 +73,46 @@ ul.dashed > li:before {
   display: flex;
   height: 100%;
   align-self: flex-end;
+  overflow: hidden;
+}
+
+.road-map .period {
+  font-weight: 700;
+}
+
+@media (min-width: 1200px) {
+  .road-map .container {
+    min-width: 900px;
+    max-width: 900px;
+  }
+}
+
+.road-map ol {
+  list-style: none;
+  display: inline-flex;
+}
+
+.road-map ol:before {
+  content: url('../../assets/images/numbers.png');
+  margin-right: 15px;
+}
+
+.road-map li {
+  counter-increment: item;
+  margin-bottom: 5px;
+  display: inline-flex;
+  width: 100%;
+}
+
+.road-map canvas {
+  height: 1000px;
+  margin-bottom: -1000px;
+}
+
+.road-map p {
+  font-size: 19px;
+}
+
+.road-map p.period {
+  margin-bottom: 0px;
 }
