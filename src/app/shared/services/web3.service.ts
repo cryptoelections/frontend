@@ -123,6 +123,8 @@ export class Web3Service {
     return this.CryptoElections.deployed()
       .then((instance) => {
         CryptoElectionsInstance = instance;
+        window['amplitude'].getInstance().logEvent('set_nickname');
+
         CryptoElectionsInstance.setNickname(nickname);
       });
   }
@@ -143,7 +145,7 @@ export class Web3Service {
         CryptoElectionsInstance = instance;
         return this.getCityInfo(cityId)
           .then((city) => {
-            // const p = this.getPrices(city[3]) * 1000000000000000000 || price;
+            // const p = this.getPrices(city[3]) * 1000000000000000000 || card;
             // if (window['fbq']) {
             //   window['fbq']('track', 'Purchase', {
             //     value: p,
@@ -185,7 +187,7 @@ export class Web3Service {
         CryptoElectionsInstance = instance;
         return CryptoElectionsInstance.userPendingWithdrawals(this.coinbase);
       }) : new Promise(resolve => {
-      return 0;
+      resolve(0);
     });
   }
 

@@ -45,6 +45,8 @@ export class CityEffects {
     .withLatestFrom(this.store.select(fromCities.selectEntities))
     .flatMap(([action, cities]: [city.Invest, { [id: string]: City }]) => {
       window['yaCounter47748901'].reachGoal('investbutton');
+      window['amplitude'].getInstance().logEvent('invest_button');
+
       return this.web3Service.invest(action.payload.id, action.payload.price)
         .then((res) => new city.InvestSuccess(cities[action.payload.id]))
         .catch((err) => new common.ShowErrorMessage(cities[action.payload.id]));
@@ -55,6 +57,8 @@ export class CityEffects {
     .ofType(city.INVEST_SUCCESS)
     .do((action: city.InvestSuccess) => {
       window['yaCounter47748901'].reachGoal('citybuyevent');
+      window['amplitude'].getInstance().logEvent('city_buy_event');
+
       const initialState = {
         params: {name: action.payload.name}
       };

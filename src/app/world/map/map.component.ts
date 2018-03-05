@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Country} from '../../shared/models/country.model';
 import {City} from '../../shared/models/city.model';
 import {StorageKeys} from '../../shared/services/storage.service';
@@ -10,7 +10,7 @@ const Datamap = require('datamaps/dist/datamaps.world');
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnInit, OnChanges {
+export class MapComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() public countries;
   @Input() public countriesForMap;
   @Input() public countriesDynamic: { [country: string]: Country };
@@ -28,6 +28,9 @@ export class MapComponent implements OnInit, OnChanges {
     return this.previousSelectedCountry;
   }
 
+  constructor(private cd: ChangeDetectorRef) {
+  }
+
   public ngOnInit() {
     this.map = new Datamap({
       element: document.getElementById('container'),
@@ -37,6 +40,7 @@ export class MapComponent implements OnInit, OnChanges {
       },
       done: function (datamap) {
         datamap.svg.selectAll('.datamaps-subunit').on('click', function (geography) {
+          window['amplitude'].getInstance().logEvent('country_map_click', {country: geography.id});
           sessionStorage.setItem(StorageKeys.SelectedCountry, geography.id);
         });
       },
@@ -48,11 +52,16 @@ export class MapComponent implements OnInit, OnChanges {
         popupTemplate: function (geo, data) {
           return `<div class="hoverinfo">
                     <h4>${ data.name }</h4>
-                    ${ data.numberOfCities } cities / ${ data.myCities } under your control
+                    ${ data.numberOfCities } cities / ${ data.myCities } under your control <br/>
+                    <b>President: </b> ${ data.president }
                    </div>`;
         },
       },
     });
+  }
+
+  public ngAfterViewInit() {
+    this.cd.detectChanges();
   }
 
   public ngOnChanges(changes: SimpleChanges) {

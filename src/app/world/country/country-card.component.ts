@@ -9,6 +9,11 @@ import {AuthService} from '../../shared/services/auth.service';
 
 export const zeroAddress = '0x0000000000000000000000000000000000000000';
 
+export enum Experiment {
+  button = 'button',
+  card = 'card'
+}
+
 @Component({
   selector: 'app-country-card',
   templateUrl: 'country-card.component.html',
@@ -19,6 +24,8 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   @Input() public myCities = [];
   @Input() public dynamic;
   @Input() public cityDynamic;
+  @Input() public experimentType;
+  public Experiment = Experiment;
 
   public get numberOfCities(): number {
     return this.cities && this.cities.length;
@@ -125,6 +132,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
               private translate: TranslateService,
               private cd: ChangeDetectorRef,
               private router: Router) {
+
   }
 
   public ngOnChanges(changes: SimpleChanges) {
@@ -165,5 +173,9 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
     } else {
       this.router.navigate(['/metamask']);
     }
+  }
+
+  public onShowModal() {
+    window['amplitude'].getInstance().logEvent('open_country_modal', {type: this.experimentType});
   }
 }

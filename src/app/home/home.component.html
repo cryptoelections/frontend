@@ -6,7 +6,7 @@
         <h1>{{ 'HOME.GET_POWER' | translate }}</h1>
         <h1>{{ 'HOME.RUN_COUNTRIES' | translate }}</h1>
         <h1>{{ 'HOME.EARN_MONEY' | translate }}</h1>
-        <button class="card-button home-header-button" [routerLink]="['/my']">{{ 'HOME.START_YOUR_CAMPAIGN' | translate
+        <button class="card-button home-header-button" [routerLink]="['/map']">{{ 'HOME.START_YOUR_CAMPAIGN' | translate
           }}
         </button>
       </div>
@@ -65,66 +65,41 @@
 <div class="road-map">
   <div class="container">
     <h2>Roadmap</h2>
-    <ol>
-      <div>
-        <li>
-          <div>
-            <p class="period">February 26 2018</p>
-            <p>Alpha-Release. Early-access for initial users. Invest in campaign and elections mechanics implemented.
-              First
-              10 countries released. Cities’ initial price - 0.02 eth.</p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <p class="period">March 2018</p>
-            <p>Beta-Release. New features: World map, list of most influential mayors and Presidents.</p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <p class="period">April 2018</p>
-            <p>Mayors get power. Mayors will be able to change city’s coat of arms to any picture, and add city slogan
-              that
-              will be visible to everyone.</p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <p class="period">May 2018</p>
-            <p>Presidents change Worldmap. President will be able to change background to countries that are under his
-              control. President can advertise anything.</p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <p class="period">June 2018</p>
-            <p>All countries are in the game.</p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <p class="period">July 2018</p>
-            <p>Massive marketing campaign begins.</p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <p class="period">End of 2018</p>
-            <p>Main release. Cities crowdfunding platform implemented. Any user will be able to submit local
-              crowdfunding
-              business or charity project, and mayor of the city will choose which project will be crowdfunded in this
-              city.</p>
-          </div>
-        </li>
-      </div>
-    </ol>
+    <div class="timeline-item" date-is='February 26 2018'>
+      <p>Alpha-Release. Early-access for initial users. Invest in campaign and elections mechanics implemented.
+        First
+        10 countries released. Cities’ initial price - 0.02 eth.</p>
+    </div>
+    <div class="timeline-item" date-is='March 2018'>
+      <p>Beta-Release. New features: World map, list of most influential mayors and Presidents.</p>
+    </div>
+    <div class="timeline-item" date-is='April 2018'>
+      <p>Mayors get power. Mayors will be able to change city’s coat of arms to any picture, and add city slogan
+        that
+        will be visible to everyone.</p>
+    </div>
+    <div class="timeline-item" date-is='May 2018'>
+      <p>Presidents change Worldmap. President will be able to change background to countries that are under his
+        control. President can advertise anything.</p>
+    </div>
+    <div class="timeline-item" date-is='June 2018'>
+      <p>All countries are in the game.</p>
+    </div>
+    <div class="timeline-item" date-is='July 2018'>
+      <p>Massive marketing campaign begins.</p>
+    </div>
+    <div class="timeline-item" date-is='End of 2018'>
+      <p>Main release. Cities crowdfunding platform implemented. Any user will be able to submit local
+        crowdfunding
+        business or charity project, and mayor of the city will choose which project will be crowdfunded in this
+        city.</p>
+    </div>
   </div>
 </div>
 
 <div class="home-footer">
   <div>
-    <button class="card-button home-footer-button" [routerLink]="['/my']">{{ 'HOME.START_YOUR_CAMPAIGN' | translate }}
+    <button class="card-button home-footer-button" [routerLink]="['/map']">{{ 'HOME.START_YOUR_CAMPAIGN' | translate }}
     </button>
   </div>
 </div>

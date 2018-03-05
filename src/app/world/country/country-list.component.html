@@ -5,12 +5,13 @@
                     (queueChange)="queueChange.emit($event)">
 </app-country-filter>
 
-<div class="list row" *loading="isLoading">
+<div class="list row" *loading="isLoading || !experimentType">
   <ng-container *ngFor="let country of list">
     <app-country-card class="col-lg-3 col-sm-6 col-xs-12"
                       [country]="country"
                       [cities]="citiesByCountries && citiesByCountries[country.id]"
                       [cityDynamic]="dynamicCities"
+                      [experimentType]="experimentType"
                       [dynamic]="dynamicCountries && dynamicCountries[country.id]"
                       [myCities]="myCitiesByCountries && myCitiesByCountries[country.id] || []"
                       [nicknames]="nicknames"
@@ -19,7 +20,7 @@
 </div>
 
 
-<div class="row pagination" *ngIf="!isLoading">
+<div class="row pagination" *ngIf="!isLoading && experimentType">
   <div class="col-xs-12 col-12" *ngIf="total > 8">
     <pagination [directionLinks]="false"
                 [totalItems]="total"

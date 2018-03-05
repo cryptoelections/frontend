@@ -25,6 +25,12 @@ export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
     console.log('state', state);
     console.log('action', action);
 
+    if (action.type === 'ROUTER_NAVIGATION') {
+      window['amplitude'].getInstance().logEvent('router_navigation', {
+        router: action.payload && action.payload.routerState && action.payload.routerState.url
+      });
+    }
+
     return reducer(state, action);
   };
 }

@@ -16,7 +16,12 @@ export class CommonEffects {
     .ofType(commonActions.LOAD_WALLET_DATA_REQUEST)
     .debounceTime(3000)
     .switchMap((action: commonActions.LoadWalletDataRequest) => {
-      return this.web3Service.loadWalletData().then(x => new commonActions.LoadWalletDataResponse(parseInt(x)));
+      return this.web3Service.loadWalletData().then(x => {
+        if (window && window['amplitude']) {
+          window['amplitude'].getInstance().logEvent('withdraw', {balance: x});
+        }
+        return new commonActions.LoadWalletDataResponse(parseInt(x));
+      });
     });
 
   @Effect()

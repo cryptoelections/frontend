@@ -412,7 +412,7 @@ export const getDynamicCountriesState = createSelector(getCountriesState, state 
 export const getDynamicInfoEntities = createSelector(getDynamicCountriesState, state => state.entities);
 export const isDynamicLoading = createSelector(getDynamicCountriesState, state => state.loading);
 
-
+const zeroAddress = '0x0000000000000000000000000000000000000000';
 export const countriesForMap = createSelector(selectAll,
   getDynamicInfoEntities, fromNicknames.selectEntities, fromCities.citiesByCountry, selectAllByCountries,
   (countries, dynamicCountries, nicknames, citiesByCountry, myCitiesByCountry) => {
@@ -422,7 +422,7 @@ export const countriesForMap = createSelector(selectAll,
       [i.code3]: {
         ...i,
         ...dynamicCountries[i.id],
-        president: president(i) && nicknames[president(i)] || president(i) || 'Not elected yet',
+        president: president(i) && president(i) !== zeroAddress ? (nicknames[president(i)] || president(i)) : 'Not elected yet',
         numberOfCities: citiesByCountry && citiesByCountry[i.id] ? citiesByCountry[i.id].length : 0,
         myCities: myCitiesByCountry && myCitiesByCountry[i.id] ? myCitiesByCountry[i.id].length : 0,
         fillKey: 'ENABLED'
