@@ -6,6 +6,8 @@ import {CountryModalContainerComponent} from '../components/country-modal.contai
 import {Store} from '@ngrx/store';
 import {State} from '../ngrx';
 import {BsModalService} from 'ngx-bootstrap';
+import {CityService} from './city.service';
+import {CountryService} from './country.service';
 
 import * as common from '../ngrx/common/common.actions';
 
@@ -28,7 +30,11 @@ export class Web3Service {
   public contractData;
   public gasPrice;
 
-  constructor(private http: HttpClient, private store: Store<State>, private modalService: BsModalService) {
+  constructor(private http: HttpClient,
+              private store: Store<State>,
+              private modalService: BsModalService,
+              private cityService: CityService,
+              private countryService: CountryService) {
     const provider = window.web3 && window.web3.currentProvider;
     this.web3 = provider && new Web3(provider);
     this.network = undefined;
@@ -137,7 +143,7 @@ export class Web3Service {
         CryptoElectionsInstance = instance;
         return this.getCityInfo(cityId)
           .then((city) => {
-            const p = this.getPrices(city[3]) * 1000000000000000000 || price;
+            // const p = this.getPrices(city[3]) * 1000000000000000000 || price;
             // if (window['fbq']) {
             //   window['fbq']('track', 'Purchase', {
             //     value: p,
@@ -145,7 +151,7 @@ export class Web3Service {
             //   });
             // }
             return CryptoElectionsInstance.buyCity(cityId, {
-              value: p,
+              value: price,
               to: instance.address
             });
           });
@@ -192,14 +198,49 @@ export class Web3Service {
       });
   }
 
-  private getPrices(purchases) {
-    let price = 0.02;
+  public getCountriesData(countryIds: string[]) {
+    let CryptoElectionsInstance;
+    return this.CryptoElections || !countryIds ? this.CryptoElections.deployed()
+      .then((instance) => {
+        CryptoElectionsInstance = instance;
+        return CryptoElectionsInstance.getCountriesData(countryIds)
+          .then(([presidents, slogans, flags]: Array<Array<string>>) => countryIds.reduce((m, i, k) => ({
+            ...m, [i]: {
+              president: presidents[k],
+              slogan: slogans[k],
+              flag: flags[k]
+            }
+          }), {}));
+      }) : this.countryService.getDynamic();
+  }
+
+  public getCitiesData(cityIds: string[]) {
+    let CryptoElectionsInstance;
+    return this.CryptoElections || !cityIds ? this.CryptoElections.deployed()
+      .then((instance) => {
+        CryptoElectionsInstance = instance;
+        return CryptoElectionsInstance.getCitiesData(cityIds)
+          .then(([mayors, purchases, startPrices, multiplierSteps]: Array<Array<string>>) => cityIds.reduce((m, i, k) => ({
+            ...m, [i]: {
+              mayor: mayors[k],
+              purchases: parseInt(purchases[k]),
+              startPrice: parseInt(startPrices[k]),
+              multiplierStep: parseInt(multiplierSteps[k]),
+              price: this.calculateCityPrice(parseInt(purchases[k]), parseInt(startPrices[k]), parseInt(multiplierSteps[k]))
+            }
+          }), {}));
+      }) : this.cityService.getDynamic();
+  }
+
+
+  private calculateCityPrice(purchases: number, startPrice: number, multiplierStep: number): number {
+    let price = startPrice;
 
     for (let i = 1; i <= purchases; i++) {
-      if (i <= 7) {
+      if (i <= multiplierStep) {
         price = price * 2;
       } else {
-        price = price * 1.2;
+        price = (price * 12) / 10;
       }
     }
     return price;

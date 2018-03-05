@@ -2,8 +2,6 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 import {Country} from '../../shared/models/country.model';
 import {City} from '../../shared/models/city.model';
 import {StorageKeys} from '../../shared/services/storage.service';
-import {Observer} from 'rxjs/Observer';
-import {Observable} from 'rxjs/Observable';
 
 const Datamap = require('datamaps/dist/datamaps.world');
 
@@ -48,8 +46,9 @@ export class MapComponent implements OnInit, OnChanges {
         highlightBorderWidth: 2,
         highlightBorderColor: '#ffffff',
         popupTemplate: function (geo, data) {
-          return `<div class="hoverinfo" (click)="showCountry(data.id)">
-                    President: ${ data.president }
+          return `<div class="hoverinfo">
+                    <h4>${ data.name }</h4>
+                    ${ data.numberOfCities } cities / ${ data.myCities } under your control
                    </div>`;
         },
       },

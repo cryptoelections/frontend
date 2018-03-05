@@ -1,11 +1,14 @@
 import {Injectable} from '@angular/core';
-import {Action} from '@ngrx/store';
+import {Action, Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
 import {Effect, Actions} from '@ngrx/effects';
 import {Country} from '../../models/country.model';
 import {CountryService} from '../../services/country.service';
+import {State} from '../index';
+import {Web3Service} from '../../services/web3.service';
 
 import * as country from './country.actions';
+import * as fromCountries from './country.reducers';
 
 @Injectable()
 export class CountryEffects {
@@ -18,11 +21,19 @@ export class CountryEffects {
   @Effect()
   loadDynamicCountryInformation$ = this.actions$
     .ofType(country.LOAD_DYNAMIC_COUNTRY_INFORMATION_REQUEST)
-    .switchMap((action: country.LoadDynamicCountryInformationRequest) => Observable.timer(0, 60000)
-      .switchMap(() => this.countryService.getDynamic()
-        .map((dictionary: { [id: string]: Partial<Country> }) => new country.LoadDynamicCountryInformationResponse(dictionary))
-        .catch((error) => Observable.of(new country.LoadDynamicCountryInformationResponse({})))));
+    .debounceTime(3000)
+    .withLatestFrom(this.store.select(fromCountries.selectIds))
+    .switchMap(([action, countriesIds]: [country.LoadDynamicCountryInformationRequest, string[]]) => {
+      return this.web3Service.getCountriesData(countriesIds)
+        .then((dictionary: { [id: string]: Partial<Country> }) => new country.LoadDynamicCountryInformationResponse(dictionary))
+        .catch((error) => {
+          return Observable.of(new country.LoadDynamicCountryInformationResponse({}));
+        });
+    });
 
-  constructor(private actions$: Actions, private countryService: CountryService) {
+  constructor(private actions$: Actions,
+              private store: Store<State>,
+              private countryService: CountryService,
+              private web3Service: Web3Service) {
   }
 }

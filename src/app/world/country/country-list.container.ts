@@ -12,9 +12,9 @@ import * as fromCities from '../../shared/ngrx/city/city.reducers';
 import * as fromCountries from '../../shared/ngrx/country/country.reducers';
 import * as countryActions from '../../shared/ngrx/country/country.actions';
 import * as cityActions from '../../shared/ngrx/city/city.actions';
-import * as myCampaignActions from '../../shared/ngrx/my-campaign/my-campaign.actions';
 import * as nicknamesActions from '../../shared/ngrx/nicknames/nicknames.actions';
 import * as fromNicknames from '../../shared/ngrx/nicknames/nicknames.reducers';
+import * as commonActions from '../../shared/ngrx/common/common.actions';
 
 @Component({
   selector: 'app-country-list-container',
@@ -70,12 +70,8 @@ export class CountryListContainerComponent extends WithUnsubscribe() implements 
   }
 
   public ngOnInit() {
-    this.store.dispatch(new myCampaignActions.LoadMyCitiesRequest());
-    this.store.dispatch(new cityActions.LoadDynamicCityInformationRequest());
-    this.store.dispatch(new countryActions.LoadDynamicCountryInformationRequest());
-    this.store.dispatch(new countryActions.LoadCountriesRequest());
-    this.store.dispatch(new cityActions.LoadCityInformationRequest());
     this.store.dispatch(new nicknamesActions.LoadNicknamesRequest());
+    this.store.dispatch(new commonActions.LoadAllData());
 
     this.initFilters();
     this.filters$

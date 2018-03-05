@@ -18,7 +18,7 @@ export class CityEffects {
   public bsModalRef: BsModalRef;
 
   @Effect()
-  loadCityInformation$: Observable<Action> = this.actions$
+  loadCityInformation$: Observable<Action | Action[]> = this.actions$
     .ofType(city.LOAD_CITY_INFORMATION_REQUEST)
     .switchMap((action: city.LoadCityInformationRequest) => this.cityService.getList()
       .map((list: Array<City>) => new city.LoadCityInformationResponse(list))
@@ -27,11 +27,17 @@ export class CityEffects {
   @Effect()
   loadDynamicCityInformation$ = this.actions$
     .ofType(city.LOAD_DYNAMIC_CITY_INFORMATION_REQUEST)
-    .switchMap((action: city.LoadDynamicCityInformationRequest) => Observable.timer(0, 60000)
-      .switchMap(() => this.cityService.getDynamic()
-        .map((list: { [id: string]: Partial<City> }) => new city.LoadDynamicCityInformationResponse(list))
-        .catch((error) => Observable.of(new city.LoadDynamicCityInformationResponse({})))));
-
+    .debounceTime(2500)
+    .withLatestFrom(this.store.select(fromCities.selectIds))
+    .switchMap(([action, cityIds]: [city.LoadCityInformationRequest, string[]]) => {
+      return this.web3Service.getCitiesData(cityIds)
+        .then((dictionary: { [id: string]: Partial<City> }) => {
+          return new city.LoadDynamicCityInformationResponse((dictionary));
+        })
+        .catch((error) => {
+          return Observable.of(new city.LoadDynamicCityInformationResponse({}));
+        });
+    });
 
   @Effect()
   invest$ = this.actions$

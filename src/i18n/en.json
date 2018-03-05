@@ -86,6 +86,8 @@
       "SUPPORT_YOU": "support you",
       "ELECTORATE": "Electorate",
       "INVEST": "Invest",
+      "CAMPAIGN_COSTS": "Campaign costs",
+      "RUN_CAMPAIGN": "Run campaign",
       "INVEST_PRICE": "Invest {{ price }} to win presidential election",
       "TO_WIN": "to win presidential election",
       "INVEST_MODAL_TEXT": "These are the most cost-effective cities to invest in your campaign in {{ country }} to get the majority of votes to become the president of the country! If you want to invest in another cities in {{ country }}, choose from",

@@ -1,17 +1,17 @@
 import {AfterViewInit, ChangeDetectorRef, Component} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {State} from '../../shared/ngrx';
+import {City} from '../../shared/models/city.model';
+import {CitySortOption} from '../city/city-filter.component';
 
 import * as fromCountries from '../../shared/ngrx/country/country.reducers';
 import * as fromMyCampaign from '../../shared/ngrx/my-campaign/my-campaign.reducers';
 import * as fromCities from '../../shared/ngrx/city/city.reducers';
 import * as cityActions from '../../shared/ngrx/city/city.actions';
 import * as nicknamesActions from '../../shared/ngrx/nicknames/nicknames.actions';
-import * as myCampaignActions from '../../shared/ngrx/my-campaign/my-campaign.actions';
 import * as countryActions from '../../shared/ngrx/country/country.actions';
 import * as fromNicknames from '../../shared/ngrx/nicknames/nicknames.reducers';
-import {City} from '../../shared/models/city.model';
-import {CitySortOption} from '../city/city-filter.component';
+import * as commonActions from '../../shared/ngrx/common/common.actions';
 
 @Component({
   selector: 'app-map-container',
@@ -48,12 +48,8 @@ export class MapContainerComponent implements AfterViewInit {
   readonly nicknames$ = this.store.select(fromNicknames.selectEntities);
 
   constructor(private store: Store<State>, private cd: ChangeDetectorRef) {
-    this.store.dispatch(new cityActions.LoadCityInformationRequest());
-    this.store.dispatch(new cityActions.LoadDynamicCityInformationRequest());
-    this.store.dispatch(new countryActions.LoadCountriesRequest());
-    this.store.dispatch(new countryActions.LoadDynamicCountryInformationRequest());
     this.store.dispatch(new nicknamesActions.LoadNicknamesRequest());
-    this.store.dispatch(new myCampaignActions.LoadMyCitiesRequest());
+    this.store.dispatch(new commonActions.LoadAllData());
   }
 
   public ngAfterViewInit() {

@@ -5,6 +5,9 @@ import {BsModalService} from 'ngx-bootstrap';
 
 
 import * as commonActions from './common.actions';
+import * as cityActions from '../city/city.actions';
+import * as countryActions from '../country/country.actions';
+import * as myCampaignActions from '../my-campaign/my-campaign.actions';
 
 @Injectable()
 export class CommonEffects {
@@ -22,6 +25,17 @@ export class CommonEffects {
     .switchMap((action: commonActions.WithdrawRequest) => {
       return this.web3Service.withdraw().then(x => new commonActions.WithdrawSuccess(x)).catch(err => new commonActions.WithdrawError(err));
     });
+
+  @Effect()
+  loadAllInfo$ = this.actions$
+    .ofType(commonActions.LOAD_ALL)
+    .flatMap((action: commonActions.LoadAllData) => [
+      new cityActions.LoadCityInformationRequest(),
+      new cityActions.LoadDynamicCityInformationRequest(),
+      new countryActions.LoadCountriesRequest(),
+      new countryActions.LoadDynamicCountryInformationRequest(),
+      new myCampaignActions.LoadMyCitiesRequest()
+    ]);
 
   constructor(private actions$: Actions,
               private web3Service: Web3Service,

@@ -398,7 +398,6 @@ export const sortCities = (cities: Array<City>, sortByOption: CitySortOption, dy
       break;
     }
   }
-  console.log(cities, cities && cities.sort(sort));
   return cities && cities.sort(sort);
 };
 
@@ -414,8 +413,9 @@ export const getDynamicInfoEntities = createSelector(getDynamicCountriesState, s
 export const isDynamicLoading = createSelector(getDynamicCountriesState, state => state.loading);
 
 
-export const countriesForMap = createSelector(selectAll, getDynamicInfoEntities, fromNicknames.selectEntities,
-  (countries, dynamicCountries, nicknames) => {
+export const countriesForMap = createSelector(selectAll,
+  getDynamicInfoEntities, fromNicknames.selectEntities, fromCities.citiesByCountry, selectAllByCountries,
+  (countries, dynamicCountries, nicknames, citiesByCountry, myCitiesByCountry) => {
     const president = (i: Country) => dynamicCountries[i.id] && (<any>dynamicCountries[i.id]).president;
     return countries.reduce((m, i) => ({
       ...m,
@@ -423,6 +423,8 @@ export const countriesForMap = createSelector(selectAll, getDynamicInfoEntities,
         ...i,
         ...dynamicCountries[i.id],
         president: president(i) && nicknames[president(i)] || president(i) || 'Not elected yet',
+        numberOfCities: citiesByCountry && citiesByCountry[i.id] ? citiesByCountry[i.id].length : 0,
+        myCities: myCitiesByCountry && myCitiesByCountry[i.id] ? myCitiesByCountry[i.id].length : 0,
         fillKey: 'ENABLED'
       }
     }), {});
