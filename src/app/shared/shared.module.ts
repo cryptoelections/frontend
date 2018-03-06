@@ -26,6 +26,7 @@ import {CityModalComponent} from './components/city-modal.component';
 import {CountryModalComponent} from './components/country-modal.component';
 import {CountryModalContainerComponent} from './components/country-modal.container';
 import {AuthService} from './services/auth.service';
+import {ToastrModule} from 'ngx-toastr';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import {AuthService} from './services/auth.service';
     PaginationModule,
     PopoverModule,
     ProgressbarModule,
+    ToastrModule,
     TooltipModule,
     TranslateModule
   ],
@@ -75,8 +77,9 @@ import {AuthService} from './services/auth.service';
     ParametersPairComponent,
     PopoverModule,
     ProgressbarModule,
-    TranslateModule,
-    TooltipModule
+    ToastrModule,
+    TooltipModule,
+    TranslateModule
   ],
   providers: [
     AuthGuard,

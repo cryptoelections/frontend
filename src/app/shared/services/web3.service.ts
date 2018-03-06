@@ -90,11 +90,6 @@ export class Web3Service {
                       window['yaCounter47748901'].reachGoal('countryassignevent');
                       sessionStorage.setItem('congrats', JSON.stringify([...previous, result]));
                       this.modalService.show(CountryModalContainerComponent, {class: 'modal-lg', initialState});
-                    } else {
-                      this.store.dispatch(new common.AddNewMessage({
-                        address: result.args.address,
-                        country: parseInt(result.args.countryId)
-                      }));
                     }
                   }
                 }))
@@ -167,7 +162,7 @@ export class Web3Service {
       .then(instance => {
         CryptoElectionsInstance = instance;
         return CryptoElectionsInstance.getUserCities(this.coinbase);
-      }) : new Promise(resolve => []);
+      }) : new Promise(resolve => resolve([]));
   }
 
   public getCityInfo(cityId) {

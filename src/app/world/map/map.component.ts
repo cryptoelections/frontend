@@ -51,7 +51,7 @@ export class MapComponent implements OnInit, OnChanges, AfterViewInit {
         highlightBorderColor: '#ffffff',
         popupTemplate: function (geo, data) {
           return `<div class="hoverinfo">
-                    <h4>${ data.name }</h4>
+                    <h4><b>${ data.name }</b></h4>
                     ${ data.numberOfCities } cities / ${ data.myCities } under your control <br/>
                     <b>President: </b> ${ data.president }
                    </div>`;

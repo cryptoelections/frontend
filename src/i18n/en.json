@@ -136,7 +136,7 @@
     "INVEST": "Invest in your campaign in cities and countries of your choice to rule the whole worldmap!"
   },
   "NOTIFICATIONS": {
-    "PRESIDENT": "{{ user }} was elected President of {{ country }}"
+    "PRESIDENT": "<b>{{ user }}</b> was elected President of <b>{{ country }}</b>"
   },
   "WALLET": {
     "TEXT": "If someone becomes a mayor instead of you, you get compensation. Here you can see how much you have:",

@@ -1,13 +1,4 @@
 <div class="footer-wrap">
-  <ng-container *ngIf="!home">
-    <div class="messages" *ngFor="let message of messages">
-      <div class="container">
-        <alert class="mb-0" [type]="message.type" [dismissOnTimeout]="message.timeout"><span
-          [innerHTML]="message.msg.text | translate:message.msg.params"></span></alert>
-      </div>
-    </div>
-  </ng-container>
-
   <footer class="footer">
     <div class="container">
       <div class="row justify-content-between">

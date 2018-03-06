@@ -11,10 +11,6 @@ import {CountryModalContainerComponent} from '../../shared/components/country-mo
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
-  @Input() public countries;
-  @Input() public nicknames;
-  @Input() public messages;
-
   public links = [
     {
       text: 'MENU.COUNTRIES',
@@ -22,30 +18,18 @@ export class FooterComponent {
     }, {
       text: 'MENU.CITIES',
       linkTo: '/cities'
-      // },{
-      //   text: 'MENU.MAP',
-      //   linkTo: 'map'
+    }, {
+      text: 'MENU.MAP',
+      linkTo: '/map'
     }, {
       text: 'MENU.MY_CAMPAIGN',
       linkTo: '/my',
     }
   ];
 
-  public get home(): boolean {
-    return this.activatedRoute.snapshot.url[0] && this.activatedRoute.snapshot.url[0].path === 'home';
-  }
-
   constructor(private web3Service: Web3Service,
               private modalService: BsModalService,
               private translate: TranslateService,
               private activatedRoute: ActivatedRoute) {
-    // setTimeout(() => {
-    //   this.web3Service.presidentEvent.watch((error, result) => {
-    //     const initialState = {
-    //       countryId: parseInt(result.args.countryId)
-    //     };
-    //     this.modalService.show(CountryModalContainerComponent, {initialState});
-    //   });
-    // }, 15000);
   }
 }
