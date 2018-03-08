@@ -115,7 +115,7 @@ export class Web3Service {
 
   public setNickname(nickname: string) {
     let CryptoElectionsInstance;
-    return this.CryptoElections && this.CryptoElections.deployed()
+    return this.CryptoElections.deployed()
       .then((instance) => {
         CryptoElectionsInstance = instance;
         window['amplitude'].getInstance().logEvent('set_nickname');
@@ -126,7 +126,7 @@ export class Web3Service {
 
   public getNickname(address: string) {
     let CryptoElectionsInstance;
-    return this.CryptoElections && this.CryptoElections.deployed()
+    return this.CryptoElections.deployed()
       .then((instance) => {
         CryptoElectionsInstance = instance;
         return CryptoElectionsInstance.userNicknames(address);
@@ -135,7 +135,7 @@ export class Web3Service {
 
   public invest(cityId, price) {
     let CryptoElectionsInstance;
-    return this.CryptoElections && this.CryptoElections.deployed()
+    return this.CryptoElections.deployed()
       .then((instance) => {
         CryptoElectionsInstance = instance;
         return this.getCityInfo(cityId)
@@ -152,13 +152,13 @@ export class Web3Service {
               to: instance.address
             });
           });
-      }).catch(() => this.toastr.error('ERROR'));
+      }).catch(() => {});
   }
 
   public getUserCities() {
     let CryptoElectionsInstance;
 
-    return this.CryptoElections && this.CryptoElections.deployed()
+    return this.CryptoElections.deployed()
       .then(instance => {
         CryptoElectionsInstance = instance;
         return CryptoElectionsInstance.getUserCities(this.coinbase);
@@ -168,7 +168,7 @@ export class Web3Service {
 
   public getCityInfo(cityId) {
     let CryptoElectionsInstance;
-    return this.CryptoElections && this.CryptoElections.deployed()
+    return this.CryptoElections.deployed()
       .then((instance) => {
         CryptoElectionsInstance = instance;
 
@@ -178,7 +178,7 @@ export class Web3Service {
 
   public loadWalletData() {
     let CryptoElectionsInstance;
-    return this.CryptoElections && this.CryptoElections.deployed()
+    return this.CryptoElections.deployed()
       .then((instance) => {
         CryptoElectionsInstance = instance;
         return CryptoElectionsInstance.userPendingWithdrawals(this.coinbase);
@@ -188,7 +188,7 @@ export class Web3Service {
 
   public withdraw() {
     let CryptoElectionsInstance;
-    return this.CryptoElections && this.CryptoElections.deployed()
+    return this.CryptoElections.deployed()
       .then((instance) => {
         CryptoElectionsInstance = instance;
         return CryptoElectionsInstance.withdraw();
@@ -197,7 +197,7 @@ export class Web3Service {
 
   public getCountriesData(countryIds: string[]) {
     let CryptoElectionsInstance;
-    return this.CryptoElections && this.CryptoElections.deployed()
+    return this.CryptoElections.deployed()
       .then((instance) => {
         CryptoElectionsInstance = instance;
         return CryptoElectionsInstance.getCountriesData(countryIds)
@@ -213,7 +213,7 @@ export class Web3Service {
 
   public getCitiesData(cityIds: string[]) {
     let CryptoElectionsInstance;
-    return this.CryptoElections && this.CryptoElections.deployed()
+    return this.CryptoElections.deployed()
       .then((instance) => {
         CryptoElectionsInstance = instance;
         return CryptoElectionsInstance.getCitiesData(cityIds)
