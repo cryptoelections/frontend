@@ -24,9 +24,10 @@ export class CountryEffects {
     .debounceTime(3000)
     .withLatestFrom(this.store.select(fromCountries.selectIds))
     .switchMap(([action, countriesIds]: [country.LoadDynamicCountryInformationRequest, string[]]) => {
-      return this.web3Service.getCountriesData(countriesIds)
-        .then((dictionary: { [id: string]: Partial<Country> }) => new country.LoadDynamicCountryInformationResponse(dictionary))
+      return Observable.fromPromise(this.web3Service.getCountriesData(countriesIds))
+        .map((dictionary: { [id: string]: Partial<Country> }) => new country.LoadDynamicCountryInformationResponse(dictionary))
         .catch((error) => {
+          console.log(error);
           return Observable.of(new country.LoadDynamicCountryInformationResponse({}));
         });
     });

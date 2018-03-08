@@ -20,7 +20,7 @@
 </div>
 
 
-<div class="row pagination" *ngIf="!isLoading && experimentType">
+<div class="row pagination" *ngIf="!isLoading && !!experimentType">
   <div class="col-xs-12 col-12" *ngIf="total > 8">
     <pagination [directionLinks]="false"
                 [totalItems]="total"

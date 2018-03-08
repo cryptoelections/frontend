@@ -30,11 +30,12 @@ export class CityEffects {
     .debounceTime(2500)
     .withLatestFrom(this.store.select(fromCities.selectIds))
     .switchMap(([action, cityIds]: [city.LoadCityInformationRequest, string[]]) => {
-      return this.web3Service.getCitiesData(cityIds)
-        .then((dictionary: { [id: string]: Partial<City> }) => {
+      return Observable.fromPromise(this.web3Service.getCitiesData(cityIds))
+        .map((dictionary: { [id: string]: Partial<City> }) => {
           return new city.LoadDynamicCityInformationResponse((dictionary));
         })
         .catch((error) => {
+          console.log(error);
           return Observable.of(new city.LoadDynamicCityInformationResponse({}));
         });
     });

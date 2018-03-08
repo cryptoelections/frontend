@@ -8,8 +8,7 @@ import {State} from '../ngrx';
 import {BsModalService} from 'ngx-bootstrap';
 import {CityService} from './city.service';
 import {CountryService} from './country.service';
-
-import * as common from '../ngrx/common/common.actions';
+import {ToastrService} from 'ngx-toastr';
 
 const Web3 = require('web3');
 const contract = require('truffle-contract');
@@ -33,6 +32,7 @@ export class Web3Service {
   constructor(private http: HttpClient,
               private store: Store<State>,
               private modalService: BsModalService,
+              private toastr: ToastrService,
               private cityService: CityService,
               private countryService: CountryService) {
     const provider = window.web3 && window.web3.currentProvider;
@@ -115,7 +115,7 @@ export class Web3Service {
 
   public setNickname(nickname: string) {
     let CryptoElectionsInstance;
-    return this.CryptoElections.deployed()
+    return this.CryptoElections && this.CryptoElections.deployed()
       .then((instance) => {
         CryptoElectionsInstance = instance;
         window['amplitude'].getInstance().logEvent('set_nickname');
@@ -126,7 +126,7 @@ export class Web3Service {
 
   public getNickname(address: string) {
     let CryptoElectionsInstance;
-    return this.CryptoElections.deployed()
+    return this.CryptoElections && this.CryptoElections.deployed()
       .then((instance) => {
         CryptoElectionsInstance = instance;
         return CryptoElectionsInstance.userNicknames(address);
@@ -152,17 +152,18 @@ export class Web3Service {
               to: instance.address
             });
           });
-      });
+      }).catch(() => this.toastr.error('ERROR'));
   }
 
   public getUserCities() {
     let CryptoElectionsInstance;
 
-    return this.CryptoElections ? this.CryptoElections.deployed()
+    return this.CryptoElections && this.CryptoElections.deployed()
       .then(instance => {
         CryptoElectionsInstance = instance;
         return CryptoElectionsInstance.getUserCities(this.coinbase);
-      }) : new Promise(resolve => resolve([]));
+      })
+      .catch(() => []);
   }
 
   public getCityInfo(cityId) {
@@ -177,13 +178,12 @@ export class Web3Service {
 
   public loadWalletData() {
     let CryptoElectionsInstance;
-    return this.CryptoElections ? this.CryptoElections.deployed()
+    return this.CryptoElections && this.CryptoElections.deployed()
       .then((instance) => {
         CryptoElectionsInstance = instance;
         return CryptoElectionsInstance.userPendingWithdrawals(this.coinbase);
-      }) : new Promise(resolve => {
-      resolve(0);
-    });
+      }).catch(() => {
+      });
   }
 
   public withdraw() {
@@ -197,7 +197,7 @@ export class Web3Service {
 
   public getCountriesData(countryIds: string[]) {
     let CryptoElectionsInstance;
-    return this.CryptoElections || !countryIds ? this.CryptoElections.deployed()
+    return this.CryptoElections && this.CryptoElections.deployed()
       .then((instance) => {
         CryptoElectionsInstance = instance;
         return CryptoElectionsInstance.getCountriesData(countryIds)
@@ -208,12 +208,12 @@ export class Web3Service {
               flag: flags[k]
             }
           }), {}));
-      }) : this.countryService.getDynamic();
+      }).catch(err => this.countryService.getDynamic());
   }
 
   public getCitiesData(cityIds: string[]) {
     let CryptoElectionsInstance;
-    return this.CryptoElections || !cityIds ? this.CryptoElections.deployed()
+    return this.CryptoElections && this.CryptoElections.deployed()
       .then((instance) => {
         CryptoElectionsInstance = instance;
         return CryptoElectionsInstance.getCitiesData(cityIds)
@@ -226,7 +226,7 @@ export class Web3Service {
               price: this.calculateCityPrice(parseInt(purchases[k]), parseInt(startPrices[k]), parseInt(multiplierSteps[k]))
             }
           }), {}));
-      }) : this.cityService.getDynamic();
+      }).catch((error) => this.cityService.getDynamic());
   }
 
 

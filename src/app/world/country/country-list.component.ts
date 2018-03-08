@@ -44,6 +44,6 @@ export class CountryListComponent implements AfterViewInit, OnChanges {
       (+this.authService.coinbase.charAt(3) < 5 || this.authService.coinbase.charAt(3) < 'M')
         ? Experiment.card
         : Experiment.button
-      : undefined;
+      : Experiment.button;
   }
 }
