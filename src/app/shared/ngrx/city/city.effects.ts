@@ -30,14 +30,34 @@ export class CityEffects {
     .debounceTime(2500)
     .withLatestFrom(this.store.select(fromCities.selectIds))
     .switchMap(([action, cityIds]: [city.LoadCityInformationRequest, string[]]) => {
-      return Observable.fromPromise(this.web3Service.getCitiesData(cityIds))
-        .map((dictionary: { [id: string]: Partial<City> }) => {
+      const ids = cityIds.map(id => parseInt(id));
+      return this.web3Service.CryptoElections.deployed()
+        .then((instance) => instance.getCitiesData(ids))
+        .then(([mayors, purchases, startPrices, multiplierSteps]: Array<Array<string>>) => ids.reduce((m, i, k) => ({
+          ...m, [i]: {
+            mayor: mayors[k],
+            purchases: parseInt(purchases[k]),
+            startPrice: parseInt(startPrices[k]),
+            multiplierStep: parseInt(multiplierSteps[k]),
+            price: this.calculateCityPrice(parseInt(purchases[k]), parseInt(startPrices[k]), parseInt(multiplierSteps[k]))
+          }
+        }), {}))
+        .then((dictionary: { [id: string]: Partial<City> }) => {
           return new city.LoadDynamicCityInformationResponse((dictionary));
-        })
-        .catch((error) => {
-          console.log(error);
-          return Observable.of(new city.LoadDynamicCityInformationResponse({}));
         });
+    }).catch((error) => {
+      return Observable.of(new city.LoadLocalDynamicCityInformationRequest());
+    });
+
+  @Effect()
+  loadLocalDynamicCityInformation$ = this.actions$
+    .ofType(city.LOAD_LOCAL_DYNAMIC_CITY_INFORMATION_REQUEST)
+    .switchMap((action: city.LoadCityInformationRequest) => this.cityService.getDynamic()
+      .then((dictionary: { [id: string]: Partial<City> }) => {
+        return new city.LoadDynamicCityInformationResponse((dictionary));
+      }))
+    .catch((error) => {
+      return Observable.of(new city.LoadDynamicCityInformationResponse({}));
     });
 
   @Effect()
@@ -48,9 +68,20 @@ export class CityEffects {
       window['yaCounter47748901'].reachGoal('investbutton');
       window['amplitude'].getInstance().logEvent('invest_button');
 
-      return this.web3Service.invest(action.payload.id, action.payload.price)
-        .then((res) => new city.InvestSuccess(cities[action.payload.id]))
-        .catch((err) => new common.ShowErrorMessage(cities[action.payload.id]));
+      return this.web3Service.CryptoElections.deployed()
+        .then((instance) => {
+          return instance.cities(action.payload.id)
+            .then((c) => {
+              return instance.buyCity(action.payload.id, {
+                value: action.payload.price,
+                to: instance.address
+              });
+            })
+            .then((res) => new city.InvestSuccess(cities[action.payload.id]));
+        }).catch((err) => {
+          console.log(err);
+          return new common.ShowErrorMessage(cities[action.payload.id]);
+        });
     });
 
   @Effect({dispatch: false})
@@ -71,5 +102,19 @@ export class CityEffects {
               private cityService: CityService,
               private web3Service: Web3Service,
               private modalService: BsModalService) {
+  }
+
+
+  private calculateCityPrice(purchases: number, startPrice: number, multiplierStep: number): number {
+    let price = startPrice;
+
+    for (let i = 1; i <= purchases; i++) {
+      if (i <= multiplierStep) {
+        price = price * 2;
+      } else {
+        price = (price * 12) / 10;
+      }
+    }
+    return price;
   }
 }

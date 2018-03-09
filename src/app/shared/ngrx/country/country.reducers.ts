@@ -70,7 +70,8 @@ export function reducer(state = initialState, action: actions.Actions): State {
     case actions.LOAD_COUNTRIES_RESPONSE: {
       return {
         ...adapter.addAll(action.payload && action.payload.length ? action.payload : [],
-          state), loading: false
+          state),
+        loading: false
       };
     }
     case actions.FILTER_UPDATE: {
@@ -79,6 +80,7 @@ export function reducer(state = initialState, action: actions.Actions): State {
     case actions.SELECT_COUNTRY: {
       return {...state, selectedCountry: action.payload};
     }
+    case actions.LOAD_LOCAL_DYNAMIC_COUNTRY_INFO_REQUEST:
     case actions.LOAD_DYNAMIC_COUNTRY_INFORMATION_REQUEST: {
       return {...state, dynamic: {...state.dynamic, loading: true}};
     }

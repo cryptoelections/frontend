@@ -24,6 +24,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   @Input() public myCities = [];
   @Input() public dynamic;
   @Input() public cityDynamic;
+  @Input() public isLoading: boolean;
   @Input() public experimentType;
   public Experiment = Experiment;
 

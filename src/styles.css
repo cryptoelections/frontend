@@ -108,6 +108,10 @@ body {
   padding: 30px 30px 18px 30px;
 }
 
+.card-button-block.pending {
+  padding-bottom: 50px;
+}
+
 .card-button-block span {
   font-size: 12px;
 }
@@ -115,29 +119,6 @@ body {
 .country-button {
   display: flex;
   padding: 0px;
-}
-
-.country-button .btn-left span {
-  font-weight: 700;
-  font-size: 14px;
-}
-
-.country-button .btn-left {
-  font-size: 10px;
-  word-break: normal;
-  width: 70%;
-  height: 100%;
-  padding: 0.6rem;
-}
-
-.country-button .btn-right {
-  width: 30%;
-  font-size: 14px;
-  padding: 0.6rem;
-  word-break: normal;
-  line-height: normal;
-  border-left: 1px solid rgb(255, 255, 255);
-  text-align: left;
 }
 
 /* pagination */
@@ -376,11 +357,13 @@ img.modal-img {
 
 /* pending */
 
+div.pending,
 .row.pending,
 .btn.pending {
   outline: 0;
 }
 
+div.pending:before,
 .row.pending:before,
 .btn.pending:before {
   content: "• • •";
@@ -395,6 +378,7 @@ img.modal-img {
   opacity: .5;
 }
 
+div.pending:after,
 .row.pending:after,
 .btn.pending:after {
   content: "•";
@@ -584,6 +568,8 @@ img.flag-modal {
   min-height: 45px;
 }
 
+div.pending .btn,
+div.pending span,
 .row.pending h1,
 .row.pending .btn {
   display: none;

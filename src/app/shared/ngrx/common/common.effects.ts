@@ -1,7 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
 import {Web3Service} from '../../services/web3.service';
-
+import {ToastrService} from 'ngx-toastr';
+import {TranslateService} from '@ngx-translate/core';
+import {State} from '../index';
+import {Store} from '@ngrx/store';
+import {Country} from '../../models/country.model';
+import {zeroAddress} from '../../../world/country/country-card.component';
 
 import * as commonActions from './common.actions';
 import * as cityActions from '../city/city.actions';
@@ -9,12 +14,7 @@ import * as countryActions from '../country/country.actions';
 import * as myCampaignActions from '../my-campaign/my-campaign.actions';
 import * as fromNicknames from '../nicknames/nicknames.reducers';
 import * as fromCountries from '../country/country.reducers';
-import {ToastrService} from 'ngx-toastr';
-import {TranslateService} from '@ngx-translate/core';
-import {State} from '../index';
-import {Store} from '@ngrx/store';
-import {Country} from '../../models/country.model';
-import {zeroAddress} from '../../../world/country/country-card.component';
+
 
 @Injectable()
 export class CommonEffects {
@@ -23,19 +23,24 @@ export class CommonEffects {
     .ofType(commonActions.LOAD_WALLET_DATA_REQUEST)
     .debounceTime(3000)
     .switchMap((action: commonActions.LoadWalletDataRequest) => {
-      return this.web3Service.loadWalletData().then(x => {
-        if (window && window['amplitude']) {
-          window['amplitude'].getInstance().logEvent('withdraw', {balance: x});
-        }
-        return new commonActions.LoadWalletDataResponse(parseInt(x));
-      });
+      return this.web3Service.CryptoElections.deployed()
+        .then((instance) => instance.userPendingWithdrawals(this.web3Service.coinbase))
+        .then(x => {
+          if (window && window['amplitude']) {
+            window['amplitude'].getInstance().logEvent('withdraw', {balance: x});
+          }
+          return new commonActions.LoadWalletDataResponse(parseInt(x));
+        });
     });
 
   @Effect()
   withdraw$ = this.actions$
     .ofType(commonActions.WITHDRAW_REQUEST)
     .switchMap((action: commonActions.WithdrawRequest) => {
-      return this.web3Service.withdraw().then(x => new commonActions.WithdrawSuccess(x)).catch(err => new commonActions.WithdrawError(err));
+      return this.web3Service.CryptoElections.deployed()
+        .then((instance) => instance.withdraw())
+        .then(x => new commonActions.WithdrawSuccess(x)).catch(err => new commonActions.WithdrawError(err))
+        .catch(x => this.toastr.error('ERRORS.WITHDRAWAL_UNSUCCESSFULL'));
     });
 
   @Effect()
@@ -78,11 +83,16 @@ export class CommonEffects {
       }, 30000));
     });
 
+  @Effect({dispatch: false})
+  showError$ = this.actions$
+    .ofType(commonActions.SHOW_ERROR)
+    .do((action: commonActions.ShowErrorMessage) => this.toastr.error(this.translate.instant('COMMON.UNSUCCESSFUL_TRANSACTION',
+      {name: action.payload.name})));
+
   constructor(private actions$: Actions,
               private store: Store<State>,
               private web3Service: Web3Service,
               private translate: TranslateService,
               private toastr: ToastrService) {
-
   }
 }

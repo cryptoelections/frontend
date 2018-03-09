@@ -4,6 +4,8 @@ import {CitySortOption} from '../../../world/city/city-filter.component';
 
 export const LOAD_DYNAMIC_COUNTRY_INFORMATION_REQUEST = '[COUNTRY] LOAD_DYNAMIC_COUNTRY_INFORMATION_REQUEST';
 export const LOAD_DYNAMIC_COUNTRY_INFORMATION_RESPONSE = '[COUNTRY] LOAD_DYNAMIC_COUNTRY_INFORMATION_RESPONSE';
+export const LOAD_LOCAL_DYNAMIC_COUNTRY_INFO_REQUEST = '[COUNTRY] LOAD_LOCAL_DYNAMIC_COUNTRY_INFO_REQUEST';
+
 export const LOAD_COUNTRIES_REQUEST = '[COUNTRY] LOAD_COUNTRIES_REQUEST';
 export const LOAD_COUNTRIES_RESPONSE = '[COUNTRY] LOAD_COUNTRIES_RESPONSE';
 export const FILTER_UPDATE = '[COUNTRY] FILTER_UPDATE';
@@ -27,6 +29,13 @@ export class LoadCountriesResponse implements Action {
 
 export class LoadDynamicCountryInformationRequest implements Action {
   type = LOAD_DYNAMIC_COUNTRY_INFORMATION_REQUEST;
+
+  constructor(public payload?: any) {
+  }
+}
+
+export class LoadLocalDynamicCountryInformationRequest implements Action {
+  type = LOAD_LOCAL_DYNAMIC_COUNTRY_INFO_REQUEST;
 
   constructor(public payload?: any) {
   }
@@ -67,5 +76,6 @@ export type Actions =
   | FilterUpdate
   | SelectCountry
   | LoadDynamicCountryInformationRequest
+  | LoadLocalDynamicCountryInformationRequest
   | LoadDynamicCountryInformationResponse
   | FilterSelectedCountryCities ;

@@ -14,6 +14,7 @@ export class CountryListComponent implements AfterViewInit, OnChanges {
   @Input() public citiesByCountries: { [id: string]: Partial<Country> };
   @Input() public list: Array<Country>;
   @Input() public isLoading: boolean;
+  @Input() public isCityDynamicLoading: boolean;
   @Input() public query: string;
   @Input() public total: number;
   @Input() public sortBy: CountrySortOption;

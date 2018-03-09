@@ -16,6 +16,7 @@ export class CityCardComponent implements OnChanges {
   @Input() public countries;
   @Input() public percent;
   @Input() public dynamic;
+  @Input() public isLoading: boolean;
   @Input() public nicknames;
   @Input() public myCities;
   @Output() public invest = new EventEmitter<{ city: City, price: number | string }>();

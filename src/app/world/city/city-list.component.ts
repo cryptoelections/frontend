@@ -16,6 +16,7 @@ export class CityListComponent {
   @Input() public query: string;
   @Input() public currentPage: number;
   @Input() public isLoading: boolean;
+  @Input() public isDynamicLoading: boolean;
   @Input() public total: number;
   @Input() public nicknames;
   @Input() public dynamicCities: Array<Partial<City>>;

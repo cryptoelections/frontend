@@ -28,6 +28,7 @@ import * as commonActions from '../../shared/ngrx/common/common.actions';
                    [query]="query$ | async"
                    [sortBy]="sortBy$ | async"
                    [isLoading]="isLoading$ | async"
+                   [isDynamicLoading]="citiesDynamicLoading$ | async"
                    [nicknames]="nicknames$ | async"
                    [myCities]="myCities$ | async"
                    [dynamicCities]="dynamicInfoCities$ | async"
@@ -48,6 +49,7 @@ export class CityListContainerComponent extends WithUnsubscribe() implements OnI
   readonly query$ = this.store.select(fromCities.query);
   readonly sortBy$ = this.store.select(fromCities.sortBy);
   readonly isLoading$ = this.store.select(fromCities.isLoading);
+  readonly citiesDynamicLoading$ = this.store.select(fromCities.isDynamicLoading);
   readonly dynamicInfoCities$ = this.store.select(fromCities.getDynamicInfoEntities);
   readonly nicknames$ = this.store.select(fromNicknames.selectEntities);
 

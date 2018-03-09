@@ -24,13 +24,31 @@ export class CountryEffects {
     .debounceTime(3000)
     .withLatestFrom(this.store.select(fromCountries.selectIds))
     .switchMap(([action, countriesIds]: [country.LoadDynamicCountryInformationRequest, string[]]) => {
-      return Observable.fromPromise(this.web3Service.getCountriesData(countriesIds))
-        .map((dictionary: { [id: string]: Partial<Country> }) => new country.LoadDynamicCountryInformationResponse(dictionary))
-        .catch((error) => {
-          console.log(error);
-          return Observable.of(new country.LoadDynamicCountryInformationResponse({}));
-        });
+      return this.web3Service.CryptoElections.deployed()
+        .then((instance) => instance.getCountriesData(countriesIds)
+          .then(([presidents, slogans, flags]: Array<Array<string>>) => countriesIds.reduce((m, i, k) => ({
+            ...m, [i]: {
+              president: presidents[k],
+              slogan: slogans[k],
+              flag: flags[k]
+            }
+          }), {}))
+          .then((dictionary: { [id: string]: Partial<Country> }) => new country.LoadDynamicCountryInformationResponse(dictionary)));
+    })
+    .catch((error) => {
+      // console.log(error);
+      return Observable.of(new country.LoadLocalDynamicCountryInformationRequest());
     });
+
+  @Effect()
+  loadLocalDynamicCountryInformation$ = this.actions$
+    .ofType(country.LOAD_LOCAL_DYNAMIC_COUNTRY_INFO_REQUEST)
+    .switchMap((actions: country.LoadLocalDynamicCountryInformationRequest) => this.countryService.getDynamic()
+      .then((dictionary: { [id: string]: Partial<Country> }) => new country.LoadDynamicCountryInformationResponse(dictionary))
+      .catch((error) => {
+        // console.log(error);
+        return Observable.of(new country.LoadDynamicCountryInformationResponse({}));
+      }));
 
   constructor(private actions$: Actions,
               private store: Store<State>,

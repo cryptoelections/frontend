@@ -125,8 +125,7 @@
     },
     "FILTER": {
       "SORT_BY": "Sort by"
-    },
-    "UNSUCCESSFUL_TRANSACTION": "Unsuccessful transaction - buying <b>{{ name }}</b>"
+    }
   },
   "CAMPAIGN": {
     "TITLE": "My campaign",
@@ -141,5 +140,13 @@
   "WALLET": {
     "TEXT": "If someone becomes a mayor instead of you, you get compensation. Here you can see how much you have:",
     "WITHDRAW": "Withdraw"
+  },
+  "SUCCESS": {
+    "NICKNAME_WAS_SET": "Nickname was successfully set"
+  },
+  "ERRORS": {
+    "UNSUCCESSFUL_TRANSACTION": "Unsuccessful transaction - buying <b>{{ name }}</b>",
+    "NICKNAME_WAS_NOT_SET": "<b>Error!</b> Nickname was not set."
+
   }
 }

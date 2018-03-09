@@ -15,6 +15,7 @@
                       [dynamic]="dynamicCountries && dynamicCountries[country.id]"
                       [myCities]="myCitiesByCountries && myCitiesByCountries[country.id] || []"
                       [nicknames]="nicknames"
+                      [isLoading]="isCityDynamicLoading"
                       (invest)="invest.emit($event)"></app-country-card>
   </ng-container>
 </div>

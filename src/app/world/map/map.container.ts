@@ -25,6 +25,7 @@ import * as commonActions from '../../shared/ngrx/common/common.actions';
       [list]="citiesOfSelectedCountry$ | async"
       [countries]="countries$ | async"
       [isLoading]="isLoading$ | async"
+      [dynamicIsLoading]="isDynamicLoading$ | async"
       [nicknames]="nicknames$ | async"
       [myCities]="myCities$ | async"
       [dynamicCities]="dynamicInfoCities$ | async"
@@ -42,6 +43,7 @@ export class MapContainerComponent implements AfterViewInit {
   readonly myCitiesByCountry$ = this.store.select(fromCountries.selectAllByCountries);
   readonly myCities$ = this.store.select(fromMyCampaign.selectAll);
   readonly isLoading$ = this.store.select(fromCities.isLoading);
+  readonly isDynamicLoading$ = this.store.select(fromCities.isDynamicLoading);
   readonly dynamicInfoCities$ = this.store.select(fromCities.getDynamicInfoEntities);
   readonly selectedCountry$ = this.store.select(fromCountries.selectedCountry);
   readonly dynamicCountries$ = this.store.select(fromCountries.getDynamicInfoEntities);

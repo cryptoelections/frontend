@@ -24,6 +24,7 @@ export class SelectedCountryComponent implements AfterViewInit {
   @Input() public selectedCountry: Country;
   @Input() public dynamicCities: Array<Partial<City>>;
   @Input() public dynamic: Country;
+  @Input() public dynamicIsLoading: boolean;
   @Output() public sortByChange = new EventEmitter<CitySortOption>();
   @Output() public queueChange = new EventEmitter<boolean>();
   @Output() public queryChange = new EventEmitter<string>();

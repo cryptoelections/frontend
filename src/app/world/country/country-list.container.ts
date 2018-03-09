@@ -31,6 +31,7 @@ import * as commonActions from '../../shared/ngrx/common/common.actions';
       [citiesByCountries]="citiesByCountries$ | async"
       [myCitiesByCountries]="myCitiesByCountries$ | async"
       [dynamicCountries]="dynamicCountries$ | async"
+      [isCityDynamicLoading]="citiesDynamicLoading$ | async"
       [nicknames]="nicknames$ | async"
       (sortByChange)="onSortByChange($event)"
       (queryChange)="onQueryChange($event)"
@@ -53,6 +54,7 @@ export class CountryListContainerComponent extends WithUnsubscribe() implements 
   readonly myCitiesByCountries$ = this.store.select(fromCountries.selectAllByCountries);
   readonly dynamicCountries$ = this.store.select(fromCountries.getDynamicInfoEntities);
   readonly nicknames$ = this.store.select(fromNicknames.selectEntities);
+  readonly citiesDynamicLoading$ = this.store.select(fromCities.isDynamicLoading);
 
   private filterService = new FilterService({
     query: {type: 'string'},

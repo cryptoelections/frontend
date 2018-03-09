@@ -31,7 +31,7 @@
       <span *ngIf="experimentType === Experiment.card"><b>{{ price | eth }} ETH</b> {{ 'COUNTRY.CARD.TO_BECOME_A_PRESIDENT' | translate}}</span>
     </p>
   </div>
-  <div class="card-button-block text-center">
+  <div class="card-button-block text-center" [ngClass]="{'pending': isLoading}">
     <ng-container *ngIf="!isYours && country.active && experimentType === Experiment.button">
       <button class="btn card-button" (click)="cityList.show(); onShowModal();">
         <span>{{'COUNTRY.CARD.INVEST' | translate }} <b>{{ price | eth }} ETH </b></span>
