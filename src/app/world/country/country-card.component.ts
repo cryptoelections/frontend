@@ -4,7 +4,6 @@ import {City} from '../../shared/models/city.model';
 import {TranslateService} from '@ngx-translate/core';
 import {Web3Service} from '../../shared/services/web3.service';
 import {Router} from '@angular/router';
-import {DEFAULT_PRICE} from '../../shared/services/base.service';
 import {AuthService} from '../../shared/services/auth.service';
 
 export const zeroAddress = '0x0000000000000000000000000000000000000000';
@@ -53,10 +52,6 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
       && this.dynamic.president === this.web3Service.coinbase;
   }
 
-  public get defaultPrice() {
-    return DEFAULT_PRICE;
-  }
-
 
   public get price(): number {
     const half = this.electorate / 2;
@@ -65,7 +60,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
     let el = this.myElectorate;
 
     const pricePerElectorate = (city: City) =>
-      (this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || DEFAULT_PRICE) / +city.population;
+      (this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || city.startPrice) / +city.population;
 
     if (this.country.active !== 0 && this.cities) {
       const sortedList = this.cities
@@ -90,7 +85,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
           return pricePerElectorate(a) > pricePerElectorate(b) ? -1 : 1;
         })
         .every((city: City) => {
-          price += this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || DEFAULT_PRICE;
+          price += this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || city.startPrice;
           el += +city.population;
           return (el > half) ? false : true;
         });
@@ -100,7 +95,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
 
   public get costEffectiveCities(): Array<City> {
     const pricePerElectorate = (city: City) =>
-      (this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || DEFAULT_PRICE) / +city.population;
+      (this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || city.startPrice) / +city.population;
 
     return this.cities ? this.cities
       .filter((city: City) => {
@@ -169,7 +164,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
     if (this.authService.coinbase && !this.web3Service.wrongNetwork) {
       this.invest.emit({
         city,
-        price: this.cityDynamic && this.cityDynamic[city.id] && this.cityDynamic[city.id].price || DEFAULT_PRICE
+        price: this.cityDynamic && this.cityDynamic[city.id] && this.cityDynamic[city.id].price || city.startPrice
       });
     } else {
       this.router.navigate(['/metamask']);

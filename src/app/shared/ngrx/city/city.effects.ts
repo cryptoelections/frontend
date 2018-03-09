@@ -21,7 +21,9 @@ export class CityEffects {
   loadCityInformation$: Observable<Action | Action[]> = this.actions$
     .ofType(city.LOAD_CITY_INFORMATION_REQUEST)
     .switchMap((action: city.LoadCityInformationRequest) => this.cityService.getList()
-      .map((list: Array<City>) => new city.LoadCityInformationResponse(list))
+      .map((list: Array<City>) => {
+        return new city.LoadCityInformationResponse(list);
+      })
       .catch((error) => Observable.of(new city.LoadCityInformationResponse([]))));
 
   @Effect()

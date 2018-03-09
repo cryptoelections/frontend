@@ -4,9 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {environment} from '../../../environments/environment';
 
 export const BASE_URL = 'https://cryptoelections.ams3.digitaloceanspaces.com';
-export const JSON_URL = '../../config/';
-// export const JSON_URL = environment.pathToJsons;
-export const DEFAULT_PRICE = 20000000000000000;
+export const JSON_URL = environment.pathToJsons;
 
 @Injectable()
 export class BaseService<T> {

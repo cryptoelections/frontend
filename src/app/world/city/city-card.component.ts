@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {City} from '../../shared/models/city.model';
 import {TranslateService} from '@ngx-translate/core';
-import {BASE_URL, DEFAULT_PRICE} from '../../shared/services/base.service';
+import {BASE_URL} from '../../shared/services/base.service';
 import {Router} from '@angular/router';
 import {AuthService} from '../../shared/services/auth.service';
 import {Web3Service} from '../../shared/services/web3.service';
@@ -29,7 +29,7 @@ export class CityCardComponent implements OnChanges {
   }
 
   public get price() {
-    return this.dynamic && this.dynamic.price || DEFAULT_PRICE;
+    return this.dynamic && this.dynamic.price || this.city && this.city.startPrice;
   }
 
   public get cityImageSource(): string {

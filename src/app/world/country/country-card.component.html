@@ -108,7 +108,7 @@
               </ng-container>
               <ng-container *ngIf="!isYoursCity(city)">
                 <button class="btn card-button" (click)="tryToInvest(city)">
-                  <span *ngIf="!city.buying">{{ ( cityDynamic && cityDynamic[city?.id] && cityDynamic[city?.id].price || defaultPrice) | eth }} ETH</span>
+                  <span *ngIf="!city.buying">{{ ( cityDynamic && cityDynamic[city?.id] && cityDynamic[city?.id].price || city?.startPrice) | eth }} ETH</span>
                   <span *ngIf="city.buying">{{ 'CITY.CARD.REQUEST_SENT' | translate }}</span>
                 </button>
               </ng-container>
