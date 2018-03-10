@@ -378,16 +378,16 @@ export const sortCities = (cities: Array<City>, sortByOption: CitySortOption, dy
     }
     case CitySortOption.PricePerVoteDown: {
       sort = (a: City, b: City) => (
-        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || +a.startPrice / +a.population)
+        ((dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || +a.startPrice) / +a.population)
         <
-        (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || +b.startPrice / +b.population)) ? -1 : 1;
+        ((dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || +b.startPrice) / +b.population)) ? -1 : 1;
       break;
     }
     case CitySortOption.PricePerVoteUp: {
       sort = (a: City, b: City) => (
-        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || +a.startPrice / +a.population)
+        ((dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || +a.startPrice) / +a.population)
         >
-        (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || +b.startPrice / +b.population)) ? -1 : 1;
+        ((dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || +b.startPrice) / +b.population)) ? -1 : 1;
       break;
     }
     case CitySortOption.Country: {
