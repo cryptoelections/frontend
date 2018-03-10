@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {AuthService} from '../../shared/services/auth.service';
 import {Web3Service} from '../../shared/services/web3.service';
 import {zeroAddress} from '../country/country-card.component';
+import {CityService} from '../../shared/services/city.service';
 
 @Component({
   selector: 'app-city-card',
@@ -29,7 +30,8 @@ export class CityCardComponent implements OnChanges {
   }
 
   public get price() {
-    return this.dynamic && this.dynamic.price || this.city && this.city.startPrice;
+    return this.dynamic && this.dynamic.price
+      || this.cityService.calculateCityPrice(this.dynamic.purchases, this.city.startPrice, this.city.multiplierStep);
   }
 
   public get cityImageSource(): string {
@@ -52,6 +54,7 @@ export class CityCardComponent implements OnChanges {
 
   constructor(private authService: AuthService,
               private web3Service: Web3Service,
+              private cityService: CityService,
               private translate: TranslateService,
               private router: Router) {
   }

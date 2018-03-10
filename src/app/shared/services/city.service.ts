@@ -21,4 +21,17 @@ export class CityService extends BaseService<City> {
         });
     });
   }
+
+  public calculateCityPrice(purchases: number, startPrice: number, multiplierStep: number): number {
+    let price = startPrice;
+
+    for (let i = 1; i <= purchases; i++) {
+      if (i <= multiplierStep) {
+        price = price * 2;
+      } else {
+        price = (price * 12) / 10;
+      }
+    }
+    return price;
+  }
 }

@@ -14,6 +14,6 @@ export interface City {
   slogan: string;
   coat: string;
   buying?: boolean;
-  startPrice: any;
+  startPrice: number;
   multiplierStep: number;
 }

@@ -32,7 +32,7 @@
     </p>
   </div>
   <div class="card-button-block text-center"
-       [ngClass]="{'pending': isLoading, 'price-on-card': experimentType === Experiment.card}">
+       [ngClass]="{'pending': isLoading, 'price-on-card': experimentType === Experiment.card && !isYours}">
     <ng-container *ngIf="!isYours && country.active && experimentType === Experiment.button">
       <button class="btn card-button" (click)="cityList.show(); onShowModal();">
         <span>{{'COUNTRY.CARD.INVEST' | translate }} <b>{{ price | eth }} ETH </b></span>
@@ -109,7 +109,9 @@
               </ng-container>
               <ng-container *ngIf="!isYoursCity(city)">
                 <button class="btn card-button" (click)="tryToInvest(city)">
-                  <span *ngIf="!city.buying">{{ ( cityDynamic && cityDynamic[city?.id] && cityDynamic[city?.id].price || city?.startPrice) | eth }} ETH</span>
+                  <span *ngIf="!city.buying">
+                    {{ ( cityDynamic && cityDynamic[city?.id] && cityDynamic[city?.id].price || calculatePrice(city)) | eth }} ETH
+                  </span>
                   <span *ngIf="city.buying">{{ 'CITY.CARD.REQUEST_SENT' | translate }}</span>
                 </button>
               </ng-container>
