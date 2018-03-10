@@ -118,19 +118,6 @@ export const citiesByCountriesEntities = createSelector(fromCities.citiesByCount
   }
 );
 
-const calculateCityPrice = (purchases: number, startPrice: number, multiplierStep: number): number => {
-  let p = startPrice;
-
-  for (let i = 1; i <= purchases; i++) {
-    if (i <= multiplierStep) {
-      p = p * 2;
-    } else {
-      p = (p * 12) / 10;
-    }
-  }
-  return p;
-};
-
 // My campaign
 export const selectCountryEntities = createSelector(selectEntities, state => state);
 
@@ -241,9 +228,7 @@ export const price = (cities: Array<City>, myCities: Array<City>, dynamicCityInf
   }
   el_copy = el;
   const pricePerElectorate = (city: City) =>
-    (dynamicCityInfo && dynamicCityInfo[city.id] && (+dynamicCityInfo[city.id].price
-        || calculateCityPrice(dynamicCityInfo[city.id].purchases, city.startPrice, city.multiplierStep))
-    ) / +city.population;
+    dynamicCityInfo && dynamicCityInfo[city.id] && +dynamicCityInfo[city.id].price || +city.startPrice / +city.population;
 
   const sortedList = cities
     .filter((city: City) => {
@@ -257,7 +242,7 @@ export const price = (cities: Array<City>, myCities: Array<City>, dynamicCityInf
   sortedList.every((city: City) => {
     index++;
     el += +city.population;
-    return (el > half) ? false : true;
+    return !(el > half);
   });
 
   sortedList
@@ -266,8 +251,7 @@ export const price = (cities: Array<City>, myCities: Array<City>, dynamicCityInf
       return pricePerElectorate(a) > pricePerElectorate(b) ? -1 : 1;
     })
     .every((city: City) => {
-      p += dynamicCityInfo && dynamicCityInfo[city.id] && (+dynamicCityInfo[city.id].price
-        || calculateCityPrice(dynamicCityInfo[city.id].purchases, city.startPrice, city.multiplierStep));
+      p += dynamicCityInfo && dynamicCityInfo[city.id] && +dynamicCityInfo[city.id].price || +city.startPrice;
       el += +city.population;
       return (el_copy > half) ? false : true;
     });
@@ -372,19 +356,15 @@ export const sortCities = (cities: Array<City>, sortByOption: CitySortOption, dy
   switch (sortByOption) {
     case CitySortOption.PriceDown: {
       sort = (a: City, b: City) =>
-        (dynamicCities && dynamicCities[a.id] && (+dynamicCities[a.id].price ||
-          calculateCityPrice(dynamicCities[a.id].purchases, a.startPrice, a.multiplierStep)))
-        < (dynamicCities && dynamicCities[b.id] && (+dynamicCities[b.id].price ||
-          calculateCityPrice(dynamicCities[b.id].purchases, b.startPrice, b.multiplierStep)))
+        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || +a.startPrice)
+        < (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || +b.startPrice)
           ? -1 : 1;
       break;
     }
     case CitySortOption.PriceUp: {
       sort = (a: City, b: City) =>
-        (dynamicCities && dynamicCities[a.id] && (+dynamicCities[a.id].price ||
-          calculateCityPrice(dynamicCities[a.id].purchases, a.startPrice, a.multiplierStep)))
-        > (dynamicCities && dynamicCities[b.id] && (+dynamicCities[b.id].price ||
-          calculateCityPrice(dynamicCities[b.id].purchases, b.startPrice, b.multiplierStep)))
+        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || +a.startPrice)
+        > (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || +b.startPrice)
           ? -1 : 1;
       break;
     }
@@ -398,23 +378,16 @@ export const sortCities = (cities: Array<City>, sortByOption: CitySortOption, dy
     }
     case CitySortOption.PricePerVoteDown: {
       sort = (a: City, b: City) => (
-        (dynamicCities && dynamicCities[a.id] && (+dynamicCities[a.id].price ||
-          calculateCityPrice(dynamicCities[a.id].purchases, a.startPrice, a.multiplierStep)))
-        / +a.population) < (
-        (dynamicCities && dynamicCities[b.id] && (+dynamicCities[b.id].price ||
-          calculateCityPrice(dynamicCities[b.id].purchases, b.startPrice, b.multiplierStep)))
-        / +b.population
-      ) ? -1 : 1;
+        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || +a.startPrice / +a.population)
+        <
+        (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || +b.startPrice / +b.population)) ? -1 : 1;
       break;
     }
     case CitySortOption.PricePerVoteUp: {
       sort = (a: City, b: City) => (
-        (dynamicCities && dynamicCities[a.id] && (+dynamicCities[a.id].price ||
-          calculateCityPrice(dynamicCities[a.id].purchases, a.startPrice, a.multiplierStep)))
-        / +a.population) > (
-        (dynamicCities && dynamicCities[b.id] && (+dynamicCities[b.id].price ||
-          calculateCityPrice(dynamicCities[b.id].purchases, b.startPrice, b.multiplierStep)))
-        / +b.population) ? -1 : 1;
+        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || +a.startPrice / +a.population)
+        >
+        (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || +b.startPrice / +b.population)) ? -1 : 1;
       break;
     }
     case CitySortOption.Country: {

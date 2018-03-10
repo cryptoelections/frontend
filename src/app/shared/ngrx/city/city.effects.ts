@@ -62,10 +62,7 @@ export class CityEffects {
     .switchMap(([action, cities, dynamics]: [city.LoadCityInformationRequest,
       { [id: string]: City }, { [id: string]: City }]) => this.cityService.getDynamic()
       .then((dictionary: { [id: string]: Partial<City> }) => {
-        const list = Object.entries(dictionary).map(([id, c]) => ({
-          ...c, id: id, price: this.calculateCityPrice(dynamics[id].purchases, cities[id].startPrice, cities[id].multiplierStep)
-        })).reduce((m, i) => ({...m, [i.id]: {...i}}), {});
-        return new city.LoadDynamicCityInformationResponse((list));
+        return new city.LoadDynamicCityInformationResponse(dictionary);
       }))
     .catch((error) => {
       return Observable.of(new city.LoadDynamicCityInformationResponse({}));

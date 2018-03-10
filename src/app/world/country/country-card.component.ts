@@ -61,9 +61,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
     let el = this.myElectorate;
 
     const pricePerElectorate = (city: City) =>
-      (this.cityDynamic && this.cityDynamic[city.id] && (+this.cityDynamic[city.id].price
-          || this.cityService.calculateCityPrice(this.cityDynamic[city.id].purchases, city.startPrice, city.multiplierStep))
-      ) / +city.population;
+      (this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || +city.startPrice) / +city.population;
 
     if (this.country.active !== 0 && this.cities) {
       const sortedList = this.cities
@@ -88,8 +86,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
           return pricePerElectorate(a) > pricePerElectorate(b) ? -1 : 1;
         })
         .every((city: City) => {
-          price += this.cityDynamic && this.cityDynamic[city.id] && (+this.cityDynamic[city.id].price
-            || this.cityService.calculateCityPrice(this.cityDynamic[city.id].purchases, city.startPrice, city.multiplierStep));
+          price += this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || +city.startPrice;
           el += +city.population;
           return (el > half) ? false : true;
         });
@@ -100,9 +97,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
 
   public get costEffectiveCities(): Array<City> {
     const pricePerElectorate = (city: City) =>
-      (this.cityDynamic && this.cityDynamic[city.id] && (+this.cityDynamic[city.id].price
-          || this.cityService.calculateCityPrice(this.cityDynamic[city.id].purchases, city.startPrice, city.multiplierStep))
-      ) / +city.population;
+      (this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || +city.startPrice) / +city.population;
 
     return this.cities ? this.cities
       .filter((city: City) => {
@@ -142,12 +137,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   public ngOnChanges(changes: SimpleChanges) {
     if (changes.cities) {
       this.sortedCities = this.cities
-        ? this.cities.sort((a: City, b: City) =>
-          +(a.price || this.cityDynamic && this.cityDynamic[a.id]
-            && this.cityService.calculateCityPrice(this.cityDynamic[a.id].purchases, a.startPrice, a.multiplierStep))
-          < +(b.price || this.cityDynamic && this.cityDynamic[b.id]
-            && this.cityService.calculateCityPrice(this.cityDynamic[b.id].purchases, b.startPrice, b.multiplierStep))
-            ? -1 : 1)
+        ? this.cities.sort((a: City, b: City) => +(a.price || +a.startPrice) < +(b.price || +b.startPrice) ? -1 : 1)
         : [];
     }
   }
@@ -158,15 +148,11 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
 
   public cityPriceRange(): { lowestPrice: string, highestPrice: string } {
     const lowestPrice = this.sortedCities && this.sortedCities[0] && this.cityDynamic && this.cityDynamic[this.sortedCities[0].id]
-      && (this.cityDynamic[this.sortedCities[0].id].price
-        || this.cityService.calculateCityPrice(
-          this.cityDynamic[this.sortedCities[0].id] && this.cityDynamic[this.sortedCities[0].id].purchases,
-          this.sortedCities[0].startPrice, this.sortedCities[0].multiplierStep));
+      && this.cityDynamic[this.sortedCities[0].id].price || +this.sortedCities[0].startPrice;
     const highestPrice = this.sortedCities && this.sortedCities.length > 1 && this.cityDynamic
       && this.cityDynamic[this.sortedCities[this.sortedCities.length - 1].id]
-      && (this.cityDynamic[this.sortedCities[this.sortedCities.length - 1].id].price
-        || this.cityService.calculateCityPrice(this.cityDynamic[this.sortedCities[this.sortedCities.length - 1].id].purchases,
-          this.sortedCities[this.sortedCities.length - 1].startPrice, this.sortedCities[this.sortedCities.length - 1].multiplierStep));
+      && this.cityDynamic[this.sortedCities[this.sortedCities.length - 1].id].price
+      || +this.sortedCities[this.sortedCities.length - 1].startPrice;
     return {lowestPrice, highestPrice};
   }
 
@@ -182,8 +168,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
     if (this.authService.coinbase && !this.web3Service.wrongNetwork) {
       this.invest.emit({
         city,
-        price: this.cityDynamic && this.cityDynamic[city.id] && this.cityDynamic[city.id].price
-        || this.cityService.calculateCityPrice(this.cityDynamic[city.id].purchases, city.startPrice, city.multiplierStep)
+        price: this.cityDynamic && this.cityDynamic[city.id] && this.cityDynamic[city.id].price || +city.startPrice
       });
     } else {
       this.router.navigate(['/metamask']);
@@ -195,7 +180,6 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   }
 
   public calculatePrice(city: City) {
-    return this.cityDynamic && this.cityDynamic[city.id]
-      && this.cityService.calculateCityPrice(this.cityDynamic[city.id].purchases, city.startPrice, city.multiplierStep);
+    return this.cityDynamic && this.cityDynamic[city.id] && this.cityDynamic[city.id].price || +city.startPrice;
   }
 }

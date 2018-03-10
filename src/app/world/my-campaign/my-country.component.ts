@@ -52,7 +52,7 @@ export class MyCountryComponent implements OnChanges, AfterViewInit {
       this.invest.emit({
         city,
         price: this.dynamicCities && this.dynamicCities[city.id] && this.dynamicCities[city.id].price
-        || this.cityService.calculateCityPrice(this.dynamicCities[city.id].purchases, city.startPrice, city.multiplierStep)
+        || +city.startPrice
 
       });
     } else {
@@ -103,9 +103,7 @@ export class MyCountryComponent implements OnChanges, AfterViewInit {
 
   public getCostEffectiveCities() {
     const pricePerElectorate = (city: City) =>
-      (this.dynamicCities && this.dynamicCities[city.id] && +this.dynamicCities[city.id].price
-        || this.cityService.calculateCityPrice(this.dynamicCities[city.id].purchases, city.startPrice, city.multiplierStep)
-      ) / +city.population;
+      (this.dynamicCities && this.dynamicCities[city.id] && +this.dynamicCities[city.id].price || +city.startPrice) / +city.population;
 
     this.costEffectiveCities = this.allCitiesByCountry ? this.allCitiesByCountry
       .filter((city: City) => {
@@ -125,7 +123,7 @@ export class MyCountryComponent implements OnChanges, AfterViewInit {
 
     const pricePerElectorate = (city: City) =>
       (this.dynamicCities && this.dynamicCities[city.id] && +this.dynamicCities[city.id].price
-        || this.cityService.calculateCityPrice(this.dynamicCities[city.id].purchases, city.startPrice, city.multiplierStep)
+        || +city.startPrice
       ) / +city.population;
 
     if (this.allCitiesByCountry) {
@@ -153,16 +151,11 @@ export class MyCountryComponent implements OnChanges, AfterViewInit {
         })
         .every((city: City) => {
           price += this.dynamicCities && this.dynamicCities[city.id] && +this.dynamicCities[city.id].price
-            || this.cityService.calculateCityPrice(this.dynamicCities[city.id].purchases, city.startPrice, city.multiplierStep);
+            || +city.startPrice;
           electorate += +city.population;
           return (electorate > half) ? false : true;
         });
     }
     return price;
-  }
-
-  public calculateCityPrice(city: City) {
-    return this.dynamicCities && this.dynamicCities[city.id]
-      && this.cityService.calculateCityPrice(this.dynamicCities[city.id].purchases, city.startPrice, city.multiplierStep);
   }
 }
