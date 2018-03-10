@@ -52,7 +52,7 @@ export class CommonEffects {
       new cityActions.LoadDynamicCityInformationRequest(),
       new countryActions.LoadCountriesRequest(),
       new countryActions.LoadDynamicCountryInformationRequest(),
-      // new myCampaignActions.LoadMyCitiesRequest(),
+      new myCampaignActions.LoadMyCitiesRequest(),
       new commonActions.TurnOnNotifications()
     ]);
 
