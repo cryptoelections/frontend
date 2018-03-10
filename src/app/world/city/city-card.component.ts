@@ -30,8 +30,8 @@ export class CityCardComponent implements OnChanges {
   }
 
   public get price() {
-    return this.dynamic && this.dynamic.price
-      || this.cityService.calculateCityPrice(this.dynamic.purchases, this.city.startPrice, this.city.multiplierStep);
+    return this.dynamic && (this.dynamic.price
+      || this.cityService.calculateCityPrice(this.dynamic.purchases, this.city.startPrice, this.city.multiplierStep));
   }
 
   public get cityImageSource(): string {
@@ -69,7 +69,6 @@ export class CityCardComponent implements OnChanges {
   }
 
   public loadMayor() {
-    const address = this.dynamic && this.dynamic.mayor;
     return this.isYours ? (this.web3Service.accountNickname || this.authService.coinbase)
       : this.dynamic && this.dynamic.mayor && this.dynamic.mayor !== zeroAddress
       && (this.nicknames && this.nicknames[this.dynamic.mayor] || this.dynamic.mayor)
