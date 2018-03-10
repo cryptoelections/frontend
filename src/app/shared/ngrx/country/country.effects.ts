@@ -9,6 +9,8 @@ import {Web3Service} from '../../services/web3.service';
 
 import * as country from './country.actions';
 import * as fromCountries from './country.reducers';
+import * as fromCities from '../city/city.reducers';
+import * as city from '../city/city.actions';
 
 @Injectable()
 export class CountryEffects {
@@ -24,16 +26,20 @@ export class CountryEffects {
     .debounceTime(3000)
     .withLatestFrom(this.store.select(fromCountries.selectIds))
     .switchMap(([action, countriesIds]: [country.LoadDynamicCountryInformationRequest, string[]]) => {
-      return this.web3Service.CryptoElections.deployed()
-        .then((instance) => instance.getCountriesData(countriesIds)
-          .then(([presidents, slogans, flags]: Array<Array<string>>) => countriesIds.reduce((m, i, k) => ({
-            ...m, [i]: {
-              president: presidents[k],
-              slogan: slogans[k],
-              flag: flags[k]
-            }
-          }), {}))
-          .then((dictionary: { [id: string]: Partial<Country> }) => new country.LoadDynamicCountryInformationResponse(dictionary)));
+      if (countriesIds.length > 0) {
+        return this.web3Service.CryptoElections.deployed()
+          .then((instance) => instance.getCountriesData(countriesIds.map(x => parseInt(x)))
+            .then(([presidents, slogans, flags]: Array<Array<string>>) => new country.LoadDynamicCountryInformationResponse(
+              countriesIds.reduce((m, i, k) => ({
+                ...m, [i]: {
+                  president: presidents[k],
+                  slogan: slogans[k],
+                  flag: flags[k]
+                }
+              }), {}))));
+      } else {
+        return new country.LoadLocalDynamicCountryInformationRequest();
+      }
     })
     .catch((error) => {
       // console.log(error);

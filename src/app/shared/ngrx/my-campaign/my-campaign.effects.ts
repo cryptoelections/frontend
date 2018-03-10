@@ -14,12 +14,12 @@ export class MyCampaignEffects {
     .ofType(myCampaignActions.LOAD_MY_CITIES_REQUEST)
     .debounceTime(3000)
     .filter((action: myCampaignActions.LoadMyCitiesRequest) => this.authService.coinbase && !this.web3Service.wrongNetwork)
-    .flatMap((action: myCampaignActions.LoadMyCitiesRequest) => {
+    .map((action: myCampaignActions.LoadMyCitiesRequest) => {
       return this.web3Service.CryptoElections.deployed()
-        .then(instance => instance.getUserCities(this.web3Service.coinbase))
-        .then(response => new myCampaignActions.LoadMyCitiesResponse(response.map(x => parseInt(x))))
+        .then(instance => Observable.fromPromise(instance.getUserCities(this.web3Service.coinbase)))
+        .map(response => new myCampaignActions.LoadMyCitiesResponse(response.map(x => parseInt(x))))
         .catch(err => new myCampaignActions.AddNoMoreCities());
-    });
+    }).catch(err => Observable.of(new myCampaignActions.AddNoMoreCities()));
 
   constructor(private actions$: Actions,
               private authService: AuthService,

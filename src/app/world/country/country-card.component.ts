@@ -90,6 +90,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
           return (el > half) ? false : true;
         });
     }
+
     return price;
   }
 

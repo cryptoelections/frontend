@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, Output} from '@angular/core';
 import {FilterComponent} from '../../shared/components/filters/filter.component';
 import {City} from '../../shared/models/city.model';
 import {TranslateService} from '@ngx-translate/core';
@@ -11,7 +11,7 @@ import {CitySortOption} from '../city/city-filter.component';
   templateUrl: './selected-country-filter.component.html',
   styleUrls: ['../../shared/components/filters/filter.component.css']
 })
-export class SelectedCountryFilterComponent extends FilterComponent {
+export class SelectedCountryFilterComponent extends FilterComponent implements AfterViewInit {
   @Input() public query: string;
   @Input() public sortBy: CitySortOption = CitySortOption.Name;
   @Input() public countries: { [code: string]: Array<Country> };
@@ -79,7 +79,12 @@ export class SelectedCountryFilterComponent extends FilterComponent {
     return count;
   }
 
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService,
+              private cd: ChangeDetectorRef) {
     super();
+  }
+
+  public ngAfterViewInit() {
+    this.cd.detectChanges();
   }
 }

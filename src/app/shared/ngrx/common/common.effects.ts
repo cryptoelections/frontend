@@ -14,6 +14,7 @@ import * as countryActions from '../country/country.actions';
 import * as myCampaignActions from '../my-campaign/my-campaign.actions';
 import * as fromNicknames from '../nicknames/nicknames.reducers';
 import * as fromCountries from '../country/country.reducers';
+import {Observable} from 'rxjs/Observable';
 
 
 @Injectable()
@@ -31,7 +32,7 @@ export class CommonEffects {
           }
           return new commonActions.LoadWalletDataResponse(parseInt(x));
         });
-    });
+    }).catch(err => Observable.of(new commonActions.LoadWalletDataResponse(0)));
 
   @Effect()
   withdraw$ = this.actions$
@@ -41,7 +42,7 @@ export class CommonEffects {
         .then((instance) => instance.withdraw())
         .then(x => new commonActions.WithdrawSuccess(x)).catch(err => new commonActions.WithdrawError(err))
         .catch(x => this.toastr.error('ERRORS.WITHDRAWAL_UNSUCCESSFULL'));
-    });
+    }).catch(x => Observable.of(new commonActions.ShowErrorMessage('ERRORS.WITHDRAWAL_UNSUCCESSFULL')));
 
   @Effect()
   loadAllInfo$ = this.actions$
@@ -72,7 +73,7 @@ export class CommonEffects {
     .ofType(commonActions.TURN_ON_NOTIFICATIONS)
     .withLatestFrom(this.store.select(fromCountries.selectAll),
       this.store.select(fromCountries.getDynamicCountriesState))
-    .map(([action, countries, dynamic]) => {
+    .do(([action, countries, dynamic]) => {
       countries.forEach(country => setInterval(() => {
         if (dynamic[country.id] && dynamic[country.id].president && dynamic[country.id].president !== zeroAddress) {
           this.store.dispatch(new commonActions.AddNewMessage({
@@ -86,8 +87,10 @@ export class CommonEffects {
   @Effect({dispatch: false})
   showError$ = this.actions$
     .ofType(commonActions.SHOW_ERROR)
-    .do((action: commonActions.ShowErrorMessage) => this.toastr.error(this.translate.instant('COMMON.UNSUCCESSFUL_TRANSACTION',
-      {name: action.payload.name})));
+    .do((action: commonActions.ShowErrorMessage) => {
+      this.toastr.error(this.translate.instant(action.payload.name ? 'COMMON.UNSUCCESSFUL_TRANSACTION' : action.payload,
+        {name: action.payload.name}));
+    });
 
   constructor(private actions$: Actions,
               private store: Store<State>,

@@ -33,20 +33,23 @@ export class CityEffects {
     .withLatestFrom(this.store.select(fromCities.selectIds))
     .switchMap(([action, cityIds]: [city.LoadCityInformationRequest, string[]]) => {
       const ids = cityIds.map(id => parseInt(id));
-      return this.web3Service.CryptoElections.deployed()
-        .then((instance) => instance.getCitiesData(ids))
-        .then(([mayors, purchases, startPrices, multiplierSteps]: Array<Array<string>>) => ids.reduce((m, i, k) => ({
-          ...m, [i]: {
-            mayor: mayors[k],
-            purchases: parseInt(purchases[k]),
-            startPrice: parseInt(startPrices[k]),
-            multiplierStep: parseInt(multiplierSteps[k]),
-            price: this.calculateCityPrice(parseInt(purchases[k]), parseInt(startPrices[k]), parseInt(multiplierSteps[k]))
-          }
-        }), {}))
-        .then((dictionary: { [id: string]: Partial<City> }) => {
-          return new city.LoadDynamicCityInformationResponse((dictionary));
-        });
+      if (ids.length > 0) {
+        return this.web3Service.CryptoElections.deployed()
+          .then((instance) => instance.getCitiesData(ids)
+            .then(([mayors, purchases, startPrices, multiplierSteps]: Array<Array<string>>) => {
+              return new city.LoadDynamicCityInformationResponse(ids.reduce((m, i, k) => ({
+                ...m, [i]: {
+                  mayor: mayors[k],
+                  purchases: parseInt(purchases[k]),
+                  startPrice: parseInt(startPrices[k]),
+                  multiplierStep: parseInt(multiplierSteps[k]),
+                  price: this.calculateCityPrice(parseInt(purchases[k]), parseInt(startPrices[k]), parseInt(multiplierSteps[k]))
+                }
+              }), {}));
+            }));
+      } else {
+        return new city.LoadLocalDynamicCityInformationRequest();
+      }
     }).catch((error) => {
       return Observable.of(new city.LoadLocalDynamicCityInformationRequest());
     });
@@ -54,9 +57,15 @@ export class CityEffects {
   @Effect()
   loadLocalDynamicCityInformation$ = this.actions$
     .ofType(city.LOAD_LOCAL_DYNAMIC_CITY_INFORMATION_REQUEST)
-    .switchMap((action: city.LoadCityInformationRequest) => this.cityService.getDynamic()
+    .withLatestFrom(this.store.select(fromCities.selectEntities),
+      this.store.select(fromCities.getDynamicInfoEntities))
+    .switchMap(([action, cities, dynamics]: [city.LoadCityInformationRequest,
+      { [id: string]: City }, { [id: string]: City }]) => this.cityService.getDynamic()
       .then((dictionary: { [id: string]: Partial<City> }) => {
-        return new city.LoadDynamicCityInformationResponse((dictionary));
+        const list = Object.entries(dictionary).map(([id, c]) => ({
+          ...c, id: id, price: this.calculateCityPrice(dynamics[id].purchases, cities[id].startPrice, cities[id].multiplierStep)
+        })).reduce((m, i) => ({...m, [i.id]: {...i}}), {});
+        return new city.LoadDynamicCityInformationResponse((list));
       }))
     .catch((error) => {
       return Observable.of(new city.LoadDynamicCityInformationResponse({}));
@@ -81,7 +90,6 @@ export class CityEffects {
             })
             .then((res) => new city.InvestSuccess(cities[action.payload.id]));
         }).catch((err) => {
-          console.log(err);
           return new common.ShowErrorMessage(cities[action.payload.id]);
         });
     });
