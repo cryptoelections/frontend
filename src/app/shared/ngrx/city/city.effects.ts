@@ -80,8 +80,9 @@ export class CityEffects {
         .then((instance) => {
           return instance.cities(action.payload.id)
             .then((c) => {
+              const price = this.calculateCityPrice(parseInt(c[3]), parseInt(c[4]), parseInt(c[5]));
               return instance.buyCity(action.payload.id, {
-                value: action.payload.price,
+                value: price,
                 to: instance.address
               });
             })

@@ -88,7 +88,7 @@ export class CommonEffects {
   showError$ = this.actions$
     .ofType(commonActions.SHOW_ERROR)
     .do((action: commonActions.ShowErrorMessage) => {
-      this.toastr.error(this.translate.instant(action.payload.name ? 'COMMON.UNSUCCESSFUL_TRANSACTION' : action.payload,
+      this.toastr.error(this.translate.instant(action.payload.name ? 'ERRORS.UNSUCCESSFUL_TRANSACTION' : action.payload,
         {name: action.payload.name}));
     });
 

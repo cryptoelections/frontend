@@ -15,7 +15,7 @@ export function commonReducers(state = initialState, action: actions.Actions): C
       const error = {
         type: 'danger',
         msg: {
-          text: 'COMMON.UNSUCCESSFUL_TRANSACTION',
+          text: 'ERRORS.UNSUCCESSFUL_TRANSACTION',
           params: {name: action.payload.name}
         },
         timeout: 5000
