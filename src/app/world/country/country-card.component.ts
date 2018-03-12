@@ -137,7 +137,8 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   public ngOnChanges(changes: SimpleChanges) {
     if (changes.cities) {
       this.sortedCities = this.cities
-        ? this.cities.sort((a: City, b: City) => +(a.price || +a.startPrice) < +(b.price || +b.startPrice) ? -1 : 1)
+        ? this.cities.sort((a: City, b: City) => +(this.cityDynamic[a.id] && this.cityDynamic[a.id].price || +a.startPrice)
+        < +(this.cityDynamic[b.id] && this.cityDynamic[b.id].price || +b.startPrice) ? -1 : 1)
         : [];
     }
   }
