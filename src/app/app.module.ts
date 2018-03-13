@@ -63,10 +63,11 @@ export function InitAppFactory(auth: AuthService,
     StoreRouterConnectingModule,
     StoreDevtoolsModule.instrument(),
     ToastrModule.forRoot({
-      timeOut: 3000,
       maxOpened: 1,
-      positionClass: 'toast-bottom-left',
       preventDuplicates: true,
+      extendedTimeOut: 500,
+      timeOut: 4000,
+      positionClass: 'toast-bottom-left',
       enableHtml: true
     }),
     TooltipModule.forRoot(),

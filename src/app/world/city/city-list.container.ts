@@ -13,7 +13,6 @@ import * as fromMyCampaign from '../../shared/ngrx/my-campaign/my-campaign.reduc
 import * as fromCountries from '../../shared/ngrx/country/country.reducers';
 import * as cityActions from '../../shared/ngrx/city/city.actions';
 import * as debounce from 'lodash/debounce';
-import * as nicknamesActions from '../../shared/ngrx/nicknames/nicknames.actions';
 import * as fromNicknames from '../../shared/ngrx/nicknames/nicknames.reducers';
 import * as commonActions from '../../shared/ngrx/common/common.actions';
 
@@ -69,7 +68,6 @@ export class CityListContainerComponent extends WithUnsubscribe() implements OnI
   }
 
   public ngOnInit() {
-    this.store.dispatch(new nicknamesActions.LoadNicknamesRequest());
     this.store.dispatch(new commonActions.LoadAllData());
 
     this.initFilters();

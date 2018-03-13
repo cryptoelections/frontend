@@ -135,7 +135,7 @@
     "INVEST": "Invest in your campaign in cities and countries of your choice to rule the whole worldmap!"
   },
   "NOTIFICATIONS": {
-    "PRESIDENT": "<b>{{ user }}</b> was elected President of <b>{{ country }}</b>"
+    "PRESIDENT": "<b>{{ user }}</b> was elected President of <b>{{ country }}</b> {{ timestamp }}"
   },
   "WALLET": {
     "TEXT": "If someone becomes a mayor instead of you, you get compensation. Here you can see how much you have:",
@@ -148,5 +148,8 @@
     "UNSUCCESSFUL_TRANSACTION": "Unsuccessful transaction - buying <b>{{ name }}</b>",
     "NICKNAME_WAS_NOT_SET": "<b>Error!</b> Nickname was not set."
 
+  },
+  "LOG": {
+    "BECAME_PRESIDENT": "Became President of {{ country }} {{ timestamp }}"
   }
 }

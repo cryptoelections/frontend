@@ -10,7 +10,6 @@ import * as fromCommon from '../../shared/ngrx/common/common.reducers';
 import * as myCampaignActions from '../../shared/ngrx/my-campaign/my-campaign.actions';
 import * as commonActions from '../../shared/ngrx/common/common.actions';
 import * as cityActions from '../../shared/ngrx/city/city.actions';
-import * as countryActions from '../../shared/ngrx/country/country.actions';
 
 @Component({
   selector: 'app-my-campaign-container',
@@ -47,11 +46,7 @@ export class MyCampaignContainerComponent implements AfterViewInit {
   readonly walletIsLoading$ = this.store.select(fromCommon.walletIsLoading);
 
   constructor(private store: Store<State>, private cd: ChangeDetectorRef) {
-    this.store.dispatch(new countryActions.LoadDynamicCountryInformationRequest());
-    this.store.dispatch(new cityActions.LoadDynamicCityInformationRequest());
-    this.store.dispatch(new countryActions.LoadCountriesRequest());
-    this.store.dispatch(new cityActions.LoadCityInformationRequest());
-    this.store.dispatch(new myCampaignActions.LoadMyCitiesRequest());
+    this.store.dispatch(new commonActions.LoadAllData());
     this.store.dispatch(new commonActions.LoadWalletDataRequest());
   }
 

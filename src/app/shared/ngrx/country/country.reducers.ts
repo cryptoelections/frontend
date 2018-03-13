@@ -173,7 +173,7 @@ export const filteredCountries = createSelector(
   filters,
   citiesByCountriesEntities,
   selectAllByCountries,
-  fromCities.getDynamicCitiesState,
+  fromCities.getDynamicInfoEntities,
   (countries, filter, cityEntities, myCityEntities, dynamicCities) => {
     const upperQuery = filter.query && filter.query.toUpperCase();
 
@@ -191,7 +191,7 @@ export const filteredCountries = createSelector(
       cityEntities,
       myCityEntities,
       +filter.sortBy as CountrySortOption,
-      dynamicCities.entities
+      dynamicCities
     );
 
     return sortedList;
@@ -229,7 +229,6 @@ export const price = (cities: Array<City>, myCities: Array<City>, dynamicCityInf
   el_copy = el;
   const pricePerElectorate = (city: City) =>
     dynamicCityInfo && dynamicCityInfo[city.id] && +dynamicCityInfo[city.id].price || +city.startPrice / +city.population;
-
   const sortedList = cities
     .filter((city: City) => {
       return !myCities
@@ -242,7 +241,7 @@ export const price = (cities: Array<City>, myCities: Array<City>, dynamicCityInf
   sortedList.every((city: City) => {
     index++;
     el += +city.population;
-    return !(el > half);
+    return (el > half) ? false : true;
   });
 
   sortedList
@@ -274,21 +273,22 @@ export const sortCountries = (countries: Array<Country>,
     }
     case CountrySortOption.PriceDown: {
       sort = (a: Country, b: Country) => {
-        return price(citiesByCountries[a.id],
+        return (price(citiesByCountries[a.id],
           myCitiesByCountries[a.id],
-          dynamicCities) < price(citiesByCountries[b.id], myCitiesByCountries[b.id], dynamicCities)
+          dynamicCities) < price(citiesByCountries[b.id], myCitiesByCountries[b.id], dynamicCities))
           ? -1
           : 1;
       };
       break;
     }
     case CountrySortOption.PriceUp: {
-      sort = (a: Country, b: Country) =>
-        price(citiesByCountries[a.id],
+      sort = (a: Country, b: Country) => {
+        return (price(citiesByCountries[a.id],
           myCitiesByCountries[a.id],
-          dynamicCities) > price(citiesByCountries[b.id], myCitiesByCountries[b.id], dynamicCities)
+          dynamicCities) > price(citiesByCountries[b.id], myCitiesByCountries[b.id], dynamicCities))
           ? -1
           : 1;
+      };
       break;
     }
     case CountrySortOption.ElectorateDown: {

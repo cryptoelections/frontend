@@ -50,7 +50,6 @@ export class MapContainerComponent implements AfterViewInit {
   readonly nicknames$ = this.store.select(fromNicknames.selectEntities);
 
   constructor(private store: Store<State>, private cd: ChangeDetectorRef) {
-    this.store.dispatch(new nicknamesActions.LoadNicknamesRequest());
     this.store.dispatch(new commonActions.LoadAllData());
   }
 
