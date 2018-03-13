@@ -66,7 +66,7 @@ export function InitAppFactory(auth: AuthService,
       maxOpened: 1,
       preventDuplicates: true,
       extendedTimeOut: 500,
-      timeOut: 4000,
+      timeOut: 7500,
       positionClass: 'toast-bottom-left',
       enableHtml: true
     }),
