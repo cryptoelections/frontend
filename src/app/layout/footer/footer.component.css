@@ -40,3 +40,7 @@ alert /deep/ .alert-president {
 .footer .row {
   background-color: rgb(236, 240, 241);
 }
+
+.contact {
+  font-size: 24px;
+}
