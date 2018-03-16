@@ -1,10 +1,10 @@
 {
   "TITLE": "crypto elections",
   "MENU": {
-    "COUNTRIES": "Countries",
-    "CITIES": "Cities",
-    "MAP": "Map",
-    "MY_CAMPAIGN": "My campaign"
+    "COUNTRIES": "Χώρες",
+    "CITIES": "Πόλεις",
+    "MAP": "Χάρτης",
+    "MY_CAMPAIGN": "Η εκστρατεία μου"
   },
   "HOME": {
     "START_YOUR_CAMPAIGN": "Start your campaign!",
