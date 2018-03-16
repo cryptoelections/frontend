@@ -1,16 +1,16 @@
 {
   "TITLE": "crypto elections",
   "MENU": {
-    "COUNTRIES": "Countries",
-    "CITIES": "Cities",
-    "MAP": "Map",
-    "MY_CAMPAIGN": "My campaign"
+    "COUNTRIES": "Țări",
+    "CITIES": "Orașe",
+    "MAP": "Hartă",
+    "MY_CAMPAIGN": "Campania mea"
   },
   "HOME": {
-    "START_YOUR_CAMPAIGN": "Start your campaign!",
+    "START_YOUR_CAMPAIGN": "Începe campania ta!",
     "GET_POWER": "Get power.",
     "RUN_COUNTRIES": "Run countries.",
-    "EARN_MONEY": "Earn Money."
+    "EARN_MONEY": "Câștigă bani."
   },
   "MARKETPLACE": {
     "TITLE": "Marketplace",
