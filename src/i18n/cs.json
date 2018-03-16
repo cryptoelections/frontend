@@ -16,7 +16,7 @@
     "TITLE": "Trh",
     "VIEWMODE": {
       "CITIES": "Města",
-      "COUNTRIES": "Countries"
+      "COUNTRIES": "Země"
     }
   },
   "ACCOUNT": {
@@ -64,16 +64,16 @@
         "PRICE_PER_VOTE_UP": "Price per vote ↑",
         "PRICE_DOWN": "Price ↓",
         "PRICE_UP": "Price ↑",
-        "COUNTRY": "Country"
+        "COUNTRY": "Země"
       }
     }
   },
   "COUNTRY": {
-    "TITLE": "Countries",
+    "TITLE": "Země",
     "CARD": {
-      "PRESIDENT": "President",
-      "NOT_ELECTED_YET": "Not elected yet",
-      "YOU_ARE_PRESIDENT": "You are the President",
+      "PRESIDENT": "Prezident",
+      "NOT_ELECTED_YET": "Prozatím nezvolen",
+      "YOU_ARE_PRESIDENT": "Jste prezident",
       "NOT_IMPLEMENTED": "There are no cryptoelections yet",
       "CITIES_PRICE_RANGE": {
         "CITIES": "{{ lowestPrice }} - {{ highestPrice }} ETH",
@@ -106,8 +106,8 @@
         "AVAILABILITY": "Available first",
         "ELECTORATE_DOWN": "Electorate ↓",
         "ELECTORATE_UP": "Electorate ↑",
-        "PRICE_DOWN": "Price ↓",
-        "PRICE_UP": "Price ↑",
+        "PRICE_DOWN": "Cena ↓",
+        "PRICE_UP": "Cena ↑",
         "NUMBER_OF_CITIES_DOWN": "Počet měst ↓",
         "NUMBER_OF_CITIES_UP": "Počet měst ↑",
         "AREA": "Area"
@@ -149,6 +149,6 @@
     "NICKNAME_WAS_NOT_SET": "<b>Error!</b> Nickname was not set."
   },
   "LOG": {
-    "BECAME_PRESIDENT": "Became President of {{ country }} {{ timestamp }}"
+    "BECAME_PRESIDENT": "Stal se prezidentem {{ country }} {{ timestamp }}"
   }
 }
