@@ -1,0 +1,154 @@
+{
+  "TITLE": "crypto elections",
+  "MENU": {
+    "COUNTRIES": "Countries",
+    "CITIES": "Cities",
+    "MAP": "Map",
+    "MY_CAMPAIGN": "My campaign"
+  },
+  "HOME": {
+    "START_YOUR_CAMPAIGN": "Start your campaign!",
+    "GET_POWER": "Get power.",
+    "RUN_COUNTRIES": "Run countries.",
+    "EARN_MONEY": "Earn Money."
+  },
+  "MARKETPLACE": {
+    "TITLE": "Marketplace",
+    "VIEWMODE": {
+      "CITIES": "Cities",
+      "COUNTRIES": "Countries"
+    }
+  },
+  "ACCOUNT": {
+    "NOT_CONNECTED": "Not connected",
+    "REQUIRE_METAMASK": "CryptoElections requires a MetaMask add-on installed in your browser.",
+    "INSTALL": "Install",
+    "SET_NICKNAME": "Set Nickname",
+    "NICKNAME_PLACEHOLDER": "Type Your Nickname",
+    "IS_LOCKED": "Locked",
+    "INSTALL_METAMASK": "Install metamask",
+    "METAMASK_LOCKED": "Your MetaMask is locked",
+    "METAMASK_LOCKED_TEXT": "Simply open MetaMask and follow the instructions to unlock it.",
+    "WRONG_NETWORK": "Oops, you’re on the wrong network",
+    "WRONG_NETWORK_TEXT": "Simply open MetaMask and switch over to the Main Ethereum Network."
+  },
+  "CITY": {
+    "TITLE": "Cities",
+    "NOT_FOUND": "No cities",
+    "CARD": {
+      "MAYOR": "Mayor",
+      "NOT_ELECTED_YET": "Not elected yet",
+      "COUNTRY": "Country",
+      "ELECTORATE": "Electorate",
+      "INVEST": "Invest",
+      "TO_WIN": "to win mayoral election",
+      "REQUEST_SENT": "Request sent",
+      "YOU_ARE_MAYOR": "You are the mayor",
+      "PERCENTAGE": "{{ percentage }}% of electorate",
+      "SMALLCITY": "Population - less % of country population",
+      "MEDIUMCITY": "Population - less % of country population",
+      "BIGCITY": "Population - more than % of country population"
+    },
+    "MODAL": {
+      "CONGRATULATIONS": "<b>Congratulations!</b><br/> You are new mayor of {{ name }}",
+      "RULE_CITY": "Rule this city!"
+    },
+    "FILTER": {
+      "SORT_BY": "Sort by",
+      "SEARCH": "Search",
+      "SORT": {
+        "NAME": "Name",
+        "ELECTORATE_DOWN": "Electorate ↓",
+        "ELECTORATE_UP": "Electorate ↑",
+        "PRICE_PER_VOTE_DOWN": "Price per vote ↓",
+        "PRICE_PER_VOTE_UP": "Price per vote ↑",
+        "PRICE_DOWN": "Price ↓",
+        "PRICE_UP": "Price ↑",
+        "COUNTRY": "Country"
+      }
+    }
+  },
+  "COUNTRY": {
+    "TITLE": "Countries",
+    "CARD": {
+      "PRESIDENT": "President",
+      "NOT_ELECTED_YET": "Not elected yet",
+      "YOU_ARE_PRESIDENT": "You are the President",
+      "NOT_IMPLEMENTED": "There are no cryptoelections yet",
+      "CITIES_PRICE_RANGE": {
+        "CITIES": "{{ lowestPrice }} - {{ highestPrice }} ETH",
+        "ONE_CITY": " {{ lowestPrice }} ETH"
+      },
+      "CITY": "city",
+      "CITIES": "cities",
+      "UNDER_YOUR_CONTROL": "under your control",
+      "OF_ELECTORATE": "of electorate",
+      "SUPPORT_YOU": "support you",
+      "ELECTORATE": "Electorate",
+      "INVEST": "Invest",
+      "TO_BECOME_A_PRESIDENT": "to become a president",
+      "RUN_CAMPAIGN": "Run campaign",
+      "INVEST_PRICE": "Invest {{ price }} to win presidential election",
+      "TO_WIN": "to win presidential election",
+      "INVEST_MODAL_TEXT": "These are the most cost-effective cities to invest in your campaign in {{ country }} to get the majority of votes to become the president of the country! If you want to invest in another cities in {{ country }}, choose from",
+      "INVEST_MODAL_TEXT_LINK": "this list",
+      "INVEST_MODAL_PERCENTAGE": "% of electorate"
+    },
+    "MODAL": {
+      "CONGRATULATIONS": "<b>Congratulations!</b><br/> You have the majority of votes in {{ name }}!",
+      "RULE_COUNTRY": "Rule this country!"
+    },
+    "FILTER": {
+      "SORT_BY": "Sort by",
+      "SEARCH": "Search",
+      "SORT": {
+        "NAME": "Name",
+        "AVAILABILITY": "Available first",
+        "ELECTORATE_DOWN": "Electorate ↓",
+        "ELECTORATE_UP": "Electorate ↑",
+        "PRICE_DOWN": "Price ↓",
+        "PRICE_UP": "Price ↑",
+        "NUMBER_OF_CITIES_DOWN": "Number of cities ↓",
+        "NUMBER_OF_CITIES_UP": "Number of cities ↑",
+        "AREA": "Area"
+      }
+    }
+  },
+  "M": "M",
+  "K": "K",
+  "COMMON": {
+    "MLN": "M",
+    "THOUSANDS": "K",
+    "PAGINATION": {
+      "FIRST_TEXT": "First",
+      "LAST_TEXT": "Last"
+    },
+    "FILTER": {
+      "SORT_BY": "Sort by"
+    }
+  },
+  "CAMPAIGN": {
+    "TITLE": "My campaign",
+    "CITY": "city",
+    "CITIES": "cities",
+    "START": "Start your campaign",
+    "INVEST": "Invest in your campaign in cities and countries of your choice to rule the whole worldmap!"
+  },
+  "NOTIFICATIONS": {
+    "PRESIDENT": "<b>{{ user }}</b> was elected President of <b>{{ country }}</b> {{ timestamp }}"
+  },
+  "WALLET": {
+    "TEXT": "If someone becomes a mayor instead of you, you get compensation. Here you can see how much you have:",
+    "WITHDRAW": "Withdraw"
+  },
+  "SUCCESS": {
+    "NICKNAME_WAS_SET": "Nickname was successfully set"
+  },
+  "ERRORS": {
+    "UNSUCCESSFUL_TRANSACTION": "Unsuccessful transaction - buying <b>{{ name }}</b>",
+    "NICKNAME_WAS_NOT_SET": "<b>Error!</b> Nickname was not set."
+  },
+  "LOG": {
+    "BECAME_PRESIDENT": "Became President of {{ country }} {{ timestamp }}"
+  }
+}
