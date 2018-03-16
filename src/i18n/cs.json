@@ -51,10 +51,10 @@
     },
     "MODAL": {
       "CONGRATULATIONS": "<b>Gratulujeme!</b><br/> Jste nový starosta v {{ name }}",
-      "RULE_CITY": "Rule this city!"
+      "RULE_CITY": "Vládněte tomuto městu!"
     },
     "FILTER": {
-      "SORT_BY": "Sort by",
+      "SORT_BY": "Seřadit podle",
       "SEARCH": "Hledat",
       "SORT": {
         "NAME": "Jméno",
@@ -95,22 +95,22 @@
       "INVEST_MODAL_PERCENTAGE": "% voličů"
     },
     "MODAL": {
-      "CONGRATULATIONS": "<b>Congratulations!</b><br/> You have the majority of votes in {{ name }}!",
-      "RULE_COUNTRY": "Rule this country!"
+      "CONGRATULATIONS": "<b>Gratulujeme!</b><br/> Máte většinu hlasů v {{ name }}!",
+      "RULE_COUNTRY": "Vládněte této zemi!"
     },
     "FILTER": {
       "SORT_BY": "Seřadit podle",
       "SEARCH": "Hledat",
       "SORT": {
         "NAME": "Jméno",
-        "AVAILABILITY": "Available first",
+        "AVAILABILITY": "První k dispozici",
         "ELECTORATE_DOWN": "Voliči ↓",
         "ELECTORATE_UP": "Voliči ↑",
         "PRICE_DOWN": "Cena ↓",
         "PRICE_UP": "Cena ↑",
         "NUMBER_OF_CITIES_DOWN": "Počet měst ↓",
         "NUMBER_OF_CITIES_UP": "Počet měst ↑",
-        "AREA": "Area"
+        "AREA": "Rozloha"
       }
     }
   },
@@ -135,18 +135,18 @@
     "INVEST": "Investujte do kampaně ve městech a zemích podle volby a ovládněte svět!"
   },
   "NOTIFICATIONS": {
-    "PRESIDENT": "<b>{{ user }}</b> was elected President of <b>{{ country }}</b> {{ timestamp }}"
+    "PRESIDENT": "<b>{{ user }}</b> byl zvolen prezidentem v <b>{{ country }}</b> {{ timestamp }}"
   },
   "WALLET": {
-    "TEXT": "If someone becomes a mayor instead of you, you get compensation. Here you can see how much you have:",
-    "WITHDRAW": "Withdraw"
+    "TEXT": "Pokud vás někdo nahradí na místě starosty, dostanete kompenzaci. Zde můžete vidět, kolik právě máte:",
+    "WITHDRAW": "Vybrat"
   },
   "SUCCESS": {
-    "NICKNAME_WAS_SET": "Nickname was successfully set"
+    "NICKNAME_WAS_SET": "Přezdívka byla úspěšně nastavena"
   },
   "ERRORS": {
-    "UNSUCCESSFUL_TRANSACTION": "Unsuccessful transaction - buying <b>{{ name }}</b>",
-    "NICKNAME_WAS_NOT_SET": "<b>Error!</b> Nickname was not set."
+    "UNSUCCESSFUL_TRANSACTION": "Neúspěšná transakce - nákup <b>{{ name }}</b>",
+    "NICKNAME_WAS_NOT_SET": "<b>Chyba!</b> Přezdívka nebyla nastavena."
   },
   "LOG": {
     "BECAME_PRESIDENT": "Stal se prezidentem {{ country }} {{ timestamp }}"
