@@ -45,25 +45,25 @@
       "REQUEST_SENT": "Požadavek odeslán",
       "YOU_ARE_MAYOR": "Jste starosta",
       "PERCENTAGE": "{{ percentage }} % voličů",
-      "SMALLCITY": "Population - less % of country population",
-      "MEDIUMCITY": "Population - less % of country population",
-      "BIGCITY": "Population - more than % of country population"
+      "SMALLCITY": "Populace - méně než % obyvatel státu",
+      "MEDIUMCITY": "Populace - méně než % obyvatel státu",
+      "BIGCITY": "Populace - více než % obyvatel státu"
     },
     "MODAL": {
-      "CONGRATULATIONS": "<b>Congratulations!</b><br/> You are new mayor of {{ name }}",
+      "CONGRATULATIONS": "<b>Gratulujeme!</b><br/> Jste nový starosta v {{ name }}",
       "RULE_CITY": "Rule this city!"
     },
     "FILTER": {
       "SORT_BY": "Sort by",
-      "SEARCH": "Search",
+      "SEARCH": "Hledat",
       "SORT": {
-        "NAME": "Name",
-        "ELECTORATE_DOWN": "Electorate ↓",
-        "ELECTORATE_UP": "Electorate ↑",
-        "PRICE_PER_VOTE_DOWN": "Price per vote ↓",
-        "PRICE_PER_VOTE_UP": "Price per vote ↑",
-        "PRICE_DOWN": "Price ↓",
-        "PRICE_UP": "Price ↑",
+        "NAME": "Jméno",
+        "ELECTORATE_DOWN": "Voliči ↓",
+        "ELECTORATE_UP": "Voliči ↑",
+        "PRICE_PER_VOTE_DOWN": "Cena za hlas ↓",
+        "PRICE_PER_VOTE_UP": "Cena za hlas ↑",
+        "PRICE_DOWN": "Cena ↓",
+        "PRICE_UP": "Cena ↑",
         "COUNTRY": "Země"
       }
     }
@@ -120,19 +120,19 @@
     "MLN": "M",
     "THOUSANDS": "K",
     "PAGINATION": {
-      "FIRST_TEXT": "First",
-      "LAST_TEXT": "Last"
+      "FIRST_TEXT": "První",
+      "LAST_TEXT": "Poslední"
     },
     "FILTER": {
-      "SORT_BY": "Sort by"
+      "SORT_BY": "Seřadit podle"
     }
   },
   "CAMPAIGN": {
-    "TITLE": "My campaign",
-    "CITY": "city",
+    "TITLE": "Moje kampaň",
+    "CITY": "město",
     "CITIES": "města",
-    "START": "Start your campaign",
-    "INVEST": "Invest in your campaign in cities and countries of your choice to rule the whole worldmap!"
+    "START": "Zahajte kampaň",
+    "INVEST": "Investujte do kampaně ve městech a zemích podle volby a ovládněte svět!"
   },
   "NOTIFICATIONS": {
     "PRESIDENT": "<b>{{ user }}</b> was elected President of <b>{{ country }}</b> {{ timestamp }}"
