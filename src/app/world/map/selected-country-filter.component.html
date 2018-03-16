@@ -1,0 +1,40 @@
+<div class="row filter map-country-filter" *ngIf="selectedCountry">
+  <div class="col-sm-8 col-xs-12 pl-0">
+    <div class="selected-country-header">
+      <div class="row stand-margin">
+        <h1>{{ selectedCountry?.name }}</h1>
+        <div class="my-country-image ml-2">
+          <img [src]="'assets/images/country-flags/large/' + selectedCountry?.code.toLowerCase() + '.png'"
+               alt=""/>
+        </div>
+      </div>
+
+      <p>
+        <span><b>{{ numberOfCities }} {{(numberOfCities === 1 ? 'COUNTRY.CARD.CITY' : 'COUNTRY.CARD.CITIES')  | translate }}</b></span>
+        /
+        <span>{{ numberOfMyCities }} {{('COUNTRY.CARD.' + (numberOfMyCities === 1 ? 'CITY' : 'CITIES')) | translate }}
+        {{ 'COUNTRY.CARD.UNDER_YOUR_CONTROL' | translate }}</span>.
+        <span><b>{{ electorate | convert }}</b> {{ 'COUNTRY.CARD.OF_ELECTORATE' | translate }}</span> /
+        <span>{{ myElectorate | convert }} {{ 'COUNTRY.CARD.SUPPORT_YOU' | translate }}</span>
+      </p>
+      <app-parameters-pair
+        [tooltip]="president"
+        [name]="'COUNTRY.CARD.PRESIDENT' | translate"
+        [value]="president"
+      ></app-parameters-pair>
+    </div>
+  </div>
+  <div class="col-sm-4 col-xs-12 pr-0 align-items-baseline d-inline-flex justify-content-sm-end">
+    <label for="sortBy" class="label-sort pr-2">{{ 'COMMON.FILTER.SORT_BY' | translate }}</label>
+    <select class="custom-select sort col-sm-7"
+            name="sortBy"
+            id="sortBy"
+            [(ngModel)]="sortBy"
+            (change)="onSortByChange()">
+      <option *ngFor="let sort of sortOptions"
+              [value]="sort.option">
+        {{sort.name | translate}}
+      </option>
+    </select></div>
+
+</div>

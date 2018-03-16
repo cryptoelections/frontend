@@ -82,8 +82,10 @@ export function reducer(state = initialState, action: actions.Actions | common.A
     case actions.LOAD_SELECTED_CITY: {
       return {...state, selectedCity: action.payload};
     }
+    case actions.LOAD_LOCAL_DYNAMIC_CITY_INFORMATION_REQUEST:
     case actions.LOAD_DYNAMIC_CITY_INFORMATION_REQUEST: {
-      return {...state, dynamic: {...state.dynamic, loading: true}};
+      const load = Object.entries(state.dynamic.entities).length > 0 ? false : true;
+      return {...state, dynamic: {...state.dynamic, loading: load}};
     }
     case actions.LOAD_DYNAMIC_CITY_INFORMATION_RESPONSE: {
       return {...state, dynamic: {entities: {...action.payload}, loading: false}};

@@ -1,10 +1,11 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {City} from '../../shared/models/city.model';
 import {TranslateService} from '@ngx-translate/core';
-import {BASE_URL, DEFAULT_PRICE} from '../../shared/services/base.service';
+import {BASE_URL} from '../../shared/services/base.service';
 import {Router} from '@angular/router';
 import {AuthService} from '../../shared/services/auth.service';
 import {Web3Service} from '../../shared/services/web3.service';
+import {zeroAddress} from '../country/country-card.component';
 
 @Component({
   selector: 'app-city-card',
@@ -15,6 +16,7 @@ export class CityCardComponent implements OnChanges {
   @Input() public countries;
   @Input() public percent;
   @Input() public dynamic;
+  @Input() public isLoading: boolean;
   @Input() public nicknames;
   @Input() public myCities;
   @Output() public invest = new EventEmitter<{ city: City, price: number | string }>();
@@ -27,7 +29,7 @@ export class CityCardComponent implements OnChanges {
   }
 
   public get price() {
-    return this.dynamic && this.dynamic.price || DEFAULT_PRICE;
+    return this.dynamic && this.dynamic.price || +this.city.startPrice;
   }
 
   public get cityImageSource(): string {
@@ -64,8 +66,8 @@ export class CityCardComponent implements OnChanges {
   }
 
   public loadMayor() {
-    const address = this.dynamic && this.dynamic.mayor;
-    return this.isYours ? (this.web3Service.accountNickname || this.authService.coinbase) : this.dynamic && this.dynamic.mayor
+    return this.isYours ? (this.web3Service.accountNickname || this.authService.coinbase)
+      : this.dynamic && this.dynamic.mayor && this.dynamic.mayor !== zeroAddress
       && (this.nicknames && this.nicknames[this.dynamic.mayor] || this.dynamic.mayor)
       || this.translate.instant('CITY.CARD.NOT_ELECTED_YET');
   }

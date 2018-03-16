@@ -1,4 +1,4 @@
-<div class="card" [ngClass]="{'card-disabled': country && !country.active }">
+<div class="card" [ngClass]="{'card-disabled': country && !country.active }" *ngIf="!!experimentType">
   <div class="card-block country-img-card align-items-center">
     <img
       class="card-img"
@@ -27,14 +27,22 @@
         [name]="'COUNTRY.CARD.PRESIDENT' | translate"
         [value]="president"
       ></app-parameters-pair>
+
+      <span *ngIf="experimentType === Experiment.card && !isLoading"><b>{{ price | eth }} ETH</b> {{ 'COUNTRY.CARD.TO_BECOME_A_PRESIDENT' | translate}}</span>
     </p>
   </div>
-  <div class="card-button-block text-center">
-    <ng-container *ngIf="!isYours && country.active">
-      <button class="btn card-button" (click)="cityList.show()">
+  <div class="card-button-block text-center"
+       [ngClass]="{'pending': isLoading, 'price-on-card': experimentType === Experiment.card && !isYours}">
+    <ng-container *ngIf="!isYours && country.active && experimentType === Experiment.button">
+      <button class="btn card-button" (click)="cityList.show(); onShowModal();">
         <span>{{'COUNTRY.CARD.INVEST' | translate }} <b>{{ price | eth }} ETH </b></span>
       </button>
       <span>{{'COUNTRY.CARD.TO_WIN' | translate }}</span>
+    </ng-container>
+    <ng-container *ngIf="!isYours && country.active && experimentType === Experiment.card">
+      <button class="btn card-button" (click)="cityList.show(); onShowModal();">
+        <span>{{'COUNTRY.CARD.RUN_CAMPAIGN' | translate }}</span>
+      </button>
     </ng-container>
     <ng-container *ngIf="isYours && country.active">
       <div class="president-sign" [routerLink]="['/my']">
@@ -101,7 +109,9 @@
               </ng-container>
               <ng-container *ngIf="!isYoursCity(city)">
                 <button class="btn card-button" (click)="tryToInvest(city)">
-                  <span *ngIf="!city.buying">{{ ( cityDynamic && cityDynamic[city?.id] && cityDynamic[city?.id].price || defaultPrice) | eth }} ETH</span>
+                  <span *ngIf="!city.buying">
+                    {{ ( cityDynamic && cityDynamic[city?.id] && cityDynamic[city?.id].price || +city?.startPrice) | eth }} ETH
+                  </span>
                   <span *ngIf="city.buying">{{ 'CITY.CARD.REQUEST_SENT' | translate }}</span>
                 </button>
               </ng-container>

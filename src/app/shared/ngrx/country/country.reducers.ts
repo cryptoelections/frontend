@@ -4,9 +4,9 @@ import {CountrySortOption} from '../../../world/country/country-filter.component
 import {createFeatureSelector, createSelector} from '@ngrx/store';
 import {City} from '../../models/city.model';
 import {CitySortOption} from '../../../world/city/city-filter.component';
-import {DEFAULT_PRICE} from '../../services/base.service';
 
 import * as fromMyCampaign from '../my-campaign/my-campaign.reducers';
+import * as fromNicknames from '../nicknames/nicknames.reducers';
 import * as fromCities from '../city/city.reducers';
 import * as actions from './country.actions';
 
@@ -23,6 +23,8 @@ export interface State extends EntityState<Country> {
     loading: boolean;
     entities: { [id: string]: Partial<Country> }
   };
+  selectedCountry: string;
+  selectedCountryCitiesSortBy: CitySortOption;
 }
 
 export interface CountryState {
@@ -54,7 +56,9 @@ export const initialState: State = adapter.getInitialState({
   dynamic: {
     loading: false,
     entities: {}
-  }
+  },
+  selectedCountry: '',
+  selectedCountryCitiesSortBy: CitySortOption.Name
 });
 
 export function reducer(state = initialState, action: actions.Actions): State {
@@ -65,17 +69,25 @@ export function reducer(state = initialState, action: actions.Actions): State {
     case actions.LOAD_COUNTRIES_RESPONSE: {
       return {
         ...adapter.addAll(action.payload && action.payload.length ? action.payload : [],
-          state), loading: false
+          state),
+        loading: false
       };
     }
     case actions.FILTER_UPDATE: {
       return {...state, filters: {...state.filters, ...action.payload}};
     }
+    case actions.SELECT_COUNTRY: {
+      return {...state, selectedCountry: action.payload};
+    }
+    case actions.LOAD_LOCAL_DYNAMIC_COUNTRY_INFO_REQUEST:
     case actions.LOAD_DYNAMIC_COUNTRY_INFORMATION_REQUEST: {
       return {...state, dynamic: {...state.dynamic, loading: true}};
     }
     case actions.LOAD_DYNAMIC_COUNTRY_INFORMATION_RESPONSE: {
       return {...state, dynamic: {entities: {...action.payload}, loading: false}};
+    }
+    case actions.FILTER_SELECTED_COUNTRY_CITIES: {
+      return {...state, selectedCountryCitiesSortBy: action.payload};
     }
     default: {
       return {...state};
@@ -148,10 +160,10 @@ export const filteredListCountries = createSelector(selectFilteredList, (myCitie
 export const filteredListCountriesTotal = createSelector(filteredListCountries, list => list && list.length);
 export const filteredListForPage = createSelector(selectFilteredList, filteredListCountries, fromMyCampaign.page,
   (myCities, countries, p) => {
-    const sortedList = myCities.sort((city: City, city2: City) => city.country_id < city2.country_id ? -1 : 1);
-    const first = sortedList.findIndex((city: City) => city && city.country_id === countries[p * 4 - 4]);
-    const last = sortedList.findIndex((city: City) => city && city.country_id === countries[p * 4]);
-    return last < 0 ? sortedList : sortedList.splice(first, last);
+    const list = myCities.sort((city: City, city2: City) => city.country_id < city2.country_id ? -1 : 1);
+    const first = list.findIndex((city: City) => city && city.country_id === countries[p * 4 - 4]);
+    const last = list.findIndex((city: City) => city && city.country_id === countries[p * 4]);
+    return last < 0 ? list : list.splice(first, last);
   });
 
 /* ----- my campaign end ------- */
@@ -161,7 +173,7 @@ export const filteredCountries = createSelector(
   filters,
   citiesByCountriesEntities,
   selectAllByCountries,
-  fromCities.getDynamicCitiesState,
+  fromCities.getDynamicInfoEntities,
   (countries, filter, cityEntities, myCityEntities, dynamicCities) => {
     const upperQuery = filter.query && filter.query.toUpperCase();
 
@@ -179,7 +191,7 @@ export const filteredCountries = createSelector(
       cityEntities,
       myCityEntities,
       +filter.sortBy as CountrySortOption,
-      dynamicCities.entities
+      dynamicCities
     );
 
     return sortedList;
@@ -216,8 +228,7 @@ export const price = (cities: Array<City>, myCities: Array<City>, dynamicCityInf
   }
   el_copy = el;
   const pricePerElectorate = (city: City) =>
-    (dynamicCityInfo && dynamicCityInfo[city.id] && +dynamicCityInfo[city.id].price || DEFAULT_PRICE) / +city.population;
-
+    dynamicCityInfo && dynamicCityInfo[city.id] && +dynamicCityInfo[city.id].price || +city.startPrice / +city.population;
   const sortedList = cities
     .filter((city: City) => {
       return !myCities
@@ -239,7 +250,7 @@ export const price = (cities: Array<City>, myCities: Array<City>, dynamicCityInf
       return pricePerElectorate(a) > pricePerElectorate(b) ? -1 : 1;
     })
     .every((city: City) => {
-      p += dynamicCityInfo && dynamicCityInfo[city.id] && +dynamicCityInfo[city.id].price || DEFAULT_PRICE;
+      p += dynamicCityInfo && dynamicCityInfo[city.id] && +dynamicCityInfo[city.id].price || +city.startPrice;
       el += +city.population;
       return (el_copy > half) ? false : true;
     });
@@ -262,21 +273,22 @@ export const sortCountries = (countries: Array<Country>,
     }
     case CountrySortOption.PriceDown: {
       sort = (a: Country, b: Country) => {
-        return price(citiesByCountries[a.id],
+        return (price(citiesByCountries[a.id],
           myCitiesByCountries[a.id],
-          dynamicCities) < price(citiesByCountries[b.id], myCitiesByCountries[b.id], dynamicCities)
+          dynamicCities) < price(citiesByCountries[b.id], myCitiesByCountries[b.id], dynamicCities))
           ? -1
           : 1;
       };
       break;
     }
     case CountrySortOption.PriceUp: {
-      sort = (a: Country, b: Country) =>
-        price(citiesByCountries[a.id],
+      sort = (a: Country, b: Country) => {
+        return (price(citiesByCountries[a.id],
           myCitiesByCountries[a.id],
-          dynamicCities) > price(citiesByCountries[b.id], myCitiesByCountries[b.id], dynamicCities)
+          dynamicCities) > price(citiesByCountries[b.id], myCitiesByCountries[b.id], dynamicCities))
           ? -1
           : 1;
+      };
       break;
     }
     case CountrySortOption.ElectorateDown: {
@@ -344,14 +356,16 @@ export const sortCities = (cities: Array<City>, sortByOption: CitySortOption, dy
   switch (sortByOption) {
     case CitySortOption.PriceDown: {
       sort = (a: City, b: City) =>
-        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || DEFAULT_PRICE)
-        < (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || DEFAULT_PRICE) ? -1 : 1;
+        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || +a.startPrice)
+        < (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || +b.startPrice)
+          ? -1 : 1;
       break;
     }
     case CitySortOption.PriceUp: {
       sort = (a: City, b: City) =>
-        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || DEFAULT_PRICE)
-        > (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || DEFAULT_PRICE) ? -1 : 1;
+        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || +a.startPrice)
+        > (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || +b.startPrice)
+          ? -1 : 1;
       break;
     }
     case CitySortOption.ElectorateDown: {
@@ -364,18 +378,16 @@ export const sortCities = (cities: Array<City>, sortByOption: CitySortOption, dy
     }
     case CitySortOption.PricePerVoteDown: {
       sort = (a: City, b: City) => (
-        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || DEFAULT_PRICE) / +a.population
-      ) < (
-        (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || DEFAULT_PRICE) / +b.population
-      ) ? -1 : 1;
+        ((dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || +a.startPrice) / +a.population)
+        <
+        ((dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || +b.startPrice) / +b.population)) ? -1 : 1;
       break;
     }
     case CitySortOption.PricePerVoteUp: {
       sort = (a: City, b: City) => (
-        (dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || DEFAULT_PRICE) / +a.population
-      ) > (
-        (dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || DEFAULT_PRICE) / +b.population
-      ) ? -1 : 1;
+        ((dynamicCities && dynamicCities[a.id] && +dynamicCities[a.id].price || +a.startPrice) / +a.population)
+        >
+        ((dynamicCities && dynamicCities[b.id] && +dynamicCities[b.id].price || +b.startPrice) / +b.population)) ? -1 : 1;
       break;
     }
     case CitySortOption.Country: {
@@ -387,7 +399,6 @@ export const sortCities = (cities: Array<City>, sortByOption: CitySortOption, dy
       break;
     }
   }
-
   return cities && cities.sort(sort);
 };
 
@@ -401,3 +412,35 @@ export const citiesForPage = createSelector(filteredCities, fromCities.filters,
 export const getDynamicCountriesState = createSelector(getCountriesState, state => state.list.dynamic);
 export const getDynamicInfoEntities = createSelector(getDynamicCountriesState, state => state.entities);
 export const isDynamicLoading = createSelector(getDynamicCountriesState, state => state.loading);
+
+const zeroAddress = '0x0000000000000000000000000000000000000000';
+export const countriesForMap = createSelector(selectAll,
+  getDynamicInfoEntities, fromNicknames.selectEntities, fromCities.citiesByCountry, selectAllByCountries,
+  (countries, dynamicCountries, nicknames, citiesByCountry, myCitiesByCountry) => {
+    const president = (i: Country) => dynamicCountries[i.id] && (<any>dynamicCountries[i.id]).president;
+    return countries.reduce((m, i) => ({
+      ...m,
+      [i.code3]: {
+        ...i,
+        ...dynamicCountries[i.id],
+        president: president(i) && president(i) !== zeroAddress ? (nicknames[president(i)] || president(i)) : 'Not elected yet',
+        numberOfCities: citiesByCountry && citiesByCountry[i.id] ? citiesByCountry[i.id].length : 0,
+        myCities: myCitiesByCountry && myCitiesByCountry[i.id] ? myCitiesByCountry[i.id].length : 0,
+        fillKey: 'ENABLED'
+      }
+    }), {});
+  });
+export const selectedCountryId = createSelector(getCountriesState, countriesForMap,
+  (state, countries) => state.list.selectedCountry && countries[state.list.selectedCountry] && countries[state.list.selectedCountry].id);
+
+export const selectedCountryCitiesSortOption = createSelector(getCountriesState, state => state.list.selectedCountryCitiesSortBy);
+export const selectedCountryCities = createSelector(selectedCountryId,
+  citiesByCountriesEntities, selectedCountryCitiesSortOption, fromCities.getDynamicInfoEntities,
+  (id, citiesByCountry, sortByOption, dynamicCities) => {
+    return sortCities(citiesByCountry[id], +sortByOption as CitySortOption, dynamicCities);
+  });
+export const selectedCountry = createSelector(selectedCountryId, selectCountryEntities, (id, countries) => {
+  return countries[id];
+});
+
+

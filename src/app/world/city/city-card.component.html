@@ -18,13 +18,14 @@
     <p class="card-text">
       <span> <b>{{ city.population | convert }}</b> ({{ 'CITY.CARD.PERCENTAGE' | translate:percentage }}) </span>
       <app-parameters-pair
+        *ngIf="!isLoading"
         [tooltip]="loadMayor()"
         [name]="'CITY.CARD.MAYOR' | translate"
         [value]="loadMayor()"
       ></app-parameters-pair>
     </p>
   </div>
-  <div class="card-button-block text-center">
+  <div class="card-button-block text-center" [ngClass]="{ 'pending': isLoading }">
     <ng-container *ngIf="!isYours">
       <div [ngClass]="{ 'pending': city.buying }">
         <button class="btn card-button"

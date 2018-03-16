@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FilterComponent } from '../../shared/components/filters/filter.component';
-import { StorageKeys } from '../../shared/services/storage.service';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {FilterComponent} from '../../shared/components/filters/filter.component';
 
 export enum CitySortOption {
   Name,
@@ -31,13 +30,13 @@ export class CityFilterComponent extends FilterComponent {
   }, {
     option: CitySortOption.PriceDown,
     name: 'CITY.FILTER.SORT.PRICE_DOWN'
-  },{
+  }, {
     option: CitySortOption.PriceUp,
     name: 'CITY.FILTER.SORT.PRICE_UP'
   }, {
     option: CitySortOption.PricePerVoteDown,
     name: 'CITY.FILTER.SORT.PRICE_PER_VOTE_DOWN'
-  },{
+  }, {
     option: CitySortOption.PricePerVoteUp,
     name: 'CITY.FILTER.SORT.PRICE_PER_VOTE_UP'
   }, {

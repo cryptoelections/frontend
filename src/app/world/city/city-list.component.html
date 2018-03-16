@@ -11,6 +11,7 @@
                    [dynamic]="dynamicCities[city.id]"
                    [nicknames]="nicknames"
                    [myCities]="myCities"
+                   [isLoading]="isDynamicLoading"
                    [percent]="getElectoratePercentage(city)"
                    (invest)="invest.emit($event)"></app-city-card>
   </div>

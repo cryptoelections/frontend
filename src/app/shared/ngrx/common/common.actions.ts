@@ -1,12 +1,21 @@
 import {Action} from '@ngrx/store';
 
+export const LOAD_ALL = '[COMMON] LOAD_ALL';
 export const SHOW_ERROR = '[COMMON] SHOW_ERROR';
+export const TURN_ON_NOTIFICATIONS = '[COMMON] TURN_ON_NOTIFICATIONS';
 export const ADD_NEW_MESSAGE = '[COMMON] ADD_NEW_MESSAGE';
 export const LOAD_WALLET_DATA_REQUEST = '[COMMON] LOAD_WALLET_DATA_REQUEST';
 export const LOAD_WALLET_DATA_RESPONSE = '[COMMON] LOAD_WALLET_DATA_RESPONSE';
 export const WITHDRAW_REQUEST = '[COMMON] WITHDRAW_REQUEST';
 export const WITHDRAW_SUCCESS = '[COMMON] WITHDRAW_SUCCESS';
 export const WITHDRAW_ERROR = '[COMMON] WITHDRAW_ERROR';
+
+export class LoadAllData implements Action {
+  type = LOAD_ALL;
+
+  constructor(public payload?: any) {
+  }
+}
 
 export class ShowErrorMessage implements Action {
   type = SHOW_ERROR;
@@ -57,8 +66,17 @@ export class WithdrawError implements Action {
   }
 }
 
+export class TurnOnNotifications implements Action {
+  type = TURN_ON_NOTIFICATIONS;
+
+  constructor(public payload?: any) {
+  }
+}
+
 export type Actions =
-  ShowErrorMessage
+  LoadAllData
+  | ShowErrorMessage
+  | TurnOnNotifications
   | AddNewMessage
   | LoadWalletDataRequest
   | LoadWalletDataResponse

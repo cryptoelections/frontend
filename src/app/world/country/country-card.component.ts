@@ -4,10 +4,15 @@ import {City} from '../../shared/models/city.model';
 import {TranslateService} from '@ngx-translate/core';
 import {Web3Service} from '../../shared/services/web3.service';
 import {Router} from '@angular/router';
-import {DEFAULT_PRICE} from '../../shared/services/base.service';
 import {AuthService} from '../../shared/services/auth.service';
+import {CityService} from '../../shared/services/city.service';
 
-const zeroAddress = '0x0000000000000000000000000000000000000000';
+export const zeroAddress = '0x0000000000000000000000000000000000000000';
+
+export enum Experiment {
+  button = 'button',
+  card = 'card'
+}
 
 @Component({
   selector: 'app-country-card',
@@ -19,6 +24,9 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   @Input() public myCities = [];
   @Input() public dynamic;
   @Input() public cityDynamic;
+  @Input() public isLoading: boolean;
+  @Input() public experimentType;
+  public Experiment = Experiment;
 
   public get numberOfCities(): number {
     return this.cities && this.cities.length;
@@ -45,10 +53,6 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
       && this.dynamic.president === this.web3Service.coinbase;
   }
 
-  public get defaultPrice() {
-    return DEFAULT_PRICE;
-  }
-
 
   public get price(): number {
     const half = this.electorate / 2;
@@ -57,7 +61,7 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
     let el = this.myElectorate;
 
     const pricePerElectorate = (city: City) =>
-      (this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || DEFAULT_PRICE) / +city.population;
+      (this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || +city.startPrice) / +city.population;
 
     if (this.country.active !== 0 && this.cities) {
       const sortedList = this.cities
@@ -82,17 +86,18 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
           return pricePerElectorate(a) > pricePerElectorate(b) ? -1 : 1;
         })
         .every((city: City) => {
-          price += this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || DEFAULT_PRICE;
+          price += this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || +city.startPrice;
           el += +city.population;
           return (el > half) ? false : true;
         });
     }
+
     return price;
   }
 
   public get costEffectiveCities(): Array<City> {
     const pricePerElectorate = (city: City) =>
-      (this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || DEFAULT_PRICE) / +city.population;
+      (this.cityDynamic && this.cityDynamic[city.id] && +this.cityDynamic[city.id].price || +city.startPrice) / +city.population;
 
     return this.cities ? this.cities
       .filter((city: City) => {
@@ -122,15 +127,18 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
 
   constructor(private web3Service: Web3Service,
               private authService: AuthService,
+              private cityService: CityService,
               private translate: TranslateService,
               private cd: ChangeDetectorRef,
               private router: Router) {
+
   }
 
   public ngOnChanges(changes: SimpleChanges) {
     if (changes.cities) {
       this.sortedCities = this.cities
-        ? this.cities.sort((a: City, b: City) => +a.price < +b.price ? -1 : 1)
+        ? this.cities.sort((a: City, b: City) => +(this.cityDynamic[a.id] && this.cityDynamic[a.id].price || +a.startPrice)
+        < +(this.cityDynamic[b.id] && this.cityDynamic[b.id].price || +b.startPrice) ? -1 : 1)
         : [];
     }
   }
@@ -140,11 +148,12 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
   }
 
   public cityPriceRange(): { lowestPrice: string, highestPrice: string } {
-    const lowestPrice = this.sortedCities[0] && this.cityDynamic && this.cityDynamic[this.sortedCities[0].id]
-      && this.cityDynamic[this.sortedCities[0].id] && this.cityDynamic[this.sortedCities[0].id].price;
-    const highestPrice = this.sortedCities.length > 1 && this.cityDynamic
+    const lowestPrice = this.sortedCities && this.sortedCities[0] && this.cityDynamic && this.cityDynamic[this.sortedCities[0].id]
+      && this.cityDynamic[this.sortedCities[0].id].price || +this.sortedCities[0].startPrice;
+    const highestPrice = this.sortedCities && this.sortedCities.length > 1 && this.cityDynamic
       && this.cityDynamic[this.sortedCities[this.sortedCities.length - 1].id]
-      && this.cityDynamic[this.sortedCities[this.sortedCities.length - 1].id].price;
+      && this.cityDynamic[this.sortedCities[this.sortedCities.length - 1].id].price
+      || +this.sortedCities[this.sortedCities.length - 1].startPrice;
     return {lowestPrice, highestPrice};
   }
 
@@ -160,10 +169,18 @@ export class CountryCardComponent implements OnChanges, AfterViewInit {
     if (this.authService.coinbase && !this.web3Service.wrongNetwork) {
       this.invest.emit({
         city,
-        price: this.cityDynamic && this.cityDynamic[city.id] && this.cityDynamic[city.id].price || DEFAULT_PRICE
+        price: this.cityDynamic && this.cityDynamic[city.id] && this.cityDynamic[city.id].price || +city.startPrice
       });
     } else {
       this.router.navigate(['/metamask']);
     }
+  }
+
+  public onShowModal() {
+    window['amplitude'].getInstance().logEvent('open_country_modal', {type: this.experimentType});
+  }
+
+  public calculatePrice(city: City) {
+    return this.cityDynamic && this.cityDynamic[city.id] && this.cityDynamic[city.id].price || +city.startPrice;
   }
 }

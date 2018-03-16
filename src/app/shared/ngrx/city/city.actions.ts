@@ -3,6 +3,7 @@ import {City} from '../../models/city.model';
 
 export const LOAD_CITY_INFORMATION_REQUEST = '[CITY] LOAD_CITY_INFORMATION_REQUEST';
 export const LOAD_DYNAMIC_CITY_INFORMATION_REQUEST = '[CITY] LOAD_DYNAMIC_CITY_INFORMATION_REQUEST';
+export const LOAD_LOCAL_DYNAMIC_CITY_INFORMATION_REQUEST = '[CITY] LOAD_LOCAL_DYNAMIC_CITY_INFORMATION_REQUEST';
 export const LOAD_DYNAMIC_CITY_INFORMATION_RESPONSE = '[CITY] LOAD_DYNAMIC_CITY_INFORMATION_RESPONSE';
 export const LOAD_CITY_INFORMATION_RESPONSE = '[CITY] LOAD_CITY_INFORMATION_RESPONSE';
 export const FILTER_UPDATE = '[CITY] FILTER_UPDATE';
@@ -19,6 +20,13 @@ export class LoadCityInformationRequest implements Action {
 
 export class LoadDynamicCityInformationRequest implements Action {
   type = LOAD_DYNAMIC_CITY_INFORMATION_REQUEST;
+
+  constructor(public payload?: any) {
+  }
+}
+
+export class LoadLocalDynamicCityInformationRequest implements Action {
+  type = LOAD_LOCAL_DYNAMIC_CITY_INFORMATION_REQUEST;
 
   constructor(public payload?: any) {
   }
@@ -71,6 +79,7 @@ export class InvestSuccess implements Action {
 export type Actions = LoadCityInformationRequest
   | LoadCityInformationResponse
   | LoadDynamicCityInformationRequest
+  | LoadLocalDynamicCityInformationRequest
   | LoadDynamicCityInformationResponse
   | FilterUpdate
   | LoadSelectedCity

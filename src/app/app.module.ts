@@ -21,6 +21,7 @@ import {LayoutComponent} from './layout/layout.component';
 import {LayoutContainerComponent} from './layout/layout.container';
 import {FooterContainerComponent} from './layout/footer/footer.container';
 import {AuthService} from './shared/services/auth.service';
+import {ToastrModule} from 'ngx-toastr';
 
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -61,6 +62,14 @@ export function InitAppFactory(auth: AuthService,
     StoreModule.forRoot(reducers, {metaReducers}),
     StoreRouterConnectingModule,
     StoreDevtoolsModule.instrument(),
+    ToastrModule.forRoot({
+      maxOpened: 1,
+      preventDuplicates: true,
+      extendedTimeOut: 500,
+      timeOut: 7500,
+      positionClass: 'toast-bottom-left',
+      enableHtml: true
+    }),
     TooltipModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
@@ -70,6 +79,7 @@ export function InitAppFactory(auth: AuthService,
       }
     })
   ],
+  entryComponents: [],
   providers: [
     {
       provide: APP_INITIALIZER,

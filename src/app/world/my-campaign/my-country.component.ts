@@ -2,8 +2,8 @@ import {AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnChan
 import {Country} from '../../shared/models/country.model';
 import {City} from '../../shared/models/city.model';
 import {Web3Service} from '../../shared/services/web3.service';
-import {DEFAULT_PRICE} from '../../shared/services/base.service';
 import {Router} from '@angular/router';
+import {CityService} from '../../shared/services/city.service';
 
 @Component({
   selector: 'app-my-country',
@@ -27,11 +27,8 @@ export class MyCountryComponent implements OnChanges, AfterViewInit {
       && this.dynamicCountries[this.country.id].president === this.web3Service.coinbase;
   }
 
-  public get defaultPrice() {
-    return DEFAULT_PRICE;
-  }
-
   constructor(private web3Service: Web3Service,
+              private cityService: CityService,
               private router: Router,
               private cd: ChangeDetectorRef) {
   }
@@ -54,7 +51,9 @@ export class MyCountryComponent implements OnChanges, AfterViewInit {
     if (this.web3Service.isLoggedIn) {
       this.invest.emit({
         city,
-        price: this.dynamicCities && this.dynamicCities[city.id] && this.dynamicCities[city.id].price || DEFAULT_PRICE
+        price: this.dynamicCities && this.dynamicCities[city.id] && this.dynamicCities[city.id].price
+        || +city.startPrice
+
       });
     } else {
       this.router.navigate(['/metamask']);
@@ -104,7 +103,7 @@ export class MyCountryComponent implements OnChanges, AfterViewInit {
 
   public getCostEffectiveCities() {
     const pricePerElectorate = (city: City) =>
-      (this.dynamicCities && this.dynamicCities[city.id] && +this.dynamicCities[city.id].price || DEFAULT_PRICE) / +city.population;
+      (this.dynamicCities && this.dynamicCities[city.id] && +this.dynamicCities[city.id].price || +city.startPrice) / +city.population;
 
     this.costEffectiveCities = this.allCitiesByCountry ? this.allCitiesByCountry
       .filter((city: City) => {
@@ -123,7 +122,9 @@ export class MyCountryComponent implements OnChanges, AfterViewInit {
     let electorate = this.myElectorate();
 
     const pricePerElectorate = (city: City) =>
-      (this.dynamicCities && this.dynamicCities[city.id] && +this.dynamicCities[city.id].price || DEFAULT_PRICE) / +city.population;
+      (this.dynamicCities && this.dynamicCities[city.id] && +this.dynamicCities[city.id].price
+        || +city.startPrice
+      ) / +city.population;
 
     if (this.allCitiesByCountry) {
       const sortedList = this.allCitiesByCountry
@@ -149,7 +150,8 @@ export class MyCountryComponent implements OnChanges, AfterViewInit {
           return pricePerElectorate(a) > pricePerElectorate(b) ? -1 : 1;
         })
         .every((city: City) => {
-          price += this.dynamicCities && this.dynamicCities[city.id] && +this.dynamicCities[city.id].price || DEFAULT_PRICE;
+          price += this.dynamicCities && this.dynamicCities[city.id] && +this.dynamicCities[city.id].price
+            || +city.startPrice;
           electorate += +city.population;
           return (electorate > half) ? false : true;
         });

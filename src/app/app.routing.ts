@@ -8,6 +8,7 @@ import {CityListContainerComponent} from './world/city/city-list.container';
 import {MetamaskComponent} from './world/metamask/metamask.component';
 import {MyCampaignContainerComponent} from './world/my-campaign/my-campaign.container';
 import {LayoutContainerComponent} from './layout/layout.container';
+import {MapContainerComponent} from './world/map/map.container';
 
 const routes: Routes = [{
   path: 'home',
@@ -22,24 +23,21 @@ const routes: Routes = [{
   }, {
     path: 'countries',
     component: CountryListContainerComponent
-  },
-    {
-      path: 'cities',
-      component: CityListContainerComponent
-    },
-    // {
-    //   path: 'map',
-    //   component: MarketplaceContainerComponent
-    // },
-    {
-      path: 'my',
-      component: MyCampaignContainerComponent,
-      canActivate: [AuthServiceLoader],
-      canActivateChild: [AuthGuard]
-    }, {
-      path: 'metamask',
-      component: MetamaskComponent,
-    }]
+  }, {
+    path: 'cities',
+    component: CityListContainerComponent
+  }, {
+    path: 'map',
+    component: MapContainerComponent
+  }, {
+    path: 'my',
+    component: MyCampaignContainerComponent,
+    canActivate: [AuthServiceLoader],
+    canActivateChild: [AuthGuard]
+  }, {
+    path: 'metamask',
+    component: MetamaskComponent,
+  }]
 }, {
   path: '**',
   component: HomeComponent

@@ -6,8 +6,8 @@ import {CountryModalContainerComponent} from '../components/country-modal.contai
 import {Store} from '@ngrx/store';
 import {State} from '../ngrx';
 import {BsModalService} from 'ngx-bootstrap';
-
-import * as common from '../ngrx/common/common.actions';
+import {ToastrService} from 'ngx-toastr';
+import {TranslateService} from '@ngx-translate/core';
 
 const Web3 = require('web3');
 const contract = require('truffle-contract');
@@ -28,7 +28,11 @@ export class Web3Service {
   public contractData;
   public gasPrice;
 
-  constructor(private http: HttpClient, private store: Store<State>, private modalService: BsModalService) {
+  constructor(private http: HttpClient,
+              private store: Store<State>,
+              private modalService: BsModalService,
+              private translate: TranslateService,
+              private toastr: ToastrService) {
     const provider = window.web3 && window.web3.currentProvider;
     this.web3 = provider && new Web3(provider);
     this.network = undefined;
@@ -84,11 +88,6 @@ export class Web3Service {
                       window['yaCounter47748901'].reachGoal('countryassignevent');
                       sessionStorage.setItem('congrats', JSON.stringify([...previous, result]));
                       this.modalService.show(CountryModalContainerComponent, {class: 'modal-lg', initialState});
-                    } else {
-                      this.store.dispatch(new common.AddNewMessage({
-                        address: result.args.address,
-                        country: parseInt(result.args.countryId)
-                      }));
                     }
                   }
                 }))
@@ -117,8 +116,16 @@ export class Web3Service {
     return this.CryptoElections.deployed()
       .then((instance) => {
         CryptoElectionsInstance = instance;
-        CryptoElectionsInstance.setNickname(nickname);
-      });
+        window['amplitude'].getInstance().logEvent('set_nickname');
+
+        CryptoElectionsInstance.setNickname(nickname)
+          .then((success) => {
+            this.toastr.success(this.translate.instant('SUCCESS.NICKNAME_WAS_SET'));
+          }).catch(error => {
+          window['amplitude'].getInstance().logEvent('error_set_nickname');
+          this.toastr.error(this.translate.instant('ERRORS.NICKNAME_WAS_NOT_SET'));
+        });
+      }).catch(error => this.toastr.error(this.translate.instant('ERRORS.NICKNAME_WAS_NOT_SET')));
   }
 
   public getNickname(address: string) {
@@ -130,78 +137,7 @@ export class Web3Service {
       });
   }
 
-  public invest(cityId, price) {
-    let CryptoElectionsInstance;
-    return this.CryptoElections && this.CryptoElections.deployed()
-      .then((instance) => {
-        CryptoElectionsInstance = instance;
-        return this.getCityInfo(cityId)
-          .then((city) => {
-            const p = this.getPrices(city[3]) * 1000000000000000000 || price;
-            // if (window['fbq']) {
-            //   window['fbq']('track', 'Purchase', {
-            //     value: p,
-            //     currency: 'EUR'
-            //   });
-            // }
-            return CryptoElectionsInstance.buyCity(cityId, {
-              value: p,
-              to: instance.address
-            });
-          });
-      });
-  }
-
-  public getUserCities() {
-    let CryptoElectionsInstance;
-
-    return this.CryptoElections ? this.CryptoElections.deployed()
-      .then(instance => {
-        CryptoElectionsInstance = instance;
-        return CryptoElectionsInstance.getUserCities(this.coinbase);
-      }) : new Promise(resolve => []);
-  }
-
-  public getCityInfo(cityId) {
-    let CryptoElectionsInstance;
-    return this.CryptoElections && this.CryptoElections.deployed()
-      .then((instance) => {
-        CryptoElectionsInstance = instance;
-
-        return CryptoElectionsInstance.cities(cityId);
-      });
-  }
-
-  public loadWalletData() {
-    let CryptoElectionsInstance;
-    return this.CryptoElections ? this.CryptoElections.deployed()
-      .then((instance) => {
-        CryptoElectionsInstance = instance;
-        return CryptoElectionsInstance.userPendingWithdrawals(this.coinbase);
-      }) : new Promise(resolve => {
-      return 0;
-    });
-  }
-
-  public withdraw() {
-    let CryptoElectionsInstance;
-    return this.CryptoElections && this.CryptoElections.deployed()
-      .then((instance) => {
-        CryptoElectionsInstance = instance;
-        return CryptoElectionsInstance.withdraw();
-      });
-  }
-
-  private getPrices(purchases) {
-    let price = 0.02;
-
-    for (let i = 1; i <= purchases; i++) {
-      if (i <= 7) {
-        price = price * 2;
-      } else {
-        price = price * 1.2;
-      }
-    }
-    return price;
+  public contract(): Promise<any> {
+    return this.CryptoElections.deployed;
   }
 }
