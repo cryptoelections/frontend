@@ -15,18 +15,18 @@
   "MARKETPLACE": {
     "TITLE": "Marketplace",
     "VIEWMODE": {
-      "CITIES": "Cities",
-      "COUNTRIES": "Countries"
+      "CITIES": "Orașe",
+      "COUNTRIES": "Țări"
     }
   },
   "ACCOUNT": {
-    "NOT_CONNECTED": "Not connected",
+    "NOT_CONNECTED": "Nu este conectat",
     "REQUIRE_METAMASK": "CryptoElections requires a MetaMask add-on installed in your browser.",
-    "INSTALL": "Install",
+    "INSTALL": "Instalează",
     "SET_NICKNAME": "Set Nickname",
     "NICKNAME_PLACEHOLDER": "Type Your Nickname",
-    "IS_LOCKED": "Locked",
-    "INSTALL_METAMASK": "Install metamask",
+    "IS_LOCKED": "Blocat",
+    "INSTALL_METAMASK": "Instalează metamask",
     "METAMASK_LOCKED": "Your MetaMask is locked",
     "METAMASK_LOCKED_TEXT": "Simply open MetaMask and follow the instructions to unlock it.",
     "WRONG_NETWORK": "Oops, you’re on the wrong network",
