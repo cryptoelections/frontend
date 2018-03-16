@@ -74,7 +74,7 @@
       "PRESIDENT": "Presidente",
       "NOT_ELECTED_YET": "No elegido aún",
       "YOU_ARE_PRESIDENT": "Eres el Presidente",
-      "NOT_IMPLEMENTED": "There are no cryptoelections yet",
+      "NOT_IMPLEMENTED": "No hay criptoelecciones todavía",
       "CITIES_PRICE_RANGE": {
         "CITIES": "{{ lowestPrice }} - {{ highestPrice }} ETH",
         "ONE_CITY": " {{ lowestPrice }} ETH"
