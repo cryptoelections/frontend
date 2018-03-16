@@ -45,25 +45,25 @@
       "REQUEST_SENT": "Αίτημα εστάλη",
       "YOU_ARE_MAYOR": "Είστε ο δήμαρχος",
       "PERCENTAGE": "{{ percentage }}% του εκλογικού σώματος",
-      "SMALLCITY": "Population - less % of country population",
+      "SMALLCITY": "Πληθυσμός- λιγότερο % του πληθυσμού της χώρας",
       "MEDIUMCITY": "Population - less % of country population",
-      "BIGCITY": "Population - more than % of country population"
+      "BIGCITY": "Πληθυσμός- περισσότερο από % του πληθυσμού της χώρας"
     },
     "MODAL": {
-      "CONGRATULATIONS": "<b>Congratulations!</b><br/> You are new mayor of {{ name }}",
-      "RULE_CITY": "Rule this city!"
+      "CONGRATULATIONS": "<b>Συγχαρητήρια!<br/><br/> Είστε ο νέος δήμαρχος του {{ name }}",
+      "RULE_CITY": "Κυβερνήστε αυτή την πόλη!"
     },
     "FILTER": {
-      "SORT_BY": "Sort by",
-      "SEARCH": "Search",
+      "SORT_BY": "Ταξινόμηση ανά",
+      "SEARCH": "Αναζήτηση",
       "SORT": {
-        "NAME": "Name",
-        "ELECTORATE_DOWN": "Electorate ↓",
-        "ELECTORATE_UP": "Electorate ↑",
+        "NAME": "Όνομα",
+        "ELECTORATE_DOWN": "Εκλογικό σώμα ↓",
+        "ELECTORATE_UP": "Εκλογικό σώμα ↑",
         "PRICE_PER_VOTE_DOWN": "Price per vote ↓",
         "PRICE_PER_VOTE_UP": "Price per vote ↑",
-        "PRICE_DOWN": "Price ↓",
-        "PRICE_UP": "Price ↑",
+        "PRICE_DOWN": "Τιμή ↓",
+        "PRICE_UP": "Τιμή ↓",
         "COUNTRY": "Country"
       }
     }
