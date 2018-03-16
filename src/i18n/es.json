@@ -45,19 +45,19 @@
       "REQUEST_SENT": "Petición enviada",
       "YOU_ARE_MAYOR": "Eres el alcalde",
       "PERCENTAGE": "{{ percentage }}% del electorado",
-      "SMALLCITY": "Population - less % of country population",
-      "MEDIUMCITY": "Population - less % of country population",
-      "BIGCITY": "Population - more than % of country population"
+      "SMALLCITY": "Población - menos % de la población del país",
+      "MEDIUMCITY": "Población - menos % de la población del país",
+      "BIGCITY": "Población - más del % de la población del país"
     },
     "MODAL": {
-      "CONGRATULATIONS": "<b>Congratulations!</b><br/> You are new mayor of {{ name }}",
-      "RULE_CITY": "Rule this city!"
+      "CONGRATULATIONS": "<b>¡Felicidades!</b><br/> Eres el nuevo alcalde de {{ name }}",
+      "RULE_CITY": "¡Gobierna esta ciudad!"
     },
     "FILTER": {
-      "SORT_BY": "Sort by",
-      "SEARCH": "Search",
+      "SORT_BY": "Ordenar por",
+      "SEARCH": "Buscar",
       "SORT": {
-        "NAME": "Name",
+        "NAME": "Nombre",
         "ELECTORATE_DOWN": "Electorado ↓",
         "ELECTORATE_UP": "Electorado ↑",
         "PRICE_PER_VOTE_DOWN": "Precio por voto ↓",
@@ -87,23 +87,23 @@
       "ELECTORATE": "Electorado",
       "INVEST": "Invertir",
       "TO_BECOME_A_PRESIDENT": "para convertirse en presidente",
-      "RUN_CAMPAIGN": "Run campaign",
-      "INVEST_PRICE": "Invest {{ price }} to win presidential election",
+      "RUN_CAMPAIGN": "Lanzar campaña",
+      "INVEST_PRICE": "Invertir {{ price }} para ganar la elección presidencial",
       "TO_WIN": "para ganar las elecciones presidenciales",
       "INVEST_MODAL_TEXT": "¡Estas son las ciudades más rentables para invertir en tu campaña en {{ country }} para conseguir la mayoría de votos y volverte presidente del país! Si quieres invertir en otras ciudades en {{ country }}, escoge entre",
       "INVEST_MODAL_TEXT_LINK": "esta lista",
-      "INVEST_MODAL_PERCENTAGE": "% of electorate"
+      "INVEST_MODAL_PERCENTAGE": "% del electorado"
     },
     "MODAL": {
-      "CONGRATULATIONS": "<b>Congratulations!</b><br/> You have the majority of votes in {{ name }}!",
-      "RULE_COUNTRY": "Rule this country!"
+      "CONGRATULATIONS": "<b>¡Felicidades!</b><br/> Tienes la mayoría de votos en {{ name }}!",
+      "RULE_COUNTRY": "¡Gobierna esta ciudad!"
     },
     "FILTER": {
-      "SORT_BY": "Sort by",
-      "SEARCH": "Search",
+      "SORT_BY": "Ordenar por",
+      "SEARCH": "Buscar",
       "SORT": {
-        "NAME": "Name",
-        "AVAILABILITY": "Available first",
+        "NAME": "Nombre",
+        "AVAILABILITY": "Disponibles primero",
         "ELECTORATE_DOWN": "Electorado ↓",
         "ELECTORATE_UP": "Electorado ↑",
         "PRICE_DOWN": "Precio ↓",
@@ -120,8 +120,8 @@
     "MLN": "M",
     "THOUSANDS": "K",
     "PAGINATION": {
-      "FIRST_TEXT": "First",
-      "LAST_TEXT": "Last"
+      "FIRST_TEXT": "Primero",
+      "LAST_TEXT": "Último"
     },
     "FILTER": {
       "SORT_BY": "Ordenar por"
