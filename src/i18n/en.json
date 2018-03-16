@@ -147,7 +147,6 @@
   "ERRORS": {
     "UNSUCCESSFUL_TRANSACTION": "Unsuccessful transaction - buying <b>{{ name }}</b>",
     "NICKNAME_WAS_NOT_SET": "<b>Error!</b> Nickname was not set."
-
   },
   "LOG": {
     "BECAME_PRESIDENT": "Became President of {{ country }} {{ timestamp }}"
