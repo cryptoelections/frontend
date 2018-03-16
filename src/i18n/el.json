@@ -46,7 +46,7 @@
       "YOU_ARE_MAYOR": "Είστε ο δήμαρχος",
       "PERCENTAGE": "{{ percentage }}% του εκλογικού σώματος",
       "SMALLCITY": "Πληθυσμός- λιγότερο % του πληθυσμού της χώρας",
-      "MEDIUMCITY": "Population - less % of country population",
+      "MEDIUMCITY": "Πληθυσμός- λιγότερο % του πληθυσμού της χώρας",
       "BIGCITY": "Πληθυσμός- περισσότερο από % του πληθυσμού της χώρας"
     },
     "MODAL": {
@@ -60,33 +60,33 @@
         "NAME": "Όνομα",
         "ELECTORATE_DOWN": "Εκλογικό σώμα ↓",
         "ELECTORATE_UP": "Εκλογικό σώμα ↑",
-        "PRICE_PER_VOTE_DOWN": "Price per vote ↓",
-        "PRICE_PER_VOTE_UP": "Price per vote ↑",
+        "PRICE_PER_VOTE_DOWN": "Τιμή ανά ψηφοφορία ↓",
+        "PRICE_PER_VOTE_UP": "Τιμή ανά ψηφοφορία ↑",
         "PRICE_DOWN": "Τιμή ↓",
-        "PRICE_UP": "Τιμή ↓",
-        "COUNTRY": "Country"
+        "PRICE_UP": "Τιμή ↑",
+        "COUNTRY": "Χώρα"
       }
     }
   },
   "COUNTRY": {
-    "TITLE": "Countries",
+    "TITLE": "Χώρες",
     "CARD": {
-      "PRESIDENT": "President",
-      "NOT_ELECTED_YET": "Not elected yet",
-      "YOU_ARE_PRESIDENT": "You are the President",
-      "NOT_IMPLEMENTED": "There are no cryptoelections yet",
+      "PRESIDENT": "Πρόεδρος",
+      "NOT_ELECTED_YET": "Δεν έχει εκλεγεί ακόμα",
+      "YOU_ARE_PRESIDENT": "Είστε ο Πρόεδρος",
+      "NOT_IMPLEMENTED": "Δεν υπάρχουν κρυπτοεκλογές ακόμα",
       "CITIES_PRICE_RANGE": {
-        "CITIES": "{{ lowestPrice }} - {{ highestPrice }} ETH",
+        "CITIES": "{{ lowestPrice }}{{ highestPrice }} ETH",
         "ONE_CITY": " {{ lowestPrice }} ETH"
       },
-      "CITY": "city",
-      "CITIES": "cities",
-      "UNDER_YOUR_CONTROL": "under your control",
-      "OF_ELECTORATE": "of electorate",
-      "SUPPORT_YOU": "support you",
-      "ELECTORATE": "Electorate",
-      "INVEST": "Invest",
-      "TO_BECOME_A_PRESIDENT": "to become a president",
+      "CITY": "πόλη",
+      "CITIES": "πόλεις",
+      "UNDER_YOUR_CONTROL": "υπό τον έλεγχο σας",
+      "OF_ELECTORATE": "του εκλογικού σώματος",
+      "SUPPORT_YOU": "σας υποστηρίζει",
+      "ELECTORATE": "Εκλογικό σώμα",
+      "INVEST": "Επενδύω",
+      "TO_BECOME_A_PRESIDENT": "για να γίνεις πρόεδρος",
       "RUN_CAMPAIGN": "Run campaign",
       "INVEST_PRICE": "Invest {{ price }} to win presidential election",
       "TO_WIN": "to win presidential election",
@@ -99,56 +99,56 @@
       "RULE_COUNTRY": "Rule this country!"
     },
     "FILTER": {
-      "SORT_BY": "Sort by",
-      "SEARCH": "Search",
+      "SORT_BY": "Ταξινόμηση ανά",
+      "SEARCH": "Αναζήτηση",
       "SORT": {
-        "NAME": "Name",
-        "AVAILABILITY": "Available first",
-        "ELECTORATE_DOWN": "Electorate ↓",
-        "ELECTORATE_UP": "Electorate ↑",
-        "PRICE_DOWN": "Price ↓",
-        "PRICE_UP": "Price ↑",
-        "NUMBER_OF_CITIES_DOWN": "Number of cities ↓",
-        "NUMBER_OF_CITIES_UP": "Number of cities ↑",
-        "AREA": "Area"
+        "NAME": "Όνομα",
+        "AVAILABILITY": "Διαθέσιμο πρώτα",
+        "ELECTORATE_DOWN": "Εκλογικό σώμα ↓",
+        "ELECTORATE_UP": "Εκλογικό σώμα ↑",
+        "PRICE_DOWN": "Τιμή ↓",
+        "PRICE_UP": "Τιμή ↑",
+        "NUMBER_OF_CITIES_DOWN": "Αριθμός των πόλεων ↓",
+        "NUMBER_OF_CITIES_UP": "Αριθμός των πόλεων ↑",
+        "AREA": "Περιοχή"
       }
     }
   },
-  "M": "M",
-  "K": "K",
+  "M": "Μ",
+  "K": "Κ",
   "COMMON": {
-    "MLN": "M",
-    "THOUSANDS": "K",
+    "MLN": "Μ",
+    "THOUSANDS": "Κ",
     "PAGINATION": {
-      "FIRST_TEXT": "First",
-      "LAST_TEXT": "Last"
+      "FIRST_TEXT": "Πρώτο",
+      "LAST_TEXT": "Τελευταίο"
     },
     "FILTER": {
-      "SORT_BY": "Sort by"
+      "SORT_BY": "Ταξινόμηση ανά"
     }
   },
   "CAMPAIGN": {
-    "TITLE": "My campaign",
-    "CITY": "city",
-    "CITIES": "cities",
-    "START": "Start your campaign",
-    "INVEST": "Invest in your campaign in cities and countries of your choice to rule the whole worldmap!"
+    "TITLE": "Η εκστρατεία μου",
+    "CITY": "πόλη",
+    "CITIES": "πόλεις",
+    "START": "Ξεκινήστε την εκστρατεία σας",
+    "INVEST": "Επενδύστε στην εκστρατεία σας σε πόλεις και χώρες της επιλογής σας για να κυβερνήσετε ολόκληρο τον παγκόσμιο χάρτη!"
   },
   "NOTIFICATIONS": {
-    "PRESIDENT": "<b>{{ user }}</b> was elected President of <b>{{ country }}</b> {{ timestamp }}"
+    "PRESIDENT": "<b>{{ user }}</b> εξελέγη Πρόεδρος του <b>{{ country }}</b>{{ timestamp }}"
   },
   "WALLET": {
     "TEXT": "If someone becomes a mayor instead of you, you get compensation. Here you can see how much you have:",
-    "WITHDRAW": "Withdraw"
+    "WITHDRAW": "Ανάληψη"
   },
   "SUCCESS": {
-    "NICKNAME_WAS_SET": "Nickname was successfully set"
+    "NICKNAME_WAS_SET": "Το Ψευδώνυμο ορίστηκε με επιτυχία"
   },
   "ERRORS": {
-    "UNSUCCESSFUL_TRANSACTION": "Unsuccessful transaction - buying <b>{{ name }}</b>",
-    "NICKNAME_WAS_NOT_SET": "<b>Error!</b> Nickname was not set."
+    "UNSUCCESSFUL_TRANSACTION": "Ανεπιτυχής συναλλαγή - αγορά<b>{{ name }}</b>",
+    "NICKNAME_WAS_NOT_SET": "<b>Σφάλμα!</b> Δεν έχει οριστεί ψευδώνυμο."
   },
   "LOG": {
-    "BECAME_PRESIDENT": "Became President of {{ country }} {{ timestamp }}"
+    "BECAME_PRESIDENT": "Έγινε πρόεδρος της {{ country }}{{ timestamp }}"
   }
 }
