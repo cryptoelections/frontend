@@ -88,8 +88,8 @@
       "INVEST": "Investovat",
       "TO_BECOME_A_PRESIDENT": "na pozici prezidenta",
       "RUN_CAMPAIGN": "Vést kampaň",
-      "INVEST_PRICE": "Investujte {{ price }} k vítězství v prezidentských volbách",
-      "TO_WIN": "to win presidential election",
+      "INVEST_PRICE": "Investujte {{ price }} k výhře prezidentských voleb",
+      "TO_WIN": "k výhře prezidentských voleb",
       "INVEST_MODAL_TEXT": "These are the most cost-effective cities to invest in your campaign in {{ country }} to get the majority of votes to become the president of the country! If you want to invest in another cities in {{ country }}, choose from",
       "INVEST_MODAL_TEXT_LINK": "this list",
       "INVEST_MODAL_PERCENTAGE": "% voličů"
