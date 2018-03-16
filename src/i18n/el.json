@@ -87,16 +87,16 @@
       "ELECTORATE": "Εκλογικό σώμα",
       "INVEST": "Επενδύω",
       "TO_BECOME_A_PRESIDENT": "για να γίνεις πρόεδρος",
-      "RUN_CAMPAIGN": "Run campaign",
-      "INVEST_PRICE": "Invest {{ price }} to win presidential election",
-      "TO_WIN": "to win presidential election",
-      "INVEST_MODAL_TEXT": "These are the most cost-effective cities to invest in your campaign in {{ country }} to get the majority of votes to become the president of the country! If you want to invest in another cities in {{ country }}, choose from",
-      "INVEST_MODAL_TEXT_LINK": "this list",
-      "INVEST_MODAL_PERCENTAGE": "% of electorate"
+      "RUN_CAMPAIGN": "Διοικήστε εκστρατεία",
+      "INVEST_PRICE": "Επενδύστε {{ price }} για να κερδίσετε τις προεδρικές εκλογές",
+      "TO_WIN": "για να κερδίσετε τις προεδρικές εκλογές",
+      "INVEST_MODAL_TEXT": "Αυτές είναι οι πιο οικονομικά αποδοτικές πόλεις για να επενδύσετε στην εκστρατεία σας στην {{ country }} για να πάρετε την πλειοψηφία για να γίνετε πρόεδρος της χώρας! Αν θέλετε να επενδύσετε σε άλλες πόλεις στη {{ country }}, επιλέξτε από",
+      "INVEST_MODAL_TEXT_LINK": "αυτή η λίστα",
+      "INVEST_MODAL_PERCENTAGE": "% του εκλογικού σώματος"
     },
     "MODAL": {
-      "CONGRATULATIONS": "<b>Congratulations!</b><br/> You have the majority of votes in {{ name }}!",
-      "RULE_COUNTRY": "Rule this country!"
+      "CONGRATULATIONS": "<b>συγχαρητήρια</b><br/> Έχετε την πλειοψηφία των ψήφων σε {{ name }}!",
+      "RULE_COUNTRY": "Κυβερνήστε αυτή την χώρα!"
     },
     "FILTER": {
       "SORT_BY": "Ταξινόμηση ανά",
@@ -138,7 +138,7 @@
     "PRESIDENT": "<b>{{ user }}</b> εξελέγη Πρόεδρος του <b>{{ country }}</b>{{ timestamp }}"
   },
   "WALLET": {
-    "TEXT": "If someone becomes a mayor instead of you, you get compensation. Here you can see how much you have:",
+    "TEXT": "Αν κάποιος γίνει δήμαρχος αντί για εσάς, παίρνετε αποζημίωση. Εδώ μπορείτε να δείτε πόσο έχετε:",
     "WITHDRAW": "Ανάληψη"
   },
   "SUCCESS": {
