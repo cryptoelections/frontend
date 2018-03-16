@@ -9,13 +9,13 @@
   "HOME": {
     "START_YOUR_CAMPAIGN": "Zahajte kampaň!",
     "GET_POWER": "Získejte moc.",
-    "RUN_COUNTRIES": "Run countries.",
+    "RUN_COUNTRIES": "Řiďte země.",
     "EARN_MONEY": "Vydělějte peníze."
   },
   "MARKETPLACE": {
-    "TITLE": "Marketplace",
+    "TITLE": "Trh",
     "VIEWMODE": {
-      "CITIES": "Cities",
+      "CITIES": "Města",
       "COUNTRIES": "Countries"
     }
   },
@@ -33,12 +33,12 @@
     "WRONG_NETWORK_TEXT": "Simply open MetaMask and switch over to the Main Ethereum Network."
   },
   "CITY": {
-    "TITLE": "Cities",
-    "NOT_FOUND": "No cities",
+    "TITLE": "Města",
+    "NOT_FOUND": "Žádná města",
     "CARD": {
       "MAYOR": "Mayor",
       "NOT_ELECTED_YET": "Not elected yet",
-      "COUNTRY": "Country",
+      "COUNTRY": "Země",
       "ELECTORATE": "Electorate",
       "INVEST": "Invest",
       "TO_WIN": "to win mayoral election",
@@ -80,7 +80,7 @@
         "ONE_CITY": " {{ lowestPrice }} ETH"
       },
       "CITY": "city",
-      "CITIES": "cities",
+      "CITIES": "města",
       "UNDER_YOUR_CONTROL": "under your control",
       "OF_ELECTORATE": "of electorate",
       "SUPPORT_YOU": "support you",
@@ -108,8 +108,8 @@
         "ELECTORATE_UP": "Electorate ↑",
         "PRICE_DOWN": "Price ↓",
         "PRICE_UP": "Price ↑",
-        "NUMBER_OF_CITIES_DOWN": "Number of cities ↓",
-        "NUMBER_OF_CITIES_UP": "Number of cities ↑",
+        "NUMBER_OF_CITIES_DOWN": "Počet měst ↓",
+        "NUMBER_OF_CITIES_UP": "Počet měst ↑",
         "AREA": "Area"
       }
     }
@@ -130,7 +130,7 @@
   "CAMPAIGN": {
     "TITLE": "My campaign",
     "CITY": "city",
-    "CITIES": "cities",
+    "CITIES": "města",
     "START": "Start your campaign",
     "INVEST": "Invest in your campaign in cities and countries of your choice to rule the whole worldmap!"
   },
