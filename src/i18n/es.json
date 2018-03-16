@@ -1,26 +1,26 @@
 {
   "TITLE": "crypto elections",
   "MENU": {
-    "COUNTRIES": "Countries",
-    "CITIES": "Cities",
-    "MAP": "Map",
-    "MY_CAMPAIGN": "My campaign"
+    "COUNTRIES": "Países",
+    "CITIES": "Ciudades",
+    "MAP": "Mapa",
+    "MY_CAMPAIGN": "Mi campaña"
   },
   "HOME": {
-    "START_YOUR_CAMPAIGN": "Start your campaign!",
-    "GET_POWER": "Get power.",
-    "RUN_COUNTRIES": "Run countries.",
-    "EARN_MONEY": "Earn Money."
+    "START_YOUR_CAMPAIGN": "¡Empieza tu campaña!",
+    "GET_POWER": "Consigue poder.",
+    "RUN_COUNTRIES": "Maneja países.",
+    "EARN_MONEY": "Obtén Dinero."
   },
   "MARKETPLACE": {
-    "TITLE": "Marketplace",
+    "TITLE": "Mercado",
     "VIEWMODE": {
-      "CITIES": "Cities",
-      "COUNTRIES": "Countries"
+      "CITIES": "Ciudades",
+      "COUNTRIES": "Países"
     }
   },
   "ACCOUNT": {
-    "NOT_CONNECTED": "Not connected",
+    "NOT_CONNECTED": "No conectado",
     "REQUIRE_METAMASK": "CryptoElections requires a MetaMask add-on installed in your browser.",
     "INSTALL": "Install",
     "SET_NICKNAME": "Set Nickname",
