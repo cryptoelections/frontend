@@ -1,10 +1,10 @@
 {
-  "TITLE": "crypto elections",
+  "TITLE": "krypto volby",
   "MENU": {
-    "COUNTRIES": "Countries",
-    "CITIES": "Cities",
-    "MAP": "Map",
-    "MY_CAMPAIGN": "My campaign"
+    "COUNTRIES": "Země",
+    "CITIES": "Města",
+    "MAP": "Mapa",
+    "MY_CAMPAIGN": "Moje kampaň"
   },
   "HOME": {
     "START_YOUR_CAMPAIGN": "Start your campaign!",
