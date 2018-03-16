@@ -1,10 +1,10 @@
 {
   "TITLE": "crypto elections",
   "MENU": {
-    "COUNTRIES": "Countries",
-    "CITIES": "Cities",
-    "MAP": "Map",
-    "MY_CAMPAIGN": "My campaign"
+    "COUNTRIES": "Страны",
+    "CITIES": "Города",
+    "MAP": "Карта",
+    "MY_CAMPAIGN": "Моя кампания"
   },
   "HOME": {
     "START_YOUR_CAMPAIGN": "Start your campaign!",
@@ -15,8 +15,8 @@
   "MARKETPLACE": {
     "TITLE": "Marketplace",
     "VIEWMODE": {
-      "CITIES": "Cities",
-      "COUNTRIES": "Countries"
+      "CITIES": "Города",
+      "COUNTRIES": "Страны"
     }
   },
   "ACCOUNT": {
@@ -37,14 +37,14 @@
     "NOT_FOUND": "No cities",
     "CARD": {
       "MAYOR": "Mayor",
-      "NOT_ELECTED_YET": "Not elected yet",
-      "COUNTRY": "Country",
-      "ELECTORATE": "Electorate",
+      "NOT_ELECTED_YET": "Ещё не избран",
+      "COUNTRY": "Страна",
+      "ELECTORATE": "Электорат",
       "INVEST": "Invest",
       "TO_WIN": "to win mayoral election",
       "REQUEST_SENT": "Request sent",
-      "YOU_ARE_MAYOR": "You are the mayor",
-      "PERCENTAGE": "{{ percentage }}% of electorate",
+      "YOU_ARE_MAYOR": "Вы - мэр",
+      "PERCENTAGE": "{{ percentage }}% электората",
       "SMALLCITY": "Population - less % of country population",
       "MEDIUMCITY": "Population - less % of country population",
       "BIGCITY": "Population - more than % of country population"
