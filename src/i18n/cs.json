@@ -74,15 +74,15 @@
       "PRESIDENT": "Prezident",
       "NOT_ELECTED_YET": "Prozatím nezvolen",
       "YOU_ARE_PRESIDENT": "Jste prezident",
-      "NOT_IMPLEMENTED": "There are no cryptoelections yet",
+      "NOT_IMPLEMENTED": "Nejsou vyhlášeny žádné kryptovolby",
       "CITIES_PRICE_RANGE": {
         "CITIES": "{{ lowestPrice }} - {{ highestPrice }} ETH",
         "ONE_CITY": " {{ lowestPrice }} ETH"
       },
-      "CITY": "city",
+      "CITY": "město",
       "CITIES": "města",
-      "UNDER_YOUR_CONTROL": "under your control",
-      "OF_ELECTORATE": "of electorate",
+      "UNDER_YOUR_CONTROL": "pod vaší kontrolou",
+      "OF_ELECTORATE": "voličů",
       "SUPPORT_YOU": "support you",
       "ELECTORATE": "Electorate",
       "INVEST": "Invest",
@@ -92,20 +92,20 @@
       "TO_WIN": "to win presidential election",
       "INVEST_MODAL_TEXT": "These are the most cost-effective cities to invest in your campaign in {{ country }} to get the majority of votes to become the president of the country! If you want to invest in another cities in {{ country }}, choose from",
       "INVEST_MODAL_TEXT_LINK": "this list",
-      "INVEST_MODAL_PERCENTAGE": "% of electorate"
+      "INVEST_MODAL_PERCENTAGE": "% voličů"
     },
     "MODAL": {
       "CONGRATULATIONS": "<b>Congratulations!</b><br/> You have the majority of votes in {{ name }}!",
       "RULE_COUNTRY": "Rule this country!"
     },
     "FILTER": {
-      "SORT_BY": "Sort by",
-      "SEARCH": "Search",
+      "SORT_BY": "Seřadit podle",
+      "SEARCH": "Hledat",
       "SORT": {
-        "NAME": "Name",
+        "NAME": "Jméno",
         "AVAILABILITY": "Available first",
-        "ELECTORATE_DOWN": "Electorate ↓",
-        "ELECTORATE_UP": "Electorate ↑",
+        "ELECTORATE_DOWN": "Voliči ↓",
+        "ELECTORATE_UP": "Voliči ↑",
         "PRICE_DOWN": "Cena ↓",
         "PRICE_UP": "Cena ↑",
         "NUMBER_OF_CITIES_DOWN": "Počet měst ↓",
