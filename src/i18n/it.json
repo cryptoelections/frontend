@@ -14,23 +14,23 @@
     "HOW_TO_PLAY": "Come giocare",
     "HOW_TO_PLAY_TEXT_1": "CryptoElections è un gioco dove governi paesi tramite una campagna elettorale nelle città. Più elettorato vive in città — più voti ottieni. Una volta che otterrai la maggioranza — diventerai il Presidente. L'obiettivo è quello di diventare Presidente in più paesi possibile.",
     "HOW_TO_PLAY_TEXT_2": "Il Presidente ottiene l'1% di commissioni su tutte le transazioni nel suo paese.",
-    "HOW_TO_PLAY_TEXT_3": "If you are the mayor of the city and someone wants to beat you will get up to 2 times more you paid.",
+    "HOW_TO_PLAY_TEXT_3": "Se sei il sindaco di una città e qualcuno vuole batterti verrai pagato il doppio.",
     "MAYOR": "Sindaco",
     "PRESIDENT": "Presidente",
     "MAYOR_TEXT_1": "Può cambiare lo stemma della città ed il suo motto",
-    "MAYOR_TEXT_2": "Get the financial compensation from up to 2x if someone displace him",
+    "MAYOR_TEXT_2": "Ottiene una compensazione finanziari fino al doppio se qualcuno lo rimpiazza",
     "MAYOR_TEXT_3": "Ottiene tutti i voti nella città della sua campagna presidenziale",
     "PRESIDENT_TEXT_1": "Può cambiare lo sfondo del suo paese nella mappa mondiale",
     "PRESIDENT_TEXT_2": "Tasse. Ottieni l'1% di commissioni su tutte le transazioni nel suo paese.",
     "PRESIDENT_TEXT_3": "Sta al suo posto finché qualcuno non raggiunge il 50%+1 di voti",
     "ROADMAP": "Tabella di marcia",
-    "ROADMAP_1": "Alpha-Release. Early-access for initial users. Invest in campaign and elections mechanics implemented. First 10 countries released. Cities’ initial price - 0.02 eth.",
-    "ROADMAP_2": "Beta-Release. New features: World map, list of most influential mayors and Presidents.",
-    "ROADMAP_3": "Mayors get power. Mayors will be able to change city’s coat of arms to any picture, and add city slogan that will be visible to everyone.",
+    "ROADMAP_1": "Rilascio alpha. Accesso anticipato per gli utenti iniziali. Investimento in campagna e meccaniche delle elezioni implementati. Primi 10 paesi rilasciati. Prezzo iniziale delle città - 0.02 ETH.",
+    "ROADMAP_2": "Rilascio beta. Nuove funzioni: Mappa del mondo, lista dei sindaci e dei Presidenti più influenti.",
+    "ROADMAP_3": "I sindaci ottengono il potere. I sindaci possono cambiare gli stemmi delle città con qualsiasi immagine, e possono aggiungere uno slogan visibile a tutti.",
     "ROADMAP_4": "I Presidenti possono cambiare la mappa mondiale. Il Presidente può cambiare nei paesi tutto ciò che è sotto il suo controllo. Il Presidente può pubblicizzare qualsiasi cosa.",
     "ROADMAP_5": "Tutti i paesi sono nel gioco.",
     "ROADMAP_6": "Inizia l'enorme campagna di pubblicità.",
-    "ROADMAP_7": "Main release. Cities crowdfunding platform implemented. Any user will be able to submit local crowdfunding business or charity project, and mayor of the city will choose which project will be crowdfunded in this city."
+    "ROADMAP_7": "Rilascio principale. Piattaforma di finanziamento per le città implementata. Qualsiasi utente potrà inviare finanziamenti ai negozi locali od ai progetti benefici, ed il sindaco della città potrà scegliere quale progetto poter finanziare in quella città."
   },
   "MARKETPLACE": {
     "TITLE": "Mercato",
@@ -50,7 +50,7 @@
     "METAMASK_LOCKED": "Il tuo MetaMask è bloccato",
     "METAMASK_LOCKED_TEXT": "Apri MetaMask e segui le istruzioni per sbloccarlo.",
     "WRONG_NETWORK": "Oops, sei sul network sbagliato",
-    "WRONG_NETWORK_TEXT": "Simply open MetaMask and switch over to the Main Ethereum Network."
+    "WRONG_NETWORK_TEXT": "Apri MetaMask e scegli il network principale Ethereum."
   },
   "CITY": {
     "TITLE": "Città",
