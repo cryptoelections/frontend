@@ -82,16 +82,16 @@
         "ELECTORATE_UP": "Electorat ↑",
         "PRICE_PER_VOTE_DOWN": "Preț pe vot ↓",
         "PRICE_PER_VOTE_UP": "Preț pe vot ↑",
-        "PRICE_DOWN": "Price ↓",
-        "PRICE_UP": "Price ↑",
-        "COUNTRY": "Country"
+        "PRICE_DOWN": "Preț ↓",
+        "PRICE_UP": "Preț ↑",
+        "COUNTRY": "Țară"
       }
     }
   },
   "COUNTRY": {
-    "TITLE": "Countries",
+    "TITLE": "Țări",
     "CARD": {
-      "PRESIDENT": "President",
+      "PRESIDENT": "Președinte",
       "NOT_ELECTED_YET": "Not elected yet",
       "YOU_ARE_PRESIDENT": "You are the President",
       "NOT_IMPLEMENTED": "There are no cryptoelections yet",
