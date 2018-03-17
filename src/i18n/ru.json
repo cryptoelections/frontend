@@ -155,25 +155,25 @@
     "INVEST": "Инвестируйте в свою кампанию в городах и странах на свой выбор, чтобы править всем миром!"
   },
   "NOTIFICATIONS": {
-    "PRESIDENT": "<b>{{ user }}</b> was elected President of <b>{{ country }}</b> {{ timestamp }}"
+    "PRESIDENT": "<b>{{ user }}</b> был избран Президентом <b>{{ country }}</b> {{ timestamp }}"
   },
   "WALLET": {
-    "TEXT": "If someone becomes a mayor instead of you, you get compensation. Here you can see how much you have:",
-    "WITHDRAW": "Withdraw"
+    "TEXT": "Если кто-то становится мэром вместо вас, вы получаете компенсацию. Здесь вы можете увидеть сколько у вас на счете средств:",
+    "WITHDRAW": "Списать"
   },
   "SUCCESS": {
-    "NICKNAME_WAS_SET": "Nickname was successfully set"
+    "NICKNAME_WAS_SET": "Имя пользователя успешно установлено"
   },
   "ERRORS": {
-    "UNSUCCESSFUL_TRANSACTION": "Unsuccessful transaction - buying <b>{{ name }}</b>",
-    "NICKNAME_WAS_NOT_SET": "<b>Error!</b> Nickname was not set."
+    "UNSUCCESSFUL_TRANSACTION": "Неуспешная транзакция при покупке <b>{{ name }}</b>",
+    "NICKNAME_WAS_NOT_SET": "<b>Ошибка!</b> Имя пользователя не было установлено."
   },
   "LOG": {
-    "BECAME_PRESIDENT": "Became President of {{ country }} {{ timestamp }}"
+    "BECAME_PRESIDENT": "Стал Президентом {{ country }} {{ timestamp }}"
   },
   "QA": {
     "1": {
-      "QUESTION": "What do I need to play CryptoElections?",
+      "QUESTION": "Что мне необходимо, чтобы играть в CryptoElections?",
       "ANSWER": "Here’s what you need to get started: <br/> A computer or laptop running the desktop version of Chrome or Firefox MetaMask, a digital wallet used specifically with web apps Ether, a form of digital payment that powers CryptoElections."
     },
     "2": {
