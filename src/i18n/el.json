@@ -190,7 +190,7 @@
     },
     "5": {
       "QUESTION": "Παίρνετε Ether, το ψηφιακό σας νόμισμα",
-      "ANSWER": "<b>For U.S. citizens only:</b> you can buy ether (ETH) in MetaMask. ETH is a digital currency that enables our game to run.<br/><img src='assets/images/screenshot-buy-usa.png' alt=''/><br/> <b>For everyone else:</b> you will need to purchase ETH from an exchange, and then transfer the ETH from your exchange wallet to your MetaMask wallet. Unfortunately, you cannot play CryptoElections with only an exchange account."
+      "ANSWER": "<b> Για πολίτες Η.Π.Α μόνο:</b> μπορείτε να αγοράσετε ether (ETH) sto MetaMask. ETH είναι ένα ψηφιακό νόμισμα που επιτρέπει στο παιχνίδι μας να τρέχει.<br/><img src='assets/images/screenshot-buy-usa.png' alt=''/><b><br/> Για όλους τους άλλους:</b> θα πρέπει να αγοράσετε ETH από μια συναλλαγή, και μετά να μεταφέρετε το ETH από το πορτοφόλι συναλλαγής σας στο MetaMask πορτοφόλι σας. Δυστυχώς, δεν μπορείτε να παίξετε CryptoElections μόνο με ένα λογαριασμό συναλλαγής."
     },
     "6": {
       "QUESTION": "Πως να στείλετε ETH στο MetaMask",
