@@ -13,7 +13,7 @@
     "EARN_MONEY": "Guadagna soldi.",
     "HOW_TO_PLAY": "Come giocare",
     "HOW_TO_PLAY_TEXT_1": "CryptoElections è un gioco dove governi paesi tramite una campagna elettorale nelle città. Più elettorato vive in città — più voti ottieni. Una volta che otterrai la maggioranza — diventerai il Presidente. L'obiettivo è quello di diventare Presidente in più paesi possibile.",
-    "HOW_TO_PLAY_TEXT_2": "President will get 1% commission fee from every transaction in his country.",
+    "HOW_TO_PLAY_TEXT_2": "Il Presidente ottiene l'1% di commissioni su tutte le transazioni nel suo paese.",
     "HOW_TO_PLAY_TEXT_3": "If you are the mayor of the city and someone wants to beat you will get up to 2 times more you paid.",
     "MAYOR": "Sindaco",
     "PRESIDENT": "Presidente",
@@ -123,7 +123,7 @@
       "SEARCH": "Cerca...",
       "SORT": {
         "NAME": "Nome",
-        "AVAILABILITY": "Available first",
+        "AVAILABILITY": "Disponibile prima",
         "ELECTORATE_DOWN": "Elettorato ↓",
         "ELECTORATE_UP": "Elettorato ↑",
         "PRICE_DOWN": "Prezzo ↓",
@@ -165,7 +165,7 @@
     "NICKNAME_WAS_SET": "Nome impostato con successo"
   },
   "ERRORS": {
-    "UNSUCCESSFUL_TRANSACTION": "Unsuccessful transaction - buying <b>{{ name }}</b>",
+    "UNSUCCESSFUL_TRANSACTION": "Transazione non eseguita - Compra <b>{{ name }}</b>",
     "NICKNAME_WAS_NOT_SET": "<b>Errore!</b> Nome non impostato."
   },
   "LOG": {
@@ -174,10 +174,10 @@
   "QA": {
     "1": {
       "QUESTION": "Di cosa ho bisogno per giocare a CryptoElections?",
-      "ANSWER": "Here’s what you need to get started: <br/> A computer or laptop running the desktop version of Chrome or Firefox MetaMask, a digital wallet used specifically with web apps Ether, a form of digital payment that powers CryptoElections."
+      "ANSWER": "Ecco di cosa hai bisogno per iniziare: <br/> Un computer od un portatile che hanno MetaDesk installato su Chrome o Firefox per desktop ed un portafoglio digitale usato specificamente per le app web che usano Ether, una forma di pagamento digitale con cui gestisci CryptoElections."
     },
     "2": {
-      "QUESTION": "Installa MetaMask, il tuo portafoglio digitale",
+      "QUESTION": "Installare MetaMask, il tuo portafoglio digitale",
       "ANSWER": "To use CryptoElections, you will need to install MetaMask, a digital wallet. You will need to put money in it to make your first purchase. <br/> Note: A digital wallet like MetaMask acts like a bank account—treat it with respect and make sure you don’t forget your password or the seed words."
     },
     "3": {
