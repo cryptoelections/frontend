@@ -19,8 +19,8 @@
     "PRESIDENT": "Presidente",
     "MAYOR_TEXT_1": "Can change the coat of arms of the city and it’s slogan",
     "MAYOR_TEXT_2": "Get the financial compensation from up to 2x if someone displace him",
-    "MAYOR_TEXT_3": "Get all the votes from the city to his presidential campaign",
-    "PRESIDENT_TEXT_1": "Can change the background of his country on the World Map",
+    "MAYOR_TEXT_3": "Ottiene tutti i voti nella città della sua campagna presidenziale",
+    "PRESIDENT_TEXT_1": "Può cambiare lo sfondo del suo paese nella mappa mondiale",
     "PRESIDENT_TEXT_2": "Tasse. Ottieni l'1% di commissioni su tutte le transazioni nel suo paese.",
     "PRESIDENT_TEXT_3": "Stays on his place until somebody won’t get 50%+1 vote",
     "ROADMAP": "Tabella di marcia",
@@ -29,11 +29,11 @@
     "ROADMAP_3": "Mayors get power. Mayors will be able to change city’s coat of arms to any picture, and add city slogan that will be visible to everyone.",
     "ROADMAP_4": "I Presidenti possono cambiare la mappa mondiale. Il Presidente può cambiare nei paesi tutto ciò che è sotto il suo controllo. Il Presidente può pubblicizzare qualsiasi cosa.",
     "ROADMAP_5": "Tutti i paesi sono nel gioco.",
-    "ROADMAP_6": "Massive marketing campaign begins.",
+    "ROADMAP_6": "Inizia l'enorme campagna di pubblicità.",
     "ROADMAP_7": "Main release. Cities crowdfunding platform implemented. Any user will be able to submit local crowdfunding business or charity project, and mayor of the city will choose which project will be crowdfunded in this city."
   },
   "MARKETPLACE": {
-    "TITLE": "Marketplace",
+    "TITLE": "Mercato",
     "VIEWMODE": {
       "CITIES": "Città",
       "COUNTRIES": "Paesi"
@@ -47,9 +47,9 @@
     "NICKNAME_PLACEHOLDER": "Inserisci il tuo nome",
     "IS_LOCKED": "Bloccato",
     "INSTALL_METAMASK": "Installa MetaMask",
-    "METAMASK_LOCKED": "Your MetaMask is locked",
+    "METAMASK_LOCKED": "Il tuo MetaMask è bloccato",
     "METAMASK_LOCKED_TEXT": "Simply open MetaMask and follow the instructions to unlock it.",
-    "WRONG_NETWORK": "Oops, you’re on the wrong network",
+    "WRONG_NETWORK": "Oops, sei sul network sbagliato",
     "WRONG_NETWORK_TEXT": "Simply open MetaMask and switch over to the Main Ethereum Network."
   },
   "CITY": {
@@ -65,9 +65,9 @@
       "REQUEST_SENT": "Richiesta inviata",
       "YOU_ARE_MAYOR": "Sei il sindaco",
       "PERCENTAGE": "{{ percentage }}% di elettorato",
-      "SMALLCITY": "Population - less % of country population",
-      "MEDIUMCITY": "Population - less % of country population",
-      "BIGCITY": "Population - more than % of country population"
+      "SMALLCITY": "Popolazione - Meno % della popolazione del paese",
+      "MEDIUMCITY": "Popolazione - Meno % della popolazione del paese",
+      "BIGCITY": "Popolazione - Più di % della popolazione del paese"
     },
     "MODAL": {
       "CONGRATULATIONS": "<b>Congratulazioni!</b><br/> Sei il nuovo sindaco di {{ name }}",
@@ -158,15 +158,15 @@
     "PRESIDENT": "<b>{{ user }}</b> was elected President of <b>{{ country }}</b> {{ timestamp }}"
   },
   "WALLET": {
-    "TEXT": "If someone becomes a mayor instead of you, you get compensation. Here you can see how much you have:",
-    "WITHDRAW": "Withdraw"
+    "TEXT": "Se qualcuno diventa sindaco al posto tuo otterrai una compensazione. Ecco quanti soldi hai:",
+    "WITHDRAW": "Preleva"
   },
   "SUCCESS": {
     "NICKNAME_WAS_SET": "Nome impostato con successo"
   },
   "ERRORS": {
     "UNSUCCESSFUL_TRANSACTION": "Unsuccessful transaction - buying <b>{{ name }}</b>",
-    "NICKNAME_WAS_NOT_SET": "<b>Error!</b> Nickname was not set."
+    "NICKNAME_WAS_NOT_SET": "<b>Errore!</b> Nome non impostato."
   },
   "LOG": {
     "BECAME_PRESIDENT": "Diventa il Presidente di {{ country }} {{ timestamp }}"
@@ -186,11 +186,11 @@
     },
     "4": {
       "QUESTION": "Reinstalling MetaMask",
-      "ANSWER": "Some users need to uninstall and reinstall MetaMask because they’ve experienced a bug. If you kept your seed words, this is very easy! Just delete the extension, reinstall it, and import your twelve seed words. Then you’ll set the password you want to use (this can be the same one you used before or a whole new password)."
+      "ANSWER": "Alcuni utenti devono disinstallare e reinstallare MetaMask perché hanno sperimentato un bug. Se hai mantenuto le tue parole seed, allora è molto facile! Basta eliminare l'estensione, reinstallarla e poi reimportare queste parole. Poi potrai impostare la password che desideri utilizzare (Questa può essere lo stesso utilizzata in precedenza od una nuova)."
     },
     "5": {
       "QUESTION": "Ottieni Ether, la tua moneta virtuale",
-      "ANSWER": "<b>For U.S. citizens only:</b> you can buy ether (ETH) in MetaMask. ETH is a digital currency that enables our game to run.<br/><img src='assets/images/screenshot-buy-usa.png' alt=''/><br/> <b>For everyone else:</b> you will need to purchase ETH from an exchange, and then transfer the ETH from your exchange wallet to your MetaMask wallet. Unfortunately, you cannot play CryptoElections with only an exchange account."
+      "ANSWER": "<b>Solo per i cittadini U.S.A.:</b> Puoi comprare Ether (ETH) in MetaMask. ETH è una moneta virtuale che permette di giocare al nostro gioco.<br/><img src='assets/images/screenshot-buy-usa.png' alt=''/><br/> <b>Per tutti gli altri:</b> Devi comprare ETH da un sito di exchange, e puoi trasferire gli ETH dal tuo portafoglio del sito al tuo portafoglio di MetaMask. Sfortunatamente non puoi giocare a CryptoElections solo con il tuo account di exchange."
     },
     "6": {
       "QUESTION": "Come inviare ETH a MetaMask",
