@@ -14,14 +14,14 @@
     "HOW_TO_PLAY": "Πως να παίξετε",
     "HOW_TO_PLAY_TEXT_1": "CryptoElections is a game about leading the countries by running an election campaign in cities. The more electorate live the city — the more votes you get. Once you get the majority — you become a president. The aim is to become a president in as many countries as possible.",
     "HOW_TO_PLAY_TEXT_2": "Ο πρόεδρος θα πάρει 1% προμήθεια από κάθε συναλλαγή στη χώρα του.",
-    "HOW_TO_PLAY_TEXT_3": "If you are the mayor of the city and someone wants to beat you will get up to 2 times more you paid.",
+    "HOW_TO_PLAY_TEXT_3": "Εάν είστε ο δήμαρχος της πόλης και κάποιος θέλει να σας νικήσει, θα πληρωθείτε δύο φορές περισσότερο από ότι πληρώσατε.",
     "MAYOR": "Δήμαρχος",
     "PRESIDENT": "Πρόεδρος",
     "MAYOR_TEXT_1": "Can change the coat of arms of the city and it’s slogan",
-    "MAYOR_TEXT_2": "Get the financial compensation from up to 2x if someone displace him",
-    "MAYOR_TEXT_3": "Get all the votes from the city to his presidential campaign",
-    "PRESIDENT_TEXT_1": "Can change the background of his country on the World Map",
-    "PRESIDENT_TEXT_2": "Taxes. Get 1% commission fee from all transactions in his country.",
+    "MAYOR_TEXT_2": "Λάβετε οικονομική αποζημίωση μέχρι και 2x αν κάποιος τον μετατοπίσει",
+    "MAYOR_TEXT_3": "Πάρτε όλες τις ψήφους από την πόλη στην προεδρική του εκστρατεία",
+    "PRESIDENT_TEXT_1": "Μπορεί να αλλάξει το υπόβαθρο της χώρας του στον παγκόσμιο χάρτη",
+    "PRESIDENT_TEXT_2": "Φόροι. Πάρτε 1% προμήθεια από όλες τις συναλλαγές στην χώρα του.",
     "PRESIDENT_TEXT_3": "Μένει στην θέση του μέχρι κάποιος να μην πάρει 50%+1 ψήφους",
     "ROADMAP": "Χάρτης",
     "ROADMAP_1": "Alpha-Release. Early-access for initial users. Invest in campaign and elections mechanics implemented. First 10 countries released. Cities’ initial price - 0.02 eth.",
@@ -173,12 +173,12 @@
   },
   "QA": {
     "1": {
-      "QUESTION": "What do I need to play CryptoElections?",
+      "QUESTION": "Τι χρειάζομαι για να παίξω CryptoElections;",
       "ANSWER": "Here’s what you need to get started: <br/> A computer or laptop running the desktop version of Chrome or Firefox MetaMask, a digital wallet used specifically with web apps Ether, a form of digital payment that powers CryptoElections."
     },
     "2": {
-      "QUESTION": "Installing MetaMask, your digital wallet",
-      "ANSWER": "To use CryptoElections, you will need to install MetaMask, a digital wallet. You will need to put money in it to make your first purchase. <br/> Note: A digital wallet like MetaMask acts like a bank account—treat it with respect and make sure you don’t forget your password or the seed words."
+      "QUESTION": "Εγκατάσταση MetaMask, το ψηφιακό σας πορτοφόλι",
+      "ANSWER": "Για να χρησιμοποιήσετε το CryptoElections, θα πρέπει να εγκαταστήσετε το MetaMask, ένα ψηφιακό πορτοφόλι. Θα πρέπει να βάλετε χρήματα σε αυτό για να κάνετε την πρώτη σας αγορά.<br/> Σημείωση: Ένα ψηφιακό πορτοφόλι όπως το MetaMask ενεργεί όπως ένας τραπεζικός λογαριασμός_ φερθείτε του με σεβασμό και σιγουρευτείτε ότι δεν θα ξεχάσετε τον κωδικό σας ή τις λέξεις seed."
     },
     "3": {
       "QUESTION": "Γιατί είναι το MetaMask κλειδωμένο;",
