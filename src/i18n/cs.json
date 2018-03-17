@@ -182,11 +182,11 @@
     },
     "3": {
       "QUESTION": "Proč je MetaMask zamčený?",
-      "ANSWER": "Occasionally the ‘My campaign’ page displays a lock screen. This happens because MetaMask automatically locks your account after a certain period of time. To unlock simply click on the MetaMask extension and type in your password."
+      "ANSWER": "Občas se na stránce ‚Moje kampaň‘ zobrazí uzamočená obrazovka. MetaMask automaticky uzamkne váš účet po určité době. Pro odemčení jednoduše klikněte na rozšíření MetaMask a zadejte svoje heslo."
     },
     "4": {
       "QUESTION": "Přeinstalace MetaMasku",
-      "ANSWER": "Some users need to uninstall and reinstall MetaMask because they’ve experienced a bug. If you kept your seed words, this is very easy! Just delete the extension, reinstall it, and import your twelve seed words. Then you’ll set the password you want to use (this can be the same one you used before or a whole new password)."
+      "ANSWER": "Někteří uživatelé potřebují znovu nainstalovat MetaMask, protože se setkali s chybou. Pokud máte svá počáteční slova, tak je to velmi snadné! Jednoduše smažte rozšíření a nainstalujte znovu, následně zadejte dvanáct počátečních slov. Poté nastavte heslo, které chcete použít. (Heslo může být stejné jako předchozí, nebo můžete zvolit nové heslo.)"
     },
     "5": {
       "QUESTION": "Získání digitální měny Ether",
