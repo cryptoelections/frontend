@@ -33,7 +33,7 @@ export class FooterComponent {
     link: 'https://www.facebook.com/cryptoelections/',
     icon: 'fab fa-facebook'
   }, {
-    link: 'https://discord.gg/qZUvsA',
+    link: 'https://discord.gg/cjVH54J',
     icon: 'fab fa-discord'
   }];
 
