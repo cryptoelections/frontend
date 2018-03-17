@@ -13,7 +13,7 @@
     "EARN_MONEY": "Κερδίστε χρήματα.",
     "HOW_TO_PLAY": "Πως να παίξετε",
     "HOW_TO_PLAY_TEXT_1": "CryptoElections is a game about leading the countries by running an election campaign in cities. The more electorate live the city — the more votes you get. Once you get the majority — you become a president. The aim is to become a president in as many countries as possible.",
-    "HOW_TO_PLAY_TEXT_2": "President will get 1% commission fee from every transaction in his country.",
+    "HOW_TO_PLAY_TEXT_2": "Ο πρόεδρος θα πάρει 1% προμήθεια από κάθε συναλλαγή στη χώρα του.",
     "HOW_TO_PLAY_TEXT_3": "If you are the mayor of the city and someone wants to beat you will get up to 2 times more you paid.",
     "MAYOR": "Δήμαρχος",
     "PRESIDENT": "Πρόεδρος",
@@ -22,14 +22,14 @@
     "MAYOR_TEXT_3": "Get all the votes from the city to his presidential campaign",
     "PRESIDENT_TEXT_1": "Can change the background of his country on the World Map",
     "PRESIDENT_TEXT_2": "Taxes. Get 1% commission fee from all transactions in his country.",
-    "PRESIDENT_TEXT_3": "Stays on his place until somebody won’t get 50%+1 vote",
+    "PRESIDENT_TEXT_3": "Μένει στην θέση του μέχρι κάποιος να μην πάρει 50%+1 ψήφους",
     "ROADMAP": "Χάρτης",
     "ROADMAP_1": "Alpha-Release. Early-access for initial users. Invest in campaign and elections mechanics implemented. First 10 countries released. Cities’ initial price - 0.02 eth.",
     "ROADMAP_2": "Beta-Release. New features: World map, list of most influential mayors and Presidents.",
     "ROADMAP_3": "Mayors get power. Mayors will be able to change city’s coat of arms to any picture, and add city slogan that will be visible to everyone.",
     "ROADMAP_4": "Presidents change Worldmap. President will be able to change background to countries that are under his control. President can advertise anything.",
-    "ROADMAP_5": "All countries are in the game.",
-    "ROADMAP_6": "Massive marketing campaign begins.",
+    "ROADMAP_5": "Όλες οι χώρες είναι στο παιχνίδι.",
+    "ROADMAP_6": "Αρχίζει η μαζική εκστρατεία μάρκετινγκ.",
     "ROADMAP_7": "Main release. Cities crowdfunding platform implemented. Any user will be able to submit local crowdfunding business or charity project, and mayor of the city will choose which project will be crowdfunded in this city."
   },
   "MARKETPLACE": {
@@ -182,14 +182,14 @@
     },
     "3": {
       "QUESTION": "Γιατί είναι το MetaMask κλειδωμένο;",
-      "ANSWER": "Occasionally the ‘My campaign’ page displays a lock screen. This happens because MetaMask automatically locks your account after a certain period of time. To unlock simply click on the MetaMask extension and type in your password."
+      "ANSWER": "Περιστασιακά η σελίδα \" Η εκστρατεία μου\" εμφανίζει μια οθόνη κλειδώματος. Αυτό συμβαίνει επειδή το MetaMask αυτόματα κλειδώνει τον λογαριασμό σας μετά από ένα ορισμένο χρονικό διάστημα. Για να το ξεκλειδώσετε απλώς κάντε κλικ στην επέκταση MetaMask και πληκτρολογήστε τον κωδικό σας πρόσβασης."
     },
     "4": {
-      "QUESTION": "Reinstalling MetaMask",
+      "QUESTION": "Επανεγκατάσταση MetaMask",
       "ANSWER": "Some users need to uninstall and reinstall MetaMask because they’ve experienced a bug. If you kept your seed words, this is very easy! Just delete the extension, reinstall it, and import your twelve seed words. Then you’ll set the password you want to use (this can be the same one you used before or a whole new password)."
     },
     "5": {
-      "QUESTION": "Getting Ether, your digital currency",
+      "QUESTION": "Παίρνετε Ether, το ψηφιακό σας νόμισμα",
       "ANSWER": "<b>For U.S. citizens only:</b> you can buy ether (ETH) in MetaMask. ETH is a digital currency that enables our game to run.<br/><img src='assets/images/screenshot-buy-usa.png' alt=''/><br/> <b>For everyone else:</b> you will need to purchase ETH from an exchange, and then transfer the ETH from your exchange wallet to your MetaMask wallet. Unfortunately, you cannot play CryptoElections with only an exchange account."
     },
     "6": {
