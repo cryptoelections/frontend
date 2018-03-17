@@ -53,35 +53,35 @@
     "WRONG_NETWORK_TEXT": "Simply open MetaMask and switch over to the Main Ethereum Network."
   },
   "CITY": {
-    "TITLE": "Cities",
-    "NOT_FOUND": "No cities",
+    "TITLE": "Orașe",
+    "NOT_FOUND": "Nici un oraș",
     "CARD": {
-      "MAYOR": "Mayor",
-      "NOT_ELECTED_YET": "Not elected yet",
-      "COUNTRY": "Country",
-      "ELECTORATE": "Electorate",
-      "INVEST": "Invest",
+      "MAYOR": "Primar",
+      "NOT_ELECTED_YET": "Nu a fost ales încă",
+      "COUNTRY": "Țară",
+      "ELECTORATE": "Electorat",
+      "INVEST": "Investește",
       "TO_WIN": "to win mayoral election",
-      "REQUEST_SENT": "Request sent",
-      "YOU_ARE_MAYOR": "You are the mayor",
-      "PERCENTAGE": "{{ percentage }}% of electorate",
-      "SMALLCITY": "Population - less % of country population",
-      "MEDIUMCITY": "Population - less % of country population",
-      "BIGCITY": "Population - more than % of country population"
+      "REQUEST_SENT": "Cerere trimisă",
+      "YOU_ARE_MAYOR": "Tu ești primarul",
+      "PERCENTAGE": "{{ percentage }}% din electorat",
+      "SMALLCITY": "Populația - mai puțin de % din populația țării",
+      "MEDIUMCITY": "Populația - mai puțin de % din populația țării",
+      "BIGCITY": "Populația - mai mult de % din populația țării"
     },
     "MODAL": {
-      "CONGRATULATIONS": "<b>Congratulations!</b><br/> You are new mayor of {{ name }}",
-      "RULE_CITY": "Rule this city!"
+      "CONGRATULATIONS": "<b>Felicitări!</b><br/>Ești noul primar al {{ name }}",
+      "RULE_CITY": "Condu acest oraș!"
     },
     "FILTER": {
-      "SORT_BY": "Sort by",
-      "SEARCH": "Search",
+      "SORT_BY": "Sortează după",
+      "SEARCH": "Căutare",
       "SORT": {
-        "NAME": "Name",
-        "ELECTORATE_DOWN": "Electorate ↓",
-        "ELECTORATE_UP": "Electorate ↑",
-        "PRICE_PER_VOTE_DOWN": "Price per vote ↓",
-        "PRICE_PER_VOTE_UP": "Price per vote ↑",
+        "NAME": "Nume",
+        "ELECTORATE_DOWN": "Electorat ↓",
+        "ELECTORATE_UP": "Electorat ↑",
+        "PRICE_PER_VOTE_DOWN": "Preț pe vot ↓",
+        "PRICE_PER_VOTE_UP": "Preț pe vot ↑",
         "PRICE_DOWN": "Price ↓",
         "PRICE_UP": "Price ↑",
         "COUNTRY": "Country"
