@@ -152,7 +152,7 @@
     "CITY": "città",
     "CITIES": "città",
     "START": "Inizia la tua campagna",
-    "INVEST": "Invest in your campaign in cities and countries of your choice to rule the whole worldmap!"
+    "INVEST": "Investi nella tua campagna nelle città e nei paesi di tua scelta per dominare l'intera mappa mondiale!"
   },
   "NOTIFICATIONS": {
     "PRESIDENT": "<b>{{ user }}</b> è stato eletto Presidente di <b>{{ country }}</b> {{ timestamp }}"
@@ -177,15 +177,15 @@
       "ANSWER": "Here’s what you need to get started: <br/> A computer or laptop running the desktop version of Chrome or Firefox MetaMask, a digital wallet used specifically with web apps Ether, a form of digital payment that powers CryptoElections."
     },
     "2": {
-      "QUESTION": "Installing MetaMask, your digital wallet",
+      "QUESTION": "Installa MetaMask, il tuo portafoglio digitale",
       "ANSWER": "To use CryptoElections, you will need to install MetaMask, a digital wallet. You will need to put money in it to make your first purchase. <br/> Note: A digital wallet like MetaMask acts like a bank account—treat it with respect and make sure you don’t forget your password or the seed words."
     },
     "3": {
       "QUESTION": "Perché MetaMask è bloccato?",
-      "ANSWER": "Occasionally the ‘My campaign’ page displays a lock screen. This happens because MetaMask automatically locks your account after a certain period of time. To unlock simply click on the MetaMask extension and type in your password."
+      "ANSWER": "Delle volte la pagina ‘La mia campagna‘ mostra una schermata di blocco. Questo succede perché MetaMask blocca automaticamente il tuo account dopo un certo periodo di tempo. Per sbloccarlo clicca sull'estensione di MetaMask ed inserisci la tua password."
     },
     "4": {
-      "QUESTION": "Reinstalling MetaMask",
+      "QUESTION": "Reinstallare MetaMask",
       "ANSWER": "Alcuni utenti devono disinstallare e reinstallare MetaMask perché hanno sperimentato un bug. Se hai mantenuto le tue parole seed, allora è molto facile! Basta eliminare l'estensione, reinstallarla e poi reimportare queste parole. Poi potrai impostare la password che desideri utilizzare (Questa può essere lo stesso utilizzata in precedenza od una nuova)."
     },
     "5": {
