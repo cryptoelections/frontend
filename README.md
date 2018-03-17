@@ -1,27 +1,5 @@
 # Cryptoelections
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.
+blockchain-based game where gamers can pay to get the influence in the city and become a mayor. Different cities has different number of voters and all this electorate will vote for their mayor on presidential election. Unlike real life in CryptoElections one person can be a mayor in many cities and use this power to win a presidential campaign. Mayor is the most powerful person in the city. He can change the coat of arms (coming soon) and even write a new slogan (coming soon). If someone rich comes to displace him he can not stop him, but he can use his power to earn money on it. Up to 2x when someone displace you as a mayor. Win a presidential election is a big deal. You need to get the influence over 50% + 1 voters. The best thing about being a president is his ability to collect taxes. If someone decide to run a mayoral campaign in his country 1% of all money spent on campaign comes to a president.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Start your campaign! www.cryptoelections.com
