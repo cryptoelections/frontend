@@ -1,16 +1,36 @@
 {
-  "TITLE": "crypto elections",
+  "TITLE": "Crypto Elections",
   "MENU": {
-    "COUNTRIES": "Countries",
-    "CITIES": "Cities",
-    "MAP": "Map",
-    "MY_CAMPAIGN": "My campaign"
+    "COUNTRIES": "Paesi",
+    "CITIES": "Città",
+    "MAP": "Mappa",
+    "MY_CAMPAIGN": "La mia campagna"
   },
   "HOME": {
-    "START_YOUR_CAMPAIGN": "Start your campaign!",
-    "GET_POWER": "Get power.",
-    "RUN_COUNTRIES": "Run countries.",
-    "EARN_MONEY": "Earn Money."
+    "START_YOUR_CAMPAIGN": "Inizia la tua campagna!",
+    "GET_POWER": "Ottieni potere.",
+    "RUN_COUNTRIES": "Governa paesi.",
+    "EARN_MONEY": "Guadagna soldi.",
+    "HOW_TO_PLAY": "Come giocare",
+    "HOW_TO_PLAY_TEXT_1": "CryptoElections is a game about leading the countries by running an election campaign in cities. The more electorate live the city — the more votes you get. Once you get the majority — you become a president. The aim is to become a president in as many countries as possible.",
+    "HOW_TO_PLAY_TEXT_2": "President will get 5% commission fee from every transaction in his country.",
+    "HOW_TO_PLAY_TEXT_3": "If you are the mayor of the city and someone wants to beat you will get up to 2 times more you paid.",
+    "MAYOR": "Sindaco",
+    "PRESIDENT": "Presidente",
+    "MAYOR_TEXT_1": "Can change the coat of arms of the city and it’s slogan",
+    "MAYOR_TEXT_2": "Get the financial compensation from up to 2x if someone displace him",
+    "MAYOR_TEXT_3": "Get all the votes from the city to his presidential campaign",
+    "PRESIDENT_TEXT_1": "Can change the background of his country on the World Map",
+    "PRESIDENT_TEXT_2": "Taxes. Get 1% commission fee from all transactions in his country.",
+    "PRESIDENT_TEXT_3": "Stays on his place until somebody won’t get 50%+1 vote",
+    "ROADMAP": "Tabella di marcia",
+    "ROADMAP_1": "Alpha-Release. Early-access for initial users. Invest in campaign and elections mechanics implemented. First 10 countries released. Cities’ initial price - 0.02 eth.",
+    "ROADMAP_2": "Beta-Release. New features: World map, list of most influential mayors and Presidents.",
+    "ROADMAP_3": "Mayors get power. Mayors will be able to change city’s coat of arms to any picture, and add city slogan that will be visible to everyone.",
+    "ROADMAP_4": "Presidents change Worldmap. President will be able to change background to countries that are under his control. President can advertise anything.",
+    "ROADMAP_5": "Tutti i paesi sono nel gioco.",
+    "ROADMAP_6": "Massive marketing campaign begins.",
+    "ROADMAP_7": "Main release. Cities crowdfunding platform implemented. Any user will be able to submit local crowdfunding business or charity project, and mayor of the city will choose which project will be crowdfunded in this city."
   },
   "MARKETPLACE": {
     "TITLE": "Marketplace",
@@ -20,13 +40,13 @@
     }
   },
   "ACCOUNT": {
-    "NOT_CONNECTED": "Not connected",
+    "NOT_CONNECTED": "Non connesso",
     "REQUIRE_METAMASK": "CryptoElections requires a MetaMask add-on installed in your browser.",
-    "INSTALL": "Install",
-    "SET_NICKNAME": "Set Nickname",
-    "NICKNAME_PLACEHOLDER": "Type Your Nickname",
-    "IS_LOCKED": "Locked",
-    "INSTALL_METAMASK": "Install metamask",
+    "INSTALL": "Installa",
+    "SET_NICKNAME": "Imposta il nome",
+    "NICKNAME_PLACEHOLDER": "Inserisci il tuo nome",
+    "IS_LOCKED": "Bloccato",
+    "INSTALL_METAMASK": "Installa MetaMask",
     "METAMASK_LOCKED": "Your MetaMask is locked",
     "METAMASK_LOCKED_TEXT": "Simply open MetaMask and follow the instructions to unlock it.",
     "WRONG_NETWORK": "Oops, you’re on the wrong network",
@@ -37,33 +57,33 @@
     "NOT_FOUND": "Nessuna città",
     "CARD": {
       "MAYOR": "Sindaco",
-      "NOT_ELECTED_YET": "Not elected yet",
+      "NOT_ELECTED_YET": "Non ancora eletto",
       "COUNTRY": "Paese",
       "ELECTORATE": "Elettorato",
       "INVEST": "Invest",
       "TO_WIN": "to win mayoral election",
-      "REQUEST_SENT": "Request sent",
-      "YOU_ARE_MAYOR": "You are the mayor",
+      "REQUEST_SENT": "Richiesta inviata",
+      "YOU_ARE_MAYOR": "Sei il sindaco",
       "PERCENTAGE": "{{ percentage }}% of electorate",
       "SMALLCITY": "Population - less % of country population",
       "MEDIUMCITY": "Population - less % of country population",
       "BIGCITY": "Population - more than % of country population"
     },
     "MODAL": {
-      "CONGRATULATIONS": "<b>Congratulations!</b><br/> You are new mayor of {{ name }}",
-      "RULE_CITY": "Rule this city!"
+      "CONGRATULATIONS": "<b>Congratulazioni!</b><br/> Sei il nuovo sindaco di {{ name }}",
+      "RULE_CITY": "Comanda questa città!"
     },
     "FILTER": {
-      "SORT_BY": "Sort by",
-      "SEARCH": "Search",
+      "SORT_BY": "Ordina per",
+      "SEARCH": "Cerca",
       "SORT": {
-        "NAME": "Name",
+        "NAME": "Nome",
         "ELECTORATE_DOWN": "Elettorato ↓",
         "ELECTORATE_UP": "Elettorato ↑",
-        "PRICE_PER_VOTE_DOWN": "Price per vote ↓",
-        "PRICE_PER_VOTE_UP": "Price per vote ↑",
-        "PRICE_DOWN": "Price ↓",
-        "PRICE_UP": "Price ↑",
+        "PRICE_PER_VOTE_DOWN": "Prezzo del voto ↓",
+        "PRICE_PER_VOTE_UP": "Prezzo del voto ↑",
+        "PRICE_DOWN": "Prezzo ↓",
+        "PRICE_UP": "Prezzo ↑",
         "COUNTRY": "Paese"
       }
     }
@@ -73,7 +93,7 @@
     "CARD": {
       "PRESIDENT": "Presidente",
       "NOT_ELECTED_YET": "Not elected yet",
-      "YOU_ARE_PRESIDENT": "You are the President",
+      "YOU_ARE_PRESIDENT": "Sei il Presidente",
       "NOT_IMPLEMENTED": "There are no cryptoelections yet",
       "CITIES_PRICE_RANGE": {
         "CITIES": "{{ lowestPrice }} - {{ highestPrice }} ETH",
@@ -81,35 +101,35 @@
       },
       "CITY": "città",
       "CITIES": "città",
-      "UNDER_YOUR_CONTROL": "under your control",
-      "OF_ELECTORATE": "of electorate",
-      "SUPPORT_YOU": "support you",
+      "UNDER_YOUR_CONTROL": "sotto il tuo controllo",
+      "OF_ELECTORATE": "di elettorato",
+      "SUPPORT_YOU": "ti sostiene",
       "ELECTORATE": "Elettorato",
       "INVEST": "Invest",
-      "TO_BECOME_A_PRESIDENT": "to become a president",
-      "RUN_CAMPAIGN": "Run campaign",
+      "TO_BECOME_A_PRESIDENT": "per diventare Presidente",
+      "RUN_CAMPAIGN": "Avvia la campagna",
       "INVEST_PRICE": "Invest {{ price }} to win presidential election",
       "TO_WIN": "to win presidential election",
-      "INVEST_MODAL_TEXT": "These are the most cost-effective cities to invest in your campaign in {{ country }} to get the majority of votes to become the president of the country! If you want to invest in another cities in {{ country }}, choose from",
-      "INVEST_MODAL_TEXT_LINK": "this list",
-      "INVEST_MODAL_PERCENTAGE": "% of electorate"
+      "INVEST_MODAL_TEXT": "Queste sono le città in cui è più conveniente avviare la tua campagna in {{ country }} per ottenere la maggioranza dei voti e diventare il Presidente della nazione! Se vuoi investire in altre città in {{ country }}, scegli da",
+      "INVEST_MODAL_TEXT_LINK": "questa lista",
+      "INVEST_MODAL_PERCENTAGE": "% di elettorato"
     },
     "MODAL": {
       "CONGRATULATIONS": "<b>Congratulations!</b><br/> You have the majority of votes in {{ name }}!",
       "RULE_COUNTRY": "Rule this country!"
     },
     "FILTER": {
-      "SORT_BY": "Sort by",
-      "SEARCH": "Search",
+      "SORT_BY": "Ordian per",
+      "SEARCH": "Cerca",
       "SORT": {
-        "NAME": "Name",
+        "NAME": "Nome",
         "AVAILABILITY": "Available first",
         "ELECTORATE_DOWN": "Elettorato ↓",
         "ELECTORATE_UP": "Elettorato ↑",
-        "PRICE_DOWN": "Price ↓",
-        "PRICE_UP": "Price ↑",
-        "NUMBER_OF_CITIES_DOWN": "Number of cities ↓",
-        "NUMBER_OF_CITIES_UP": "Number of cities ↑",
+        "PRICE_DOWN": "Prezzo ↓",
+        "PRICE_UP": "Prezzo ↑",
+        "NUMBER_OF_CITIES_DOWN": "Numero di città ↓",
+        "NUMBER_OF_CITIES_UP": "Numero di città ↑",
         "AREA": "Area"
       }
     }
@@ -124,13 +144,13 @@
       "LAST_TEXT": "Last"
     },
     "FILTER": {
-      "SORT_BY": "Sort by"
+      "SORT_BY": "Ordina per"
     }
   },
   "CAMPAIGN": {
-    "TITLE": "My campaign",
-    "CITY": "city",
-    "CITIES": "cities",
+    "TITLE": "La mia campagna",
+    "CITY": "città",
+    "CITIES": "città",
     "START": "Start your campaign",
     "INVEST": "Invest in your campaign in cities and countries of your choice to rule the whole worldmap!"
   },
@@ -149,6 +169,32 @@
     "NICKNAME_WAS_NOT_SET": "<b>Error!</b> Nickname was not set."
   },
   "LOG": {
-    "BECAME_PRESIDENT": "Became President of {{ country }} {{ timestamp }}"
+    "BECAME_PRESIDENT": "Diventa il Presidente di {{ country }} {{ timestamp }}"
+  },
+  "QA": {
+    "1": {
+      "QUESTION": "What do I need to play CryptoElections?",
+      "ANSWER": "Here’s what you need to get started: <br/> A computer or laptop running the desktop version of Chrome or Firefox MetaMask, a digital wallet used specifically with web apps Ether, a form of digital payment that powers CryptoElections."
+    },
+    "2": {
+      "QUESTION": "Installing MetaMask, your digital wallet",
+      "ANSWER": "To use CryptoElections, you will need to install MetaMask, a digital wallet. You will need to put money in it to make your first purchase. <br/> Note: A digital wallet like MetaMask acts like a bank account—treat it with respect and make sure you don’t forget your password or the seed words."
+    },
+    "3": {
+      "QUESTION": "Why is MetaMask locked?",
+      "ANSWER": "Occasionally the ‘My campaign’ page displays a lock screen. This happens because MetaMask automatically locks your account after a certain period of time. To unlock simply click on the MetaMask extension and type in your password."
+    },
+    "4": {
+      "QUESTION": "Reinstalling MetaMask",
+      "ANSWER": "Some users need to uninstall and reinstall MetaMask because they’ve experienced a bug. If you kept your seed words, this is very easy! Just delete the extension, reinstall it, and import your twelve seed words. Then you’ll set the password you want to use (this can be the same one you used before or a whole new password)."
+    },
+    "5": {
+      "QUESTION": "Getting Ether, your digital currency",
+      "ANSWER": "<b>For U.S. citizens only:</b> you can buy ether (ETH) in MetaMask. ETH is a digital currency that enables our game to run.<br/><img src='assets/images/screenshot-buy-usa.png' alt=''/><br/> <b>For everyone else:</b> you will need to purchase ETH from an exchange, and then transfer the ETH from your exchange wallet to your MetaMask wallet. Unfortunately, you cannot play CryptoElections with only an exchange account."
+    },
+    "6": {
+      "QUESTION": "How to send ETH to MetaMask",
+      "ANSWER": "<b>For U.S. citizens only:</b> you are able to purchase ETH directly from the MetaMask wallet using the Coinbase widget. This is more convenient and doesn’t require you to create two accounts.<br/> <b>For everyone else:</b> For everyone else: you need to buy ETH from an exchange using normal fiat currency. Copy your MetaMask address by clicking on the large ‘...’ next to your account, then select ‘Copy Address to clipboard’. Go to your exchange, click ‘Accounts’, and select your ETH Wallet and click ‘send’. Paste the MetaMask address in the box with the amount you’d like to transfer."
+    }
   }
 }
