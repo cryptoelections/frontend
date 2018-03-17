@@ -12,8 +12,8 @@
     "RUN_COUNTRIES": "Governa paesi.",
     "EARN_MONEY": "Guadagna soldi.",
     "HOW_TO_PLAY": "Come giocare",
-    "HOW_TO_PLAY_TEXT_1": "CryptoElections is a game about leading the countries by running an election campaign in cities. The more electorate live the city — the more votes you get. Once you get the majority — you become a president. The aim is to become a president in as many countries as possible.",
-    "HOW_TO_PLAY_TEXT_2": "President will get 5% commission fee from every transaction in his country.",
+    "HOW_TO_PLAY_TEXT_1": "CryptoElections è un gioco dove governi paesi tramite una campagna elettorale nelle città. Più elettorato vive in città — più voti ottieni. Una volta che otterrai la maggioranza — diventerai il Presidente. L'obiettivo è quello di diventare Presidente in più paesi possibile.",
+    "HOW_TO_PLAY_TEXT_2": "President will get 1% commission fee from every transaction in his country.",
     "HOW_TO_PLAY_TEXT_3": "If you are the mayor of the city and someone wants to beat you will get up to 2 times more you paid.",
     "MAYOR": "Sindaco",
     "PRESIDENT": "Presidente",
@@ -22,7 +22,7 @@
     "MAYOR_TEXT_3": "Ottiene tutti i voti nella città della sua campagna presidenziale",
     "PRESIDENT_TEXT_1": "Può cambiare lo sfondo del suo paese nella mappa mondiale",
     "PRESIDENT_TEXT_2": "Tasse. Ottieni l'1% di commissioni su tutte le transazioni nel suo paese.",
-    "PRESIDENT_TEXT_3": "Stays on his place until somebody won’t get 50%+1 vote",
+    "PRESIDENT_TEXT_3": "Sta al suo posto finché qualcuno non raggiunge il 50%+1 di voti",
     "ROADMAP": "Tabella di marcia",
     "ROADMAP_1": "Alpha-Release. Early-access for initial users. Invest in campaign and elections mechanics implemented. First 10 countries released. Cities’ initial price - 0.02 eth.",
     "ROADMAP_2": "Beta-Release. New features: World map, list of most influential mayors and Presidents.",
@@ -41,14 +41,14 @@
   },
   "ACCOUNT": {
     "NOT_CONNECTED": "Non connesso",
-    "REQUIRE_METAMASK": "CryptoElections requires a MetaMask add-on installed in your browser.",
+    "REQUIRE_METAMASK": "CryptoElections richiede MetaMask installato nel tuo browser.",
     "INSTALL": "Installa",
     "SET_NICKNAME": "Imposta il nome",
     "NICKNAME_PLACEHOLDER": "Inserisci il tuo nome",
     "IS_LOCKED": "Bloccato",
     "INSTALL_METAMASK": "Installa MetaMask",
     "METAMASK_LOCKED": "Il tuo MetaMask è bloccato",
-    "METAMASK_LOCKED_TEXT": "Simply open MetaMask and follow the instructions to unlock it.",
+    "METAMASK_LOCKED_TEXT": "Apri MetaMask e segui le istruzioni per sbloccarlo.",
     "WRONG_NETWORK": "Oops, sei sul network sbagliato",
     "WRONG_NETWORK_TEXT": "Simply open MetaMask and switch over to the Main Ethereum Network."
   },
@@ -155,7 +155,7 @@
     "INVEST": "Invest in your campaign in cities and countries of your choice to rule the whole worldmap!"
   },
   "NOTIFICATIONS": {
-    "PRESIDENT": "<b>{{ user }}</b> was elected President of <b>{{ country }}</b> {{ timestamp }}"
+    "PRESIDENT": "<b>{{ user }}</b> è stato eletto Presidente di <b>{{ country }}</b> {{ timestamp }}"
   },
   "WALLET": {
     "TEXT": "Se qualcuno diventa sindaco al posto tuo otterrai una compensazione. Ecco quanti soldi hai:",
