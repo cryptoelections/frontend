@@ -27,10 +27,10 @@
     "ROADMAP_1": "Alpha-Release. Early-access for initial users. Invest in campaign and elections mechanics implemented. First 10 countries released. Cities’ initial price - 0.02 eth.",
     "ROADMAP_2": "Beta-Release. New features: World map, list of most influential mayors and Presidents.",
     "ROADMAP_3": "Mayors get power. Mayors will be able to change city’s coat of arms to any picture, and add city slogan that will be visible to everyone.",
-    "ROADMAP_4": "Presidents change Worldmap. President will be able to change background to countries that are under his control. President can advertise anything.",
+    "ROADMAP_4": "Οι πρόεδροι αλλάζουν τον παγκόσμιο χάρτη. Ο πρόεδρος θα μπορεί να αλλάξει το υπόβαθρο σε πόλεις που είναι υπό τον έλεγχο του. Ο πρόεδρος μπορεί να διαφημίζει τα πάντα.",
     "ROADMAP_5": "Όλες οι χώρες είναι στο παιχνίδι.",
     "ROADMAP_6": "Αρχίζει η μαζική εκστρατεία μάρκετινγκ.",
-    "ROADMAP_7": "Main release. Cities crowdfunding platform implemented. Any user will be able to submit local crowdfunding business or charity project, and mayor of the city will choose which project will be crowdfunded in this city."
+    "ROADMAP_7": "Κύρια έκδοση. Εφαρμόστηκε πλατφόρμα crowdfunding πόλεων. Κάθε χρήστης θα μπορεί να υποβάλλει τοπικές crowdfunding επιχειρήσεις ή φιλανθρωπικό έργο, και ο δήμαρχος της πόλης θα διαλέξει ποιο έργο θα ενισχυθεί οικονομικά στην πόλη."
   },
   "MARKETPLACE": {
     "TITLE": "Αγορά",
@@ -174,7 +174,7 @@
   "QA": {
     "1": {
       "QUESTION": "Τι χρειάζομαι για να παίξω CryptoElections;",
-      "ANSWER": "Here’s what you need to get started: <br/> A computer or laptop running the desktop version of Chrome or Firefox MetaMask, a digital wallet used specifically with web apps Ether, a form of digital payment that powers CryptoElections."
+      "ANSWER": "Εδώ είναι ότι χρειάζεστε για να ξεκινήσετε: <br/> Ένας υπολογιστής ή laptop που τρέχει την έκδοση desktop του Chrome ή του Firefox MetaMask, ένα ψηφιακό πορτοφόλι που χρησιμοποιείται συγκεκριμένα με web εφαρμογές Ether, μία φόρμα ψηφιακής πληρωμής που δίνει ισχύ στο CryptoElections."
     },
     "2": {
       "QUESTION": "Εγκατάσταση MetaMask, το ψηφιακό σας πορτοφόλι",
