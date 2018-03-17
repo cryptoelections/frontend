@@ -190,7 +190,7 @@
     },
     "5": {
       "QUESTION": "Získání digitální měny Ether",
-      "ANSWER": "<b>For U.S. citizens only:</b> you can buy ether (ETH) in MetaMask. ETH is a digital currency that enables our game to run.<br/><img src='assets/images/screenshot-buy-usa.png' alt=''/><br/> <b>For everyone else:</b> you will need to purchase ETH from an exchange, and then transfer the ETH from your exchange wallet to your MetaMask wallet. Unfortunately, you cannot play CryptoElections with only an exchange account."
+      "ANSWER": "<b>Pouze pro občany USA:</b> Můžete koupit ether (ETH) v MetaMasku. ETH je digitální měna, která dovoluje hrát naši hru.<br/><img src='assets/images/screenshot-buy-usa.png' alt=''/><br/> <b>Pro všechny ostatní:</b> Můžete koupit ETH ve směnárně a poté převést ETH do vaší MetaMask peněženky. Bohužel nemůžete hrát CryptoElections s vaším účtem ze směnárny."
     },
     "6": {
       "QUESTION": "Jak poslat ETH na MetaMask",
