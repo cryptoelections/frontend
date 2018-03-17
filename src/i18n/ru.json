@@ -45,24 +45,24 @@
     "INSTALL": "Установить",
     "SET_NICKNAME": "Изменить имя пользователя",
     "NICKNAME_PLACEHOLDER": "Введите Ваше Имя Пользователя",
-    "IS_LOCKED": "Locked",
-    "INSTALL_METAMASK": "Install metamask",
-    "METAMASK_LOCKED": "Your MetaMask is locked",
-    "METAMASK_LOCKED_TEXT": "Simply open MetaMask and follow the instructions to unlock it.",
-    "WRONG_NETWORK": "Oops, you’re on the wrong network",
-    "WRONG_NETWORK_TEXT": "Simply open MetaMask and switch over to the Main Ethereum Network."
+    "IS_LOCKED": "Заблокирован",
+    "INSTALL_METAMASK": "Установите MetaMask",
+    "METAMASK_LOCKED": "Ваш MetaMask заблокирован",
+    "METAMASK_LOCKED_TEXT": "Просто откройте MetaMask и разблокируйте его, следуя инструкциям.",
+    "WRONG_NETWORK": "Упс, вы подключены к неправильной сети",
+    "WRONG_NETWORK_TEXT": "Просто откройте MetaMask и переключитесь на Main Ethereum Network."
   },
   "CITY": {
-    "TITLE": "Cities",
-    "NOT_FOUND": "No cities",
+    "TITLE": "Города",
+    "NOT_FOUND": "Нет городов",
     "CARD": {
-      "MAYOR": "Mayor",
+      "MAYOR": "Мэр",
       "NOT_ELECTED_YET": "Ещё не избран",
       "COUNTRY": "Страна",
       "ELECTORATE": "Электорат",
-      "INVEST": "Invest",
-      "TO_WIN": "to win mayoral election",
-      "REQUEST_SENT": "Request sent",
+      "INVEST": "Инвестируйте",
+      "TO_WIN": "чтобы победить на выборах мэра",
+      "REQUEST_SENT": "Запрос отправлен",
       "YOU_ARE_MAYOR": "Вы - мэр",
       "PERCENTAGE": "{{ percentage }}% электората",
       "SMALLCITY": "Population - less % of country population",
@@ -70,17 +70,17 @@
       "BIGCITY": "Population - more than % of country population"
     },
     "MODAL": {
-      "CONGRATULATIONS": "<b>Congratulations!</b><br/> You are new mayor of {{ name }}",
-      "RULE_CITY": "Rule this city!"
+      "CONGRATULATIONS": "<b>Поздравляем!</b><br/> Вы - новый мэр города {{ name }}",
+      "RULE_CITY": "Править этим городом!"
     },
     "FILTER": {
-      "SORT_BY": "Sort by",
-      "SEARCH": "Search",
+      "SORT_BY": "Сортировать по",
+      "SEARCH": "Поиск",
       "SORT": {
-        "NAME": "Name",
-        "ELECTORATE_DOWN": "Electorate ↓",
-        "ELECTORATE_UP": "Electorate ↑",
-        "PRICE_PER_VOTE_DOWN": "Price per vote ↓",
+        "NAME": "Название",
+        "ELECTORATE_DOWN": "Электорат ↓",
+        "ELECTORATE_UP": "Электорат ↑",
+        "PRICE_PER_VOTE_DOWN": "Цена за голос ↓",
         "PRICE_PER_VOTE_UP": "Price per vote ↑",
         "PRICE_DOWN": "Price ↓",
         "PRICE_UP": "Price ↑",
@@ -125,12 +125,12 @@
         "NAME": "Name",
         "AVAILABILITY": "Available first",
         "ELECTORATE_DOWN": "Electorate ↓",
-        "ELECTORATE_UP": "Electorate ↑",
-        "PRICE_DOWN": "Price ↓",
-        "PRICE_UP": "Price ↑",
-        "NUMBER_OF_CITIES_DOWN": "Number of cities ↓",
-        "NUMBER_OF_CITIES_UP": "Number of cities ↑",
-        "AREA": "Area"
+        "ELECTORATE_UP": "Электорат ↑",
+        "PRICE_DOWN": "Цена ↓",
+        "PRICE_UP": "Цена ↑",
+        "NUMBER_OF_CITIES_DOWN": "Количество городов ↓",
+        "NUMBER_OF_CITIES_UP": "Количество городов ↑",
+        "AREA": "Площадь"
       }
     }
   },
@@ -140,19 +140,19 @@
     "MLN": "M",
     "THOUSANDS": "K",
     "PAGINATION": {
-      "FIRST_TEXT": "First",
-      "LAST_TEXT": "Last"
+      "FIRST_TEXT": "Первая",
+      "LAST_TEXT": "Последняя"
     },
     "FILTER": {
-      "SORT_BY": "Sort by"
+      "SORT_BY": "Сортировать по"
     }
   },
   "CAMPAIGN": {
-    "TITLE": "My campaign",
-    "CITY": "city",
-    "CITIES": "cities",
-    "START": "Start your campaign",
-    "INVEST": "Invest in your campaign in cities and countries of your choice to rule the whole worldmap!"
+    "TITLE": "Моя кампания",
+    "CITY": "город",
+    "CITIES": "города (-ов)",
+    "START": "Начни свою кампанию",
+    "INVEST": "Инвестируйте в свою кампанию в городах и странах на свой выбор, чтобы править всем миром!"
   },
   "NOTIFICATIONS": {
     "PRESIDENT": "<b>{{ user }}</b> was elected President of <b>{{ country }}</b> {{ timestamp }}"
