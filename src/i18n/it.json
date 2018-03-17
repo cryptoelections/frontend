@@ -17,7 +17,7 @@
     "HOW_TO_PLAY_TEXT_3": "If you are the mayor of the city and someone wants to beat you will get up to 2 times more you paid.",
     "MAYOR": "Sindaco",
     "PRESIDENT": "Presidente",
-    "MAYOR_TEXT_1": "Can change the coat of arms of the city and it’s slogan",
+    "MAYOR_TEXT_1": "Può cambiare lo stemma della città ed il suo motto",
     "MAYOR_TEXT_2": "Get the financial compensation from up to 2x if someone displace him",
     "MAYOR_TEXT_3": "Ottiene tutti i voti nella città della sua campagna presidenziale",
     "PRESIDENT_TEXT_1": "Può cambiare lo sfondo del suo paese nella mappa mondiale",
@@ -178,7 +178,7 @@
     },
     "2": {
       "QUESTION": "Installare MetaMask, il tuo portafoglio digitale",
-      "ANSWER": "To use CryptoElections, you will need to install MetaMask, a digital wallet. You will need to put money in it to make your first purchase. <br/> Note: A digital wallet like MetaMask acts like a bank account—treat it with respect and make sure you don’t forget your password or the seed words."
+      "ANSWER": "Per usare CryptoElections devi installare MetaMask, un portafoglio digitale. Dovrai mettere dei soldi dentro questo portafoglio per fare il tuo primo acquisto. <br/> Nota: Un portafoglio digitale come MetaMask è come un conto in banca—trattalo con rispetto e assicurati di non dimenticarti la password o le parole seed."
     },
     "3": {
       "QUESTION": "Perché MetaMask è bloccato?",
