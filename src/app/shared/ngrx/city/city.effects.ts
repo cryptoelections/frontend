@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Action, Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
-import {Effect, Actions} from '@ngrx/effects';
+import {Actions, Effect} from '@ngrx/effects';
 import {CityService} from '../../services/city.service';
 import {City} from '../../models/city.model';
 import {Web3Service} from '../../services/web3.service';
@@ -36,14 +36,18 @@ export class CityEffects {
       return this.web3Service.CryptoElections.deployed()
         .then((instance) => instance.getCitiesData(action.payload)
           .then(([mayors, purchases, startPrices, multiplierSteps]: Array<Array<string>>) => {
-            console.log(mayors, purchases, startPrices, multiplierSteps);
-            return new city.LoadDynamicCityInformationResponse(action.payload.reduce((m, i, k) => ({
-              ...m, [i]: {
-                mayor: mayors[k],
-                purchases: parseInt(purchases[k]),
-                price: this.calculateCityPrice(i, parseInt(purchases[k]), parseInt(startPrices[k]), parseInt(multiplierSteps[k]))
-              }
-            }), {}));
+            console.log(action.payload, mayors, purchases, startPrices, multiplierSteps);
+            if (action.payload.length && mayors.length && purchases.length && startPrices.length && multiplierSteps.length) {
+              return new city.LoadDynamicCityInformationResponse(action.payload.reduce((m, i, k) => ({
+                ...m, [i]: {
+                  mayor: mayors[k],
+                  purchases: parseInt(purchases[k]),
+                  price: this.calculateCityPrice(i, parseInt(purchases[k]), parseInt(startPrices[k]), parseInt(multiplierSteps[k]))
+                }
+              }), {}));
+            } else {
+              return new city.LoadLocalDynamicCityInformationRequest();
+            }
           }));
     }).catch((error) => {
       console.log('dynamic loading error:', error);

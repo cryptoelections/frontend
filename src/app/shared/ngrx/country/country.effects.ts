@@ -1,16 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Action, Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
-import {Effect, Actions} from '@ngrx/effects';
+import {Actions, Effect} from '@ngrx/effects';
 import {Country} from '../../models/country.model';
 import {CountryService} from '../../services/country.service';
 import {State} from '../index';
 import {Web3Service} from '../../services/web3.service';
 
 import * as country from './country.actions';
-import * as fromCountries from './country.reducers';
-import * as fromCities from '../city/city.reducers';
-import * as city from '../city/city.actions';
 
 @Injectable()
 export class CountryEffects {
@@ -32,14 +29,20 @@ export class CountryEffects {
     .switchMap((action: country.LoadDynamicCountryInformationRequest) => {
       return this.web3Service.CryptoElections.deployed()
         .then((instance) => instance.getCountriesData(action.payload)
-          .then(([presidents, slogans, flags]: Array<Array<string>>) => new country.LoadDynamicCountryInformationResponse(
-            action.payload.reduce((m, i, k) => ({
-              ...m, [i]: {
-                president: presidents[k],
-                slogan: slogans[k],
-                flag: flags[k]
-              }
-            }), {}))));
+          .then(([presidents, slogans, flags]: Array<Array<string>>) => {
+            if (action.payload.length && presidents.length && slogans.length && flags.length) {
+              return new country.LoadDynamicCountryInformationResponse(
+                action.payload.reduce((m, i, k) => ({
+                  ...m, [i]: {
+                    president: presidents[k],
+                    slogan: slogans[k],
+                    flag: flags[k]
+                  }
+                }), {}));
+            } else {
+              return new country.LoadLocalDynamicCountryInformationRequest();
+            }
+          }));
     })
     .catch((error) => {
       console.log('loading dynamic of countries:', error);
