@@ -107,15 +107,15 @@
       "ELECTORATE": "Kiezers",
       "INVEST": "Investeer",
       "TO_BECOME_A_PRESIDENT": "om president te worden",
-      "RUN_CAMPAIGN": "Run campaign",
-      "INVEST_PRICE": "Invest {{ price }} to win presidential election",
-      "TO_WIN": "to win presidential election",
-      "INVEST_MODAL_TEXT": "These are the most cost-effective cities to invest in your campaign in {{ country }} to get the majority of votes to become the president of the country! If you want to invest in another cities in {{ country }}, choose from",
+      "RUN_CAMPAIGN": "Voer campagne",
+      "INVEST_PRICE": "Investeer {{ price }} om de presidentiële verkiezing te winnen",
+      "TO_WIN": "om de presidentiële verkiezing te winnen",
+      "INVEST_MODAL_TEXT": "Dit zijn de meest kostenefficiënte steden om in te investeren voor je campagne in {{ country }} om de meeste stemmen te krijgen en president van het land te worden! Als je wil investeren in andere steden in {{ country }}, kies dan uit",
       "INVEST_MODAL_TEXT_LINK": "deze lijst",
       "INVEST_MODAL_PERCENTAGE": "% van de kiezers"
     },
     "MODAL": {
-      "CONGRATULATIONS": "<b>Congratulations!</b><br/> You have the majority of votes in {{ name }}!",
+      "CONGRATULATIONS": "<b>Gefeliciteerd!</b><br/> Je hebt de meerderheid van de stemmen in {{ name }}!",
       "RULE_COUNTRY": "Bestuur deze stad!"
     },
     "FILTER": {
@@ -152,17 +152,17 @@
     "CITY": "stad",
     "CITIES": "steden",
     "START": "Start jouw campagne",
-    "INVEST": "Invest in your campaign in cities and countries of your choice to rule the whole worldmap!"
+    "INVEST": "Investeer in je campagne in steden en landen naar keuze om de hele wereldkaart te overheersen!"
   },
   "NOTIFICATIONS": {
-    "PRESIDENT": "<b>{{ user }}</b> was elected President of <b>{{ country }}</b> {{ timestamp }}"
+    "PRESIDENT": "<b>{{ user }}</b> was verkozen tot president van <b>{{ country }}</b>{{ timestamp }}"
   },
   "WALLET": {
     "TEXT": "If someone becomes a mayor instead of you, you get compensation. Here you can see how much you have:",
-    "WITHDRAW": "Withdraw"
+    "WITHDRAW": "Opnemen"
   },
   "SUCCESS": {
-    "NICKNAME_WAS_SET": "Nickname was successfully set"
+    "NICKNAME_WAS_SET": "Bijnaam succesvol ingesteld"
   },
   "ERRORS": {
     "UNSUCCESSFUL_TRANSACTION": "Unsuccessful transaction - buying <b>{{ name }}</b>",
