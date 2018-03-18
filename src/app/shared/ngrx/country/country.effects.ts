@@ -20,8 +20,7 @@ export class CountryEffects {
     .switchMap((action: country.LoadCountriesRequest) => this.countryService.getList()
       .map((list: Array<Country>) => {
         const ids = list.map(c => c.id);
-        this.store.dispatch(new country.LoadDynamicCountryInformationRequest(<string[]>ids));
-        setInterval(() => this.store.dispatch(new country.LoadDynamicCountryInformationRequest(<string[]>ids)), 180000);
+        this.store.dispatch(new country.LoadDynamicCountryInformationRequest(ids));
 
         return new country.LoadCountriesResponse(list);
       }));
@@ -32,7 +31,7 @@ export class CountryEffects {
     .debounceTime(2500)
     .switchMap((action: country.LoadDynamicCountryInformationRequest) => {
       return this.web3Service.CryptoElections.deployed()
-        .then((instance) => instance.getCountriesData(action.payload.map(x => parseInt(x)))
+        .then((instance) => instance.getCountriesData(action.payload)
           .then(([presidents, slogans, flags]: Array<Array<string>>) => new country.LoadDynamicCountryInformationResponse(
             action.payload.reduce((m, i, k) => ({
               ...m, [i]: {

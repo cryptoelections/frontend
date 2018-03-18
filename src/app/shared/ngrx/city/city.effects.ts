@@ -23,8 +23,7 @@ export class CityEffects {
     .switchMap((action: city.LoadCityInformationRequest) => this.cityService.getList()
       .map((list: Array<City>) => {
         const ids = list.map(c => c.id);
-        this.store.dispatch(new city.LoadDynamicCityInformationRequest(<string[]>ids));
-        setInterval(() => this.store.dispatch(new city.LoadDynamicCityInformationRequest(<string[]>ids)), 180000);
+        this.store.dispatch(new city.LoadDynamicCityInformationRequest(ids));
         return new city.LoadCityInformationResponse(list);
       })
       .catch((error) => Observable.of(new city.LoadCityInformationResponse([]))));
@@ -35,8 +34,9 @@ export class CityEffects {
     .debounceTime(2500)
     .switchMap((action: city.LoadDynamicCityInformationRequest) => {
       return this.web3Service.CryptoElections.deployed()
-        .then((instance) => instance.getCitiesData(action.payload.map(x => parseInt(x)))
+        .then((instance) => instance.getCitiesData(action.payload)
           .then(([mayors, purchases, startPrices, multiplierSteps]: Array<Array<string>>) => {
+            console.log(mayors, purchases, startPrices, multiplierSteps);
             return new city.LoadDynamicCityInformationResponse(action.payload.reduce((m, i, k) => ({
               ...m, [i]: {
                 mayor: mayors[k],

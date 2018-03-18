@@ -30,7 +30,7 @@ export class LoadCountriesResponse implements Action {
 export class LoadDynamicCountryInformationRequest implements Action {
   type = LOAD_DYNAMIC_COUNTRY_INFORMATION_REQUEST;
 
-  constructor(public payload?: string[]) {
+  constructor(public payload?: number[]) {
   }
 }
 

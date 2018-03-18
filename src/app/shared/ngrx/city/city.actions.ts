@@ -21,7 +21,7 @@ export class LoadCityInformationRequest implements Action {
 export class LoadDynamicCityInformationRequest implements Action {
   type = LOAD_DYNAMIC_CITY_INFORMATION_REQUEST;
 
-  constructor(public payload?: string[]) {
+  constructor(public payload?: number[]) {
   }
 }
 
