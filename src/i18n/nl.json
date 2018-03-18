@@ -30,24 +30,24 @@
     "ROADMAP_4": "Presidenten veranderen de wereldkaart. Presidenten zijn in staat de achtergrond van landen die ze besturen te wijzigen. Presidenten kunnen van alles adverteren.",
     "ROADMAP_5": "Alle landen zijn in het spel.",
     "ROADMAP_6": "Enorme marketing campagne begint.",
-    "ROADMAP_7": "Main release. Cities crowdfunding platform implemented. Any user will be able to submit local crowdfunding business or charity project, and mayor of the city will choose which project will be crowdfunded in this city."
+    "ROADMAP_7": "Hoofdrelease. Staden crowdfunding platform geïmplementeerd. Elke gebruiker is in staat om lokale crowdfunding bedrijven of liefdadigheidsprojecten toe te voegen, en de burgemeester van de stad kan kiezen welk project in de stad crowdfunding zal krijgen."
   },
   "MARKETPLACE": {
-    "TITLE": "Marketplace",
+    "TITLE": "Marktplaats",
     "VIEWMODE": {
-      "CITIES": "Cities",
-      "COUNTRIES": "Countries"
+      "CITIES": "Steden",
+      "COUNTRIES": "Landen"
     }
   },
   "ACCOUNT": {
-    "NOT_CONNECTED": "Not connected",
-    "REQUIRE_METAMASK": "CryptoElections requires a MetaMask add-on installed in your browser.",
-    "INSTALL": "Install",
-    "SET_NICKNAME": "Set Nickname",
-    "NICKNAME_PLACEHOLDER": "Type Your Nickname",
-    "IS_LOCKED": "Locked",
-    "INSTALL_METAMASK": "Install metamask",
-    "METAMASK_LOCKED": "Your MetaMask is locked",
+    "NOT_CONNECTED": "Niet verbonden",
+    "REQUIRE_METAMASK": "CryptoElections heeft een MetaMask add-on in je browser nodig om te werken.",
+    "INSTALL": "Installeren",
+    "SET_NICKNAME": "Bijnaam instellen",
+    "NICKNAME_PLACEHOLDER": "Typ je bijnaam",
+    "IS_LOCKED": "Vergrendeld",
+    "INSTALL_METAMASK": "Metamask installeren",
+    "METAMASK_LOCKED": "Je MetaMask is vergrendeld",
     "METAMASK_LOCKED_TEXT": "Simply open MetaMask and follow the instructions to unlock it.",
     "WRONG_NETWORK": "Oops, you’re on the wrong network",
     "WRONG_NETWORK_TEXT": "Simply open MetaMask and switch over to the Main Ethereum Network."
