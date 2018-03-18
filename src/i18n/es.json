@@ -12,7 +12,7 @@
     "RUN_COUNTRIES": "Gobierna países.",
     "EARN_MONEY": "Obtén Dinero.",
     "HOW_TO_PLAY": "Cómo jugar",
-    "HOW_TO_PLAY_TEXT_1": "CryptoElections is a game about leading the countries by running an election campaign in cities. The more electorate live the city — the more votes you get. Once you get the majority — you become a president. The aim is to become a president in as many countries as possible.",
+    "HOW_TO_PLAY_TEXT_1": "CryptoElections es un juego sobre gobernar los países lanzando una campaña electoral en las ciudades. Mientras más electorado viva en la ciudad — más votos consigues. Una vez que consigas la mayoría — te conviertes en presidente. El objetivo es convertirse en presidente en tantos países como sea posible.",
     "HOW_TO_PLAY_TEXT_2": "El presidente recibirá una comisión del 15 por cada transacción en su país.",
     "HOW_TO_PLAY_TEXT_3": "If you are the mayor of the city and someone wants to beat you will get up to 2 times more you paid.",
     "MAYOR": "Alcalde",
@@ -182,7 +182,7 @@
     },
     "3": {
       "QUESTION": "¿Por qué está bloqueado MetaMask?",
-      "ANSWER": "Occasionally the ‘My campaign’ page displays a lock screen. This happens because MetaMask automatically locks your account after a certain period of time. To unlock simply click on the MetaMask extension and type in your password."
+      "ANSWER": "Ocasionalmente la página ‘Mi campaña’ muestra una pantalla de bloqueo. Esto pasa porque MetaMask bloquea tu cuenta automáticamente después de un cierto período de tiempo. Para desbloquearla simplemente has clic en la extensión MetaMask e ingresa tu contraseña."
     },
     "4": {
       "QUESTION": "Reinstalando MetaMask",
