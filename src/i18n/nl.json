@@ -61,76 +61,76 @@
       "COUNTRY": "Land",
       "ELECTORATE": "Kiezers",
       "INVEST": "Investeer",
-      "TO_WIN": "to win mayoral election",
-      "REQUEST_SENT": "Request sent",
-      "YOU_ARE_MAYOR": "You are the mayor",
-      "PERCENTAGE": "{{ percentage }}% of electorate",
-      "SMALLCITY": "Population - less % of country population",
-      "MEDIUMCITY": "Population - less % of country population",
-      "BIGCITY": "Population - more than % of country population"
+      "TO_WIN": "om de burgemeestersverkiezing te winnen",
+      "REQUEST_SENT": "Aanvraag verzonden",
+      "YOU_ARE_MAYOR": "Jij bent de burgemeester",
+      "PERCENTAGE": "{{ percentage }}% van de kiezers",
+      "SMALLCITY": "Bevolking - minder dan % van de bevolking van het land",
+      "MEDIUMCITY": "Bevolking - minder dan % van de bevolking van het land",
+      "BIGCITY": "Bevolking - meer dan % van de bevolking van het land"
     },
     "MODAL": {
-      "CONGRATULATIONS": "<b>Congratulations!</b><br/> You are new mayor of {{ name }}",
-      "RULE_CITY": "Rule this city!"
+      "CONGRATULATIONS": "<b>Gefeliciteerd!</b><br/> Jij bent de nieuwe burgemeester van {{ name }}",
+      "RULE_CITY": "Bestuur deze stad!"
     },
     "FILTER": {
-      "SORT_BY": "Sort by",
-      "SEARCH": "Search",
+      "SORT_BY": "Sorteren op",
+      "SEARCH": "Zoek",
       "SORT": {
-        "NAME": "Name",
-        "ELECTORATE_DOWN": "Electorate ↓",
-        "ELECTORATE_UP": "Electorate ↑",
-        "PRICE_PER_VOTE_DOWN": "Price per vote ↓",
-        "PRICE_PER_VOTE_UP": "Price per vote ↑",
-        "PRICE_DOWN": "Price ↓",
-        "PRICE_UP": "Price ↑",
-        "COUNTRY": "Country"
+        "NAME": "Naam",
+        "ELECTORATE_DOWN": "Kiezers ↓",
+        "ELECTORATE_UP": "Kiezers ↑",
+        "PRICE_PER_VOTE_DOWN": "Prijs per stemming ↓",
+        "PRICE_PER_VOTE_UP": "Prijs per stemming ↑",
+        "PRICE_DOWN": "Prijs ↓",
+        "PRICE_UP": "Prijs ↑",
+        "COUNTRY": "Land"
       }
     }
   },
   "COUNTRY": {
-    "TITLE": "Countries",
+    "TITLE": "Landen",
     "CARD": {
       "PRESIDENT": "President",
-      "NOT_ELECTED_YET": "Not elected yet",
-      "YOU_ARE_PRESIDENT": "You are the President",
-      "NOT_IMPLEMENTED": "There are no cryptoelections yet",
+      "NOT_ELECTED_YET": "Nog niet gekozen",
+      "YOU_ARE_PRESIDENT": "Jij bent de president",
+      "NOT_IMPLEMENTED": "Er zijn nog geen cryptoelections",
       "CITIES_PRICE_RANGE": {
         "CITIES": "{{ lowestPrice }} - {{ highestPrice }} ETH",
         "ONE_CITY": " {{ lowestPrice }} ETH"
       },
-      "CITY": "city",
-      "CITIES": "cities",
-      "UNDER_YOUR_CONTROL": "under your control",
-      "OF_ELECTORATE": "of electorate",
-      "SUPPORT_YOU": "support you",
-      "ELECTORATE": "Electorate",
-      "INVEST": "Invest",
-      "TO_BECOME_A_PRESIDENT": "to become a president",
+      "CITY": "stad",
+      "CITIES": "steden",
+      "UNDER_YOUR_CONTROL": "onder jouw controle",
+      "OF_ELECTORATE": "van de kiezers",
+      "SUPPORT_YOU": "steunt jou",
+      "ELECTORATE": "Kiezers",
+      "INVEST": "Investeer",
+      "TO_BECOME_A_PRESIDENT": "om president te worden",
       "RUN_CAMPAIGN": "Run campaign",
       "INVEST_PRICE": "Invest {{ price }} to win presidential election",
       "TO_WIN": "to win presidential election",
       "INVEST_MODAL_TEXT": "These are the most cost-effective cities to invest in your campaign in {{ country }} to get the majority of votes to become the president of the country! If you want to invest in another cities in {{ country }}, choose from",
-      "INVEST_MODAL_TEXT_LINK": "this list",
-      "INVEST_MODAL_PERCENTAGE": "% of electorate"
+      "INVEST_MODAL_TEXT_LINK": "deze lijst",
+      "INVEST_MODAL_PERCENTAGE": "% van de kiezers"
     },
     "MODAL": {
       "CONGRATULATIONS": "<b>Congratulations!</b><br/> You have the majority of votes in {{ name }}!",
-      "RULE_COUNTRY": "Rule this country!"
+      "RULE_COUNTRY": "Bestuur deze stad!"
     },
     "FILTER": {
-      "SORT_BY": "Sort by",
-      "SEARCH": "Search",
+      "SORT_BY": "Sorteren op",
+      "SEARCH": "Zoek",
       "SORT": {
-        "NAME": "Name",
-        "AVAILABILITY": "Available first",
-        "ELECTORATE_DOWN": "Electorate ↓",
-        "ELECTORATE_UP": "Electorate ↑",
-        "PRICE_DOWN": "Price ↓",
-        "PRICE_UP": "Price ↑",
-        "NUMBER_OF_CITIES_DOWN": "Number of cities ↓",
-        "NUMBER_OF_CITIES_UP": "Number of cities ↑",
-        "AREA": "Area"
+        "NAME": "Naam",
+        "AVAILABILITY": "Als eerste beschikbaar",
+        "ELECTORATE_DOWN": "Kiezers ↓",
+        "ELECTORATE_UP": "Kiezers ↑",
+        "PRICE_DOWN": "Prijs ↓",
+        "PRICE_UP": "Prijs ↑",
+        "NUMBER_OF_CITIES_DOWN": "Aantal steden ↓",
+        "NUMBER_OF_CITIES_UP": "Aantal steden ↑",
+        "AREA": "Gebied"
       }
     }
   },
@@ -140,18 +140,18 @@
     "MLN": "M",
     "THOUSANDS": "K",
     "PAGINATION": {
-      "FIRST_TEXT": "First",
-      "LAST_TEXT": "Last"
+      "FIRST_TEXT": "Eerste",
+      "LAST_TEXT": "Laatste"
     },
     "FILTER": {
-      "SORT_BY": "Sort by"
+      "SORT_BY": "Sorteren op"
     }
   },
   "CAMPAIGN": {
-    "TITLE": "My campaign",
-    "CITY": "city",
-    "CITIES": "cities",
-    "START": "Start your campaign",
+    "TITLE": "Mijn campagne",
+    "CITY": "stad",
+    "CITIES": "steden",
+    "START": "Start jouw campagne",
     "INVEST": "Invest in your campaign in cities and countries of your choice to rule the whole worldmap!"
   },
   "NOTIFICATIONS": {
@@ -185,11 +185,11 @@
       "ANSWER": "Occasionally the ‘My campaign’ page displays a lock screen. This happens because MetaMask automatically locks your account after a certain period of time. To unlock simply click on the MetaMask extension and type in your password."
     },
     "4": {
-      "QUESTION": "Reinstalling MetaMask",
-      "ANSWER": "Some users need to uninstall and reinstall MetaMask because they’ve experienced a bug. If you kept your seed words, this is very easy! Just delete the extension, reinstall it, and import your twelve seed words. Then you’ll set the password you want to use (this can be the same one you used before or a whole new password)."
+      "QUESTION": "MetaMask opnieuw installeren",
+      "ANSWER": "Sommige gebruikers moeten MetaMask verwijderen en opnieuw installeren omdat ze een bug zijn tegengekomen. Als je je seed woorden hebt opgeslagen is dit simpel. Verwijder de extensie, herinstalleren en importeer je twaalf seed woorden. Stel dan het wachtwoord in dat je wil gebruiken (dit kan hetzelfde wachtwoord zijn als je de vorige keer hebt gebruikt of een nieuw wachtwoord)."
     },
     "5": {
-      "QUESTION": "Getting Ether, your digital currency",
+      "QUESTION": "Verkrijgen van Ether, jouw digitale valuta",
       "ANSWER": "<b>For U.S. citizens only:</b> you can buy ether (ETH) in MetaMask. ETH is a digital currency that enables our game to run.<br/><img src='assets/images/screenshot-buy-usa.png' alt=''/><br/> <b>For everyone else:</b> you will need to purchase ETH from an exchange, and then transfer the ETH from your exchange wallet to your MetaMask wallet. Unfortunately, you cannot play CryptoElections with only an exchange account."
     },
     "6": {
