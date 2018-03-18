@@ -13,11 +13,11 @@
     "EARN_MONEY": "Obtén Dinero.",
     "HOW_TO_PLAY": "Cómo jugar",
     "HOW_TO_PLAY_TEXT_1": "CryptoElections is a game about leading the countries by running an election campaign in cities. The more electorate live the city — the more votes you get. Once you get the majority — you become a president. The aim is to become a president in as many countries as possible.",
-    "HOW_TO_PLAY_TEXT_2": "President will get 1% commission fee from every transaction in his country.",
+    "HOW_TO_PLAY_TEXT_2": "El presidente recibirá una comisión del 15 por cada transacción en su país.",
     "HOW_TO_PLAY_TEXT_3": "If you are the mayor of the city and someone wants to beat you will get up to 2 times more you paid.",
     "MAYOR": "Alcalde",
     "PRESIDENT": "Presidente",
-    "MAYOR_TEXT_1": "Can change the coat of arms of the city and it’s slogan",
+    "MAYOR_TEXT_1": "Puede cambiar el escudo de armas de la ciudad y su lema",
     "MAYOR_TEXT_2": "Get the financial compensation from up to 2x if someone displace him",
     "MAYOR_TEXT_3": "Get all the votes from the city to his presidential campaign",
     "PRESIDENT_TEXT_1": "Can change the background of his country on the World Map",
@@ -174,7 +174,7 @@
   "QA": {
     "1": {
       "QUESTION": "¿Qué necesito para jugar CryptoElections?",
-      "ANSWER": "Esto es lo que necesitas para empezar: <br/> Un ordenador o portátil que pueda ejecutar la versión de escritorio de Chrome o Firefox <br/> MetaMask, una billetera digital utilizada específicamente con aplicaciones web de Ether, una forma de pagos digitales que impulsa a Cryptoelections."
+      "ANSWER": "Esto es lo que necesitas para empezar: <br/> Un ordenador o portátil que pueda ejecutar la versión de escritorio para Chrome o Firefox de MetaMask, una billetera digital utilizada específicamente con aplicaciones web de Ether, una forma de pagos digitales que impulsa a Cryptoelections."
     },
     "2": {
       "QUESTION": "Instalando MetaMask, tu billetera digital",
@@ -189,7 +189,7 @@
       "ANSWER": "Some users need to uninstall and reinstall MetaMask because they’ve experienced a bug. If you kept your seed words, this is very easy! Just delete the extension, reinstall it, and import your twelve seed words. Then you’ll set the password you want to use (this can be the same one you used before or a whole new password)."
     },
     "5": {
-      "QUESTION": "Getting Ether, your digital currency",
+      "QUESTION": "Obteniendo Ether, tu divisa digital",
       "ANSWER": "<b>For U.S. citizens only:</b> you can buy ether (ETH) in MetaMask. ETH is a digital currency that enables our game to run.<br/><img src='assets/images/screenshot-buy-usa.png' alt=''/><br/> <b>For everyone else:</b> you will need to purchase ETH from an exchange, and then transfer the ETH from your exchange wallet to your MetaMask wallet. Unfortunately, you cannot play CryptoElections with only an exchange account."
     },
     "6": {
