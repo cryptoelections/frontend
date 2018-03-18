@@ -30,7 +30,7 @@ export class CountryEffects {
       return this.web3Service.CryptoElections.deployed()
         .then((instance) => instance.getCountriesData(action.payload.map(x => +x))
           .then(([presidents, slogans, flags]: Array<Array<string>>) => {
-            if (action.payload.length && presidents.length && slogans.length && flags.length) {
+            if (presidents.length && slogans.length && flags.length) {
               return new country.LoadDynamicCountryInformationResponse(
                 action.payload.reduce((m, i, k) => ({
                   ...m, [i]: {

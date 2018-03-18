@@ -36,8 +36,9 @@ export class CityEffects {
       return this.web3Service.CryptoElections.deployed()
         .then((instance) => instance.getCitiesData(action.payload.map(x => +x))
           .then(([mayors, purchases, startPrices, multiplierSteps]: Array<Array<string>>) => {
-            console.log(action.payload, mayors, purchases, startPrices, multiplierSteps);
-            if (action.payload.length && mayors.length && purchases.length && startPrices.length && multiplierSteps.length) {
+            console.log(action.payload.map(x => +x), mayors, purchases.map(x => parseInt(x)),
+              startPrices.map(x => parseInt(x)), multiplierSteps.map(x => parseInt(x)));
+            if (mayors.length && purchases.length && startPrices.length && multiplierSteps.length) {
               return new city.LoadDynamicCityInformationResponse(action.payload.reduce((m, i, k) => ({
                 ...m, [i]: {
                   mayor: mayors[k],
