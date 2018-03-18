@@ -22,6 +22,9 @@ export class CityEffects {
     .ofType(city.LOAD_CITY_INFORMATION_REQUEST)
     .switchMap((action: city.LoadCityInformationRequest) => this.cityService.getList()
       .map((list: Array<City>) => {
+        const ids = list.map(c => c.id);
+        this.store.dispatch(new city.LoadDynamicCityInformationRequest(<string[]>ids));
+        setInterval(() => this.store.dispatch(new city.LoadDynamicCityInformationRequest(<string[]>ids)), 180000);
         return new city.LoadCityInformationResponse(list);
       })
       .catch((error) => Observable.of(new city.LoadCityInformationResponse([]))));
@@ -30,27 +33,20 @@ export class CityEffects {
   loadDynamicCityInformation$ = this.actions$
     .ofType(city.LOAD_DYNAMIC_CITY_INFORMATION_REQUEST)
     .debounceTime(2500)
-    .withLatestFrom(this.store.select(fromCities.selectIds))
-    .switchMap(([action, cityIds]: [city.LoadCityInformationRequest, string[]]) => {
-      const ids = cityIds.map(id => parseInt(id));
-      if (ids.length > 0) {
-        return this.web3Service.CryptoElections.deployed()
-          .then((instance) => instance.getCitiesData(ids)
-            .then(([mayors, purchases, startPrices, multiplierSteps]: Array<Array<string>>) => {
-              return new city.LoadDynamicCityInformationResponse(ids.reduce((m, i, k) => ({
-                ...m, [i]: {
-                  mayor: mayors[k],
-                  purchases: parseInt(purchases[k]),
-                  startPrice: parseInt(startPrices[k]),
-                  multiplierStep: parseInt(multiplierSteps[k]),
-                  price: this.calculateCityPrice(parseInt(purchases[k]), parseInt(startPrices[k]), parseInt(multiplierSteps[k]))
-                }
-              }), {}));
-            }));
-      } else {
-        return new city.LoadLocalDynamicCityInformationRequest();
-      }
+    .switchMap((action: city.LoadDynamicCityInformationRequest) => {
+      return this.web3Service.CryptoElections.deployed()
+        .then((instance) => instance.getCitiesData(action.payload.map(x => parseInt(x)))
+          .then(([mayors, purchases, startPrices, multiplierSteps]: Array<Array<string>>) => {
+            return new city.LoadDynamicCityInformationResponse(action.payload.reduce((m, i, k) => ({
+              ...m, [i]: {
+                mayor: mayors[k],
+                purchases: parseInt(purchases[k]),
+                price: this.calculateCityPrice(i, parseInt(purchases[k]), parseInt(startPrices[k]), parseInt(multiplierSteps[k]))
+              }
+            }), {}));
+          }));
     }).catch((error) => {
+      console.log('dynamic loading error:', error);
       return Observable.of(new city.LoadLocalDynamicCityInformationRequest());
     });
 
@@ -65,6 +61,7 @@ export class CityEffects {
         return new city.LoadDynamicCityInformationResponse(dictionary);
       }))
     .catch((error) => {
+      console.log('local dynamic loading error:', error);
       return Observable.of(new city.LoadDynamicCityInformationResponse({}));
     });
 
@@ -80,7 +77,7 @@ export class CityEffects {
         .then((instance) => {
           return instance.cities(action.payload.id)
             .then((c) => {
-              const price = this.calculateCityPrice(parseInt(c[3]), parseInt(c[4]), parseInt(c[5]));
+              const price = this.calculateCityPrice(action.payload.id, parseInt(c[3]), parseInt(c[4]), parseInt(c[5]));
               return instance.buyCity(action.payload.id, {
                 value: price,
                 to: instance.address
@@ -113,7 +110,7 @@ export class CityEffects {
   }
 
 
-  private calculateCityPrice(purchases: number, startPrice: number, multiplierStep: number): number {
+  private calculateCityPrice(id, purchases: number, startPrice: number, multiplierStep: number): number {
     let price = startPrice;
 
     for (let i = 1; i <= purchases; i++) {
@@ -123,6 +120,7 @@ export class CityEffects {
         price = (price * 12) / 10;
       }
     }
+    console.log(id, purchases, startPrice, multiplierStep, 'price =>', price);
     return price;
   }
 }

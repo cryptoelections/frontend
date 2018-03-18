@@ -12,8 +12,9 @@
     <p class="card-text">
       <span><b>{{ numberOfCities }} {{(numberOfCities === 1 ? 'COUNTRY.CARD.CITY' : 'COUNTRY.CARD.CITIES')  | translate }}</b></span>
 
-      <span *ngIf="!!cityPriceRange().lowestPrice"> {{ cityPriceRange().lowestPrice | eth }}<span
-        *ngIf="!!cityPriceRange().highestPrice"> - {{ cityPriceRange().highestPrice | eth }}</span> ETH</span><br/>
+      <!--<span *ngIf="!!cityPriceRange().lowestPrice"> {{ cityPriceRange().lowestPrice | eth }}<span-->
+      <!--*ngIf="!!cityPriceRange().highestPrice"> - {{ cityPriceRange().highestPrice | eth }}</span> ETH</span>-->
+      <br/>
 
       <span><b>{{ myCities?.length }}</b> {{('COUNTRY.CARD.' + (myCities?.length === 1 ? 'CITY' : 'CITIES')) | translate }}
         {{ 'COUNTRY.CARD.UNDER_YOUR_CONTROL' | translate }}</span><br/>

@@ -49,9 +49,9 @@ export class CommonEffects {
     .ofType(commonActions.LOAD_ALL)
     .flatMap((action: commonActions.LoadAllData) => [
       new cityActions.LoadCityInformationRequest(),
-      new cityActions.LoadDynamicCityInformationRequest(),
+      // new cityActions.LoadDynamicCityInformationRequest(),
       new countryActions.LoadCountriesRequest(),
-      new countryActions.LoadDynamicCountryInformationRequest(),
+      // new countryActions.LoadDynamicCountryInformationRequest(),
       new nicknameActions.LoadNicknamesRequest(),
       new myCampaignActions.LoadMyCitiesRequest(),
       new commonActions.TurnOnNotifications()
