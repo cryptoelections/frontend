@@ -174,10 +174,10 @@
   "QA": {
     "1": {
       "QUESTION": "¿Qué necesito para jugar CryptoElections?",
-      "ANSWER": "Here’s what you need to get started: <br/> A computer or laptop running the desktop version of Chrome or Firefox MetaMask, a digital wallet used specifically with web apps Ether, a form of digital payment that powers CryptoElections."
+      "ANSWER": "Esto es lo que necesitas para empezar: <br/> Un ordenador o portátil que pueda ejecutar la versión de escritorio de Chrome o Firefox <br/> MetaMask, una billetera digital utilizada específicamente con aplicaciones web de Ether, una forma de pagos digitales que impulsa a Cryptoelections."
     },
     "2": {
-      "QUESTION": "Installing MetaMask, your digital wallet",
+      "QUESTION": "Instalando MetaMask, tu billetera digital",
       "ANSWER": "To use CryptoElections, you will need to install MetaMask, a digital wallet. You will need to put money in it to make your first purchase. <br/> Note: A digital wallet like MetaMask acts like a bank account—treat it with respect and make sure you don’t forget your password or the seed words."
     },
     "3": {
