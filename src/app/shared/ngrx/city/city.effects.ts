@@ -34,7 +34,7 @@ export class CityEffects {
     .debounceTime(2500)
     .switchMap((action: city.LoadDynamicCityInformationRequest) => {
       return this.web3Service.CryptoElections.deployed()
-        .then((instance) => instance.getCitiesData(action.payload)
+        .then((instance) => instance.getCitiesData(action.payload.map(x => +x))
           .then(([mayors, purchases, startPrices, multiplierSteps]: Array<Array<string>>) => {
             console.log(action.payload, mayors, purchases, startPrices, multiplierSteps);
             if (action.payload.length && mayors.length && purchases.length && startPrices.length && multiplierSteps.length) {

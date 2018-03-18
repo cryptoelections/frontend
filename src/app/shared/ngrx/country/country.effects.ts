@@ -28,7 +28,7 @@ export class CountryEffects {
     .debounceTime(2500)
     .switchMap((action: country.LoadDynamicCountryInformationRequest) => {
       return this.web3Service.CryptoElections.deployed()
-        .then((instance) => instance.getCountriesData(action.payload)
+        .then((instance) => instance.getCountriesData(action.payload.map(x => +x))
           .then(([presidents, slogans, flags]: Array<Array<string>>) => {
             if (action.payload.length && presidents.length && slogans.length && flags.length) {
               return new country.LoadDynamicCountryInformationResponse(
