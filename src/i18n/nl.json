@@ -158,30 +158,30 @@
     "PRESIDENT": "<b>{{ user }}</b> was verkozen tot president van <b>{{ country }}</b>{{ timestamp }}"
   },
   "WALLET": {
-    "TEXT": "If someone becomes a mayor instead of you, you get compensation. Here you can see how much you have:",
+    "TEXT": "Als iemand in jouw plaats burgemeester wordt, krijg je compensatie. Hier kan je zien hoeveel compensatie jij hebt:",
     "WITHDRAW": "Opnemen"
   },
   "SUCCESS": {
     "NICKNAME_WAS_SET": "Bijnaam succesvol ingesteld"
   },
   "ERRORS": {
-    "UNSUCCESSFUL_TRANSACTION": "Unsuccessful transaction - buying <b>{{ name }}</b>",
-    "NICKNAME_WAS_NOT_SET": "<b>Error!</b> Nickname was not set."
+    "UNSUCCESSFUL_TRANSACTION": "Transactie mislukt - <b>{{ name }}</b> kopen",
+    "NICKNAME_WAS_NOT_SET": "<b>Fout opgetreden!</b> Bijnaam is niet ingesteld."
   },
   "LOG": {
-    "BECAME_PRESIDENT": "Became President of {{ country }} {{ timestamp }}"
+    "BECAME_PRESIDENT": "werd president van {{ country }} {{ timestamp }}"
   },
   "QA": {
     "1": {
-      "QUESTION": "What do I need to play CryptoElections?",
-      "ANSWER": "Here’s what you need to get started: <br/> A computer or laptop running the desktop version of Chrome or Firefox MetaMask, a digital wallet used specifically with web apps Ether, a form of digital payment that powers CryptoElections."
+      "QUESTION": "Wat heb ik nodig om CryptoElections te spelen?",
+      "ANSWER": "Hier is wat je nodig hebt om te beginnen: <br/> Een computer of laptop met de desktop versie van Chome of Firefox <br/> Metamask, een digitale portefeuille speciaal voor web apps <br/> Ether, een vorm van digitale betalingen dat CryptoElections steunt."
     },
     "2": {
-      "QUESTION": "Installing MetaMask, your digital wallet",
-      "ANSWER": "To use CryptoElections, you will need to install MetaMask, a digital wallet. You will need to put money in it to make your first purchase. <br/> Note: A digital wallet like MetaMask acts like a bank account—treat it with respect and make sure you don’t forget your password or the seed words."
+      "QUESTION": "MetaMask, jouw digitale portefeuille, aan het installeren",
+      "ANSWER": "Om CryptoElections te gebruiken moet je MetaMask, een digitale portefeuille installeren. Je zal er geld in moeten stoppen om je eerste koop te maken. <br/> Let op: een digitale portefeuille zoals MetaMask is als een bankrekening - gebruik het met respect en zorg er voor dat je je wachtwoord of seed woorden niet vergeet."
     },
     "3": {
-      "QUESTION": "Why is MetaMask locked?",
+      "QUESTION": "Waarom is MetaMask vergrendeld?",
       "ANSWER": "Occasionally the ‘My campaign’ page displays a lock screen. This happens because MetaMask automatically locks your account after a certain period of time. To unlock simply click on the MetaMask extension and type in your password."
     },
     "4": {
