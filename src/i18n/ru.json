@@ -24,16 +24,16 @@
     "PRESIDENT_TEXT_2": "Налоги. Получает комиссионные в размере 1% от всех транзакций в его стране.",
     "PRESIDENT_TEXT_3": "Остается на своей должности до тех пор, пока кто-то не получит 50% + 1 голос",
     "ROADMAP": "Дорожная карта",
-    "ROADMAP_1": "Alpha-Release. Early-access for initial users. Invest in campaign and elections mechanics implemented. First 10 countries released. Cities’ initial price - 0.02 eth.",
-    "ROADMAP_2": "Beta-Release. New features: World map, list of most influential mayors and Presidents.",
-    "ROADMAP_3": "Mayors get power. Mayors will be able to change city’s coat of arms to any picture, and add city slogan that will be visible to everyone.",
-    "ROADMAP_4": "Presidents change Worldmap. President will be able to change background to countries that are under his control. President can advertise anything.",
-    "ROADMAP_5": "All countries are in the game.",
-    "ROADMAP_6": "Massive marketing campaign begins.",
-    "ROADMAP_7": "Main release. Cities crowdfunding platform implemented. Any user will be able to submit local crowdfunding business or charity project, and mayor of the city will choose which project will be crowdfunded in this city."
+    "ROADMAP_1": "Альфа-релиз. Ранний доступ для первых пользователей. Инвестирование в кампании и механика выборов включены. Первые 10 стран выпущены. Начальная цена городов - 0.02 eth.",
+    "ROADMAP_2": "Бета-релиз. Новые возможности: карта мира, список наиболее влиятельных мэров и президентов.",
+    "ROADMAP_3": "Мэры получают силу. Они получат возможность менять герб города на любую картинку и устанавливать для города слоган, которые будут видны каждому.",
+    "ROADMAP_4": "Президенты меняют карту мира. Президент получит право менять фон страны, которая находится под его контролем, на карте. Президент сможет рекламировать что-нибудь.",
+    "ROADMAP_5": "Все страны в игре.",
+    "ROADMAP_6": "Запуск массовой маркетинговой кампании.",
+    "ROADMAP_7": "Главный релиз. Внедряется платформа для краудфандинга в городах. Любой пользователь сможет предложить местный бизнес или социальный проект, а мэр города выберет, на какой именно проект будут собираться в этом городе средства."
   },
   "MARKETPLACE": {
-    "TITLE": "Marketplace",
+    "TITLE": "Магазин",
     "VIEWMODE": {
       "CITIES": "Города",
       "COUNTRIES": "Страны"
@@ -65,9 +65,9 @@
       "REQUEST_SENT": "Запрос отправлен",
       "YOU_ARE_MAYOR": "Вы - мэр",
       "PERCENTAGE": "{{ percentage }}% электората",
-      "SMALLCITY": "Population - less % of country population",
-      "MEDIUMCITY": "Population - less % of country population",
-      "BIGCITY": "Population - more than % of country population"
+      "SMALLCITY": "Население - меньше % населения страны",
+      "MEDIUMCITY": "Население - меньше % населения страны",
+      "BIGCITY": "Население - больше % населения страны"
     },
     "MODAL": {
       "CONGRATULATIONS": "<b>Поздравляем!</b><br/> Вы - новый мэр города {{ name }}",
@@ -174,10 +174,10 @@
   "QA": {
     "1": {
       "QUESTION": "Что мне необходимо, чтобы играть в CryptoElections?",
-      "ANSWER": "Here’s what you need to get started: <br/> A computer or laptop running the desktop version of Chrome or Firefox MetaMask, a digital wallet used specifically with web apps Ether, a form of digital payment that powers CryptoElections."
+      "ANSWER": "Здесь то, что вам понадобиться, чтобы начать:<br/> Ноутбук или компьютер, с установленной десктопной версией Chrome или Firefox, MetaMask - цифровой кошелек для работы с веб-приложениями и Ether - средство оплаты, принимаемой в  CryptoElections."
     },
     "2": {
-      "QUESTION": "Installing MetaMask, your digital wallet",
+      "QUESTION": "Установка MetaMask, вашего цифрового кошелька",
       "ANSWER": "To use CryptoElections, you will need to install MetaMask, a digital wallet. You will need to put money in it to make your first purchase. <br/> Note: A digital wallet like MetaMask acts like a bank account—treat it with respect and make sure you don’t forget your password or the seed words."
     },
     "3": {
