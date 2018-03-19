@@ -110,7 +110,7 @@
       "RUN_CAMPAIGN": "Vést kampaň",
       "INVEST_PRICE": "Investujte {{ price }} k výhře prezidentských voleb",
       "TO_WIN": "k výhře prezidentských voleb",
-      "INVEST_MODAL_TEXT": "Toto jsou nejvýdělečnější města k investici pro vaši kampaň v {{ country }} k získání většiny hlasů pro funkci prezidenta této země! Jestli chcete investovat v jiných městech v {{ country }}, vyberte z ",
+      "INVEST_MODAL_TEXT": "Toto jsou nejvýdělečnější města k investici pro vaši kampaň v {{ country }} k získání většiny hlasů pro funkci prezidenta této země! Jestli chcete investovat v jiných městech v {{ country }}, vyberte z",
       "INVEST_MODAL_TEXT_LINK": "tohoto seznamu",
       "INVEST_MODAL_PERCENTAGE": "% voličů"
     },
@@ -186,7 +186,7 @@
     },
     "4": {
       "QUESTION": "Přeinstalace MetaMasku",
-      "ANSWER": "Někteří uživatelé potřebují znovu nainstalovat MetaMask, protože se setkali s chybou. Pokud máte svá počáteční slova, tak je to velmi snadné! Jednoduše smažte rozšíření a nainstalujte znovu, následně zadejte dvanáct počátečních slov. Poté nastavte heslo, které chcete použít. (Heslo může být stejné jako předchozí, nebo můžete zvolit nové heslo.)"
+      "ANSWER": "Někteří uživatelé potřebují znovu nainstalovat MetaMask, protože se setkali s chybou. Pokud máte svá počáteční slova, tak je to velmi snadné! Jednoduše smažte rozšíření a nainstalujte znovu, následně zadejte dvanáct počátečních slov. Poté nastavte heslo, které chcete použít (Heslo může být stejné jako předchozí, nebo můžete zvolit nové heslo)."
     },
     "5": {
       "QUESTION": "Získání digitální měny Ether",
