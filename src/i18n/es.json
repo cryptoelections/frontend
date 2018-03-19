@@ -174,7 +174,7 @@
   "QA": {
     "1": {
       "QUESTION": "¿Qué necesito para jugar CryptoElections?",
-      "ANSWER": "Esto es lo que necesitas para empezar: <br/> Un ordenador o portátil que pueda ejecutar la versión de escritorio para Chrome o Firefox de MetaMask, una billetera digital utilizada específicamente con aplicaciones web de Ether, una forma de pagos digitales que impulsa a Cryptoelections."
+      "ANSWER": "Esto es lo que necesitas para empezar: <br/> Un ordenador o portátil que pueda ejecutar la versión de escritorio para Chrome o Firefox de MetaMask, una billetera digital utilizada específicamente con aplicaciones web de Ether, una forma de pagos digitales que impulsa a CryptoElections."
     },
     "2": {
       "QUESTION": "Instalando MetaMask, tu billetera digital",
@@ -194,7 +194,7 @@
     },
     "6": {
       "QUESTION": "Cómo enviar ETH a MetaMask",
-      "ANSWER": "<b>For U.S. citizens only:</b> you are able to purchase ETH directly from the MetaMask wallet using the Coinbase widget. This is more convenient and doesn’t require you to create two accounts.<br/> <b>For everyone else:</b> For everyone else: you need to buy ETH from an exchange using normal fiat currency. Copy your MetaMask address by clicking on the large ‘...’ next to your account, then select ‘Copy Address to clipboard’. Go to your exchange, click ‘Accounts’, and select your ETH Wallet and click ‘send’. Paste the MetaMask address in the box with the amount you’d like to transfer."
+      "ANSWER": "<b>For U.S. citizens only:</b> you are able to purchase ETH directly from the MetaMask wallet using the Coinbase widget. This is more convenient and doesn’t require you to create two accounts.<br/> <b>For everyone else:</b> you need to buy ETH from an exchange using normal fiat currency. Copy your MetaMask address by clicking on the large ‘...’ next to your account, then select ‘Copy Address to clipboard’. Go to your exchange, click ‘Accounts’, and select your ETH Wallet and click ‘send’. Paste the MetaMask address in the box with the amount you’d like to transfer."
     }
   }
 }
