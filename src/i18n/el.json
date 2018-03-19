@@ -14,7 +14,7 @@
     "HOW_TO_PLAY": "Πως να παίξετε",
     "HOW_TO_PLAY_TEXT_1": "CryptoElections is a game about leading the countries by running an election campaign in cities. The more electorate live the city — the more votes you get. Once you get the majority — you become a president. The aim is to become a president in as many countries as possible.",
     "HOW_TO_PLAY_TEXT_2": "Ο πρόεδρος θα πάρει 1% προμήθεια από κάθε συναλλαγή στη χώρα του.",
-    "HOW_TO_PLAY_TEXT_3": "Εάν είστε ο δήμαρχος της πόλης και κάποιος θέλει να σας νικήσει, θα πληρωθείτε δύο φορές περισσότερο από ότι πληρώσατε.",
+    "HOW_TO_PLAY_TEXT_3": "If you are the mayor of the city and someone wants to beat you, you will get up to 2 times more you paid.",
     "MAYOR": "Δήμαρχος",
     "PRESIDENT": "Πρόεδρος",
     "MAYOR_TEXT_1": "Μπορεί να αλλάξει το εθνόσημο της πόλης και το σύνθημα της",
@@ -194,7 +194,7 @@
     },
     "6": {
       "QUESTION": "Πως να στείλετε ETH στο MetaMask",
-      "ANSWER": "<b>For U.S. citizens only:</b> you are able to purchase ETH directly from the MetaMask wallet using the Coinbase widget. This is more convenient and doesn’t require you to create two accounts.<br/> <b>For everyone else:</b> For everyone else: you need to buy ETH from an exchange using normal fiat currency. Copy your MetaMask address by clicking on the large ‘...’ next to your account, then select ‘Copy Address to clipboard’. Go to your exchange, click ‘Accounts’, and select your ETH Wallet and click ‘send’. Paste the MetaMask address in the box with the amount you’d like to transfer."
+      "ANSWER": "<b>For U.S. citizens only:</b> you are able to purchase ETH directly from the MetaMask wallet using the Coinbase widget. This is more convenient and doesn’t require you to create two accounts.<br/> <b>For everyone else:</b> you need to buy ETH from an exchange using normal fiat currency. Copy your MetaMask address by clicking on the large ‘...’ next to your account, then select ‘Copy Address to clipboard’. Go to your exchange, click ‘Accounts’, and select your ETH Wallet and click ‘send’. Paste the MetaMask address in the box with the amount you’d like to transfer."
     }
   }
 }
