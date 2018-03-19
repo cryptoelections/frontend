@@ -120,7 +120,7 @@
     },
     "FILTER": {
       "SORT_BY": "Ordian per",
-      "SEARCH": "Cerca...",
+      "SEARCH": "Cerca",
       "SORT": {
         "NAME": "Nome",
         "AVAILABILITY": "Disponibile prima",
