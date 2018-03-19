@@ -1,0 +1,200 @@
+{
+  "TITLE": "crypto elections",
+  "MENU": {
+    "COUNTRIES": "Země",
+    "CITIES": "Města",
+    "MAP": "Mapa",
+    "MY_CAMPAIGN": "Moje kampaň"
+  },
+  "HOME": {
+    "START_YOUR_CAMPAIGN": "Zahajte kampaň!",
+    "GET_POWER": "Získejte moc.",
+    "RUN_COUNTRIES": "Řiďte země.",
+    "EARN_MONEY": "Vydělějte peníze.",
+    "HOW_TO_PLAY": "Jak hrát",
+    "HOW_TO_PLAY_TEXT_1": "CryptoElections je hra o vládnutí v zemích a vedení politických kampaní ve městech. Čím více voličů žije ve městě, tím více hlasů získáte. Jakmile dosáhnete většiny hlasů, stane se z vás prezident. Cílem hry je stát se prezidentem v co nejvíce státech.",
+    "HOW_TO_PLAY_TEXT_2": "Prezident získá 1% provizi z každé transakce v zemi.",
+    "HOW_TO_PLAY_TEXT_3": "Jestli jste starosta a někdo jiný vás chce nahradit, dostanete až dvojnásobek svých výdajů.",
+    "MAYOR": "Starosta",
+    "PRESIDENT": "Prezident",
+    "MAYOR_TEXT_1": "Může měnit městský znak a slogan",
+    "MAYOR_TEXT_2": "Je kompenzován až ve výši dvojnásobku, pokud je nahrazen",
+    "MAYOR_TEXT_3": "Získá všechny hlasy ve městě na svou prezidentskou kampaň",
+    "PRESIDENT_TEXT_1": "Může změnit pozadí svého státu na mapě světa",
+    "PRESIDENT_TEXT_2": "Daně. Získá 1% provizi ze všech transakcí v zemi.",
+    "PRESIDENT_TEXT_3": "Zůstává na postu, dokud někdo jiný nezíská 50 % + 1 hlasů",
+    "ROADMAP": "Plány",
+    "ROADMAP_1": "Alfa verze. Brzký přístup pro prvotní uživatele. Implementace investic do kampaní a mechaniky voleb. Spuštěno prvních 10 států. Počáteční cena měst - 0,02 ETH.",
+    "ROADMAP_2": "Beta verze. Nové funkce: Mapa světa, seznam nejvlivnějších starostů a prezidentů.",
+    "ROADMAP_3": "Starostové získají moc. Budou moct změnit městský znak na jakýkoli obrázek a přidat slogan, který bude viditelný pro všechny.",
+    "ROADMAP_4": "Prezidentové mění mapu světa. Budou moct změnit pozadí ovládaných zemi a cokoli inzerovat.",
+    "ROADMAP_5": "Ve hře jsou všechny země.",
+    "ROADMAP_6": "Začátek rozsáhlé kampaně.",
+    "ROADMAP_7": "Stabilní verze. Implementace crowdfundingu ve městech. Uživatelé budou moct vytvořit místní podnik pro crowdfunding nebo charitu a starosta vybere, který projekt bude ve městě financován."
+  },
+  "MARKETPLACE": {
+    "TITLE": "Trh",
+    "VIEWMODE": {
+      "CITIES": "Města",
+      "COUNTRIES": "Země"
+    }
+  },
+  "ACCOUNT": {
+    "NOT_CONNECTED": "Nepřipojen",
+    "REQUIRE_METAMASK": "CryptoElections vyžadují instalaci doplňku MetaMask v prohlížeči.",
+    "INSTALL": "Instalovat",
+    "SET_NICKNAME": "Nastavit přezdívku",
+    "NICKNAME_PLACEHOLDER": "Napište svoji přezdívku",
+    "IS_LOCKED": "Zamčeno",
+    "INSTALL_METAMASK": "Instalovat metamask",
+    "METAMASK_LOCKED": "Váš MetaMask je uzamčen",
+    "METAMASK_LOCKED_TEXT": "Otevřete MetaMask a postupujte podle pokynů k odemčení.",
+    "WRONG_NETWORK": "Ups, jste na nesprávné síti",
+    "WRONG_NETWORK_TEXT": "Otevřete MetaMask a přejděte na hlavní síť Etherea."
+  },
+  "CITY": {
+    "TITLE": "Města",
+    "NOT_FOUND": "Žádná města",
+    "CARD": {
+      "MAYOR": "Starosta",
+      "NOT_ELECTED_YET": "Ještě nezvolen",
+      "COUNTRY": "Země",
+      "ELECTORATE": "Voliči",
+      "INVEST": "Investovat",
+      "TO_WIN": "k výhře komunálních voleb",
+      "REQUEST_SENT": "Požadavek odeslán",
+      "YOU_ARE_MAYOR": "Jste starosta",
+      "PERCENTAGE": "{{ percentage }} % voličů",
+      "SMALLCITY": "Populace - méně než % obyvatel státu",
+      "MEDIUMCITY": "Populace - méně než % obyvatel státu",
+      "BIGCITY": "Populace - více než % obyvatel státu"
+    },
+    "MODAL": {
+      "CONGRATULATIONS": "<b>Gratulujeme!</b><br/> Jste nový starosta v {{ name }}",
+      "RULE_CITY": "Vládněte tomuto městu!"
+    },
+    "FILTER": {
+      "SORT_BY": "Seřadit podle",
+      "SEARCH": "Hledat",
+      "SORT": {
+        "NAME": "Jméno",
+        "ELECTORATE_DOWN": "Voliči ↓",
+        "ELECTORATE_UP": "Voliči ↑",
+        "PRICE_PER_VOTE_DOWN": "Cena za hlas ↓",
+        "PRICE_PER_VOTE_UP": "Cena za hlas ↑",
+        "PRICE_DOWN": "Cena ↓",
+        "PRICE_UP": "Cena ↑",
+        "COUNTRY": "Země"
+      }
+    }
+  },
+  "COUNTRY": {
+    "TITLE": "Země",
+    "CARD": {
+      "PRESIDENT": "Prezident",
+      "NOT_ELECTED_YET": "Prozatím nezvolen",
+      "YOU_ARE_PRESIDENT": "Jste prezident",
+      "NOT_IMPLEMENTED": "Nejsou vyhlášeny žádné kryptovolby",
+      "CITIES_PRICE_RANGE": {
+        "CITIES": "{{ lowestPrice }} - {{ highestPrice }} ETH",
+        "ONE_CITY": " {{ lowestPrice }} ETH"
+      },
+      "CITY": "město",
+      "CITIES": "města",
+      "UNDER_YOUR_CONTROL": "pod vaší kontrolou",
+      "OF_ELECTORATE": "voličů",
+      "SUPPORT_YOU": "vás podporuje",
+      "ELECTORATE": "Voliči",
+      "INVEST": "Investovat",
+      "TO_BECOME_A_PRESIDENT": "na pozici prezidenta",
+      "RUN_CAMPAIGN": "Vést kampaň",
+      "INVEST_PRICE": "Investujte {{ price }} k výhře prezidentských voleb",
+      "TO_WIN": "k výhře prezidentských voleb",
+      "INVEST_MODAL_TEXT": "Toto jsou nejvýdělečnější města k investici pro vaši kampaň v {{ country }} k získání většiny hlasů pro funkci prezidenta této země! Jestli chcete investovat v jiných městech v {{ country }}, vyberte z",
+      "INVEST_MODAL_TEXT_LINK": "tohoto seznamu",
+      "INVEST_MODAL_PERCENTAGE": "% voličů"
+    },
+    "MODAL": {
+      "CONGRATULATIONS": "<b>Gratulujeme!</b><br/> Máte většinu hlasů v {{ name }}!",
+      "RULE_COUNTRY": "Vládněte této zemi!"
+    },
+    "FILTER": {
+      "SORT_BY": "Seřadit podle",
+      "SEARCH": "Hledat",
+      "SORT": {
+        "NAME": "Jméno",
+        "AVAILABILITY": "První k dispozici",
+        "ELECTORATE_DOWN": "Voliči ↓",
+        "ELECTORATE_UP": "Voliči ↑",
+        "PRICE_DOWN": "Cena ↓",
+        "PRICE_UP": "Cena ↑",
+        "NUMBER_OF_CITIES_DOWN": "Počet měst ↓",
+        "NUMBER_OF_CITIES_UP": "Počet měst ↑",
+        "AREA": "Rozloha"
+      }
+    }
+  },
+  "M": "M",
+  "K": "K",
+  "COMMON": {
+    "MLN": "M",
+    "THOUSANDS": "K",
+    "PAGINATION": {
+      "FIRST_TEXT": "První",
+      "LAST_TEXT": "Poslední"
+    },
+    "FILTER": {
+      "SORT_BY": "Seřadit podle"
+    }
+  },
+  "CAMPAIGN": {
+    "TITLE": "Moje kampaň",
+    "CITY": "město",
+    "CITIES": "města",
+    "START": "Zahajte kampaň",
+    "INVEST": "Investujte do kampaně ve městech a zemích podle volby a ovládněte svět!"
+  },
+  "NOTIFICATIONS": {
+    "PRESIDENT": "<b>{{ user }}</b> byl zvolen prezidentem v <b>{{ country }}</b> {{ timestamp }}"
+  },
+  "WALLET": {
+    "TEXT": "Pokud vás někdo nahradí na místě starosty, dostanete kompenzaci. Zde můžete vidět, kolik právě máte:",
+    "WITHDRAW": "Vybrat"
+  },
+  "SUCCESS": {
+    "NICKNAME_WAS_SET": "Přezdívka byla úspěšně nastavena"
+  },
+  "ERRORS": {
+    "UNSUCCESSFUL_TRANSACTION": "Neúspěšná transakce - nákup <b>{{ name }}</b>",
+    "NICKNAME_WAS_NOT_SET": "<b>Chyba!</b> Přezdívka nebyla nastavena."
+  },
+  "LOG": {
+    "BECAME_PRESIDENT": "Stal se prezidentem {{ country }} {{ timestamp }}"
+  },
+  "QA": {
+    "1": {
+      "QUESTION": "Co potřebuji k hraní CryptoElections?",
+      "ANSWER": "K začátku potřebujete: <br/> Počítač s desktopovou verzí MetaMasku v Chromu nebo Firefoxu, digitální peněženku pro webové aplikace Ether, digitální platby k podpoření CryptoElections."
+    },
+    "2": {
+      "QUESTION": "Instalace MetaMask, vaší digitální peněženky",
+      "ANSWER": "Budete potřebovat nainstalovat digitální peněženku MetaMask, abyste mohli používat CryptoElections. Budete muset vložit peníze k první platbě. <br/> Poznámka: Digitální peněženka jako MetaMask se chová jako váš bankovní účet. Starejte se o ni a ujistěte se, že si pamatujete heslo nebo počáteční slova."
+    },
+    "3": {
+      "QUESTION": "Proč je MetaMask zamčený?",
+      "ANSWER": "Občas se na stránce ‚Moje kampaň‘ zobrazí uzamočená obrazovka. MetaMask automaticky uzamkne váš účet po určité době. Pro odemčení jednoduše klikněte na rozšíření MetaMask a zadejte svoje heslo."
+    },
+    "4": {
+      "QUESTION": "Přeinstalace MetaMasku",
+      "ANSWER": "Někteří uživatelé potřebují znovu nainstalovat MetaMask, protože se setkali s chybou. Pokud máte svá počáteční slova, tak je to velmi snadné! Jednoduše smažte rozšíření a nainstalujte znovu, následně zadejte dvanáct počátečních slov. Poté nastavte heslo, které chcete použít (Heslo může být stejné jako předchozí, nebo můžete zvolit nové heslo)."
+    },
+    "5": {
+      "QUESTION": "Získání digitální měny Ether",
+      "ANSWER": "<b>Pouze pro občany USA:</b> Můžete koupit ether (ETH) v MetaMasku. ETH je digitální měna, která dovoluje hrát naši hru.<br/><img src='assets/images/screenshot-buy-usa.png' alt=''/><br/> <b>Pro všechny ostatní:</b> Můžete koupit ETH ve směnárně a poté převést ETH do vaší MetaMask peněženky. Bohužel nemůžete hrát CryptoElections s vaším účtem ze směnárny."
+    },
+    "6": {
+      "QUESTION": "Jak poslat ETH na MetaMask",
+      "ANSWER": "<b>Pouze pro občany USA:</b> Můžete zakoupit ETH přímo z peněženky MetaMask pomocí widgetu Coinbase. Je to pohodlnější a nepotřebujete vytvářet dva účty.<br/> <b>Pro všechny ostatní:</b> Musíte zakoupit ETH přes směnárnu zaplacením fiat měnou. Zkopírujte svou MetaMask adresu kliknutím na ‚...‘ vedle vašeho účtu, poté vyberte ‚Zkopírovat adresu do schránky‘. Běžte do vybrané směnárny, klikněte na ‚Účty‘ a zvolte svou ETH peněženku a klikněte na ‚poslat‘. Vložte adresu MetaMask do pole s částkou, kterou chcete převést."
+    }
+  }
+}

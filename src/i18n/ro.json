@@ -1,16 +1,16 @@
 {
   "TITLE": "crypto elections",
   "MENU": {
-    "COUNTRIES": "Countries",
-    "CITIES": "Cities",
-    "MAP": "Map",
-    "MY_CAMPAIGN": "My campaign"
+    "COUNTRIES": "Țări",
+    "CITIES": "Orașe",
+    "MAP": "Hartă",
+    "MY_CAMPAIGN": "Campania mea"
   },
   "HOME": {
-    "START_YOUR_CAMPAIGN": "Start your campaign!",
+    "START_YOUR_CAMPAIGN": "Începe campania ta!",
     "GET_POWER": "Get power.",
     "RUN_COUNTRIES": "Run countries.",
-    "EARN_MONEY": "Earn Money.",
+    "EARN_MONEY": "Câștigă bani.",
     "HOW_TO_PLAY": "How to play",
     "HOW_TO_PLAY_TEXT_1": "CryptoElections is a game about leading the countries by running an election campaign in cities. The more electorate live the city — the more votes you get. Once you get the majority — you become a president. The aim is to become a president in as many countries as possible.",
     "HOW_TO_PLAY_TEXT_2": "President will get 1% commission fee from every transaction in his country.",
@@ -35,63 +35,63 @@
   "MARKETPLACE": {
     "TITLE": "Marketplace",
     "VIEWMODE": {
-      "CITIES": "Cities",
-      "COUNTRIES": "Countries"
+      "CITIES": "Orașe",
+      "COUNTRIES": "Țări"
     }
   },
   "ACCOUNT": {
-    "NOT_CONNECTED": "Not connected",
+    "NOT_CONNECTED": "Nu este conectat",
     "REQUIRE_METAMASK": "CryptoElections requires a MetaMask add-on installed in your browser.",
-    "INSTALL": "Install",
+    "INSTALL": "Instalează",
     "SET_NICKNAME": "Set Nickname",
     "NICKNAME_PLACEHOLDER": "Type Your Nickname",
-    "IS_LOCKED": "Locked",
-    "INSTALL_METAMASK": "Install metamask",
+    "IS_LOCKED": "Blocat",
+    "INSTALL_METAMASK": "Instalează metamask",
     "METAMASK_LOCKED": "Your MetaMask is locked",
     "METAMASK_LOCKED_TEXT": "Simply open MetaMask and follow the instructions to unlock it.",
-    "WRONG_NETWORK": "Oops, you’re on the wrong network",
+    "WRONG_NETWORK": "Oops, sunteți în rețeaua greșită",
     "WRONG_NETWORK_TEXT": "Simply open MetaMask and switch over to the Main Ethereum Network."
   },
   "CITY": {
-    "TITLE": "Cities",
-    "NOT_FOUND": "No cities",
+    "TITLE": "Orașe",
+    "NOT_FOUND": "Nici un oraș",
     "CARD": {
-      "MAYOR": "Mayor",
-      "NOT_ELECTED_YET": "Not elected yet",
-      "COUNTRY": "Country",
-      "ELECTORATE": "Electorate",
-      "INVEST": "Invest",
+      "MAYOR": "Primar",
+      "NOT_ELECTED_YET": "Nu a fost ales încă",
+      "COUNTRY": "Țară",
+      "ELECTORATE": "Electorat",
+      "INVEST": "Investește",
       "TO_WIN": "to win mayoral election",
-      "REQUEST_SENT": "Request sent",
-      "YOU_ARE_MAYOR": "You are the mayor",
-      "PERCENTAGE": "{{ percentage }}% of electorate",
-      "SMALLCITY": "Population - less % of country population",
-      "MEDIUMCITY": "Population - less % of country population",
-      "BIGCITY": "Population - more than % of country population"
+      "REQUEST_SENT": "Cerere trimisă",
+      "YOU_ARE_MAYOR": "Tu ești primarul",
+      "PERCENTAGE": "{{ percentage }}% din electorat",
+      "SMALLCITY": "Populația - mai puțin de % din populația țării",
+      "MEDIUMCITY": "Populația - mai puțin de % din populația țării",
+      "BIGCITY": "Populația - mai mult de % din populația țării"
     },
     "MODAL": {
-      "CONGRATULATIONS": "<b>Congratulations!</b><br/> You are new mayor of {{ name }}",
-      "RULE_CITY": "Rule this city!"
+      "CONGRATULATIONS": "<b>Felicitări!</b><br/>Ești noul primar al {{ name }}",
+      "RULE_CITY": "Condu acest oraș!"
     },
     "FILTER": {
-      "SORT_BY": "Sort by",
-      "SEARCH": "Search",
+      "SORT_BY": "Sortează după",
+      "SEARCH": "Căutare",
       "SORT": {
-        "NAME": "Name",
-        "ELECTORATE_DOWN": "Electorate ↓",
-        "ELECTORATE_UP": "Electorate ↑",
-        "PRICE_PER_VOTE_DOWN": "Price per vote ↓",
-        "PRICE_PER_VOTE_UP": "Price per vote ↑",
-        "PRICE_DOWN": "Price ↓",
-        "PRICE_UP": "Price ↑",
-        "COUNTRY": "Country"
+        "NAME": "Nume",
+        "ELECTORATE_DOWN": "Electorat ↓",
+        "ELECTORATE_UP": "Electorat ↑",
+        "PRICE_PER_VOTE_DOWN": "Preț pe vot ↓",
+        "PRICE_PER_VOTE_UP": "Preț pe vot ↑",
+        "PRICE_DOWN": "Preț ↓",
+        "PRICE_UP": "Preț ↑",
+        "COUNTRY": "Țară"
       }
     }
   },
   "COUNTRY": {
-    "TITLE": "Countries",
+    "TITLE": "Țări",
     "CARD": {
-      "PRESIDENT": "President",
+      "PRESIDENT": "Președinte",
       "NOT_ELECTED_YET": "Not elected yet",
       "YOU_ARE_PRESIDENT": "You are the President",
       "NOT_IMPLEMENTED": "There are no cryptoelections yet",

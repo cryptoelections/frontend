@@ -1,0 +1,200 @@
+{
+  "TITLE": "crypto elections",
+  "MENU": {
+    "COUNTRIES": "Χώρες",
+    "CITIES": "Πόλεις",
+    "MAP": "Χάρτης",
+    "MY_CAMPAIGN": "Η εκστρατεία μου"
+  },
+  "HOME": {
+    "START_YOUR_CAMPAIGN": "Ξεκινήστε την εκστρατεία σας!",
+    "GET_POWER": "Αποκτήστε δύναμη.",
+    "RUN_COUNTRIES": "Διοικήστε χώρες.",
+    "EARN_MONEY": "Κερδίστε χρήματα.",
+    "HOW_TO_PLAY": "Πως να παίξετε",
+    "HOW_TO_PLAY_TEXT_1": "CryptoElections is a game about leading the countries by running an election campaign in cities. The more electorate live the city — the more votes you get. Once you get the majority — you become a president. The aim is to become a president in as many countries as possible.",
+    "HOW_TO_PLAY_TEXT_2": "Ο πρόεδρος θα πάρει 1% προμήθεια από κάθε συναλλαγή στη χώρα του.",
+    "HOW_TO_PLAY_TEXT_3": "If you are the mayor of the city and someone wants to beat you, you will get up to 2 times more you paid.",
+    "MAYOR": "Δήμαρχος",
+    "PRESIDENT": "Πρόεδρος",
+    "MAYOR_TEXT_1": "Μπορεί να αλλάξει το εθνόσημο της πόλης και το σύνθημα της",
+    "MAYOR_TEXT_2": "Λάβετε οικονομική αποζημίωση μέχρι και 2x αν κάποιος τον μετατοπίσει",
+    "MAYOR_TEXT_3": "Πάρτε όλες τις ψήφους από την πόλη στην προεδρική του εκστρατεία",
+    "PRESIDENT_TEXT_1": "Μπορεί να αλλάξει το υπόβαθρο της χώρας του στον παγκόσμιο χάρτη",
+    "PRESIDENT_TEXT_2": "Φόροι. Πάρτε 1% προμήθεια από όλες τις συναλλαγές στην χώρα του.",
+    "PRESIDENT_TEXT_3": "Μένει στην θέση του μέχρι κάποιος να μην πάρει 50%+1 ψήφους",
+    "ROADMAP": "Χάρτης",
+    "ROADMAP_1": "Alpha-Release. Early-access for initial users. Invest in campaign and elections mechanics implemented. First 10 countries released. Cities’ initial price - 0.02 eth.",
+    "ROADMAP_2": "Έκδοση-Beta. Νέα χαρακτηριστικά: Παγκόσμιος χάρτης, κατάλογος με τους πιο ισχυρούς δημάρχους και προέδρους.",
+    "ROADMAP_3": "Οι δήμαρχοι αποκτούν δύναμη. Οι δήμαρχοι θα μπορούν να αλλάξουν το εθνόσημο της πόλης με οποιαδήποτε εικόνα, και να προσθέσουν ένα σύνθημα για την πόλη το οποίο θα είναι ορατό σε όλους.",
+    "ROADMAP_4": "Οι πρόεδροι αλλάζουν τον παγκόσμιο χάρτη. Ο πρόεδρος θα μπορεί να αλλάξει το υπόβαθρο σε πόλεις που είναι υπό τον έλεγχο του. Ο πρόεδρος μπορεί να διαφημίζει τα πάντα.",
+    "ROADMAP_5": "Όλες οι χώρες είναι στο παιχνίδι.",
+    "ROADMAP_6": "Αρχίζει η μαζική εκστρατεία μάρκετινγκ.",
+    "ROADMAP_7": "Κύρια έκδοση. Εφαρμόστηκε πλατφόρμα crowdfunding πόλεων. Κάθε χρήστης θα μπορεί να υποβάλλει τοπικές crowdfunding επιχειρήσεις ή φιλανθρωπικό έργο, και ο δήμαρχος της πόλης θα διαλέξει ποιο έργο θα ενισχυθεί οικονομικά στην πόλη."
+  },
+  "MARKETPLACE": {
+    "TITLE": "Αγορά",
+    "VIEWMODE": {
+      "CITIES": "Πόλεις",
+      "COUNTRIES": "Χώρες"
+    }
+  },
+  "ACCOUNT": {
+    "NOT_CONNECTED": "Δεν είναι συνδεδεμένο",
+    "REQUIRE_METAMASK": "Το CryptoElections απαιτεί ένα εγκατεστημένο πρόσθετο MetaMask στον περιηγητή σας.",
+    "INSTALL": "Εγκατάσταση",
+    "SET_NICKNAME": "Ορίστε ψευδώνυμο",
+    "NICKNAME_PLACEHOLDER": "Πληκτρολογήστε το ψευδώνυμο σας",
+    "IS_LOCKED": "Κλειδωμένο",
+    "INSTALL_METAMASK": "Εγκατάσταση metamask",
+    "METAMASK_LOCKED": "To MetaMask σας είναι κλειδωμένο",
+    "METAMASK_LOCKED_TEXT": "Απλά ανοίξτε το MetaMask και ακολουθείστε τις οδηγίες για να το ξεκλειδώσετε.",
+    "WRONG_NETWORK": "Ωχ, είστε στο λάθος δίκτυο",
+    "WRONG_NETWORK_TEXT": "Απλά ανοίξτε το MetaMask και αλλάξτε στο κεντρικό δίκτυο Ethereum."
+  },
+  "CITY": {
+    "TITLE": "Πόλεις",
+    "NOT_FOUND": "Όχι πόλεις",
+    "CARD": {
+      "MAYOR": "Δήμαρχος",
+      "NOT_ELECTED_YET": "Δεν έχει εκλεγεί ακόμα",
+      "COUNTRY": "Χώρα",
+      "ELECTORATE": "Εκλογικό σώμα",
+      "INVEST": "Επενδύω",
+      "TO_WIN": "για να κερδίσετε τις δημαρχιακές εκλογές",
+      "REQUEST_SENT": "Αίτημα εστάλη",
+      "YOU_ARE_MAYOR": "Είστε ο δήμαρχος",
+      "PERCENTAGE": "{{ percentage }}% του εκλογικού σώματος",
+      "SMALLCITY": "Πληθυσμός- λιγότερο % του πληθυσμού της χώρας",
+      "MEDIUMCITY": "Πληθυσμός- λιγότερο % του πληθυσμού της χώρας",
+      "BIGCITY": "Πληθυσμός- περισσότερο από % του πληθυσμού της χώρας"
+    },
+    "MODAL": {
+      "CONGRATULATIONS": "<b>Συγχαρητήρια!</b><br/> Είστε ο νέος δήμαρχος του {{ name }}",
+      "RULE_CITY": "Κυβερνήστε αυτή την πόλη!"
+    },
+    "FILTER": {
+      "SORT_BY": "Ταξινόμηση ανά",
+      "SEARCH": "Αναζήτηση",
+      "SORT": {
+        "NAME": "Όνομα",
+        "ELECTORATE_DOWN": "Εκλογικό σώμα ↓",
+        "ELECTORATE_UP": "Εκλογικό σώμα ↑",
+        "PRICE_PER_VOTE_DOWN": "Τιμή ανά ψηφοφορία ↓",
+        "PRICE_PER_VOTE_UP": "Τιμή ανά ψηφοφορία ↑",
+        "PRICE_DOWN": "Τιμή ↓",
+        "PRICE_UP": "Τιμή ↑",
+        "COUNTRY": "Χώρα"
+      }
+    }
+  },
+  "COUNTRY": {
+    "TITLE": "Χώρες",
+    "CARD": {
+      "PRESIDENT": "Πρόεδρος",
+      "NOT_ELECTED_YET": "Δεν έχει εκλεγεί ακόμα",
+      "YOU_ARE_PRESIDENT": "Είστε ο Πρόεδρος",
+      "NOT_IMPLEMENTED": "Δεν υπάρχουν κρυπτοεκλογές ακόμα",
+      "CITIES_PRICE_RANGE": {
+        "CITIES": "{{ lowestPrice }}{{ highestPrice }} ETH",
+        "ONE_CITY": " {{ lowestPrice }} ETH"
+      },
+      "CITY": "πόλη",
+      "CITIES": "πόλεις",
+      "UNDER_YOUR_CONTROL": "υπό τον έλεγχο σας",
+      "OF_ELECTORATE": "του εκλογικού σώματος",
+      "SUPPORT_YOU": "σας υποστηρίζει",
+      "ELECTORATE": "Εκλογικό σώμα",
+      "INVEST": "Επενδύω",
+      "TO_BECOME_A_PRESIDENT": "για να γίνεις πρόεδρος",
+      "RUN_CAMPAIGN": "Διοικήστε εκστρατεία",
+      "INVEST_PRICE": "Επενδύστε {{ price }} για να κερδίσετε τις προεδρικές εκλογές",
+      "TO_WIN": "για να κερδίσετε τις προεδρικές εκλογές",
+      "INVEST_MODAL_TEXT": "Αυτές είναι οι πιο οικονομικά αποδοτικές πόλεις για να επενδύσετε στην εκστρατεία σας στην {{ country }} για να πάρετε την πλειοψηφία για να γίνετε πρόεδρος της χώρας! Αν θέλετε να επενδύσετε σε άλλες πόλεις στη {{ country }}, επιλέξτε από",
+      "INVEST_MODAL_TEXT_LINK": "αυτή η λίστα",
+      "INVEST_MODAL_PERCENTAGE": "% του εκλογικού σώματος"
+    },
+    "MODAL": {
+      "CONGRATULATIONS": "<b>συγχαρητήρια</b><br/> Έχετε την πλειοψηφία των ψήφων σε {{ name }}!",
+      "RULE_COUNTRY": "Κυβερνήστε αυτή την χώρα!"
+    },
+    "FILTER": {
+      "SORT_BY": "Ταξινόμηση ανά",
+      "SEARCH": "Αναζήτηση",
+      "SORT": {
+        "NAME": "Όνομα",
+        "AVAILABILITY": "Διαθέσιμο πρώτα",
+        "ELECTORATE_DOWN": "Εκλογικό σώμα ↓",
+        "ELECTORATE_UP": "Εκλογικό σώμα ↑",
+        "PRICE_DOWN": "Τιμή ↓",
+        "PRICE_UP": "Τιμή ↑",
+        "NUMBER_OF_CITIES_DOWN": "Αριθμός των πόλεων ↓",
+        "NUMBER_OF_CITIES_UP": "Αριθμός των πόλεων ↑",
+        "AREA": "Περιοχή"
+      }
+    }
+  },
+  "M": "Μ",
+  "K": "Κ",
+  "COMMON": {
+    "MLN": "Μ",
+    "THOUSANDS": "Κ",
+    "PAGINATION": {
+      "FIRST_TEXT": "Πρώτο",
+      "LAST_TEXT": "Τελευταίο"
+    },
+    "FILTER": {
+      "SORT_BY": "Ταξινόμηση ανά"
+    }
+  },
+  "CAMPAIGN": {
+    "TITLE": "Η εκστρατεία μου",
+    "CITY": "πόλη",
+    "CITIES": "πόλεις",
+    "START": "Ξεκινήστε την εκστρατεία σας",
+    "INVEST": "Επενδύστε στην εκστρατεία σας σε πόλεις και χώρες της επιλογής σας για να κυβερνήσετε ολόκληρο τον παγκόσμιο χάρτη!"
+  },
+  "NOTIFICATIONS": {
+    "PRESIDENT": "<b>{{ user }}</b> εξελέγη Πρόεδρος του <b>{{ country }}</b>{{ timestamp }}"
+  },
+  "WALLET": {
+    "TEXT": "Αν κάποιος γίνει δήμαρχος αντί για εσάς, παίρνετε αποζημίωση. Εδώ μπορείτε να δείτε πόσο έχετε:",
+    "WITHDRAW": "Ανάληψη"
+  },
+  "SUCCESS": {
+    "NICKNAME_WAS_SET": "Το Ψευδώνυμο ορίστηκε με επιτυχία"
+  },
+  "ERRORS": {
+    "UNSUCCESSFUL_TRANSACTION": "Ανεπιτυχής συναλλαγή - αγορά<b>{{ name }}</b>",
+    "NICKNAME_WAS_NOT_SET": "<b>Σφάλμα!</b> Δεν έχει οριστεί ψευδώνυμο."
+  },
+  "LOG": {
+    "BECAME_PRESIDENT": "Έγινε πρόεδρος της {{ country }}{{ timestamp }}"
+  },
+  "QA": {
+    "1": {
+      "QUESTION": "Τι χρειάζομαι για να παίξω CryptoElections;",
+      "ANSWER": "Εδώ είναι ότι χρειάζεστε για να ξεκινήσετε: <br/> Ένας υπολογιστής ή laptop που τρέχει την έκδοση desktop του Chrome ή του Firefox MetaMask, ένα ψηφιακό πορτοφόλι που χρησιμοποιείται συγκεκριμένα με web εφαρμογές Ether, μία φόρμα ψηφιακής πληρωμής που δίνει ισχύ στο CryptoElections."
+    },
+    "2": {
+      "QUESTION": "Εγκατάσταση MetaMask, το ψηφιακό σας πορτοφόλι",
+      "ANSWER": "Για να χρησιμοποιήσετε το CryptoElections, θα πρέπει να εγκαταστήσετε το MetaMask, ένα ψηφιακό πορτοφόλι. Θα πρέπει να βάλετε χρήματα σε αυτό για να κάνετε την πρώτη σας αγορά.<br/> Σημείωση: Ένα ψηφιακό πορτοφόλι όπως το MetaMask ενεργεί όπως ένας τραπεζικός λογαριασμός_ φερθείτε του με σεβασμό και σιγουρευτείτε ότι δεν θα ξεχάσετε τον κωδικό σας ή τις λέξεις seed."
+    },
+    "3": {
+      "QUESTION": "Γιατί είναι το MetaMask κλειδωμένο;",
+      "ANSWER": "Περιστασιακά η σελίδα \" Η εκστρατεία μου\" εμφανίζει μια οθόνη κλειδώματος. Αυτό συμβαίνει επειδή το MetaMask αυτόματα κλειδώνει τον λογαριασμό σας μετά από ένα ορισμένο χρονικό διάστημα. Για να το ξεκλειδώσετε απλώς κάντε κλικ στην επέκταση MetaMask και πληκτρολογήστε τον κωδικό σας πρόσβασης."
+    },
+    "4": {
+      "QUESTION": "Επανεγκατάσταση MetaMask",
+      "ANSWER": "Some users need to uninstall and reinstall MetaMask because they’ve experienced a bug. If you kept your seed words, this is very easy! Just delete the extension, reinstall it, and import your twelve seed words. Then you’ll set the password you want to use (this can be the same one you used before or a whole new password)."
+    },
+    "5": {
+      "QUESTION": "Παίρνετε Ether, το ψηφιακό σας νόμισμα",
+      "ANSWER": "<b>Για πολίτες Η.Π.Α μόνο:</b> μπορείτε να αγοράσετε ether (ETH) sto MetaMask. ETH είναι ένα ψηφιακό νόμισμα που επιτρέπει στο παιχνίδι μας να τρέχει.<br/><img src='assets/images/screenshot-buy-usa.png' alt=''/><br/> <b>Για όλους τους άλλους:</b> θα πρέπει να αγοράσετε ETH από μια συναλλαγή, και μετά να μεταφέρετε το ETH από το πορτοφόλι συναλλαγής σας στο MetaMask πορτοφόλι σας. Δυστυχώς, δεν μπορείτε να παίξετε CryptoElections μόνο με ένα λογαριασμό συναλλαγής."
+    },
+    "6": {
+      "QUESTION": "Πως να στείλετε ETH στο MetaMask",
+      "ANSWER": "<b>For U.S. citizens only:</b> you are able to purchase ETH directly from the MetaMask wallet using the Coinbase widget. This is more convenient and doesn’t require you to create two accounts.<br/> <b>For everyone else:</b> you need to buy ETH from an exchange using normal fiat currency. Copy your MetaMask address by clicking on the large ‘...’ next to your account, then select ‘Copy Address to clipboard’. Go to your exchange, click ‘Accounts’, and select your ETH Wallet and click ‘send’. Paste the MetaMask address in the box with the amount you’d like to transfer."
+    }
+  }
+}

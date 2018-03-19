@@ -1,0 +1,200 @@
+{
+  "TITLE": "crypto elections",
+  "MENU": {
+    "COUNTRIES": "Landen",
+    "CITIES": "Steden",
+    "MAP": "Kaart",
+    "MY_CAMPAIGN": "Mijn campagne"
+  },
+  "HOME": {
+    "START_YOUR_CAMPAIGN": "Start uw campagne!",
+    "GET_POWER": "Verkrijg macht.",
+    "RUN_COUNTRIES": "Leidt landen.",
+    "EARN_MONEY": "Verdien geld.",
+    "HOW_TO_PLAY": "Hoe te spelen",
+    "HOW_TO_PLAY_TEXT_1": "CryptoElections is een spel over het leiden van landen door verkiezingscampagnes in steden te houden. Hoe meer kiezers er in een stad wonen, des te meer stemmen krijg je. Wanneer je de meerderheid van de stemmen hebt, wordt je president. Het doel is om president van zo veel mogelijk landen te worden.",
+    "HOW_TO_PLAY_TEXT_2": "Presidenten krijgen 1% commissie van iedere transactie in zijn land.",
+    "HOW_TO_PLAY_TEXT_3": "Als je de burgemeester van de stad bent en iemand wilt je verslaan, dan krijg je tot 2 keer je inzet terug.",
+    "MAYOR": "Burgemeester",
+    "PRESIDENT": "President",
+    "MAYOR_TEXT_1": "Kan het wapenschild en de slogan van de stad veranderen",
+    "MAYOR_TEXT_2": "Krijgt tot en met 2 maal de inzet vergoedt als iemand hem vervangt",
+    "MAYOR_TEXT_3": "Krijgt alle stemmen van de stad voor de presidentiële campagne",
+    "PRESIDENT_TEXT_1": "Kan de achtergrond van zijn land veranderen op de wereldkaart",
+    "PRESIDENT_TEXT_2": "Belastingen. Krijg 1% commissie van iedere transactie in zijn land.",
+    "PRESIDENT_TEXT_3": "Blijft op zijn plaats totdat iemand anders meer dan 50% van de stemmen heeft",
+    "ROADMAP": "Roadmap",
+    "ROADMAP_1": "Alpha-Release. Vroegtijdige toegang voor eerste gebruikers. Investeren in campagne en verkiezingen mechanismes toegevoegd. Eerste 10 landen uitgebracht. Oorspronkelijke prijs van steden - 0.02 eth.",
+    "ROADMAP_2": "Beta-Release. Nieuwe functies: wereldkaart, lijst van de meest invloedrijke burgemeesters en presidenten.",
+    "ROADMAP_3": "Burgemeesters krijgen macht. Burgemeesters zijn in staat hun wapenschild te veranderen, en om een slogan toe te voegen die voor iedereen zichtbaar is.",
+    "ROADMAP_4": "Presidenten veranderen de wereldkaart. Presidenten zijn in staat de achtergrond van landen die ze besturen te wijzigen. Presidenten kunnen van alles adverteren.",
+    "ROADMAP_5": "Alle landen zijn in het spel.",
+    "ROADMAP_6": "Enorme marketing campagne begint.",
+    "ROADMAP_7": "Hoofdrelease. Staden crowdfunding platform geïmplementeerd. Elke gebruiker is in staat om lokale crowdfunding bedrijven of liefdadigheidsprojecten toe te voegen, en de burgemeester van de stad kan kiezen welk project in de stad crowdfunding zal krijgen."
+  },
+  "MARKETPLACE": {
+    "TITLE": "Marktplaats",
+    "VIEWMODE": {
+      "CITIES": "Steden",
+      "COUNTRIES": "Landen"
+    }
+  },
+  "ACCOUNT": {
+    "NOT_CONNECTED": "Niet verbonden",
+    "REQUIRE_METAMASK": "CryptoElections heeft een MetaMask add-on in je browser nodig om te werken.",
+    "INSTALL": "Installeren",
+    "SET_NICKNAME": "Bijnaam instellen",
+    "NICKNAME_PLACEHOLDER": "Typ je bijnaam",
+    "IS_LOCKED": "Vergrendeld",
+    "INSTALL_METAMASK": "Metamask installeren",
+    "METAMASK_LOCKED": "Je MetaMask is vergrendeld",
+    "METAMASK_LOCKED_TEXT": "Open MetaMask en volg de instructies om het te ontgrendelen.",
+    "WRONG_NETWORK": "Oeps, je zit op het verkeerde netwerk",
+    "WRONG_NETWORK_TEXT": "Open MetaMask en schakel over naar het Main Ethereum netwerk."
+  },
+  "CITY": {
+    "TITLE": "Steden",
+    "NOT_FOUND": "Geen steden",
+    "CARD": {
+      "MAYOR": "Burgemeester",
+      "NOT_ELECTED_YET": "Nog niet gekozen",
+      "COUNTRY": "Land",
+      "ELECTORATE": "Kiezers",
+      "INVEST": "Investeer",
+      "TO_WIN": "om de burgemeestersverkiezing te winnen",
+      "REQUEST_SENT": "Aanvraag verzonden",
+      "YOU_ARE_MAYOR": "Jij bent de burgemeester",
+      "PERCENTAGE": "{{ percentage }}% van de kiezers",
+      "SMALLCITY": "Bevolking - minder dan % van de bevolking van het land",
+      "MEDIUMCITY": "Bevolking - minder dan % van de bevolking van het land",
+      "BIGCITY": "Bevolking - meer dan % van de bevolking van het land"
+    },
+    "MODAL": {
+      "CONGRATULATIONS": "<b>Gefeliciteerd!</b><br/> Jij bent de nieuwe burgemeester van {{ name }}",
+      "RULE_CITY": "Bestuur deze stad!"
+    },
+    "FILTER": {
+      "SORT_BY": "Sorteren op",
+      "SEARCH": "Zoek",
+      "SORT": {
+        "NAME": "Naam",
+        "ELECTORATE_DOWN": "Kiezers ↓",
+        "ELECTORATE_UP": "Kiezers ↑",
+        "PRICE_PER_VOTE_DOWN": "Prijs per stemming ↓",
+        "PRICE_PER_VOTE_UP": "Prijs per stemming ↑",
+        "PRICE_DOWN": "Prijs ↓",
+        "PRICE_UP": "Prijs ↑",
+        "COUNTRY": "Land"
+      }
+    }
+  },
+  "COUNTRY": {
+    "TITLE": "Landen",
+    "CARD": {
+      "PRESIDENT": "President",
+      "NOT_ELECTED_YET": "Nog niet gekozen",
+      "YOU_ARE_PRESIDENT": "Jij bent de president",
+      "NOT_IMPLEMENTED": "Er zijn nog geen cryptoelections",
+      "CITIES_PRICE_RANGE": {
+        "CITIES": "{{ lowestPrice }} - {{ highestPrice }} ETH",
+        "ONE_CITY": " {{ lowestPrice }} ETH"
+      },
+      "CITY": "stad",
+      "CITIES": "steden",
+      "UNDER_YOUR_CONTROL": "onder jouw controle",
+      "OF_ELECTORATE": "van de kiezers",
+      "SUPPORT_YOU": "steunt jou",
+      "ELECTORATE": "Kiezers",
+      "INVEST": "Investeer",
+      "TO_BECOME_A_PRESIDENT": "om president te worden",
+      "RUN_CAMPAIGN": "Voer campagne",
+      "INVEST_PRICE": "Investeer {{ price }} om de presidentiële verkiezing te winnen",
+      "TO_WIN": "om de presidentiële verkiezing te winnen",
+      "INVEST_MODAL_TEXT": "Dit zijn de meest kostenefficiënte steden om in te investeren voor je campagne in {{ country }} om de meeste stemmen te krijgen en president van het land te worden! Als je wil investeren in andere steden in {{ country }}, kies dan uit",
+      "INVEST_MODAL_TEXT_LINK": "deze lijst",
+      "INVEST_MODAL_PERCENTAGE": "% van de kiezers"
+    },
+    "MODAL": {
+      "CONGRATULATIONS": "<b>Gefeliciteerd!</b><br/> Je hebt de meerderheid van de stemmen in {{ name }}!",
+      "RULE_COUNTRY": "Bestuur deze stad!"
+    },
+    "FILTER": {
+      "SORT_BY": "Sorteren op",
+      "SEARCH": "Zoek",
+      "SORT": {
+        "NAME": "Naam",
+        "AVAILABILITY": "Als eerste beschikbaar",
+        "ELECTORATE_DOWN": "Kiezers ↓",
+        "ELECTORATE_UP": "Kiezers ↑",
+        "PRICE_DOWN": "Prijs ↓",
+        "PRICE_UP": "Prijs ↑",
+        "NUMBER_OF_CITIES_DOWN": "Aantal steden ↓",
+        "NUMBER_OF_CITIES_UP": "Aantal steden ↑",
+        "AREA": "Gebied"
+      }
+    }
+  },
+  "M": "M",
+  "K": "K",
+  "COMMON": {
+    "MLN": "M",
+    "THOUSANDS": "K",
+    "PAGINATION": {
+      "FIRST_TEXT": "Eerste",
+      "LAST_TEXT": "Laatste"
+    },
+    "FILTER": {
+      "SORT_BY": "Sorteren op"
+    }
+  },
+  "CAMPAIGN": {
+    "TITLE": "Mijn campagne",
+    "CITY": "stad",
+    "CITIES": "steden",
+    "START": "Start jouw campagne",
+    "INVEST": "Investeer in je campagne in steden en landen naar keuze om de hele wereldkaart te overheersen!"
+  },
+  "NOTIFICATIONS": {
+    "PRESIDENT": "<b>{{ user }}</b> was verkozen tot president van <b>{{ country }}</b>{{ timestamp }}"
+  },
+  "WALLET": {
+    "TEXT": "Als iemand in jouw plaats burgemeester wordt, krijg je compensatie. Hier kan je zien hoeveel compensatie jij hebt:",
+    "WITHDRAW": "Opnemen"
+  },
+  "SUCCESS": {
+    "NICKNAME_WAS_SET": "Bijnaam succesvol ingesteld"
+  },
+  "ERRORS": {
+    "UNSUCCESSFUL_TRANSACTION": "Transactie mislukt - <b>{{ name }}</b> kopen",
+    "NICKNAME_WAS_NOT_SET": "<b>Fout opgetreden!</b> Bijnaam is niet ingesteld."
+  },
+  "LOG": {
+    "BECAME_PRESIDENT": "Werd president van {{ country }} {{ timestamp }}"
+  },
+  "QA": {
+    "1": {
+      "QUESTION": "Wat heb ik nodig om CryptoElections te spelen?",
+      "ANSWER": "Hier is wat je nodig hebt om te beginnen: <br/> Een computer of laptop met de desktop versie van Chrome of Firefox <br/> Metamask, een digitale portefeuille speciaal voor web apps <br/> Ether, een vorm van digitale betalingen dat CryptoElections steunt."
+    },
+    "2": {
+      "QUESTION": "MetaMask, jouw digitale portefeuille, aan het installeren",
+      "ANSWER": "Om CryptoElections te gebruiken moet je MetaMask, een digitale portefeuille installeren. Je zal er geld in moeten stoppen om je eerste koop te maken. <br/> Let op: een digitale portefeuille zoals MetaMask is als een bankrekening - gebruik het met respect en zorg er voor dat je je wachtwoord of seed woorden niet vergeet."
+    },
+    "3": {
+      "QUESTION": "Waarom is MetaMask vergrendeld?",
+      "ANSWER": "Af en toe laat het 'Mijn campagne' scherm een vergrendeld scherm zien. Dit gebeurd omdat MetaMask automatisch vergrendeld na een bepaalde tijdsperiode. Om te ontgrendelen klik je simpelweg op de MetaMask extensie en typ je je wachtwoord in."
+    },
+    "4": {
+      "QUESTION": "MetaMask opnieuw installeren",
+      "ANSWER": "Sommige gebruikers moeten MetaMask verwijderen en opnieuw installeren omdat ze een bug zijn tegengekomen. Als je je seed woorden hebt opgeslagen is dit simpel. Verwijder de extensie, herinstalleren en importeer je twaalf seed woorden. Stel dan het wachtwoord in dat je wil gebruiken (dit kan hetzelfde wachtwoord zijn als je de vorige keer hebt gebruikt of een nieuw wachtwoord)."
+    },
+    "5": {
+      "QUESTION": "Verkrijgen van Ether, jouw digitale valuta",
+      "ANSWER": "<b>Alleen voor inwoners van de V.S.:</b> je kan ether (ETH) in MetaMask kopen. ETH is een digitale valuta dat ons spel draaiende houdt. <br/><img src='assets/images/screenshot-buy-usa.png' alt=''/><br/>\n<b>Voor alle anderen:</b> je zal ETH via een beurs moeten kopen en vervolgens van je beursportefeuille naar je MetaMask portefeuille moeten verplaatsen. Helaas kan je CryptoElections niet spelen met alleen een beursportefeuille."
+    },
+    "6": {
+      "QUESTION": "Hoe ETH naar MetaMask te sturen",
+      "ANSWER": "<b>Alleen voor inwoners van de V.S.:</b> je kan ETH direct in de MetaMask portefeuille kopen met gebruik van de Coinbase-widget. Dit is handiger en zorgt er voor dat je niet twee verschillende accounts nodig hebt.<br/><b>Voor alle anderen:</b> je moet ETH via een beurs kopen door middel van een normale fiat valuta. Kopieer je MetaMask adres door op de grote '...' naast je account te klikken en vervolgens op 'Kopieer adres naar klembord' te selecteren. Ga naar je beurs, selecteer 'Accounts', en selecteer je ETH portefeuille en klik op 'versturen'. Plak het MetaMask adres in het vakje, met de hoeveelheid die je zou willen versturen."
+    }
+  }
+}
