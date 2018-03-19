@@ -169,12 +169,12 @@
     "NICKNAME_WAS_NOT_SET": "<b>Fout opgetreden!</b> Bijnaam is niet ingesteld."
   },
   "LOG": {
-    "BECAME_PRESIDENT": "werd president van {{ country }} {{ timestamp }}"
+    "BECAME_PRESIDENT": "Werd president van {{ country }} {{ timestamp }}"
   },
   "QA": {
     "1": {
       "QUESTION": "Wat heb ik nodig om CryptoElections te spelen?",
-      "ANSWER": "Hier is wat je nodig hebt om te beginnen: <br/> Een computer of laptop met de desktop versie van Chome of Firefox <br/> Metamask, een digitale portefeuille speciaal voor web apps <br/> Ether, een vorm van digitale betalingen dat CryptoElections steunt."
+      "ANSWER": "Hier is wat je nodig hebt om te beginnen: <br/> Een computer of laptop met de desktop versie van Chrome of Firefox <br/> Metamask, een digitale portefeuille speciaal voor web apps <br/> Ether, een vorm van digitale betalingen dat CryptoElections steunt."
     },
     "2": {
       "QUESTION": "MetaMask, jouw digitale portefeuille, aan het installeren",
