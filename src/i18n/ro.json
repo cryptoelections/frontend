@@ -26,11 +26,11 @@
     "ROADMAP": "Foaia de parcurs",
     "ROADMAP_1": "Alpha-Release. Accesul prealabil pentru utilizatorii inițiali. Implementate investirea în campania și mecanismele electorale. Primele 10 țări au fost lansate. Prețul inițial al orașelor - 0,02 eth.",
     "ROADMAP_2": "Beta-Release. Caracteristici noi: harta lumii, lista primarilor și președinților cei mai influenți.",
-    "ROADMAP_3": "Mayors get power. Mayors will be able to change city’s coat of arms to any picture, and add city slogan that will be visible to everyone.",
-    "ROADMAP_4": "Presidents change Worldmap. President will be able to change background to countries that are under his control. President can advertise anything.",
-    "ROADMAP_5": "All countries are in the game.",
-    "ROADMAP_6": "Massive marketing campaign begins.",
-    "ROADMAP_7": "Main release. Cities crowdfunding platform implemented. Any user will be able to submit local crowdfunding business or charity project, and mayor of the city will choose which project will be crowdfunded in this city."
+    "ROADMAP_3": "Primarii primesc putere. Primarii pot schimba stema orașelor cu orice imagine și pot adăuga un slogan vizibil pentru toată lumea.",
+    "ROADMAP_4": "Președinții schimbă harta lumii. Președintele va putea schimba background-ul țărilor aflate sub controlul său. Președintele poate publica orice.",
+    "ROADMAP_5": "Toate țările se află în joc.",
+    "ROADMAP_6": "Începe o campanie de marketing imensă.",
+    "ROADMAP_7": "Versiunea principală. Platforma de crowdfunding a orașului a fost implementată. Orice utilizator va putea să prezinte proiecte locale de \"crowdfunding\" sau de caritate, iar primarul orașului va alege ce proiect va fi finanțat în crowdfunding în acel oraș."
   },
   "MARKETPLACE": {
     "TITLE": "Marketplace",
