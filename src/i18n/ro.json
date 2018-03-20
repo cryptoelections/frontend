@@ -169,23 +169,23 @@
     "NICKNAME_WAS_NOT_SET": "<b>Eroare!</b> Nickname-ul nu a fost setat."
   },
   "LOG": {
-    "BECAME_PRESIDENT": "Became President of {{ country }} {{ timestamp }}"
+    "BECAME_PRESIDENT": "A devenit Președinte al {{ country }} {{ timestamp }}"
   },
   "QA": {
     "1": {
-      "QUESTION": "What do I need to play CryptoElections?",
-      "ANSWER": "Here’s what you need to get started: <br/> A computer or laptop running the desktop version of Chrome or Firefox MetaMask, a digital wallet used specifically with web apps Ether, a form of digital payment that powers CryptoElections."
+      "QUESTION": "De ce este nevoie pentru a juca CryptoElections?",
+      "ANSWER": "Iată ce aveți nevoie pentru a începe: <br/> Un computer sau un laptop cu versiunea de desktop Chrome sau Firefox MetaMask, un portofel digital utilizat în mod special cu aplicații web Ether, o formă de plată digitală care execută CryptoElections."
     },
     "2": {
-      "QUESTION": "Installing MetaMask, your digital wallet",
-      "ANSWER": "To use CryptoElections, you will need to install MetaMask, a digital wallet. You will need to put money in it to make your first purchase. <br/> Note: A digital wallet like MetaMask acts like a bank account—treat it with respect and make sure you don’t forget your password or the seed words."
+      "QUESTION": "Instalare MetaMask, portofelul digital",
+      "ANSWER": "Pentru a utiliza CryptoElections, trebuie să instalați MetaMask, un portofel digital. Va trebui să turnați bani pentru prima achiziție. <br/> Notă: un portofel digital precum MetaMask se comportă ca un cont bancar, să îl tratați cu respect și asigurați-vă să nu uitați parola sau cuvintele cheie."
     },
     "3": {
-      "QUESTION": "Why is MetaMask locked?",
-      "ANSWER": "Occasionally the ‘My campaign’ page displays a lock screen. This happens because MetaMask automatically locks your account after a certain period of time. To unlock simply click on the MetaMask extension and type in your password."
+      "QUESTION": "De ce este blocat MetaMask?",
+      "ANSWER": "Ocazional, pagina \"Campania mea\" afișează un ecran de blocare. Acest lucru se întâmplă deoarece MetaMask blochează automat contul dvs. după o anumită perioadă de timp. Pentru a debloca, faceți clic pe extensia MetaMask și introduceți parola."
     },
     "4": {
-      "QUESTION": "Reinstalling MetaMask",
+      "QUESTION": "Reinstalarea MetaMask",
       "ANSWER": "Some users need to uninstall and reinstall MetaMask because they’ve experienced a bug. If you kept your seed words, this is very easy! Just delete the extension, reinstall it, and import your twelve seed words. Then you’ll set the password you want to use (this can be the same one you used before or a whole new password)."
     },
     "5": {
