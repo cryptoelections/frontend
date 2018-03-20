@@ -194,7 +194,7 @@
     },
     "6": {
       "QUESTION": "Cum să trimiteți ETH la MetaMask",
-      "ANSWER": "<b>For U.S. citizens only:</b> you are able to purchase ETH directly from the MetaMask wallet using the Coinbase widget. This is more convenient and doesn’t require you to create two accounts.<br/> <b>For everyone else:</b> you need to buy ETH from an exchange using normal fiat currency. Copy your MetaMask address by clicking on the large ‘...’ next to your account, then select ‘Copy Address to clipboard’. Go to your exchange, click ‘Accounts’, and select your ETH Wallet and click ‘send’. Paste the MetaMask address in the box with the amount you’d like to transfer."
+      "ANSWER": "<b>Numai pentru cetățenii americani:</b> puteți achiziționa ETH direct din portofoliul MetaMask utilizând widget-ul Coinbase. Acest lucru este mai ieftin și nu necesită crearea de două conturi.<br/> <b>Pentru toți ceilalți:</b> trebuie să achiziționați ETH dintr-un exchange folosind moneda normală fiat. Copiați adresa MetaMask făcând clic pe marcajul ‘...’ de lângă contul dvs., apoi selectați ‘Copy Address to clipboard’. Mergeți la exchange, faceți clic pe ‘Accounts’ și selectați portofoliul dvs. ETH și dați clic pe ‘send’. Lipiți adresa MetaMask în cuseta cu suma pe care doriți să o transferați."
     }
   }
 }
