@@ -190,11 +190,11 @@
     },
     "5": {
       "QUESTION": "Obțineți Ether, moneda dvs. digitală",
-      "ANSWER": "<b>Numai pentru cetățenii americani:</b> puteți achiziționa eter (ETH) în MetaMask. ETH este o monedă digitală care permite jocului nostru să funcționeze.<br/><img src='assets/images/screenshot-buy-usa.png' alt=''/><br/> <b>Pentru toți ceilalți:</b> va trebui să cumpărați ETH dintr-un exchange, apoi să transferați ETH din portofoliul dvs. de schimb la portofoliul dvs. MetaMask. Din păcate, nu puteți juca CryptoElections numai cu un cont de schimb."
+      "ANSWER": "<b>Numai pentru cetățenii S.U.A:</b> puteți achiziționa eter (ETH) în MetaMask. ETH este o monedă digitală care permite jocului nostru să funcționeze.<br/><img src='assets/images/screenshot-buy-usa.png' alt=''/><br/> <b>Pentru toți ceilalți:</b> va trebui să cumpărați ETH dintr-un exchange, apoi să transferați ETH din portofoliul dvs. de schimb la portofoliul dvs. MetaMask. Din păcate, nu puteți juca CryptoElections numai cu un cont de schimb."
     },
     "6": {
       "QUESTION": "Cum să trimiteți ETH la MetaMask",
-      "ANSWER": "<b>Numai pentru cetățenii americani:</b> puteți achiziționa ETH direct din portofoliul MetaMask utilizând widget-ul Coinbase. Acest lucru este mai ieftin și nu necesită crearea de două conturi.<br/> <b>Pentru toți ceilalți:</b> trebuie să achiziționați ETH dintr-un exchange folosind moneda normală fiat. Copiați adresa MetaMask făcând clic pe marcajul ‘...’ de lângă contul dvs., apoi selectați ‘Copy Address to clipboard’. Mergeți la exchange, faceți clic pe ‘Accounts’ și selectați portofoliul dvs. ETH și dați clic pe ‘send’. Lipiți adresa MetaMask în cuseta cu suma pe care doriți să o transferați."
+      "ANSWER": "<b>Numai pentru cetățenii S.U.A:</b> puteți achiziționa ETH direct din portofoliul MetaMask utilizând widget-ul Coinbase. Acest lucru este mai ieftin și nu necesită crearea de două conturi.<br/> <b>Pentru toți ceilalți:</b> trebuie să achiziționați ETH dintr-un exchange folosind moneda normală fiat. Copiați adresa MetaMask făcând clic pe marcajul ‘...’ de lângă contul dvs., apoi selectați ‘Copy Address to clipboard’. Mergeți la exchange, faceți clic pe ‘Accounts’ și selectați portofoliul dvs. ETH și dați clic pe ‘send’. Lipiți adresa MetaMask în cuseta cu suma pe care doriți să o transferați."
     }
   }
 }
