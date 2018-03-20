@@ -33,7 +33,7 @@
     "ROADMAP_7": "Versiunea principală. Platforma de crowdfunding a orașului a fost implementată. Orice utilizator va putea să prezinte proiecte locale de \"crowdfunding\" sau de caritate, iar primarul orașului va alege ce proiect va fi finanțat în crowdfunding în acel oraș."
   },
   "MARKETPLACE": {
-    "TITLE": "Marketplace",
+    "TITLE": "Piață",
     "VIEWMODE": {
       "CITIES": "Orașe",
       "COUNTRIES": "Țări"
@@ -41,16 +41,16 @@
   },
   "ACCOUNT": {
     "NOT_CONNECTED": "Nu este conectat",
-    "REQUIRE_METAMASK": "CryptoElections requires a MetaMask add-on installed in your browser.",
+    "REQUIRE_METAMASK": "CryptoElections necesită un add-on suplimentar MetaMask instalat în browserul dvs.",
     "INSTALL": "Instalează",
-    "SET_NICKNAME": "Set Nickname",
-    "NICKNAME_PLACEHOLDER": "Type Your Nickname",
+    "SET_NICKNAME": "Setați Nickname-ul",
+    "NICKNAME_PLACEHOLDER": "Scrie Nickname-ul tau",
     "IS_LOCKED": "Blocat",
     "INSTALL_METAMASK": "Instalează metamask",
-    "METAMASK_LOCKED": "Your MetaMask is locked",
-    "METAMASK_LOCKED_TEXT": "Simply open MetaMask and follow the instructions to unlock it.",
+    "METAMASK_LOCKED": "MetaMask-ul dvs. este blocat",
+    "METAMASK_LOCKED_TEXT": "Pur și simplu deschideți MetaMask și urmați instrucțiunile pentru al debloca.",
     "WRONG_NETWORK": "Oops, sunteți în rețeaua greșită",
-    "WRONG_NETWORK_TEXT": "Simply open MetaMask and switch over to the Main Ethereum Network."
+    "WRONG_NETWORK_TEXT": "Pur și simplu deschideți MetaMask și mergeți la rețeaua principală de Ethereum."
   },
   "CITY": {
     "TITLE": "Orașe",
