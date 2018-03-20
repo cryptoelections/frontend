@@ -107,30 +107,30 @@
       "ELECTORATE": "Electorat",
       "INVEST": "Investește",
       "TO_BECOME_A_PRESIDENT": "pentru a deveni un președinte",
-      "RUN_CAMPAIGN": "Run campaign",
-      "INVEST_PRICE": "Invest {{ price }} to win presidential election",
-      "TO_WIN": "to win presidential election",
-      "INVEST_MODAL_TEXT": "These are the most cost-effective cities to invest in your campaign in {{ country }} to get the majority of votes to become the president of the country! If you want to invest in another cities in {{ country }}, choose from",
-      "INVEST_MODAL_TEXT_LINK": "this list",
-      "INVEST_MODAL_PERCENTAGE": "% of electorate"
+      "RUN_CAMPAIGN": "Comanda campania",
+      "INVEST_PRICE": "Investiți {{ price }} pentru a câștiga alegerile prezidențiale",
+      "TO_WIN": "pentru a câștiga alegerile prezidențiale",
+      "INVEST_MODAL_TEXT": "Acestea sunt cele mai profitabile orașe pe care le puteți investi în campania dvs. în {{ country }} pentru a obține majoritatea voturilor și a deveni președintele țării! Dacă doriți să investiți într-un alt oraș din {{ country }}, alegeți de la",
+      "INVEST_MODAL_TEXT_LINK": "această listă",
+      "INVEST_MODAL_PERCENTAGE": "% din electorat"
     },
     "MODAL": {
-      "CONGRATULATIONS": "<b>Congratulations!</b><br/> You have the majority of votes in {{ name }}!",
-      "RULE_COUNTRY": "Rule this country!"
+      "CONGRATULATIONS": "<b>Felicitări!</b><br/> Aveți majoritatea voturilor în {{ name }}!",
+      "RULE_COUNTRY": "Conduceți această țară!"
     },
     "FILTER": {
-      "SORT_BY": "Sort by",
-      "SEARCH": "Search",
+      "SORT_BY": "Sortează după",
+      "SEARCH": "Căutare",
       "SORT": {
-        "NAME": "Name",
-        "AVAILABILITY": "Available first",
-        "ELECTORATE_DOWN": "Electorate ↓",
-        "ELECTORATE_UP": "Electorate ↑",
-        "PRICE_DOWN": "Price ↓",
-        "PRICE_UP": "Price ↑",
-        "NUMBER_OF_CITIES_DOWN": "Number of cities ↓",
-        "NUMBER_OF_CITIES_UP": "Number of cities ↑",
-        "AREA": "Area"
+        "NAME": "Nume",
+        "AVAILABILITY": "Disponibil mai întâi",
+        "ELECTORATE_DOWN": "Electorat ↓",
+        "ELECTORATE_UP": "Electorat ↑",
+        "PRICE_DOWN": "Preț ↓",
+        "PRICE_UP": "Preț ↑",
+        "NUMBER_OF_CITIES_DOWN": "Număr de orașe ↓",
+        "NUMBER_OF_CITIES_UP": "Număr de orașe ↑",
+        "AREA": "Zonă"
       }
     }
   },
@@ -140,17 +140,17 @@
     "MLN": "M",
     "THOUSANDS": "K",
     "PAGINATION": {
-      "FIRST_TEXT": "First",
-      "LAST_TEXT": "Last"
+      "FIRST_TEXT": "Primul",
+      "LAST_TEXT": "Ultimul"
     },
     "FILTER": {
-      "SORT_BY": "Sort by"
+      "SORT_BY": "Sortează după"
     }
   },
   "CAMPAIGN": {
-    "TITLE": "My campaign",
-    "CITY": "city",
-    "CITIES": "cities",
+    "TITLE": "Campania mea",
+    "CITY": "oraș",
+    "CITIES": "orașe",
     "START": "Start your campaign",
     "INVEST": "Invest in your campaign in cities and countries of your choice to rule the whole worldmap!"
   },
