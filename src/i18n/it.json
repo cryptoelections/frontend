@@ -110,13 +110,13 @@
       "RUN_CAMPAIGN": "Avvia la campagna",
       "INVEST_PRICE": "Investi {{ price }} per vincere l'elezione presidenziale",
       "TO_WIN": "per vincere l'elezione presidenziale",
-      "INVEST_MODAL_TEXT": "Queste sono le città in cui è più conveniente avviare la tua campagna in {{ country }} per ottenere la maggioranza dei voti e diventare il Presidente della nazione! Se vuoi investire in altre città in {{ country }}, scegli da",
+      "INVEST_MODAL_TEXT": "Queste sono le città più redditizie da investire nella tua campagna in {{ country }} per ottenere la maggioranza dei voti e diventare il presidente del paese! Se desideri investire in un'altra città in {{ country }}, scegli da",
       "INVEST_MODAL_TEXT_LINK": "questa lista",
       "INVEST_MODAL_PERCENTAGE": "% di elettorato"
     },
     "MODAL": {
-      "CONGRATULATIONS": "<b>Congratulazioni!</b><br/> Hai la maggioranza di voti in {{ name }}!",
-      "RULE_COUNTRY": "Comanda questo paese!"
+      "CONGRATULATIONS": "<b>Congratulazioni!</b><br/> Hai la maggioranza dei voti in {{ name }}!",
+      "RULE_COUNTRY": "Governa questo paese!"
     },
     "FILTER": {
       "SORT_BY": "Ordian per",
@@ -152,7 +152,7 @@
     "CITY": "città",
     "CITIES": "città",
     "START": "Inizia la tua campagna",
-    "INVEST": "Investi nella tua campagna nelle città e nei paesi di tua scelta per dominare l'intera mappa mondiale!"
+    "INVEST": "Investi nella tua campagna in città e paesi di tua scelta per governare l'intera mappa del mondo!"
   },
   "NOTIFICATIONS": {
     "PRESIDENT": "<b>{{ user }}</b> è stato eletto Presidente di <b>{{ country }}</b> {{ timestamp }}"
@@ -162,11 +162,11 @@
     "WITHDRAW": "Preleva"
   },
   "SUCCESS": {
-    "NICKNAME_WAS_SET": "Nome impostato con successo"
+    "NICKNAME_WAS_SET": "Nickname impostato con successo"
   },
   "ERRORS": {
-    "UNSUCCESSFUL_TRANSACTION": "Transazione non eseguita - Compra <b>{{ name }}</b>",
-    "NICKNAME_WAS_NOT_SET": "<b>Errore!</b> Nome non impostato."
+    "UNSUCCESSFUL_TRANSACTION": "Transazione non eseguita - Acquisto di <b>{{ name }}</b>",
+    "NICKNAME_WAS_NOT_SET": "<b>Errore!</b> Nickname non impostato."
   },
   "LOG": {
     "BECAME_PRESIDENT": "Diventa il Presidente di {{ country }} {{ timestamp }}"
@@ -174,19 +174,19 @@
   "QA": {
     "1": {
       "QUESTION": "Di cosa ho bisogno per giocare a CryptoElections?",
-      "ANSWER": "Ecco di cosa hai bisogno per iniziare: <br/> Un computer od un portatile che hanno MetaDesk installato su Chrome o Firefox per desktop ed un portafoglio digitale usato specificamente per le app web che usano Ether, una forma di pagamento digitale con cui gestisci CryptoElections."
+      "ANSWER": "Ecco di cosa hai bisogno per iniziare: <br/> Un computer od un portatile che hanno MetaMask installato su Chrome o Firefox per desktop ed un portafoglio digitale usato specificamente per le applicazioni web di Ether, una forma di pagamento digitale che alimenta CryptoElections."
     },
     "2": {
-      "QUESTION": "Installare MetaMask, il tuo portafoglio digitale",
-      "ANSWER": "Per usare CryptoElections devi installare MetaMask, un portafoglio digitale. Dovrai mettere dei soldi dentro questo portafoglio per fare il tuo primo acquisto. <br/> Nota: Un portafoglio digitale come MetaMask è come un conto in banca—trattalo con rispetto e assicurati di non dimenticarti la password o le parole seed."
+      "QUESTION": "Installazione di MetaMask, il tuo portafoglio digitale",
+      "ANSWER": "Per usare CryptoElections devi installare MetaMask, un portafoglio digitale. Dovrai versare dei soldi al suo interno per fare il tuo primo acquisto. <br/> Nota: Un portafoglio digitale come MetaMask è come un conto in banca— trattalo con rispetto e assicurati di non dimenticarti la password o le parole iniziali."
     },
     "3": {
       "QUESTION": "Perché MetaMask è bloccato?",
       "ANSWER": "Delle volte la pagina ‘La mia campagna‘ mostra una schermata di blocco. Questo succede perché MetaMask blocca automaticamente il tuo account dopo un certo periodo di tempo. Per sbloccarlo clicca sull'estensione di MetaMask ed inserisci la tua password."
     },
     "4": {
-      "QUESTION": "Reinstallare MetaMask",
-      "ANSWER": "Alcuni utenti devono disinstallare e reinstallare MetaMask perché hanno sperimentato un bug. Se hai mantenuto le tue parole seed, allora è molto facile! Basta eliminare l'estensione, reinstallarla e poi reimportare queste parole. Poi potrai impostare la password che desideri utilizzare (Questa può essere lo stesso utilizzata in precedenza od una nuova)."
+      "QUESTION": "Reinstallazione MetaMask",
+      "ANSWER": "Alcuni utenti devono reinstallare MetaMask perché hanno riscontrato un errore. Se hai le tue parole iniziali, è molto facile! Basta eliminare l'estensione e installarla di nuovo, quindi immettere le 12 parole iniziali. Quindi imposta la password che desideri utilizzare (la password potrebbe essere la stessa utilizzata precedentemente oppure una nuova password)."
     },
     "5": {
       "QUESTION": "Ottieni Ether, la tua moneta virtuale",
@@ -194,7 +194,7 @@
     },
     "6": {
       "QUESTION": "Come inviare ETH a MetaMask",
-      "ANSWER": "<b>Solo per i cittadini U.S.A.:</b> Puoi comprare ETH direttamente dal portafoglio MetaDesk utilizzando il widget di Coinbase. Questo è il modo più conveniente e non richiede la creazione di due account.<br/> <b>Per tutti gli altri:</b> Devi comprare ETH da un sito di exchange utilizzando la normale moneta. Copia il tuo indirizzo MetaMask cliccando sul grosso simbolo ‘...’ vicino al tuo account, poi seleziona ‘Copia indirizzo negli appunti’. Vai sul tuo sito di exchange, clicca su ‘Account’, e seleziona il tuo portafoglio ETH e clicca su ‘Invia’. Incolla il tuo indirizzo MetaMask nel riquadro con la quantità di soldi che vuoi trasferire."
+      "ANSWER": "<b>Solo per i cittadini U.S.A.:</b> Puoi comprare ETH direttamente dal portafoglio MetaDesk utilizzando il widget di Coinbase. Questo è il modo più conveniente e non richiede la creazione di due account.<br/> <b>Per tutti gli altri:</b> Devi comprare ETH da un sito di exchange utilizzando la normale moneta fiat. Copia il tuo indirizzo MetaMask cliccando sul grosso simbolo ‘...’ vicino al tuo account, poi seleziona ‘Copy Address to clipboard’. Vai sul tuo sito di exchange, clicca su ‘Accounts’, e seleziona il tuo portafoglio ETH e clicca su ‘send’. Incolla il tuo indirizzo MetaMask nel riquadro con la quantità di soldi che vuoi trasferire."
     }
   }
 }
