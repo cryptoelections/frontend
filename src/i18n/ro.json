@@ -151,22 +151,22 @@
     "TITLE": "Campania mea",
     "CITY": "oraș",
     "CITIES": "orașe",
-    "START": "Start your campaign",
-    "INVEST": "Invest in your campaign in cities and countries of your choice to rule the whole worldmap!"
+    "START": "Pornește campania ta",
+    "INVEST": "Investiți în campania dvs. în orașe și țări alese de dvs. pentru a guverna întreaga hartă a lumii!"
   },
   "NOTIFICATIONS": {
-    "PRESIDENT": "<b>{{ user }}</b> was elected President of <b>{{ country }}</b> {{ timestamp }}"
+    "PRESIDENT": "<b>{{ user }}</b> a fost ales Președinte al <b>{{ country }}</b> {{ timestamp }}"
   },
   "WALLET": {
-    "TEXT": "If someone becomes a mayor instead of you, you get compensation. Here you can see how much you have:",
-    "WITHDRAW": "Withdraw"
+    "TEXT": "Dacă cineva devine primar în locul dvs., obțineți despăgubiri. Aici puteți vedea cât de mult aveți:",
+    "WITHDRAW": "Retragere"
   },
   "SUCCESS": {
-    "NICKNAME_WAS_SET": "Nickname was successfully set"
+    "NICKNAME_WAS_SET": "Nickname-ul a fost setat corect"
   },
   "ERRORS": {
-    "UNSUCCESSFUL_TRANSACTION": "Unsuccessful transaction - buying <b>{{ name }}</b>",
-    "NICKNAME_WAS_NOT_SET": "<b>Error!</b> Nickname was not set."
+    "UNSUCCESSFUL_TRANSACTION": "Tranzacția a eșuat - achiziția <b>{{ name }}</b>",
+    "NICKNAME_WAS_NOT_SET": "<b>Eroare!</b> Nickname-ul nu a fost setat."
   },
   "LOG": {
     "BECAME_PRESIDENT": "Became President of {{ country }} {{ timestamp }}"
