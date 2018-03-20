@@ -48,9 +48,9 @@
     "IS_LOCKED": "Bloccato",
     "INSTALL_METAMASK": "Installa MetaMask",
     "METAMASK_LOCKED": "Il tuo MetaMask è bloccato",
-    "METAMASK_LOCKED_TEXT": "Apri MetaMask e segui le istruzioni per sbloccarlo.",
+    "METAMASK_LOCKED_TEXT": "Apri semplicemente MetaMask e segui le istruzioni per sbloccarlo.",
     "WRONG_NETWORK": "Oops, sei sul network sbagliato",
-    "WRONG_NETWORK_TEXT": "Apri MetaMask e scegli il network principale Ethereum."
+    "WRONG_NETWORK_TEXT": "Apri semplicemente MetaMask e scegli il network principale di Ethereum."
   },
   "CITY": {
     "TITLE": "Città",
@@ -71,7 +71,7 @@
     },
     "MODAL": {
       "CONGRATULATIONS": "<b>Congratulazioni!</b><br/> Sei il nuovo sindaco di {{ name }}",
-      "RULE_CITY": "Comanda questa città!"
+      "RULE_CITY": "Governa questa città!"
     },
     "FILTER": {
       "SORT_BY": "Ordina per",
