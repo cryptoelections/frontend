@@ -1,29 +1,29 @@
 {
   "TITLE": "crypto elections",
   "MENU": {
-    "COUNTRIES": "Countries",
-    "CITIES": "Cities",
-    "MAP": "Map",
-    "MY_CAMPAIGN": "My campaign"
+    "COUNTRIES": "Країни",
+    "CITIES": "Міста",
+    "MAP": "Мапа",
+    "MY_CAMPAIGN": "Моя кампанія"
   },
   "HOME": {
     "START_YOUR_CAMPAIGN": "Start your campaign!",
     "GET_POWER": "Get power.",
     "RUN_COUNTRIES": "Run countries.",
     "EARN_MONEY": "Earn Money.",
-    "HOW_TO_PLAY": "How to play",
+    "HOW_TO_PLAY": "Як грати",
     "HOW_TO_PLAY_TEXT_1": "CryptoElections is a game about leading the countries by running an election campaign in cities. The more electorate live the city — the more votes you get. Once you get the majority — you become a president. The aim is to become a president in as many countries as possible.",
     "HOW_TO_PLAY_TEXT_2": "President will get 1% commission fee from every transaction in his country.",
     "HOW_TO_PLAY_TEXT_3": "If you are the mayor of the city and someone wants to beat you, you will get up to 2 times more you paid.",
-    "MAYOR": "Mayor",
-    "PRESIDENT": "President",
+    "MAYOR": "Мер",
+    "PRESIDENT": "Президент",
     "MAYOR_TEXT_1": "Can change the coat of arms of the city and it’s slogan",
     "MAYOR_TEXT_2": "Get the financial compensation from up to 2x if someone displace him",
     "MAYOR_TEXT_3": "Get all the votes from the city to his presidential campaign",
     "PRESIDENT_TEXT_1": "Can change the background of his country on the World Map",
     "PRESIDENT_TEXT_2": "Taxes. Get 1% commission fee from all transactions in his country.",
     "PRESIDENT_TEXT_3": "Stays on his place until somebody won’t get 50%+1 vote",
-    "ROADMAP": "Roadmap",
+    "ROADMAP": "Дорожня карта",
     "ROADMAP_1": "Alpha-Release. Early-access for initial users. Invest in campaign and elections mechanics implemented. First 10 countries released. Cities’ initial price - 0.02 eth.",
     "ROADMAP_2": "Beta-Release. New features: World map, list of most influential mayors and Presidents.",
     "ROADMAP_3": "Mayors get power. Mayors will be able to change city’s coat of arms to any picture, and add city slogan that will be visible to everyone.",
@@ -35,14 +35,14 @@
   "MARKETPLACE": {
     "TITLE": "Marketplace",
     "VIEWMODE": {
-      "CITIES": "Cities",
+      "CITIES": "Міста",
       "COUNTRIES": "Countries"
     }
   },
   "ACCOUNT": {
     "NOT_CONNECTED": "Not connected",
     "REQUIRE_METAMASK": "CryptoElections requires a MetaMask add-on installed in your browser.",
-    "INSTALL": "Install",
+    "INSTALL": "Встановити",
     "SET_NICKNAME": "Set Nickname",
     "NICKNAME_PLACEHOLDER": "Type Your Nickname",
     "IS_LOCKED": "Locked",
@@ -53,7 +53,7 @@
     "WRONG_NETWORK_TEXT": "Simply open MetaMask and switch over to the Main Ethereum Network."
   },
   "CITY": {
-    "TITLE": "Cities",
+    "TITLE": "Міста",
     "NOT_FOUND": "No cities",
     "CARD": {
       "MAYOR": "Mayor",
@@ -89,7 +89,7 @@
     }
   },
   "COUNTRY": {
-    "TITLE": "Countries",
+    "TITLE": "Країни",
     "CARD": {
       "PRESIDENT": "President",
       "NOT_ELECTED_YET": "Not elected yet",
@@ -99,7 +99,7 @@
         "CITIES": "{{ lowestPrice }} - {{ highestPrice }} ETH",
         "ONE_CITY": " {{ lowestPrice }} ETH"
       },
-      "CITY": "city",
+      "CITY": "місто",
       "CITIES": "cities",
       "UNDER_YOUR_CONTROL": "under your control",
       "OF_ELECTORATE": "of electorate",
