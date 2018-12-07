@@ -77,23 +77,23 @@
       "SORT_BY": "Sort by",
       "SEARCH": "Search",
       "SORT": {
-        "NAME": "Name",
-        "ELECTORATE_DOWN": "Electorate ↓",
-        "ELECTORATE_UP": "Electorate ↑",
-        "PRICE_PER_VOTE_DOWN": "Price per vote ↓",
-        "PRICE_PER_VOTE_UP": "Price per vote ↑",
-        "PRICE_DOWN": "Price ↓",
-        "PRICE_UP": "Price ↑",
-        "COUNTRY": "Country"
+        "NAME": "Назва",
+        "ELECTORATE_DOWN": "Електорат ↓",
+        "ELECTORATE_UP": "Електорат ↑",
+        "PRICE_PER_VOTE_DOWN": "Ціна за голос ↓",
+        "PRICE_PER_VOTE_UP": "Ціна за голос ↑",
+        "PRICE_DOWN": "Ціна ↓",
+        "PRICE_UP": "Ціна ↑",
+        "COUNTRY": "Країна"
       }
     }
   },
   "COUNTRY": {
     "TITLE": "Країни",
     "CARD": {
-      "PRESIDENT": "President",
+      "PRESIDENT": "Президент",
       "NOT_ELECTED_YET": "Not elected yet",
-      "YOU_ARE_PRESIDENT": "You are the President",
+      "YOU_ARE_PRESIDENT": "Ви - Президент",
       "NOT_IMPLEMENTED": "There are no cryptoelections yet",
       "CITIES_PRICE_RANGE": {
         "CITIES": "{{ lowestPrice }} - {{ highestPrice }} ETH",
